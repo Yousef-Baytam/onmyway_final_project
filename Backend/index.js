@@ -34,3 +34,7 @@ passport.use(new LocalStrategy(User.authenticate()))
 
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+
+app.listen('777', () => {
+    console.log('Listening for requests on port 777')
+})
