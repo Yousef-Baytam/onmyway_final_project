@@ -1,12 +1,13 @@
-const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const app = express();
+const express = require('express')
+const path = require('path')
+const mongoose = require('mongoose')
+const session = require('express-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+const app = express()
 const User = require('./Models/user')
 const auth = require('./Controllers/auth')
+const authRoutes = require('./Routes/authRoutes')
 
 mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
     .then(() => {
@@ -34,6 +35,8 @@ passport.use(new LocalStrategy(User.authenticate()))
 
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+
+app.use('/', authRoutes)
 
 app.listen('777', () => {
     console.log('Listening for requests on port 777')
