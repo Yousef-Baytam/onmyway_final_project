@@ -14,3 +14,7 @@ module.exports.logout = (req, res, next) => {
     req.logout((err) => { return next(err) })
     res.send({ 'response': 'success' })
 }
+
+module.exports.me = (req, res) => {
+    res.send({ 'user': req.user })
+}

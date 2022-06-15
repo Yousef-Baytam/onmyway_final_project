@@ -6,5 +6,7 @@ const auth = require('../Controllers/auth')
 router.post('/register', auth.register)
 router.post('/login', passport.authenticate('local'), auth.login)
 router.post('/logout', auth.logout)
+router.get('/me', auth.me)
+
 
 module.exports = router
