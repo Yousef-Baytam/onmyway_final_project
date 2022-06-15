@@ -8,6 +8,7 @@ const app = express()
 const User = require('./Models/user')
 const auth = require('./Controllers/auth')
 const authRoutes = require('./Routes/authRoutes')
+const userRoutes = require('./Routes/authRoutes')
 const { loggedIn } = require('./middleware/app')
 
 mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
@@ -38,6 +39,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use('/', authRoutes)
+app.use('/user', userRoutes)
 
 app.listen('777', () => {
     console.log('Listening for requests on port 777')

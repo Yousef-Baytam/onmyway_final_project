@@ -62,7 +62,12 @@ const UserSchema = new Schema({
     blocked: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    status: {
+        type: String,
+        enum: ['active', 'banned'],
+        default: 'active'
+    }
 }, { timestamps: true })
 
 UserSchema.plugin(passportLocalMongoose)
