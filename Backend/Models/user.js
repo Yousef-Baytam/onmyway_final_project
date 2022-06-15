@@ -59,6 +59,10 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }],
+    blocked: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 }, { timestamps: true })
 
 UserSchema.plugin(passportLocalMongoose)
