@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     },
     gender: {
         type: String,
-        enum: ['Male', 'Female', 'Other'],
+        enum: ['male', 'female', 'other'],
         required: true
     },
     carDetails: [{
@@ -47,7 +47,7 @@ const UserSchema = new Schema({
         geometry: {
             type: {
                 type: String,
-                enum: ['Point'],
+                enum: ['point'],
 
             },
             coordinates: {
