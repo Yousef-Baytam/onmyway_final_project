@@ -4,8 +4,8 @@ const router = express.Router()
 const catchAsync = require('../Utils/catchAsync')
 
 router.get('/:id', catchAsync(userController.getUser))
-router.post('/block',)
-router.post('/report',)
+router.post('/block/:id', catchAsync(userController.blockUser))
+router.post('/report/:id',)
 router.patch('/', catchAsync(userController.updateUser))
 // chat?
 
