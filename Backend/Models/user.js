@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const passportLocalMongoose = require('passport-local-mongoose')
+const { phone } = require('phone')
+const catchAsync = require('../Utils/catchAsync')
+const ExpressError = require('../Utils/ExpressError')
 
 const UserSchema = new Schema({
     email: {
@@ -9,7 +12,7 @@ const UserSchema = new Schema({
         unique: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: [true, 'Phone is required'],
         unique: true
     },
@@ -71,5 +74,13 @@ const UserSchema = new Schema({
 }, { timestamps: true })
 
 UserSchema.plugin(passportLocalMongoose)
+
+UserSchema.pre('save', function (next) {
+    const result = phone(this.phone)
+    if (!result.isValid)
+        next(new ExpressError('Invalid phone number', 500))
+    this.phone = result.phoneNumber
+    next()
+})
 
 module.exports = mongoose.model('User', UserSchema)
