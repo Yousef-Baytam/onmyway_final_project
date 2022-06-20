@@ -42,15 +42,14 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use('/', authRoutes)
-app.use('/user', loggedIn, userRoutes)
+app.use('/user', /*loggedIn,*/ userRoutes)
 app.use('/post', postRoutes)
 app.use('/review', reviewRoutes)
 app.use('/admin', adminRoutes)
 
 app.use((err, req, res, next) => {
-    const { statusCode = 500 } = err
-    if (!err.message) err.message = 'Something Went Wrong!'
-    res.status(statusCode).send(err)
+    const { statusCode = 500, message = 'Something Went Wrong!' } = err
+    res.status(statusCode).send(err.stack)
 })
 
 app.listen('777', () => {
