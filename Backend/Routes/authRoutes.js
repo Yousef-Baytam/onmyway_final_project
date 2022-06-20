@@ -1,7 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
-const auth = require('../Controllers/auth')
+const auth = require('../Controllers/authController')
 
 router.get('/me', auth.me)
 router.post('/register', auth.register)

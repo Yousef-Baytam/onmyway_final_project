@@ -40,7 +40,7 @@ const UserSchema = new Schema({
     },
     userType: {
         type: String,
-        required: true
+        default: 'user'
     },
     adress: [{
         location: String,
