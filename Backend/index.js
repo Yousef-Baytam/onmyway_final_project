@@ -13,6 +13,7 @@ const postRoutes = require('./Routes/postRoutes')
 const reviewRoutes = require('./Routes/reviewRoutes')
 const adminRoutes = require('./Routes/adminRoutes')
 const { loggedIn } = require('./middleware/app')
+const MongoStore = require('connect-mongo');
 
 mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
     .then(() => {
@@ -26,6 +27,7 @@ app.use(session({
     name: 'session',
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/CarpoolingApp' }),
     cookie: {
         httpOnly: true,
         // secure: true,
