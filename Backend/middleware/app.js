@@ -1,5 +1,7 @@
+const ExpressError = require('../Utils/ExpressError')
+
 module.exports.loggedIn = (req, res, next) => {
     if (!req.isAuthenticated())
-        res.send({ 'response': 'Unauthorised' })
+        throw new ExpressError('Unauthorized', 401)
     next()
 }

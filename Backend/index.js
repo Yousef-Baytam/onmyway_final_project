@@ -42,7 +42,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use('/', authRoutes)
-app.use('/user', /*loggedIn,*/ userRoutes)
+app.use('/user', loggedIn, userRoutes)
 app.use('/post', postRoutes)
 app.use('/review', reviewRoutes)
 app.use('/admin', adminRoutes)
