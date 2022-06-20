@@ -47,6 +47,12 @@ app.use('/post', postRoutes)
 app.use('/review', reviewRoutes)
 app.use('/admin', adminRoutes)
 
+app.use((err, req, res, next) => {
+    const { statusCode = 500 } = err
+    if (!err.message) err.message = 'Something Went Wrong!'
+    res.status(statusCode).send(err)
+})
+
 app.listen('777', () => {
     console.log('Listening for requests on port 77777777777777777777777777777777')
 })
