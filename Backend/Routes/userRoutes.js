@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/:id', userController.getUser)
 router.post('/block',)
 router.post('/report',)
-router.patch('/',)
+router.patch('/', userController.updateUser)
 // chat?
 
 module.exports = router
