@@ -1,4 +1,5 @@
 const User = require("../Models/user")
+const Report = require('../Models/reports')
 
 
 module.exports.getUser = async (req, res, next) => {
@@ -17,4 +18,10 @@ module.exports.blockUser = async (req, res, next) => {
     const user = req.user
     const update = await User.findByIdAndUpdate(user.id, { $push: { blocked: req.params.id } }, { new: true })
     res.send(update)
+}
+
+module.exports.reportUser = async (req, res, next) => {
+    const rep = new Report({ 'sender': req.user.id, 'reported': req.params.id, 'reportType': req.body.reportType, 'report': req.body.report })
+    await rep.save()
+    res.send({ "success": true, "report": rep })
 }  

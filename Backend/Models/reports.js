@@ -10,6 +10,10 @@ const reportSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    reportType: {
+        type: String,
+        required: true,
+    },
     report: {
         type: String,
     }
