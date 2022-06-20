@@ -14,7 +14,13 @@ const UserSchema = new Schema({
     phone: {
         type: String,
         required: [true, 'Phone is required'],
-        unique: true
+        unique: true,
+        validate: {
+            validator: function (e) {
+                return phone(e).isValid
+            },
+            message: props => `${ props.value } is not a valid phone number!`
+        }
     },
     gender: {
         type: String,
@@ -76,10 +82,12 @@ const UserSchema = new Schema({
 UserSchema.plugin(passportLocalMongoose)
 
 UserSchema.pre('save', function (next) {
-    const result = phone(this.phone)
-    if (!result.isValid)
-        next(new ExpressError('Invalid phone number', 500))
-    this.phone = result.phoneNumber
+    this._update.phone = phone(this._update.phone).phoneNumber
+    next()
+})
+
+UserSchema.pre('findOneAndUpdate', function (next) {
+    this._update.phone = phone(this._update.phone).phoneNumber
     next()
 })
 
