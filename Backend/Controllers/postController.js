@@ -23,6 +23,7 @@ module.exports.addPosts = async (req, res) => {
         "owner": req.user,
         "comment": req.body.comment
     })
-    res.send(posts)
+    const result = await posts.save()
+    res.send(result)
 }
 

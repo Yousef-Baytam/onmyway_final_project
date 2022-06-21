@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+const moment = require('moment')
 
 const postSchema = new Schema({
     from: {
@@ -58,10 +59,7 @@ const postSchema = new Schema({
         type: Boolean,
         default: false
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    owner: {},
     joinRequests: [{
         status: {
             type: String,
@@ -80,17 +78,17 @@ const postSchema = new Schema({
 
 postSchema.pre('save', function (next) {
     if (this.departureTime)
-        this.departureTime = moment(this.departureTime).format("hh:mm")
+        this.departureTime = moment(this.departureTime).format("HH:mm")
     if (this.returnTime)
-        this.returnTime = moment(this.returnTime).format("hh:mm")
+        this.returnTime = moment(this.returnTime).format("HH:mm")
     next()
 })
 
 postSchema.pre('findOneAndUpdate', function (next) {
     if (this._update.departureTime)
-        this._update.departureTime = moment(this._update.departureTime).format("hh:mm")
+        this._update.departureTime = moment(this._update.departureTime).format("HH:mm")
     if (this._update.returnTime)
-        this._update.returnTime = moment(this._update.returnTime).format("hh:mm")
+        this._update.returnTime = moment(this._update.returnTime).format("HH:mm")
     next()
 })
 
