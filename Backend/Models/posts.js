@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -78,15 +78,15 @@ const postSchema = new Schema({
     }
 }, { timestamps: true });
 
-UserSchema.pre('save', function (next) {
-    if (this._update.departureTime)
-        this._update.departureTime = moment(this._update.departureTime).format("hh:mm")
-    if (this._update.returnTime)
-        this._update.returnTime = moment(this._update.returnTime).format("hh:mm")
+postSchema.pre('save', function (next) {
+    if (this.departureTime)
+        this.departureTime = moment(this.departureTime).format("hh:mm")
+    if (this.returnTime)
+        this.returnTime = moment(this.returnTime).format("hh:mm")
     next()
 })
 
-UserSchema.pre('findOneAndUpdate', function (next) {
+postSchema.pre('findOneAndUpdate', function (next) {
     if (this._update.departureTime)
         this._update.departureTime = moment(this._update.departureTime).format("hh:mm")
     if (this._update.returnTime)
