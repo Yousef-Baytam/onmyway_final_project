@@ -78,4 +78,21 @@ const postSchema = new Schema({
     }
 }, { timestamps: true });
 
+UserSchema.pre('save', function (next) {
+    if (this._update.departureTime)
+        this._update.departureTime = moment(this._update.departureTime).format("hh:mm")
+    if (this._update.returnTime)
+        this._update.returnTime = moment(this._update.returnTime).format("hh:mm")
+    next()
+})
+
+UserSchema.pre('findOneAndUpdate', function (next) {
+    if (this._update.departureTime)
+        this._update.departureTime = moment(this._update.departureTime).format("hh:mm")
+    if (this._update.returnTime)
+        this._update.returnTime = moment(this._update.returnTime).format("hh:mm")
+    next()
+})
+
+
 module.exports = mongoose.model("Post", postSchema);
