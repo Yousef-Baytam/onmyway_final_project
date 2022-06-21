@@ -33,12 +33,16 @@ const postSchema = new Schema({
         enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
         required: true
     },
+    repeat: {
+        type: Boolean,
+        default: false
+    },
     departureTime: {
-        type: Date,
+        type: String,
         required: true
     },
     returnTime: {
-        type: Date
+        type: String
     },
     remainingSeats: {
         type: Number,
