@@ -2,8 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const passportLocalMongoose = require('passport-local-mongoose')
 const { phone } = require('phone')
-const catchAsync = require('../Utils/catchAsync')
-const ExpressError = require('../Utils/ExpressError')
 
 const UserSchema = new Schema({
     email: {
