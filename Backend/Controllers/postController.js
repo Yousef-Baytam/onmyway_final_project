@@ -37,7 +37,7 @@ module.exports.addPosts = async (req, res) => {
 }
 
 module.exports.updatePosts = async (req, res) => {
-    const posts = Post.findByIdAndUpdate(req.params.id, {
+    const posts = await Post.findByIdAndUpdate(req.params.id, {
         "from": req.body.from,
         "to": req.body.to,
         "days": req.body.days,
@@ -51,6 +51,11 @@ module.exports.updatePosts = async (req, res) => {
         "owner": req.user,
         "comment": req.body.comment
     }, { new: true })
+    res.send(posts)
+}
+
+module.exports.deletePosts = async (req, res) => {
+    const posts = await Post.findByIdAndDelete(req.params.id)
     res.send(posts)
 }
 
