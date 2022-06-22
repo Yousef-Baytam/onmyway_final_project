@@ -33,6 +33,9 @@ const postSchema = new Schema({
         type: [String],
         enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
     },
+    date: {
+        type: [Date]
+    },
     repeat: {
         type: Boolean,
         default: false

@@ -2,20 +2,19 @@ const moment = require('moment')
 const Post = require('../Models/posts')
 
 module.exports.getPosts = async (req, res) => {
+    // return (res.send(moment().add(3, 'days').format()))
     const user = req.user
     const posts = await Post.find({
         $or: [
             { "prefferedGender": user.gender },
             { "prefferedGender": "any" }
-        ], $and: [{
-
-            $or: [
-                { 'repeat': true },
-                { 'createdAt': { $gte: moment().subtract(7, 'days').format() } }
-            ]
-        }]
-    }).populate('owner')
-
+        ]
+    }).and({
+        $or: [
+            { 'repeat': true },
+            { 'date': { $gte: moment().format() } }
+        ]
+    }).and({ 'remainingSeats': { $gt: 0 } }).populate('owner')
     res.send(posts)
 }
 
@@ -25,6 +24,7 @@ module.exports.addPosts = async (req, res) => {
         "from": req.body.from,
         "to": req.body.to,
         "days": req.body.days,
+        "date": req.body.date,
         "repeat": req.body.repeat,
         "departureTime": req.body.departureTime,
         "returnTime": req.body.returnTime,
@@ -37,9 +37,3 @@ module.exports.addPosts = async (req, res) => {
     const result = await posts.save()
     res.send(result)
 }
-
-
-// .$where(function () {
-//     return this.repeat == true || moment().subtract(6, days).format() - this.createdAt > 0
-// })
-//
