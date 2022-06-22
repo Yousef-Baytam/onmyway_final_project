@@ -3,8 +3,19 @@ const Post = require('../Models/posts')
 
 module.exports.getPosts = async (req, res) => {
     const user = req.user
-    const posts = await Post.find({ "prefferedGender": user.gender, "prefferedGender": "any" }).populate("User")
-    // ???
+    const posts = await Post.find({
+        $or: [
+            { "prefferedGender": user.gender },
+            { "prefferedGender": "any" }
+        ], $and: [{
+
+            $or: [
+                { 'repeat': true },
+                { 'createdAt': { $gte: moment().subtract(7, 'days').format() } }
+            ]
+        }]
+    }).populate('owner')
+
     res.send(posts)
 }
 
@@ -27,3 +38,8 @@ module.exports.addPosts = async (req, res) => {
     res.send(result)
 }
 
+
+// .$where(function () {
+//     return this.repeat == true || moment().subtract(6, days).format() - this.createdAt > 0
+// })
+//

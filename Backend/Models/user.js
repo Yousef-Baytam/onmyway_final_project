@@ -80,12 +80,14 @@ const UserSchema = new Schema({
 UserSchema.plugin(passportLocalMongoose)
 
 UserSchema.pre('save', function (next) {
-    this.phone = phone(this.phone).phoneNumber
+    if (this._update.phone)
+        this.phone = phone(this.phone).phoneNumber
     next()
 })
 
 UserSchema.pre('findOneAndUpdate', function (next) {
-    this._update.phone = phone(this._update.phone).phoneNumber
+    if (this._update.phone)
+        this._update.phone = phone(this._update.phone).phoneNumber
     next()
 })
 

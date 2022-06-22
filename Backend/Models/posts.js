@@ -32,7 +32,6 @@ const postSchema = new Schema({
     days: {
         type: [String],
         enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
-        required: true
     },
     repeat: {
         type: Boolean,
@@ -59,7 +58,10 @@ const postSchema = new Schema({
         type: Boolean,
         default: false
     },
-    owner: {},
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     joinRequests: [{
         status: {
             type: String,
