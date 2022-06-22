@@ -35,3 +35,22 @@ module.exports.addPosts = async (req, res) => {
     const result = await posts.save()
     res.send(result)
 }
+
+module.exports.updatePosts = async (req, res) => {
+    const posts = Post.findByIdAndUpdate(req.params.id, {
+        "from": req.body.from,
+        "to": req.body.to,
+        "days": req.body.days,
+        "date": req.body.date,
+        "repeat": req.body.repeat,
+        "departureTime": req.body.departureTime,
+        "returnTime": req.body.returnTime,
+        "remainingSeats": req.body.remainingSeats,
+        "prefferedGender": req.body.prefferedGender,
+        "shareExpenses": req.body.shareExpenses,
+        "owner": req.user,
+        "comment": req.body.comment
+    }, { new: true })
+    res.send(posts)
+}
+

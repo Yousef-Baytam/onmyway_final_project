@@ -7,7 +7,7 @@ router.get('/', catchAsync(posts.getPosts))
 router.post('/new', catchAsync(posts.addPosts))
 router.post('/join/:id',)
 router.post('/quit/:id',)
-router.patch('/update/:id',)
+router.patch('/update/:id', catchAsync(posts.updatePosts))
 router.delete('/delete/:id',)
 
 module.exports = router
