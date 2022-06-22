@@ -55,7 +55,7 @@ module.exports.updatePosts = async (req, res) => {
         "shareExpenses": req.body.shareExpenses,
         "owner": req.user,
         "comment": req.body.comment
-    }, { new: true })
+    }, { new: true, runValidators: true })
     res.send({ "success": true, "results": posts })
 }
 

@@ -9,7 +9,15 @@ module.exports.getUser = async (req, res, next) => {
 
 module.exports.updateUser = async (req, res, next) => {
     const user = req.user
-    const update = await User.findByIdAndUpdate(user.id, { 'email': req.body.email, 'phone': req.body.phone, 'gender': req.body.gender }, { new: true, runValidators: true })
+    const update = await User.findByIdAndUpdate(user.id, {
+        'email': req.body.email,
+        'phone': req.body.phone,
+        'gender': req.body.gender,
+        'carDetails': req.body.carDetails,
+        'musicPrefrences': req.body.musicPrefrences,
+        'dob': req.body.dob,
+        'adress': req.body.adress,
+    }, { new: true, runValidators: true })
     return res.send({ "success": true, "results": update })
 }
 

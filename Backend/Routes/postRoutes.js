@@ -8,7 +8,7 @@ router.get('/join_requests/:id', catchAsync(postsController.getJoinRequests))
 router.post('/new', catchAsync(postsController.addPosts))
 router.post('/join/:id', catchAsync(postsController.joinPosts))
 router.post('/quit/:id', catchAsync(postsController.quitPosts))
-router.post('/update_request/:post_id/:user_id', catchAsync())
+router.post('/update_request/:post_id/:user_id', catchAsync(postsController.approveDeclinePosts))
 router.patch('/update/:id', catchAsync(postsController.updatePosts))
 router.delete('/delete/:id', catchAsync(postsController.deletePosts))
 
