@@ -17,6 +17,11 @@ module.exports.getPosts = async (req, res) => {
     res.send({ "success": true, "results": posts.filter((i) => i.owner.status == 'active') })
 }
 
+module.exports.getJoinRequests = async (req, res, next) => {
+    const post = await Post.findById(req.params.id).populate('joinRequests.joined')
+    return res.send({ "success": true, "results": post })
+}
+
 module.exports.addPosts = async (req, res) => {
     const posts = new Post({
         "from": req.body.from,

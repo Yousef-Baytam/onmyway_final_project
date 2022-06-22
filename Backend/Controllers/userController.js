@@ -1,17 +1,10 @@
 const User = require("../Models/user")
 const Report = require('../Models/reports')
-const Post = require('../Models/posts')
-
 
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params
     const user = await User.findById(id)
     return res.send({ "success": true, "results": user })
-}
-
-module.exports.getJoinRequests = async (req, res, next) => {
-    const post = await Post.findById(req.params.id).populate('joinRequests.joined')
-    return res.send({ "success": true, "results": post })
 }
 
 module.exports.updateUser = async (req, res, next) => {
