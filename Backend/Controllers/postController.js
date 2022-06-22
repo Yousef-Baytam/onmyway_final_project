@@ -2,7 +2,6 @@ const moment = require('moment')
 const Post = require('../Models/posts')
 
 module.exports.getPosts = async (req, res) => {
-    // return (res.send(moment().add(3, 'days').format()))
     const user = req.user
     const posts = await Post.find({
         $or: [
@@ -15,11 +14,10 @@ module.exports.getPosts = async (req, res) => {
             { 'date': { $gte: moment().format() } }
         ]
     }).and({ 'remainingSeats': { $gt: 0 } }).populate('owner')
-    res.send(posts)
+    res.send(posts.filter((i) => i.owner.status == 'active'))
 }
 
 module.exports.addPosts = async (req, res) => {
-    // return res.send(moment('2022-06-12 15:00').format('hh:mm'))
     const posts = new Post({
         "from": req.body.from,
         "to": req.body.to,
