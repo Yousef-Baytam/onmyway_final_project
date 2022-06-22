@@ -14,7 +14,7 @@ module.exports.getPosts = async (req, res) => {
             { 'date': { $gte: moment().format() } }
         ]
     }).and({ 'remainingSeats': { $gt: 0 } }).populate('owner')
-    res.send(posts.filter((i) => i.owner.status == 'active'))
+    res.send({ "success": true, "results": posts.filter((i) => i.owner.status == 'active') })
 }
 
 module.exports.addPosts = async (req, res) => {
@@ -33,7 +33,7 @@ module.exports.addPosts = async (req, res) => {
         "comment": req.body.comment
     })
     const result = await posts.save()
-    res.send(result)
+    res.send({ "success": true, "results": result })
 }
 
 module.exports.updatePosts = async (req, res) => {
@@ -51,11 +51,21 @@ module.exports.updatePosts = async (req, res) => {
         "owner": req.user,
         "comment": req.body.comment
     }, { new: true })
-    res.send(posts)
+    res.send({ "success": true, "results": posts })
 }
 
 module.exports.deletePosts = async (req, res) => {
     const posts = await Post.findByIdAndDelete(req.params.id)
-    res.send(posts)
+    res.send({ "success": true, "results": posts })
+}
+
+module.exports.joinPosts = async (req, res) => {
+    const post = await Post.findById(req.params.id)
+    if (post.remainingSeats) {
+        post.joinRequests.push({ 'joined': req.user })
+        const result = await post.save()
+        return res.send({ "success": true, "results": result })
+    }
+    return res.send({ "success": false, "results": result, "message": "no empty seats" })
 }
 

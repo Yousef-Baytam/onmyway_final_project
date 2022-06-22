@@ -66,14 +66,14 @@ const postSchema = new Schema({
         ref: 'User'
     },
     joinRequests: [{
+        joined: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         status: {
             type: String,
             enum: ['pending', 'approved', 'declined'],
             default: 'pending'
-        },
-        joined: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
         },
     }],
     comment: {
