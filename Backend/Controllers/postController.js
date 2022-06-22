@@ -69,3 +69,22 @@ module.exports.joinPosts = async (req, res) => {
     return res.send({ "success": false, "results": result, "message": "no empty seats" })
 }
 
+module.exports.quitPosts = async (req, res) => {
+    const post = await Post.findById(req.params.id).populate('joinRequests.joined')
+    let quitCount = 0
+    for (let i = 0; i < post.joinRequests.length; i++) {
+        if (post.joinRequests[i].joined.id == req.user.id)
+            if (post.joinRequests[i].status == 'approved') {
+                post.joinRequests.splice(i, 1) && quitCount++
+                post.remainingSeats += 1
+            } else {
+                post.joinRequests.splice(i, 1) && quitCount++
+            }
+    }
+    if (quitCount) {
+        const result = await post.save()
+        return res.send({ "success": true, "results": result })
+    }
+    return res.send({ "success": false })
+}
+

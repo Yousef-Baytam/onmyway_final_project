@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/', catchAsync(posts.getPosts))
 router.post('/new', catchAsync(posts.addPosts))
 router.post('/join/:id', catchAsync(posts.joinPosts))
-router.post('/quit/:id',)
+router.post('/quit/:id', catchAsync(posts.quitPosts))
 router.patch('/update/:id', catchAsync(posts.updatePosts))
 router.delete('/delete/:id', catchAsync(posts.deletePosts))
 
