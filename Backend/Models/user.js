@@ -81,7 +81,7 @@ const UserSchema = new Schema({
 UserSchema.plugin(passportLocalMongoose)
 
 UserSchema.pre('save', function (next) {
-    if (this._update.phone)
+    if (this.phone)
         this.phone = phone(this.phone).phoneNumber
     next()
 })

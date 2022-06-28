@@ -4,7 +4,7 @@ const reviewController = require('../Controllers/reviewController')
 const catchAsync = require('../Utils/catchAsync')
 
 router.get('/user/:id', catchAsync(reviewController.getReviews))
-router.post('/new',)
+router.post('/new/:id', catchAsync(reviewController.addReview))
 router.patch('/update/:id',)
 router.delete('/delete/:id',)
 
