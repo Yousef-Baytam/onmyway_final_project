@@ -8,5 +8,6 @@ router.post('/block/:id', catchAsync(userController.blockUser))
 router.post('/report/:id', catchAsync(userController.reportUser))
 router.patch('/', catchAsync(userController.updateUser))
 // chat?
+//images and cloudinary
 
 module.exports = router
