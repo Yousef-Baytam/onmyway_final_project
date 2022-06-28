@@ -1,21 +1,20 @@
 process.env.NODE_ENV !== 'production' && require('dotenv').config()
 
 const express = require('express')
-const path = require('path')
+// const path = require('path')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const app = express()
 const User = require('./Models/user')
-const auth = require('./Controllers/authController')
 const authRoutes = require('./Routes/authRoutes')
 const userRoutes = require('./Routes/userRoutes')
 const postRoutes = require('./Routes/postRoutes')
 const reviewRoutes = require('./Routes/reviewRoutes')
 const adminRoutes = require('./Routes/adminRoutes')
-const { loggedIn } = require('./middleware/app')
-const MongoStore = require('connect-mongo');
+// const { loggedIn } = require('./middleware/app')
+// const MongoStore = require('connect-mongo');
 const cors = require('cors')
 
 
@@ -31,7 +30,7 @@ app.use(session({
     name: 'session',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/CarpoolingApp' }),
+    // store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/CarpoolingApp' }),
     cookie: {
         httpOnly: true,
         // secure: true,
@@ -39,6 +38,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }))
+
 app.use(cors())
 app.use(express.json())
 app.use(passport.initialize())
