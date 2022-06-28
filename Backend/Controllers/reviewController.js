@@ -17,3 +17,8 @@ module.exports.updateReview = async (req, res) => {
     const review = Review.findByIdAndUpdate(req.params.id, { body, rating }, { runValidators: true, new: true })
     res.send({ "success": true, "results": review })
 }
+
+module.exports.deleteReview = async (req, res) => {
+    const review = Review.findByIdAndDelete(req.params.id)
+    res.send({ "success": true, "results": review })
+}
