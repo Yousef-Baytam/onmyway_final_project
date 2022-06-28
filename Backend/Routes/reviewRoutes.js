@@ -5,7 +5,7 @@ const catchAsync = require('../Utils/catchAsync')
 
 router.get('/user/:id', catchAsync(reviewController.getReviews))
 router.post('/new/:id', catchAsync(reviewController.addReview))
-router.patch('/update/:id',)
+router.patch('/update/:id', catchAsync(reviewController.updateReview))
 router.delete('/delete/:id',)
 
 module.exports = router
