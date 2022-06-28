@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const passportLocalMongoose = require('passport-local-mongoose')
 const { phone } = require('phone')
-const userJoiSchema = require('../Utils/joiValidation')
+const { userJoiSchema } = require('../Utils/joiValidation')
 const ExpressError = require('../Utils/ExpressError')
 
 const UserSchema = new Schema({
@@ -88,7 +88,9 @@ UserSchema.pre('save', function (next) {
     const res = userJoiSchema.validate({
         username: this.username,
         email: this.email,
-        password: this.password
+        password: this.password,
+        gender: this.gender,
+        dob: this.dob,
     })
     if (res.error) {
         const msg = res.error.details.map((i) => i.message).join(',')
@@ -103,7 +105,9 @@ UserSchema.pre('findOneAndUpdate', function (next) {
     const res = userJoiSchema.validate({
         username: this._update.username,
         email: this._update.email,
-        password: this._update.password
+        password: this._update.password,
+        gender: this.gender,
+        dob: this.dob,
     })
     if (res.error) {
         const msg = res.error.details.map((i) => i.message).join(',')
@@ -111,7 +115,5 @@ UserSchema.pre('findOneAndUpdate', function (next) {
     }
     next()
 })
-
-
 
 module.exports = mongoose.model('User', UserSchema)
