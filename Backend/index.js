@@ -18,6 +18,7 @@ const { loggedIn } = require('./middleware/app')
 const MongoStore = require('connect-mongo');
 const cors = require('cors')
 
+
 mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
     .then(() => {
         console.log("Database Connected")
@@ -41,17 +42,26 @@ app.use(session({
 app.use(cors())
 app.use(express.json())
 app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
+require('./Utils/passportJWT')(passport)
 
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
+// passport.serializeUser(User.serializeUser())
+// passport.deserializeUser(User.deserializeUser())
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
 
 app.use('/', authRoutes)
-app.use('/user', /*loggedIn,*/ userRoutes)
-app.use('/post', postRoutes)
-app.use('/review', reviewRoutes)
-app.use('/admin', adminRoutes)
+app.use('/user', passport.authenticate('jwt', { session: false }), userRoutes)
+app.use('/post', passport.authenticate('jwt', { session: false }), postRoutes)
+app.use('/review', passport.authenticate('jwt', { session: false }), reviewRoutes)
+app.use('/admin', passport.authenticate('jwt', { session: false }), adminRoutes)
 
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = 'Something Went Wrong!' } = err

@@ -9,15 +9,15 @@ module.exports.register = async (req, res) => {
 }
 
 module.exports.login = (req, res) => {
-    const token = jwt(user)
+    const token = jwt(req.user)
     res.send({ 'response': 'success', "user": req.user, "token": token })
-}
-
-module.exports.logout = (req, res, next) => {
-    req.logout((err) => { return next(err) })
-    res.send({ 'response': 'success' })
 }
 
 module.exports.me = (req, res) => {
     res.send({ 'user': req.user })
 }
+
+// module.exports.logout = (req, res, next) => {
+//     req.logout((err) => { return next(err) })
+//     res.send({ 'response': 'success' })
+// }
