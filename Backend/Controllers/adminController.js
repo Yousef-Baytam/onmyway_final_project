@@ -12,3 +12,8 @@ module.exports.getReports = async (req, res, next) => {
     const reviewedReports = await Report.find({ "status": "reviewed" })
     return res.send({ "success": true, "Pending Reports": pendingReports, "Reviewed Reports": reviewedReports })
 }
+
+module.exports.banUser = async (req, res, next) => {
+    const user = await User.findByIdAndUpdate(req.params.id, { "status": "banned" }, { runValidators: true, new: true })
+    return res.send({ "success": true, "results": user })
+}
