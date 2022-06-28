@@ -17,3 +17,8 @@ module.exports.banUser = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(req.params.id, { "status": "banned" }, { runValidators: true, new: true })
     return res.send({ "success": true, "results": user })
 }
+
+module.exports.unbanUser = async (req, res, next) => {
+    const user = await User.findByIdAndUpdate(req.params.id, { "status": "active" }, { runValidators: true, new: true })
+    return res.send({ "success": true, "results": user })
+}
