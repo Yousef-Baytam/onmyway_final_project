@@ -1,13 +1,16 @@
 const User = require('../Models/user')
+const jwt = require('../Utils/jwtGen')
 
 module.exports.register = async (req, res) => {
     const user = new User(req.body)
     const result = await User.register(user, req.body.password)
-    res.send(result)
+    const token = jwt(user)
+    res.send({ "results": result, "token": token })
 }
 
 module.exports.login = (req, res) => {
-    res.send({ 'response': 'success' })
+    const token = jwt(user)
+    res.send({ 'response': 'success', "user": req.user, "token": token })
 }
 
 module.exports.logout = (req, res, next) => {
