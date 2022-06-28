@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const adminController = require('../Controllers/adminController')
 
-router.get('/users',)
+router.get('/users', catchAsync(adminController.getUsers))
 router.get('/reports',)
 router.post('/ban/:id',)
 
