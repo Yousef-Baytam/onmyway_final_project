@@ -16,6 +16,11 @@ const reportSchema = new Schema({
     },
     report: {
         type: String,
+    },
+    status: {
+        type: String,
+        enum: ["reviewed", "pending"],
+        default: "pending"
     }
 }, { timestamps: true });
 

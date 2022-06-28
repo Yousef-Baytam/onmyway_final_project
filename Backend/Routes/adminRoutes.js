@@ -3,7 +3,7 @@ const router = express.Router()
 const adminController = require('../Controllers/adminController')
 
 router.get('/users', catchAsync(adminController.getUsers))
-router.get('/reports',)
+router.get('/reports', catchAsync(adminController.getReports))
 router.post('/ban/:id',)
 
 module.exports = router
