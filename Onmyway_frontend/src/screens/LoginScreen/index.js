@@ -10,7 +10,7 @@ export default function Login() {
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/LoginPageImage.jpg')} style={styles.image} />
-            <Text>Login</Text>
+            <Text style={styles.title}>Login</Text>
             <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
             <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
         </View>
@@ -27,5 +27,12 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '33%'
+    },
+    title: {
+        alignSelf: 'flex-start',
+        fontSize: 50,
+        marginLeft: '10%',
+        marginBottom: '5%',
+        marginTop: '5%'
     }
 });
