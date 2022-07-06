@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     input: {
-        width: '80%',
+        width: '85%',
         borderBottomWidth: 0.2,
         borderColor: 'rgba(0,0,0, 0.7)',
         paddingBottom: 10,

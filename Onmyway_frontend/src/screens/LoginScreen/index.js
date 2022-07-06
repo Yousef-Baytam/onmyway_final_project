@@ -13,7 +13,7 @@ export default function Login() {
         <View style={styles.container}>
             <Image source={require('../../assets/LoginPageImage.jpg')} style={styles.image} />
             <Text style={styles.title}>Login</Text>
-            <View>
+            <View style={styles.inputContainer}>
                 <UsernameIcon />
                 <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
             </View>
@@ -40,5 +40,9 @@ const styles = StyleSheet.create({
         marginLeft: '10%',
         marginBottom: '5%',
         marginTop: '5%'
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        width: '80%'
     }
 });
