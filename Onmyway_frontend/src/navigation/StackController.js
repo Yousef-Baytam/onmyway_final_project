@@ -1,5 +1,5 @@
-import { AuthStack } from "./AuthStack";
+// import { AuthStack } from "../../AuthStack";
 
-export default function App() {
-    return <AuthStack />
-}
+// export default function App() {
+//     return <AuthStack />
+// }
