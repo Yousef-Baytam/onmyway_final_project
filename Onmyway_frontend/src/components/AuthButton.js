@@ -3,7 +3,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function AuthButton({ value }) {
     return (
-        <View>
+        <View style={styles.buttonContainer}>
             <Pressable>
                 <View>
                     <Text>{value}</Text>
@@ -14,4 +14,7 @@ export default function AuthButton({ value }) {
 }
 
 const styles = StyleSheet.create({
+    buttonContainer: {
+        margin: 25
+    }
 });
