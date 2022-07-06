@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import UsernameIcon from '../assets/icons/UsernameIcon';
 
 export default function Input({ placeholder, value, setValue, keyboard }) {
     return (
