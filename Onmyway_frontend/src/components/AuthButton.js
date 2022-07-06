@@ -5,7 +5,7 @@ export default function AuthButton({ value }) {
     return (
         <View style={styles.buttonContainer}>
             <Pressable>
-                <View>
+                <View style={styles.button}>
                     <Text>{value}</Text>
                 </View>
             </Pressable>
@@ -15,6 +15,13 @@ export default function AuthButton({ value }) {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        margin: 25
+        margin: 25,
+    },
+    button: {
+        backgroundColor: '#A1CCE4',
+        paddingVertical: 20,
+        paddingHorizontal: '40%',
+        alignItems: 'center',
+        borderRadius: 10
     }
 });
