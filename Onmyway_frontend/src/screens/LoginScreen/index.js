@@ -17,7 +17,10 @@ export default function Login() {
                 <UsernameIcon />
                 <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
             </View>
-            <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
+            <View style={styles.inputContainer}>
+                <UsernameIcon />
+                <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
+            </View>
             <AuthButton value={"Login"} />
         </View>
     );
