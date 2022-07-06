@@ -5,7 +5,7 @@ export default function AuthButton({ value }) {
     return (
         <View style={styles.buttonContainer}>
             <View style={styles.button}>
-                <Pressable android_ripple={{ color: '#000' }} onPress={() => { }}>
+                <Pressable android_ripple={{ color: '#005A9C', borderless: true }} onPress={() => { }}>
                     <Text style={styles.text}>{value}</Text>
                 </Pressable>
             </View>
@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#A1CCE4',
-        paddingVertical: 20,
-        paddingHorizontal: '40%',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
     },
     text: {
+        paddingVertical: 20,
+        paddingHorizontal: '40%',
         color: '#fff',
         fontSize: 25
     }
