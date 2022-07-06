@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
+import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
 
 export default function Login() {
@@ -13,6 +14,7 @@ export default function Login() {
             <Text style={styles.title}>Login</Text>
             <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
             <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
+            <AuthButton value={"Login"} />
         </View>
     );
 }
