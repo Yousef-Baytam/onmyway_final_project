@@ -4,12 +4,12 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 export default function AuthButton({ value }) {
     return (
         <View style={styles.buttonContainer}>
-            <Pressable>
-                <View style={styles.button}>
-                    <Text>{value}</Text>
-                </View>
-            </Pressable>
-        </View>
+            <View style={styles.button}>
+                <Pressable android_ripple={{ color: '#000' }} onPress={() => { }}>
+                    <Text style={styles.text}>{value}</Text>
+                </Pressable>
+            </View>
+        </View >
     );
 }
 
@@ -23,5 +23,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: '40%',
         alignItems: 'center',
         borderRadius: 10
+    },
+    text: {
+        color: '#fff',
+        fontSize: 25
     }
 });
