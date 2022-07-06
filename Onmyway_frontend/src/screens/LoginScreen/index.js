@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import Input from '../../components/Input';
 
 export default function Login() {
@@ -10,6 +10,7 @@ export default function Login() {
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/LoginPageImage.jpg')} style={styles.image} />
+            <Text>Login</Text>
             <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
             <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
         </View>
