@@ -15,7 +15,7 @@ export default function Input({ placeholder, value, setValue, keyboard, password
     return (
         <View style={styles.inputContainer}>
             <TextInput placeholder={placeholder}
-                style={[styles.input, password && { width: '76%' }]}
+                style={[styles.input, password && { width: '86%' }]}
                 value={value}
                 onChangeText={setValue}
                 keyboardType={keyboard}
@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
     inputContainer: {
         width: '85%',
         alignItems: 'flex-start',
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: 'center'
     },
     input: {
-        width: '85%',
+        width: '95%',
         borderBottomWidth: 0.2,
         borderColor: 'rgba(0,0,0, 0.7)',
         paddingBottom: 10,
