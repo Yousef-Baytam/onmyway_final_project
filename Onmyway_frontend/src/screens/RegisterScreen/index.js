@@ -7,6 +7,7 @@ import Input from '../../components/Input';
 
 export default function Register() {
     const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
 
@@ -16,6 +17,10 @@ export default function Register() {
             <View style={styles.inputContainer}>
                 <UsernameIcon />
                 <Input placeholder={'Username'} value={username} setValue={setUsername} />
+            </View>
+            <View style={styles.inputContainer}>
+                <UsernameIcon />
+                <Input placeholder={'Email'} value={email} setValue={setEmail} />
             </View>
             <View style={styles.inputContainer}>
                 <PasswordIcon />
