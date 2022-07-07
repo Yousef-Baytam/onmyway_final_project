@@ -16,11 +16,11 @@ export default function Login() {
             <Text style={styles.title}>Login</Text>
             <View style={styles.inputContainer}>
                 <UsernameIcon />
-                <Input placeholder={'Username'} value={username} setValue={setUsername} keyboard={'default'} />
+                <Input placeholder={'Username'} value={username} setValue={setUsername} />
             </View>
             <View style={styles.inputContainer}>
                 <PasswordIcon />
-                <Input placeholder={'Password'} value={password} setValue={setPassword} keyboard={'default'} />
+                <Input placeholder={'Password'} value={password} setValue={setPassword} />
             </View>
             <AuthButton value={"Login"} />
         </View>

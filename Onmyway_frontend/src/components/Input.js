@@ -22,3 +22,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     }
 });
+
+Input.defaultProps = {
+    keyboard: 'default',
+}
