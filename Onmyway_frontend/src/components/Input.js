@@ -2,9 +2,16 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HiddenIcon from '../assets/icons/HiddenIcon';
+import VisibleIcon from '../assets/icons/VisibleIcon';
 
-export default function Input({ placeholder, value, setValue, keyboard, secureTextEntry, password }) {
+export default function Input({ placeholder, value, setValue, keyboard, password }) {
     const [secure, setSecure] = useState(password ? true : false)
+
+    const handleIconPress = () => {
+        if (secure) return <HiddenIcon />
+        return <VisibleIcon />
+    }
+
     return (
         <View style={styles.inputContainer}>
             <TextInput placeholder={placeholder}
@@ -13,7 +20,7 @@ export default function Input({ placeholder, value, setValue, keyboard, secureTe
                 onChangeText={setValue}
                 keyboardType={keyboard}
                 secureTextEntry={secure} />
-            {password && <Pressable onPress><HiddenIcon /></Pressable>}
+            {password && <Pressable onPress={() => setSecure(!secure)}>{handleIconPress}</Pressable>}
         </View >
     );
 }

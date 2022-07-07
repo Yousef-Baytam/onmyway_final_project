@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function HiddenIcon() {
+export default function VisibleIcon() {
 
     return (
         <Svg
