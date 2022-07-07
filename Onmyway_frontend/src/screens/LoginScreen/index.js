@@ -20,7 +20,7 @@ export default function Login() {
             </View>
             <View style={styles.inputContainer}>
                 <PasswordIcon />
-                <Input placeholder={'Password'} value={password} setValue={setPassword} />
+                <Input placeholder={'Password'} value={password} setValue={setPassword} secureTextEntry={true} />
             </View>
             <AuthButton value={"Login"} />
         </View>

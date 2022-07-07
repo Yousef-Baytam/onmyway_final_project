@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function Input({ placeholder, value, setValue, keyboard }) {
+export default function Input({ placeholder, value, setValue, keyboard, secureTextEntry }) {
     return (
         <View style={styles.inputContainer}>
-            <TextInput placeholder={placeholder} style={styles.input} value={value} onChangeText={setValue} keyboardType={keyboard} />
+            <TextInput placeholder={placeholder}
+                style={styles.input}
+                value={value}
+                onChangeText={setValue}
+                keyboardType={keyboard}
+                secureTextEntry={secureTextEntry} />
         </View>
     );
 }
@@ -25,4 +30,5 @@ const styles = StyleSheet.create({
 
 Input.defaultProps = {
     keyboard: 'default',
+    secureTextEntry: false,
 }
