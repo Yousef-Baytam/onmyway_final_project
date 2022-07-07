@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/screens/LoginScreen';
 import Register from './src/screens/RegisterScreen';
 import 'react-native-gesture-handler'
-import UserProvider from "./src/constants/UserContext";
+import UserProvider from "./src/context/UserContext";
 
 export default function App() {
   const Stack = createStackNavigator();
