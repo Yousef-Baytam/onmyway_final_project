@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import EmailIcon from '../../assets/icons/EmailIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
+import PhoneIcon from '../../assets/icons/PhoneIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
@@ -26,7 +27,7 @@ export default function Register() {
                 <Input placeholder={'Email'} value={email} setValue={setEmail} />
             </View>
             <View style={styles.inputContainer}>
-                <EmailIcon />
+                <PhoneIcon />
                 <PhoneCustomInput phone={phone} setPhone={setPhone} />
             </View>
             <View style={styles.inputContainer}>
