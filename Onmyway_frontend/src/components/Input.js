@@ -18,7 +18,9 @@ export default function Input({ placeholder, value, setValue, keyboard, secureTe
 const styles = StyleSheet.create({
     inputContainer: {
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'flex-start',
+        flexDirection: "row"
+
     },
     input: {
         width: '85%',
