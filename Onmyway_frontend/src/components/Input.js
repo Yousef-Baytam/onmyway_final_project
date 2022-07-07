@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import HiddenIcon from '../assets/icons/HiddenIcon';
 
 export default function Input({ placeholder, value, setValue, keyboard, secureTextEntry }) {
     return (
@@ -9,6 +10,7 @@ export default function Input({ placeholder, value, setValue, keyboard, secureTe
                 onChangeText={setValue}
                 keyboardType={keyboard}
                 secureTextEntry={secureTextEntry} />
+            {secureTextEntry && <HiddenIcon />}
         </View>
     );
 }
