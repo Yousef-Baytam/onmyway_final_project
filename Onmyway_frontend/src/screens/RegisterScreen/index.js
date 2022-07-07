@@ -32,4 +32,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    title: {
+        alignSelf: 'flex-start',
+        fontSize: 50,
+        marginLeft: '10%',
+        marginBottom: '5%',
+        marginTop: '5%'
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        width: '90%',
+        justifyContent: 'space-around'
+    }
 });
