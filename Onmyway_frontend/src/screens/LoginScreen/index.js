@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -23,6 +24,8 @@ export default function Login() {
                 <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
             </View>
             <AuthButton value={"Login"} />
+            <Text style={{ color: '#A1CCE4' }}>New to Onmyway?</Text>
+            <Pressable onPress={() => navigation.navigate('Register')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign up</Text></Pressable>
         </View>
     );
 }
