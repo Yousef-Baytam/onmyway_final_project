@@ -1,16 +1,19 @@
+import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HiddenIcon from '../assets/icons/HiddenIcon';
 
-export default function Input({ placeholder, value, setValue, keyboard, secureTextEntry }) {
+export default function Input({ placeholder, value, setValue, keyboard, secureTextEntry, password }) {
+    const [secure, setSecure] = useState(password ? true : false)
     return (
         <View style={styles.inputContainer}>
             <TextInput placeholder={placeholder}
-                style={[styles.input, secureTextEntry && { width: '76%' }]}
+                style={[styles.input, password && { width: '76%' }]}
                 value={value}
                 onChangeText={setValue}
                 keyboardType={keyboard}
-                secureTextEntry={secureTextEntry} />
-            {secureTextEntry && <HiddenIcon />}
+                secureTextEntry={secure} />
+            {password && <Pressable onPress><HiddenIcon /></Pressable>}
         </View >
     );
 }
@@ -33,5 +36,4 @@ const styles = StyleSheet.create({
 
 Input.defaultProps = {
     keyboard: 'default',
-    secureTextEntry: false,
 }
