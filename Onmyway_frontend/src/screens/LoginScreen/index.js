@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         flexDirection: 'row',
-        width: '80%'
+        width: '90%',
+        justifyContent: 'space-around'
     }
 });

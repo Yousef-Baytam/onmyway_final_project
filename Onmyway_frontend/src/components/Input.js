@@ -5,22 +5,21 @@ export default function Input({ placeholder, value, setValue, keyboard, secureTe
     return (
         <View style={styles.inputContainer}>
             <TextInput placeholder={placeholder}
-                style={styles.input}
+                style={[styles.input, secureTextEntry && { width: '76%' }]}
                 value={value}
                 onChangeText={setValue}
                 keyboardType={keyboard}
                 secureTextEntry={secureTextEntry} />
             {secureTextEntry && <HiddenIcon />}
-        </View>
+        </View >
     );
 }
 
 const styles = StyleSheet.create({
     inputContainer: {
-        width: '100%',
+        width: '85%',
         alignItems: 'flex-start',
         flexDirection: "row"
-
     },
     input: {
         width: '85%',
