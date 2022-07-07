@@ -6,7 +6,7 @@ export default function EmailIcon() {
         <Svg
             width={25}
             height={50}
-            viewBox="0 0 22 35"
+            viewBox="0 0 22 40"
             fill='#858585'
         >
             <Path fillRule="evenodd"
