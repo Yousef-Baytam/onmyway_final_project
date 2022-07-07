@@ -8,6 +8,7 @@ import Input from '../../components/Input';
 export default function Register() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [rePassword, setRePassword] = useState('')
 
     return (
         <View style={styles.container}>
@@ -19,6 +20,10 @@ export default function Register() {
             <View style={styles.inputContainer}>
                 <PasswordIcon />
                 <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
+            </View>
+            <View style={styles.inputContainer}>
+                <PasswordIcon />
+                <Input placeholder={'Reenter Password'} value={rePassword} setValue={setRePassword} password={true} />
             </View>
             <AuthButton value={"Sign up"} />
         </View>
