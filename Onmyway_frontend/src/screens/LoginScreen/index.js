@@ -24,9 +24,11 @@ export default function Login({ navigation }) {
                 <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
             </View>
             <AuthButton value={"Login"} />
-            <Text style={{ color: '#A1CCE4' }}>New to Onmyway?</Text>
-            <Pressable onPress={() => navigation.navigate('Register')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign up</Text></Pressable>
-        </View>
+            <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
+                <Text style={{ color: '#A1CCE4' }}>New to Onmyway? </Text>
+                <Pressable onPress={() => navigation.navigate('Register')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign up</Text></Pressable>
+            </View>
+        </View >
     );
 }
 

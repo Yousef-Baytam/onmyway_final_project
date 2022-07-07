@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import EmailIcon from '../../assets/icons/EmailIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
 import PhoneIcon from '../../assets/icons/PhoneIcon';
@@ -8,7 +9,7 @@ import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
 
-export default function Register() {
+export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -39,6 +40,10 @@ export default function Register() {
                 <Input placeholder={'Reenter Password'} value={rePassword} setValue={setRePassword} password={true} />
             </View>
             <AuthButton value={"Sign up"} />
+            <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
+                <Text style={{ color: '#A1CCE4' }}>Already have an account? </Text>
+                <Pressable onPress={() => navigation.navigate('Login')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign in</Text></Pressable>
+            </View>
         </View>
     );
 }
