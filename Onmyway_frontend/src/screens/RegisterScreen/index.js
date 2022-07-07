@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import EmailIcon from '../../assets/icons/EmailIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
-import PhoneInput from 'react-native-phone-input'
+import PhoneCustomInput from '../../components/PhoneCustomInput';
 
 export default function Register() {
     const [username, setUsername] = useState('')
@@ -13,8 +13,6 @@ export default function Register() {
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
-
-    const phoneInput = useRef()
 
     return (
         <View style={styles.container}>
@@ -29,14 +27,7 @@ export default function Register() {
             </View>
             <View style={styles.inputContainer}>
                 <EmailIcon />
-                <PhoneInput
-                    ref={phoneInput}
-                    defaultValue={phone}
-                    defaultCode="IN"
-                    onChangeFormattedText={(e) => {
-                        setPhone(e);
-                    }}
-                />
+                <PhoneCustomInput phone={phone} setPhone={setPhone} />
             </View>
             <View style={styles.inputContainer}>
                 <PasswordIcon />
