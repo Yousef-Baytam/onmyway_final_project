@@ -12,7 +12,7 @@ export default function PhoneCustomInput({ setPhone, phone }) {
             <PhoneInput
                 ref={phoneInput}
                 defaultValue={phone}
-                defaultCode="IN"
+                initialValue="+961"
                 onChangeFormattedText={(e) => {
                     setPhone(e);
                 }}
