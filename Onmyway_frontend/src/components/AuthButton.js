@@ -6,7 +6,7 @@ export default function AuthButton({ value }) {
         <View style={styles.buttonContainer}>
             <View style={styles.button}>
                 <Pressable android_ripple={{ color: '#A1CCE4', borderless: true }} onPress={() => { }}>
-                    <Text style={styles.text}>{value}</Text>
+                    <Text style={styles.text} numberOfLines={1}>{value}</Text>
                 </Pressable>
             </View>
         </View >
@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     text: {
+        width: '100%',
         paddingVertical: 20,
         paddingHorizontal: '40%',
         color: '#fff',
-        fontSize: 25
+        fontSize: 25,
     }
 });
