@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import EmailIcon from '../../assets/icons/EmailIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
@@ -19,25 +19,29 @@ export default function Register({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Sign up</Text>
-            <View style={styles.inputContainer}>
-                <UsernameIcon />
-                <Input placeholder={'Username'} value={username} setValue={setUsername} />
-            </View>
-            <View style={styles.inputContainer}>
-                <EmailIcon />
-                <Input placeholder={'Email'} value={email} setValue={setEmail} />
-            </View>
-            <View style={styles.inputContainer}>
-                <PhoneIcon />
-                <PhoneCustomInput phone={phone} setPhone={setPhone} />
-            </View>
-            <View style={styles.inputContainer}>
-                <PasswordIcon />
-                <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
-            </View>
-            <View style={styles.inputContainer}>
-                <PasswordIcon />
-                <Input placeholder={'Reenter Password'} value={rePassword} setValue={setRePassword} password={true} />
+            <View style={styles.scrollContainer}>
+                <ScrollView>
+                    <View style={styles.inputContainer}>
+                        <UsernameIcon />
+                        <Input placeholder={'Username'} value={username} setValue={setUsername} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <EmailIcon />
+                        <Input placeholder={'Email'} value={email} setValue={setEmail} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <PhoneIcon />
+                        <PhoneCustomInput phone={phone} setPhone={setPhone} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <PasswordIcon />
+                        <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <PasswordIcon />
+                        <Input placeholder={'Reenter Password'} value={rePassword} setValue={setRePassword} password={true} />
+                    </View>
+                </ScrollView>
             </View>
             <AuthButton value={"Sign up"} />
             <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
@@ -66,5 +70,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '90%',
         justifyContent: 'space-around'
+    },
+    scrollContainer: {
+        height: 300,
+        justifyContent: 'flex-end'
     }
 });
