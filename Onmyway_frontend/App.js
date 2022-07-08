@@ -8,14 +8,15 @@ import UserProvider from "./src/context/UserContext";
 export default function App() {
   const Stack = createStackNavigator();
   return (
-    <UserProvider>
-      <NavigationContainer>
+
+    <NavigationContainer>
+      <UserProvider>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
         </Stack.Navigator>
-      </NavigationContainer>
-    </UserProvider>
+      </UserProvider>
+    </NavigationContainer>
   );
 }
 

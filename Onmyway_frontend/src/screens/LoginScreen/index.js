@@ -6,11 +6,13 @@ import PasswordIcon from '../../assets/icons/PasswordIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
+import { useUser } from '../../context/UserContext';
 import { login } from '../../controllers/authController'
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const { user, handleUser } = useUser()
 
     const handleLogin = async () => {
         await login({ username, password })

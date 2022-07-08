@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const UserContext = React.createContext()
 
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(0)
+    const [user, setUser] = useState(null)
 
     const handleUser = (user) => {
         setUser(user)
@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
 export default UserProvider;
 
 export const useUser = () => {
-    const { user, handleUser } = React.useUser(UserContext)
+    const { user, handleUser } = React.useContext(UserContext)
 
     return {
         user, handleUser
