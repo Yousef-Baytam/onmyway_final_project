@@ -1,14 +1,14 @@
-const handleLogin = async (username, password) => {
+import axios from 'axios'
+
+const handleLogin = async (data) => {
+    console.log(data)
     try {
         let res = await axios({
-            url: "http://127.0.0.1:777/login",
+            url: "http://192.168.0.100:777/login",
             method: "POST",
-            data: {
-                "username": username,
-                "password": password
-            },
+            data: data
         })
-        console.log(res)
+        console.log(res.data)
     }
     catch (e) {
         console.log(e);

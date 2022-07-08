@@ -17,7 +17,6 @@ const adminRoutes = require('./Routes/adminRoutes')
 // const MongoStore = require('connect-mongo');
 const cors = require('cors')
 
-
 mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
     .then(() => {
         console.log("Database Connected")
@@ -39,7 +38,6 @@ app.use(session({
     }
 }))
 
-app.use(cors())
 app.use(express.json())
 app.use(passport.initialize())
 // app.use(passport.session())
@@ -68,6 +66,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).send(err.stack)
 })
 
-app.listen('777', () => {
+app.listen('777', '192.168.0.100', () => {
     console.log('Listening for requests on port 77777777777777777777777777777777')
 })
