@@ -7,7 +7,7 @@ import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
 import { useUser } from '../../context/UserContext';
-import { login, me } from '../../controllers/authController'
+import { login } from '../../controllers/authController'
 import storage from '../../storage/asyncStorage'
 
 export default function Login({ navigation }) {
