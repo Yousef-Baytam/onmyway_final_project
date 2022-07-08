@@ -24,6 +24,7 @@ export default function StackController() {
 
     useEffect(() => {
         handleToken()
+        storage.remove({ key: 'token' })
     }, [])
 
     return user ? <MainStack /> : <AuthStack />

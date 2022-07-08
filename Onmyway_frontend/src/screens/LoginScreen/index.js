@@ -19,7 +19,6 @@ export default function Login({ navigation }) {
         try {
             const res = await login({ username, password })
             handleUser(res.user)
-            console.log(res.token.token)
             await storage.save({ key: 'token', data: res.token.token })
         }
         catch (e) {
