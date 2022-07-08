@@ -8,7 +8,7 @@ const login = async (data) => {
             method: "POST",
             data: data
         })
-        console.log(res.data)
+        return res.data
     }
     catch (e) {
         console.log(e);

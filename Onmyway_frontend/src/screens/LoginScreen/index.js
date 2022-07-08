@@ -15,7 +15,13 @@ export default function Login({ navigation }) {
     const { user, handleUser } = useUser()
 
     const handleLogin = async () => {
-        await login({ username, password })
+        try {
+            const res = await login({ username, password })
+            handleUser(res.user)
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
     return (
