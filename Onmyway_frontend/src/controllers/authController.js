@@ -32,4 +32,4 @@ const me = async (token) => {
     }
 }
 
-export { login }
+export { login, me }
