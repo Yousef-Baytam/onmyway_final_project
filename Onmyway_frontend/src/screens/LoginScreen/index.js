@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
@@ -13,7 +13,7 @@ import storage from '../../storage/asyncStorage'
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const { user, handleUser } = useUser()
+    const { handleUser } = useUser()
 
     const handleLogin = async () => {
         try {
@@ -26,6 +26,20 @@ export default function Login({ navigation }) {
             console.log(e)
         }
     }
+
+    const handleToken = async () => {
+        try {
+            const token = await storage.load({ key: 'token' })
+            const res = await me(token)
+            handleUser(res.user)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(() => {
+        handleToken()
+    }, [])
 
     return (
         <View style={styles.container}>
