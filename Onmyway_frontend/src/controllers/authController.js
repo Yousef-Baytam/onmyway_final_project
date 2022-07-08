@@ -1,10 +1,10 @@
 import axios from 'axios'
+import { url } from '../constants/vars'
 
 const handleLogin = async (data) => {
-    console.log(data)
     try {
         let res = await axios({
-            url: "http://192.168.0.100:777/login",
+            url: `${ url }/login`,
             method: "POST",
             data: data
         })
