@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function AuthButton({ value, action, data }) {
+export default function AuthButton({ value, action }) {
     return (
         <View style={styles.buttonContainer}>
             <View style={styles.button}>
-                <Pressable android_ripple={{ color: '#A1CCE4', borderless: true }} onPress={() => { action(data) }}>
+                <Pressable android_ripple={{ color: '#A1CCE4', borderless: true }} onPress={() => { action() }}>
                     <Text style={styles.text} numberOfLines={1}>{value}</Text>
                 </Pressable>
             </View>

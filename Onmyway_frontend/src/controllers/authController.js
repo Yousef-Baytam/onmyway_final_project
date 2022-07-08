@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { url } from '../constants/vars'
 
-const handleLogin = async (data) => {
+const login = async (data) => {
     try {
         let res = await axios({
             url: `${ url }/login`,
@@ -15,4 +15,4 @@ const handleLogin = async (data) => {
     }
 }
 
-export { handleLogin }
+export { login }
