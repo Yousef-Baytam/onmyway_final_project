@@ -1,5 +1,7 @@
 import { AuthStack } from "./AuthStack";
+import { useUser } from '../context/UserContext';
 
 export default function StackController() {
-    return <AuthStack />
+    const { user } = useUser()
+    return user ? <MainStack /> : <AuthStack />
 }
