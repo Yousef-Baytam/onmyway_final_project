@@ -8,6 +8,7 @@ import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
 import { useUser } from '../../context/UserContext';
 import { login } from '../../controllers/authController'
+import storage from '../../storage/asyncStorage'
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
@@ -18,6 +19,8 @@ export default function Login({ navigation }) {
         try {
             const res = await login({ username, password })
             handleUser(res.user)
+            console.log(res.token.token)
+            await storage.save({ key: 'token', data: res.token.token })
         }
         catch (e) {
             console.log(e)

@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import Browse from '../screens/BrowseScreen'
 
-export function AuthStack() {
+export function MainStack() {
     const Stack = createStackNavigator();
 
     return (
