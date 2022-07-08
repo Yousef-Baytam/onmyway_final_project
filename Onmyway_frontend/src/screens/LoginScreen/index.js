@@ -6,6 +6,7 @@ import PasswordIcon from '../../assets/icons/PasswordIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
 import Input from '../../components/Input';
+import { handleLogin } from '../../controllers/authController'
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
@@ -23,7 +24,7 @@ export default function Login({ navigation }) {
                 <PasswordIcon />
                 <Input placeholder={'Password'} value={password} setValue={setPassword} password={true} />
             </View>
-            <AuthButton value={"Login"} />
+            <AuthButton value={"Login"} action={handleLogin} />
             <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
                 <Text style={{ color: '#A1CCE4' }}>New to Onmyway? </Text>
                 <Pressable onPress={() => navigation.navigate('Register')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign up</Text></Pressable>
