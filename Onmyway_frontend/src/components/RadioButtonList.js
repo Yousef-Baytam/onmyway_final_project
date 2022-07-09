@@ -10,7 +10,7 @@ export default function RadioButtonList({ items, checked, setChecked }) {
             <View style={styles.input}>
                 {items.map((i) => {
                     return (
-                        <>
+                        <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <Text>{i.label}</Text>
                             <RadioButton
                                 color='#005A9C'
@@ -18,7 +18,7 @@ export default function RadioButtonList({ items, checked, setChecked }) {
                                 status={checked === i.value ? 'checked' : 'unchecked'}
                                 onPress={() => setChecked(i.value)}
                             />
-                        </>
+                        </View>
                     )
                 })}
             </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         width: '95%',
         borderBottomWidth: 0.2,
         borderColor: 'rgba(0,0,0, 0.7)',
-        paddingBottom: 10,
+        paddingBottom: 5,
         marginBottom: 25,
         paddingLeft: 10,
         flexDirection: "row",
