@@ -49,7 +49,7 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <CalendarIcon />
-                        <RadioButtonList />
+                        <RadioButtonList checked={value} setChecked={setValue} items={items} />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
