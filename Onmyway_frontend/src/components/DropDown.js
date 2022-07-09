@@ -17,12 +17,6 @@ export default function DropDown({ value, items, setValue, setItems }) {
                 setItems={setItems}
                 style={styles.input}
                 mode="SIMPLE"
-                modalContentContainerStyle={{
-                    backgroundColor: "#000"
-                }}
-                customItemLabelStyle={{
-                    fontStyle: "italic"
-                }}
             />
         </View >
     );

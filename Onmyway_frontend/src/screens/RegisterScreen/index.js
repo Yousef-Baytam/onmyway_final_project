@@ -10,6 +10,7 @@ import AuthButton from '../../components/AuthButton';
 import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
+import RadioButtonList from '../../components/RadioButtonList';
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
@@ -48,6 +49,7 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <CalendarIcon />
+                        <RadioButtonList />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
