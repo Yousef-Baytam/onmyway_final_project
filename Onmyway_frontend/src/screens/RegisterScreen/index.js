@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import CalendarIcon from '../../assets/icons/CalendarIcon';
 import EmailIcon from '../../assets/icons/EmailIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
 import PhoneIcon from '../../assets/icons/PhoneIcon';
@@ -36,7 +37,7 @@ export default function Register({ navigation }) {
                         <PhoneCustomInput phone={phone} setPhone={setPhone} />
                     </View>
                     <View style={styles.inputContainer}>
-                        <PhoneIcon />
+                        <CalendarIcon />
                         <DatePicker date={date} setDate={setDate} />
                     </View>
                     <View style={styles.inputContainer}>
