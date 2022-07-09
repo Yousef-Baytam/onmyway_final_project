@@ -1,11 +1,12 @@
-import DateTimePicker, { RNDateTimePicker } from '@react-native-community/datetimepicker'
+import DateTimePicker from '@react-native-community/datetimepicker'
 import { useState } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function DatePicker({ date, setDate }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
-    const [text, setText] = useState('Not Set')
+    const [text, setText] = useState('Date of Birth')
 
     const onChange = (evt, pickedDate) => {
         const currDate = pickedDate || date
@@ -13,7 +14,7 @@ export default function DatePicker({ date, setDate }) {
         setDate(pickedDate)
 
         const temp = new Date(pickedDate)
-        const fDate = `${ temp.getDate() } / ${ temp.getMonth() } / ${ temp.getFullYear() }}`
+        const fDate = `${ temp.getDate() } / ${ temp.getMonth() } / ${ temp.getFullYear() }`
         setText(fDate)
     }
 
@@ -24,6 +25,18 @@ export default function DatePicker({ date, setDate }) {
 
     return (
         <View style={styles.inputContainer}>
+            <View style={styles.input}>
+                <Pressable onPress={() => showMode('date')}>
+                    <Text >{text}</Text>
+                </Pressable>
+            </View>
+            {show && <DateTimePicker
+                testID='dateTimePicker'
+                value={date}
+                mode={mode}
+                display='default'
+                onChange={onChange}
+            />}
         </View >
     );
 }
