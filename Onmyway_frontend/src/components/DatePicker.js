@@ -17,6 +17,11 @@ export default function DatePicker({ date, setDate }) {
         setText(fDate)
     }
 
+    const showMode = (mode) => {
+        setShow(true)
+        setMode(mode)
+    }
+
     return (
         <View style={styles.inputContainer}>
         </View >
