@@ -13,6 +13,7 @@ export default function RadioButtonList({ items, checked, setChecked }) {
                         <>
                             <Text>{i.label}</Text>
                             <RadioButton
+                                color='#005A9C'
                                 value={i.value}
                                 status={checked === i.value ? 'checked' : 'unchecked'}
                                 onPress={() => setChecked(i.value)}

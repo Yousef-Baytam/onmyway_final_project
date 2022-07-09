@@ -19,7 +19,7 @@ export default function Register({ navigation }) {
     const [date, setDate] = useState(new Date())
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
-    const [value, setValue] = useState(null);
+    const [gender, setGender] = useState(null);
     const [items, setItems] = useState([
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -49,7 +49,7 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <CalendarIcon />
-                        <RadioButtonList checked={value} setChecked={setValue} items={items} />
+                        <RadioButtonList checked={gender} setChecked={setGender} items={items} />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
