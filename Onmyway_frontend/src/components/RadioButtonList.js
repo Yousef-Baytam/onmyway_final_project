@@ -6,9 +6,23 @@ import { RadioButton } from 'react-native-paper';
 export default function RadioButtonList({ }) {
     const [checked, setChecked] = useState('first');
 
+    const handleButtons = () => {
+        return (
+            <>
+                <Text>First</Text>
+                <RadioButton
+                    value="first"
+                    status={checked === 'first' ? 'checked' : 'unchecked'}
+                    onPress={() => setChecked('first')}
+                />
+            </>
+        )
+    }
+
     return (
         <View style={styles.inputContainer}>
             <View style={styles.input}>
+                {handleButtons()}
             </View>
         </View>
     );
