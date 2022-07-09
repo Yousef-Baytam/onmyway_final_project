@@ -13,6 +13,7 @@ export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+    const [date, setDate] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
 
@@ -32,6 +33,9 @@ export default function Register({ navigation }) {
                     <View style={styles.inputContainer}>
                         <PhoneIcon />
                         <PhoneCustomInput phone={phone} setPhone={setPhone} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <PhoneIcon />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
