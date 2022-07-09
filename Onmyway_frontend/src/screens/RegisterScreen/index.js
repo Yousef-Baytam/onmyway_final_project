@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CalendarIcon from '../../assets/icons/CalendarIcon';
 import EmailIcon from '../../assets/icons/EmailIcon';
+import GenderIcon from '../../assets/icons/GenderIcon';
 import PasswordIcon from '../../assets/icons/PasswordIcon';
 import PhoneIcon from '../../assets/icons/PhoneIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
@@ -48,7 +49,7 @@ export default function Register({ navigation }) {
                         <DatePicker date={date} setDate={setDate} />
                     </View>
                     <View style={styles.inputContainer}>
-                        <CalendarIcon />
+                        <GenderIcon />
                         <RadioButtonList checked={gender} setChecked={setGender} items={items} />
                     </View>
                     <View style={styles.inputContainer}>
