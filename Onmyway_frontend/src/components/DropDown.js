@@ -1,12 +1,29 @@
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 
-export default function DropDown() {
+export default function DropDown({ value, items, setValue, setItems }) {
     const [open, setOpen] = useState(false);
 
     return (
         <View style={styles.inputContainer}>
-
+            <DropDownPicker
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+                style={styles.input}
+                mode="SIMPLE"
+                modalContentContainerStyle={{
+                    backgroundColor: "#000"
+                }}
+                customItemLabelStyle={{
+                    fontStyle: "italic"
+                }}
+            />
         </View >
     );
 }

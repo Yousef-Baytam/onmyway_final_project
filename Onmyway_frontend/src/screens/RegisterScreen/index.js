@@ -18,6 +18,12 @@ export default function Register({ navigation }) {
     const [date, setDate] = useState(new Date())
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+        { label: 'Other', value: 'otheer' }
+    ]);
 
     return (
         <View style={styles.container}>
@@ -39,6 +45,9 @@ export default function Register({ navigation }) {
                     <View style={styles.inputContainer}>
                         <CalendarIcon />
                         <DatePicker date={date} setDate={setDate} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <CalendarIcon />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
