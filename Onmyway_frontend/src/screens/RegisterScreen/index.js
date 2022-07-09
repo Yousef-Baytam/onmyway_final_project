@@ -6,6 +6,7 @@ import PasswordIcon from '../../assets/icons/PasswordIcon';
 import PhoneIcon from '../../assets/icons/PhoneIcon';
 import UsernameIcon from '../../assets/icons/UsernameIcon';
 import AuthButton from '../../components/AuthButton';
+import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
 
@@ -13,7 +14,7 @@ export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState(new Date())
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
 
@@ -36,6 +37,7 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <PhoneIcon />
+                        <DatePicker date={date} setDate={setDate} />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
