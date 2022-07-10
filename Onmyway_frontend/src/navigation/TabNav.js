@@ -4,6 +4,7 @@ import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 import AllChatsScreen from '../screens/AllChatsScreen'
 import { MainStack } from './MainStack';
 import { DrawerActions } from '@react-navigation/native';
+import MessagesIcon from '../assets/icons/MessagesIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,8 +29,8 @@ export default function TabNav() {
                 headerRight: () => (
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         backgroundColor: '#fff',
-                        marginLeft: 300,
-                    },//  tabBarIcon: ({focused}) => ()
+                        marginLeft: 320,
+                    }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />)
             })
             } />
         </Tab.Navigator>
