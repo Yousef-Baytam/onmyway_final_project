@@ -1,10 +1,10 @@
 import { AuthStack } from "./AuthStack";
 import { useUser } from '../context/UserContext';
-import { MainStack } from "./MainStack";
 import storage from "../storage/asyncStorage";
 import { useEffect } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import { me } from "../controllers/authController";
+import { DrawerNav } from "./DrawerNav";
 
 export default function StackController() {
     const { user, handleUser } = useUser()
@@ -27,5 +27,5 @@ export default function StackController() {
         handleToken()
     }, [])
 
-    return user ? <MainStack /> : <AuthStack />
+    return user ? <DrawerNav /> : <AuthStack />
 }
