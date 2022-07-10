@@ -29,7 +29,7 @@ export default function TabNav() {
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         backgroundColor: '#fff',
                         marginLeft: 300,
-                    }
+                    },//  tabBarIcon: ({focused}) => ()
             })
             } />
         </Tab.Navigator>
