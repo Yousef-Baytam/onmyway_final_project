@@ -6,6 +6,7 @@ import Map from '../screens/MapScreen'
 import DrawerToggler from '../components/DrawerToggler';
 import { DrawerActions } from '@react-navigation/native';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
+import TabNav from './TabNav';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -26,6 +27,7 @@ export function MainStack() {
             }} />
             <Stack.Screen name="NewPost" component={NewPost} />
             <Stack.Screen name="Map" component={Map} />
+
         </Stack.Navigator>
     );
 }
