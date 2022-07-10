@@ -12,7 +12,9 @@ export function MainStack() {
             <Stack.Screen name="Browse" component={Browse} options={{
                 headerTitle: ''
             }} />
-            <Stack.Screen name="UserProfile" component={UserProfile} />
+            <Stack.Screen name="UserProfile" component={UserProfile} options={{
+                headerTitle: 'My Profile', headerTitleAlign: 'center'
+            }} />
             <Stack.Screen name="NewPost" component={NewPost} />
             <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
