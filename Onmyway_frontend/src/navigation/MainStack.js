@@ -13,7 +13,7 @@ export function MainStack() {
     return (
         <Stack.Navigator screenOptions={({ navigation }) => ({
             headerRight: () => (
-                <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />),
+                <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float'
         })
         }>
             <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
