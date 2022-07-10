@@ -4,8 +4,9 @@ import UserProfile from '../screens/UserProfileScreen'
 import NewPost from '../screens/NewPostScreen'
 import Map from '../screens/MapScreen'
 import DrawerToggler from '../components/DrawerToggler';
-import { DrawerActions } from '@react-navigation/native';
+import { CommonActions, DrawerActions } from '@react-navigation/native';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
+import BackArrow from '../components/BackArrow';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -21,11 +22,16 @@ export function MainStack() {
                     <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
             })
             } />
-            <Stack.Screen name="UserProfile" component={UserProfile} options={{
-                headerTitle: 'My Profile', headerTitleAlign: 'center'
-            }} />
-            <Stack.Screen name="NewPost" component={NewPost} />
-            <Stack.Screen name="Map" component={Map} />
+            <Stack.Group screenOptions={({ navigation }) => ({
+                headerLeft: () => (
+                    <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
+            })}>
+                <Stack.Screen name="UserProfile" component={UserProfile} options={{
+                    headerTitle: 'My Profile', headerTitleAlign: 'center'
+                }} />
+                <Stack.Screen name="NewPost" component={NewPost} />
+                <Stack.Screen name="Map" component={Map} />
+            </Stack.Group>
 
         </Stack.Navigator>
     );
