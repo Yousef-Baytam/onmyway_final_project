@@ -32,4 +32,18 @@ const me = async (token) => {
     }
 }
 
-export { login, me }
+const register = async (data) => {
+    try {
+        let res = await axios({
+            url: `${ url }/register`,
+            method: "POST",
+            data: data
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { login, me, register }
