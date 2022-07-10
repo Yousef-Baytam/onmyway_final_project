@@ -12,6 +12,7 @@ import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
 import RadioButtonList from '../../components/RadioButtonList';
+import { useUser } from '../../context/UserContext';
 import { register } from '../../controllers/authController'
 
 export default function Register({ navigation }) {
@@ -25,12 +26,16 @@ export default function Register({ navigation }) {
     const [items, setItems] = useState([
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
-        { label: 'Other', value: 'otheer' }
+        { label: 'Other', value: 'other' }
     ]);
+    const { handleUser } = useUser()
 
     const handleRegister = async () => {
         try {
+            console.log({ username, email, phone, dob: date, gender, password })
             const res = await register({ username, email, phone, dob: date, gender, password })
+            handleUser(res.results)
+            await storage.save({ key: 'token', data: res.token.token })
         }
         catch (e) {
             console.log(e)
