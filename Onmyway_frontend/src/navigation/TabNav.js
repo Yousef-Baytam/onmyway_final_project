@@ -3,7 +3,7 @@ import DrawerToggler from '../components/DrawerToggler';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 import AllChatsScreen from '../screens/AllChatsScreen'
 import { MainStack } from './MainStack';
-import { DrawerActions } from '@react-navigation/native';
+import { CommonActions, DrawerActions } from '@react-navigation/native';
 import MessagesIcon from '../assets/icons/MessagesIcon';
 import Browse from '../screens/BrowseScreen';
 import NotificationsBellIcon from '../assets/icons/NotificationsBellIcon';
@@ -40,7 +40,7 @@ export default function TabNav() {
             <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
                 headerTitle: 'Messages', headerTitleAlign: 'center',
                 headerLeft: () => (
-                    <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
+                    <UserProfileHeaderButton action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
                 headerRight: () => (
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         marginLeft: 200,
