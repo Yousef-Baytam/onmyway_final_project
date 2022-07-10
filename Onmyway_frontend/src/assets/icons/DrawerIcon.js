@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function CalendarIcon() {
+export default function DrawerIcon() {
 
     return (
         <Svg
