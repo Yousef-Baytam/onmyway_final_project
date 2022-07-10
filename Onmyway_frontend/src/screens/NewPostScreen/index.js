@@ -1,10 +1,10 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function UserProfile({ navigation }) {
+export default function NewPost({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text>PROFILE YAAAYY!!!</Text>
+            <Text>New POST YAAAYY!!!</Text>
         </View >
     );
 }
