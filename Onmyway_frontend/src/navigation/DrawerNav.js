@@ -19,8 +19,8 @@ export function DrawerNav() {
     const Drawer = createDrawerNavigator();
 
     return (
-        <Drawer.Navigator screenOptions={{ headerShown: false }} initialRouteName="Browse" drawerContent={props => <CustomDrawerContent {...props} />}>
-            <Drawer.Screen name="Browse" component={MainStack} />
+        <Drawer.Navigator screenOptions={{ headerShown: false, drawerPosition: 'right' }} initialRouteName="Browse" drawerContent={props => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name="Home" component={MainStack} />
         </Drawer.Navigator>
     );
 }
