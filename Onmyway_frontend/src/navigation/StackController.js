@@ -15,7 +15,8 @@ export default function StackController() {
         try {
             const token = await storage.load({ key: 'token' })
             const res = await me(token)
-            handleUser(res.user)
+            if (res.user.status != 'banned')
+                handleUser(res.user)
             await SplashScreen.hideAsync()
         } catch (e) {
             await SplashScreen.hideAsync()
