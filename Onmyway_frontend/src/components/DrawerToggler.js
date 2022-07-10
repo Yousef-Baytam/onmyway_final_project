@@ -15,7 +15,8 @@ export default function DrawerToggler({ action }) {
 const styles = StyleSheet.create({
     container: {
         width: 50,
-        height: 50,
+        height: 20,
+        alignItems: 'center',
         marginLeft: 20
     }
 });
