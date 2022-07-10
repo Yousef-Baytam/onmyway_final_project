@@ -2,10 +2,12 @@ import { StyleSheet, View } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import UserHeaderIcon from '../assets/icons/UserHeaderIcon';
 
-export default function UserProfileHeaderButton() {
+export default function UserProfileHeaderButton({ action }) {
     return (
         <View style={styles.container}>
-            <UserHeaderIcon />
+            <Pressable onPress={action}>
+                <UserHeaderIcon />
+            </Pressable>
         </View>
     );
 }

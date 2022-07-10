@@ -13,7 +13,7 @@ export function MainStack() {
             <Stack.Screen name="Browse" component={Browse} options={{
                 headerTitle: '', headerLeft: () => (
                     <UserProfileHeaderButton
-                        onPress={() => {
+                        action={() => {
                             alert('hello')
                         }}
                     />
