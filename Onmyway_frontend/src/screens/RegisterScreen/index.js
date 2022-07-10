@@ -12,6 +12,7 @@ import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
 import RadioButtonList from '../../components/RadioButtonList';
+import { register } from '../../controllers/authController'
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
@@ -26,6 +27,15 @@ export default function Register({ navigation }) {
         { label: 'Female', value: 'female' },
         { label: 'Other', value: 'otheer' }
     ]);
+
+    const handleRegister = async () => {
+        try {
+            const res = await register({ username, email, phone, dob: date, gender, password })
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -62,7 +72,7 @@ export default function Register({ navigation }) {
                     </View>
                 </ScrollView>
             </View>
-            <AuthButton value={"Sign up"} />
+            <AuthButton value={"Sign up"} action={handleRegister} />
             <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
                 <Text style={{ color: '#A1CCE4' }}>Already have an account? </Text>
                 <Pressable onPress={() => navigation.navigate('Login')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign in</Text></Pressable>
