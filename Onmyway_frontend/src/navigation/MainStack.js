@@ -14,7 +14,7 @@ export function MainStack() {
     return (
         <Stack.Navigator screenOptions={({ navigation }) => ({
             headerRight: () => (
-                <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float'
+                <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float', headerStyle: { elevation: 0 }
         })
         }>
             <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
