@@ -6,6 +6,7 @@ import { MainStack } from './MainStack';
 import { DrawerActions } from '@react-navigation/native';
 import MessagesIcon from '../assets/icons/MessagesIcon';
 import Browse from '../screens/BrowseScreen';
+import NotificationsBellIcon from '../assets/icons/NotificationsBellIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,20 +18,23 @@ export default function TabNav() {
                 height: 60,
             },
         }}>
+
             <Tab.Screen name="Main" component={MainStack} options={{
                 headerShown: false, tabBarItemStyle: {
                     position: 'absolute'
                 }
             }} />
+
             <Tab.Screen name="Notifications" component={Browse} options={{
-                headerShown: false, tabBarItemStyle: {
-                },
+                headerShown: false,
+                tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
             }} listeners={{
                 tabPress: (e) => {
                     e.preventDefault();
                 },
             }}
             />
+
             <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
                 headerTitle: 'Messages', headerTitleAlign: 'center',
                 headerLeft: () => (
@@ -44,6 +48,7 @@ export default function TabNav() {
                 tabBarBadgeStyle: { backgroundColor: '#005A9C' }
             })
             } />
+
         </Tab.Navigator>
     );
 }
