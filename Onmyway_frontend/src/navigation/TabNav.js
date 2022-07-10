@@ -12,7 +12,6 @@ export default function TabNav() {
     return (
         <Tab.Navigator screenOptions={{
             tabBarShowLabel: false, tabBarStyle: {
-                backgroundColor: '#fff',
                 borderTopWidth: 0,
                 height: 60,
             },
@@ -23,14 +22,16 @@ export default function TabNav() {
                 }
             }} />
             <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
-                headerTitle: '',
+                headerTitle: 'Messages', headerTitleAlign: 'center',
                 headerLeft: () => (
                     <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
                 headerRight: () => (
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         backgroundColor: '#fff',
                         marginLeft: 320,
-                    }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />)
+                    }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
+                tabBarBadge: 3,
+                tabBarBadgeStyle: { backgroundColor: '#005A9C' }
             })
             } />
         </Tab.Navigator>
