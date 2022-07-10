@@ -15,6 +15,7 @@ export default function PhoneCustomInput({ setPhone, phone }) {
                 initialValue="+961"
                 onChangePhoneNumber={setPhone}
                 style={styles.input}
+                autoFormat={true}
             />
         </View >
     );
