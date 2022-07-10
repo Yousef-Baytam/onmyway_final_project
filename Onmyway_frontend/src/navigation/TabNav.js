@@ -9,14 +9,27 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Main" component={MainStack} options={{ headerShown: false }} />
+        <Tab.Navigator screenOptions={{
+            tabBarShowLabel: false, tabBarStyle: {
+                backgroundColor: '#fff',
+                borderTopWidth: 0,
+                height: 60,
+            },
+        }}>
+            <Tab.Screen name="Main" component={MainStack} options={{
+                headerShown: false, tabBarItemStyle: {
+                    position: 'absolute'
+                }
+            }} />
             <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
                 headerTitle: '',
                 headerLeft: () => (
                     <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
                 headerRight: () => (
-                    <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />),
+                    <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
+                        backgroundColor: '#fff',
+                        marginLeft: 300,
+                    }
             })
             } />
         </Tab.Navigator>
