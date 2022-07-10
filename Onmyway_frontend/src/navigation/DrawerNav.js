@@ -4,7 +4,7 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
-import { MainStack } from './MainStack';
+import TabNav from './TabNav';
 
 function CustomDrawerContent(props) {
     return (
@@ -20,7 +20,7 @@ export function DrawerNav() {
 
     return (
         <Drawer.Navigator screenOptions={{ headerShown: false, drawerPosition: 'right' }} initialRouteName="Browse" drawerContent={props => <CustomDrawerContent {...props} />}>
-            <Drawer.Screen name="Home" component={MainStack} />
+            <Drawer.Screen name="Home" component={TabNav} />
         </Drawer.Navigator>
     );
 }
