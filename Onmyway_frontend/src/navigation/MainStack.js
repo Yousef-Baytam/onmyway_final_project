@@ -9,7 +9,7 @@ export function MainStack() {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Browse" component={Browse} />
+            <Stack.Screen name="Browse" component={Browse} options={{ headerTitle: '' }} />
             <Stack.Screen name="UserProfile" component={UserProfile} />
             <Stack.Screen name="NewPost" component={NewPost} />
             <Stack.Screen name="Map" component={Map} />
