@@ -13,6 +13,7 @@ export default function UserProfileHeaderButton() {
 const styles = StyleSheet.create({
     container: {
         width: 50,
-        height: 50
+        height: 50,
+        marginLeft: 20
     }
 });

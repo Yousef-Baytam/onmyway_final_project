@@ -6,7 +6,7 @@ export default function UserHeaderIcon() {
         <Svg
             width={50}
             height={50}
-            viewBox="0 0 500 1100"
+            viewBox="0 0 50 50"
             fill='#858585'
         >
             <Path
