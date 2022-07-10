@@ -1,6 +1,20 @@
+import { useLayoutEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
 export default function Browse({ navigation }) {
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <UserProfileHeaderButton
+                    action={() => {
+                        navigation.navigate('UserProfile')
+                    }}
+                />
+            ),
+        });
+    }, [navigation]);
 
     return (
         <View style={styles.container}>

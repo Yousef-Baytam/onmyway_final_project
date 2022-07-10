@@ -3,7 +3,6 @@ import Browse from '../screens/BrowseScreen'
 import UserProfile from '../screens/UserProfileScreen'
 import NewPost from '../screens/NewPostScreen'
 import Map from '../screens/MapScreen'
-import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -11,13 +10,7 @@ export function MainStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Browse" component={Browse} options={{
-                headerTitle: '', headerLeft: () => (
-                    <UserProfileHeaderButton
-                        action={() => {
-                            alert('hello')
-                        }}
-                    />
-                ),
+                headerTitle: ''
             }} />
             <Stack.Screen name="UserProfile" component={UserProfile} />
             <Stack.Screen name="NewPost" component={NewPost} />
