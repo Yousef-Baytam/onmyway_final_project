@@ -1,19 +1,23 @@
 import { StyleSheet, View } from 'react-native';
 import RepeatIcon from '../assets/icons/RepeatIcon';
+import Checkbox from 'expo-checkbox';
 
-export default function DateInput({ }) {
+export default function DateInput({ repeat, setRepeat }) {
     return (
         <View style={styles.container}>
             <RepeatIcon />
+            <Checkbox value={repeat} onValueChange={setRepeat} />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: 50,
-        height: 45,
+        flex: 1,
+        width: '60%',
+        height: 50,
+        flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 20
+        justifyContent: 'center',
     }
 });

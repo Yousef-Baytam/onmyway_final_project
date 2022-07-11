@@ -20,7 +20,7 @@ export default function NewPost({ navigation }) {
         <View style={styles.container}>
             <LocationInput text={'From'} color={'#92D293'} />
             <LocationInput text={'To'} color={'#D2686E'} />
-            <DateInput />
+            <DateInput repeat={repeat} setRepeat={setRepeat} />
         </View >
     );
 }
