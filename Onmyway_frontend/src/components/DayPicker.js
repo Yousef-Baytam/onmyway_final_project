@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function DayPicker({ }) {
+export default function DayPicker({ setDays }) {
     const [monday, setMonday] = useState(false)
     const [tuesday, setTuesday] = useState(false)
     const [wednesday, setWednesday] = useState(false)
@@ -10,11 +10,46 @@ export default function DayPicker({ }) {
     const [friday, setFriday] = useState(false)
     const [saturday, setSaturday] = useState(false)
     const [sunday, setSunday] = useState(false)
+
+    const handleSetDays = () => {
+
+    }
+
     return (
         <View style={styles.container}>
-            <Pressable>
-                <View style={styles.selectedLetterContainer}>
-                    <Text style={styles.selectedLetter}>M</Text>
+            <Pressable onPress={() => { setMonday(!monday) }}>
+                <View style={monday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={monday ? styles.selectedLetter : styles.unselectedLetter}>M</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setTuesday(!tuesday) }}>
+                <View style={tuesday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={tuesday ? styles.selectedLetter : styles.unselectedLetter}>T</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setWednesday(!wednesday) }}>
+                <View style={wednesday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={wednesday ? styles.selectedLetter : styles.unselectedLetter}>W</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setThursday(!thursday) }}>
+                <View style={thursday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={thursday ? styles.selectedLetter : styles.unselectedLetter}>T</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setFriday(!friday) }}>
+                <View style={friday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={friday ? styles.selectedLetter : styles.unselectedLetter}>F</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setSaturday(!saturday) }}>
+                <View style={saturday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={saturday ? styles.selectedLetter : styles.unselectedLetter}>S</Text>
+                </View>
+            </Pressable>
+            <Pressable onPress={() => { setSunday(!sunday) }}>
+                <View style={sunday ? styles.selectedLetterContainer : styles.unselectedLetterContainer}>
+                    <Text style={sunday ? styles.selectedLetter : styles.unselectedLetter}>S</Text>
                 </View>
             </Pressable>
         </View>
