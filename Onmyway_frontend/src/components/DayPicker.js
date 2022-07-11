@@ -92,10 +92,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         borderRadius: 50,
         backgroundColor: '#A1CCE4',
-        padding: 5,
+        height: 30,
         width: 30,
         textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center'
+        textAlignVertical: 'center'
     },
 });
