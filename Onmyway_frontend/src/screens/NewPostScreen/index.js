@@ -23,6 +23,7 @@ export default function NewPost({ navigation }) {
             <LocationInput text={'To'} color={'#D2686E'} />
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
             <TimePicker departureTime={departureTime} setDepartureTime={setDepartureTime} text={'Departure Time'} />
+            <TimePicker departureTime={departureTime} setDepartureTime={setDepartureTime} text={'Retun Time (optional)'} />
         </View >
     );
 }

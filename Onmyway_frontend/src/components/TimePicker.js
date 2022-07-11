@@ -8,7 +8,7 @@ export default function TimePicker({ text, departureTime, setDepartureTime }) {
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Time date={departureTime} setDate={setDepartureTime} placeholder={'Select a Date'} AuthInput={false} />
+                <Time date={departureTime} setDate={setDepartureTime} placeholder={'Select a Time'} AuthInput={false} />
             </View>
         </View>
     );
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        backgroundColor: "#abc"
     },
     view: {
 
