@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
+import Time from '../../components/Time'
 import { useUser } from '../../context/UserContext';
 
 export default function NewPost({ navigation }) {
@@ -10,8 +11,8 @@ export default function NewPost({ navigation }) {
     const [date, setDate] = useState(new Date())
     const [repeat, setRepeat] = useState(false)
     const [days, setDays] = useState({ monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false })
-    const [departureTime, setDepartureTime] = useState(null)
-    const [returnTime, setReturnTime] = useState(null)
+    const [departureTime, setDepartureTime] = useState(new Date())
+    const [returnTime, setReturnTime] = useState(new Date())
     const [availableSeats, setAvailableSeats] = useState(3)
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
@@ -21,6 +22,7 @@ export default function NewPost({ navigation }) {
             <LocationInput text={'From'} color={'#92D293'} />
             <LocationInput text={'To'} color={'#D2686E'} />
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
+            <Time date={departureTime} setDate={setDepartureTime} placeholder={'Select a Date'} AuthInput={false} />
         </View >
     );
 }
