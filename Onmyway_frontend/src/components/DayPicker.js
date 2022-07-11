@@ -5,7 +5,7 @@ export default function DayPicker({ }) {
     return (
         <View style={styles.container}>
             <Pressable>
-                <View>
+                <View style={styles.letterContainer}>
                     <Text>M</Text>
                 </View>
             </Pressable>
@@ -21,5 +21,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    unselectedLetterContainer: {
+        width: 20,
+        height: 20,
+        borderRadius: 50,
+        marginBottom: 18,
+        marginHorizontal: 5,
+    },
+    unselectedLetter: {
+        color: '#000'
     }
 });
