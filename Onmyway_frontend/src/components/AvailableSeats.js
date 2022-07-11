@@ -1,14 +1,13 @@
-import { StyleSheet, View, Text, Input } from 'react-native';
-import Time from './Time';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 
-export default function TimePicker({ text, departureTime, setDepartureTime }) {
+export default function AvailableSeats({ text }) {
     return (
         <View style={styles.container}>
             <View style={styles.view}>
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Input />
+                <TextInput />
             </View>
         </View>
     );
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     view: {
-
+        height: 80,
         width: '50%',
         alignItems: 'center',
         justifyContent: 'center',

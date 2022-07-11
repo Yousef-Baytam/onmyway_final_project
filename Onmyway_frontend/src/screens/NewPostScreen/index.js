@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import AvailableSeats from '../../components/AvailableSeats';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
 import TimePicker from '../../components/TimePicker';
@@ -25,6 +26,7 @@ export default function NewPost({ navigation }) {
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
             <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
             <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
+            <AvailableSeats text={'Available Seats'} />
         </View >
     );
 }
