@@ -24,12 +24,14 @@ export function MainStack() {
             } />
             <Stack.Group screenOptions={({ navigation }) => ({
                 headerLeft: () => (
-                    <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
+                    <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />), headerTitleAlign: 'center'
             })}>
                 <Stack.Screen name="UserProfile" component={UserProfile} options={{
-                    headerTitle: 'My Profile', headerTitleAlign: 'center'
+                    headerTitle: 'My Profile'
                 }} />
-                <Stack.Screen name="NewPost" component={NewPost} />
+                <Stack.Screen name="NewPost" component={NewPost} options={{
+                    headerTitle: 'New Post'
+                }} />
                 <Stack.Screen name="Map" component={Map} />
             </Stack.Group>
 
