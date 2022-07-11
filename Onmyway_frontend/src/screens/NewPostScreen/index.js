@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
-import Time from '../../components/Time'
+import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 
 export default function NewPost({ navigation }) {
@@ -22,7 +22,7 @@ export default function NewPost({ navigation }) {
             <LocationInput text={'From'} color={'#92D293'} />
             <LocationInput text={'To'} color={'#D2686E'} />
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
-            <Time date={departureTime} setDate={setDepartureTime} placeholder={'Select a Date'} AuthInput={false} />
+            <TimePicker departureTime={departureTime} setDepartureTime={setDepartureTime} />
         </View >
     );
 }
