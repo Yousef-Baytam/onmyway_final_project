@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import TargetIcon from '../assets/icons/TargetIcon';
 
 export default function LocationInput({ text, color }) {
 
@@ -6,6 +7,7 @@ export default function LocationInput({ text, color }) {
         <View style={styles.inputContainer}>
             <View style={styles.indicator}></View>
             <Text style={styles.textContainer}>Hello</Text>
+            <TargetIcon />
         </View>
     );
 }
@@ -13,7 +15,7 @@ export default function LocationInput({ text, color }) {
 const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
-        width: '80%',
+        width: '70%',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row'
