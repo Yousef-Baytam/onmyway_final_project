@@ -1,12 +1,16 @@
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function DatePicker({ date, setDate }) {
+export default function DatePicker({ date, setDate, placeholder }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
     const [text, setText] = useState('Date of Birth')
+
+    useEffect(() => {
+        placeholder && setText(placeholder)
+    }, [])
 
     const onChange = (evt, pickedDate) => {
         const currDate = pickedDate || date
