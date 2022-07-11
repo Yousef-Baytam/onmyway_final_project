@@ -17,7 +17,7 @@ export default function NewPost({ navigation }) {
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? null)
     return (
         <View style={styles.container}>
-            <LocationInput />
+            <LocationInput text={'From'} color={'#92D293'} />
         </View >
     );
 }

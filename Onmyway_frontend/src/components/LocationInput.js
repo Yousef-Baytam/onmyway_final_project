@@ -5,8 +5,8 @@ export default function LocationInput({ text, color }) {
 
     return (
         <View style={styles.inputContainer}>
-            <View style={styles.indicator}></View>
-            <Text style={styles.textContainer}>Hello</Text>
+            <View style={[styles.indicator, { backgroundColor: color ?? '#000' }]}></View>
+            <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
             <TargetIcon />
         </View>
     );
@@ -15,7 +15,7 @@ export default function LocationInput({ text, color }) {
 const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
-        width: '70%',
+        width: '60%',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row'
@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         borderRadius: 50,
-        marginRight: 10,
-        backgroundColor: '#000'
+        marginRight: 15,
     },
     textContainer: {
         width: '100%',
@@ -33,6 +32,5 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         borderRadius: 10,
         backgroundColor: '#EAEAEA',
-        color: 'rgba(0,0,0,0.2)'
     }
 });
