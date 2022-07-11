@@ -2,6 +2,7 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import moment from 'moment'
 
 export default function DatePicker({ date, setDate, placeholder, AuthInput }) {
     const [mode, setMode] = useState('date')
@@ -13,12 +14,11 @@ export default function DatePicker({ date, setDate, placeholder, AuthInput }) {
     }, [])
 
     const onChange = (evt, pickedDate) => {
-        const currDate = pickedDate || date
         setShow(Platform.OS === 'ios')
         setDate(pickedDate)
 
         const temp = new Date(pickedDate)
-        const fDate = `${ temp.getDate() } / ${ temp.getMonth() } / ${ temp.getFullYear() }`
+        const fDate = moment(temp).format('MMMM Do YYYY')
         setText(fDate)
     }
 
