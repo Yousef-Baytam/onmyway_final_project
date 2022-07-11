@@ -8,10 +8,10 @@ export default function DateInput({ repeat, setRepeat, date, setDate, setDays, d
     return (
         <View style={styles.container}>
             <RepeatIcon />
-            <Checkbox value={repeat} onValueChange={setRepeat} color={'#A1CCE4'} style={{ marginBottom: 20, marginHorizontal: 15 }} />
+            <Checkbox value={repeat} onValueChange={setRepeat} color={'#A1CCE4'} style={{ marginBottom: 20, marginHorizontal: 18, width: 15, height: 15 }} />
             {repeat ?
                 <DayPicker setDays={setDays} days={days} /> :
-                <DatePicker date={date} setDate={setDate} placeholder={'Date'} AuthInput={false} />}
+                <DatePicker date={date} setDate={setDate} placeholder={'Select a Date'} AuthInput={false} />}
         </View>
     );
 }
