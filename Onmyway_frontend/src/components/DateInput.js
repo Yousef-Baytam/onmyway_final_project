@@ -19,7 +19,7 @@ export default function DateInput({ repeat, setRepeat, date, setDate, setDays })
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '60%',
+        width: '80%',
         height: 50,
         flexDirection: 'row',
         alignItems: 'center',

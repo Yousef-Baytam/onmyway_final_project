@@ -28,7 +28,7 @@ export default function DatePicker({ date, setDate, placeholder, AuthInput }) {
     }
 
     return (
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, { width: !AuthInput ? '76%' : '85%' }]}>
             <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5 }]}>
                 <Pressable onPress={() => showMode('date')}>
                     <Text >{text}</Text>
@@ -47,7 +47,6 @@ export default function DatePicker({ date, setDate, placeholder, AuthInput }) {
 
 const styles = StyleSheet.create({
     inputContainer: {
-        width: '85%',
         alignItems: 'flex-start',
         flexDirection: "row",
         justifyContent: 'center'
