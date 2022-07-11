@@ -8,7 +8,7 @@ export default function DateInput({ repeat, setRepeat, date, setDate }) {
         <View style={styles.container}>
             <RepeatIcon />
             <Checkbox value={repeat} onValueChange={setRepeat} color={'#A1CCE4'} style={{ marginBottom: 20, marginHorizontal: 15 }} />
-            <DatePicker date={date} setDate={setDate} placeholder={'Date'} />
+            <DatePicker date={date} setDate={setDate} placeholder={'Date'} AuthInput={false} />
         </View>
     );
 }

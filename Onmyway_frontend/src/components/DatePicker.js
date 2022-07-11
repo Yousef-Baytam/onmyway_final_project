@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function DatePicker({ date, setDate, placeholder }) {
+export default function DatePicker({ date, setDate, placeholder, AuthInput }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
-    const [text, setText] = useState('Date of Birth')
+    const [text, setText] = useState('')
 
     useEffect(() => {
-        placeholder && setText(placeholder)
+        setText(placeholder)
     }, [])
 
     const onChange = (evt, pickedDate) => {
@@ -29,7 +29,7 @@ export default function DatePicker({ date, setDate, placeholder }) {
 
     return (
         <View style={styles.inputContainer}>
-            <View style={styles.input}>
+            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5 }]}>
                 <Pressable onPress={() => showMode('date')}>
                     <Text >{text}</Text>
                 </Pressable>
@@ -54,11 +54,14 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '95%',
-        borderBottomWidth: 0.2,
         borderColor: 'rgba(0,0,0, 0.7)',
-        paddingBottom: 10,
         marginBottom: 25,
         marginTop: 8,
         paddingLeft: 10
     }
 });
+
+DatePicker.defaultProps = {
+    AuthInput: true,
+    placeholder: 'Date of Birth'
+}
