@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     input: {
-        borderColor: 'rgba(0,0,0, 0.7)',
+
     }
 });
 

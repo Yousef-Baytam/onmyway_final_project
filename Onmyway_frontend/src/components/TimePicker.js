@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
 import Time from './Time';
 
-export default function TimePicker({ departureTime, setDepartureTime }) {
+export default function TimePicker({ text, departureTime, setDepartureTime }) {
     return (
         <View style={styles.container}>
             <View style={styles.view}>
-                <Text>Departure Time</Text>
+                <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
                 <Time date={departureTime} setDate={setDepartureTime} placeholder={'Select a Date'} AuthInput={false} />
@@ -25,10 +25,15 @@ const styles = StyleSheet.create({
         backgroundColor: "#abc"
     },
     view: {
+
         width: '50%',
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 0.2,
-        paddingBottom: 10
+        paddingVertical: 25,
+        borderColor: 'rgba(0,0,0, 0.7)',
     },
+    text: {
+        paddingBottom: 5,
+    }
 });
