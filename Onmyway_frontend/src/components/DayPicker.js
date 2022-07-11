@@ -68,26 +68,30 @@ const styles = StyleSheet.create({
     unselectedLetterContainer: {
         width: 35,
         height: 35,
-        borderRadius: 50,
         marginBottom: 18,
-        marginHorizontal: 5,
+        marginHorizontal: 0,
         justifyContent: 'center',
         alignItems: 'center'
     },
     unselectedLetter: {
-        color: '#000'
+        color: '#000',
     },
     selectedLetterContainer: {
         width: 35,
         height: 35,
-        borderRadius: 50,
         marginBottom: 18,
-        marginHorizontal: 5,
-        backgroundColor: '#A1CCE4',
+        marginHorizontal: 0,
         justifyContent: 'center',
         alignItems: 'center'
     },
     selectedLetter: {
-        color: '#fff'
+        color: '#fff',
+        borderRadius: 50,
+        backgroundColor: '#A1CCE4',
+        padding: 5,
+        width: 30,
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });
