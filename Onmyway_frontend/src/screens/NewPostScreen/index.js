@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
 import { useUser } from '../../context/UserContext';
 
@@ -19,6 +20,7 @@ export default function NewPost({ navigation }) {
         <View style={styles.container}>
             <LocationInput text={'From'} color={'#92D293'} />
             <LocationInput text={'To'} color={'#D2686E'} />
+            <DateInput />
         </View >
     );
 }

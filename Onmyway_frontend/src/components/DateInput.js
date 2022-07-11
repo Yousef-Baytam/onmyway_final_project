@@ -1,9 +1,10 @@
 import { StyleSheet, View } from 'react-native';
+import RepeatIcon from '../assets/icons/RepeatIcon';
 
 export default function DateInput({ }) {
     return (
         <View style={styles.container}>
-
+            <RepeatIcon />
         </View>
     );
 }
