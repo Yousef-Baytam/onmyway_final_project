@@ -15,7 +15,7 @@ export default function TabNav() {
         <Tab.Navigator screenOptions={{
             tabBarShowLabel: false, tabBarStyle: {
                 borderTopWidth: 0,
-                height: 80,
+                height: 60,
                 elevation: 0
             },
         }}>
@@ -29,11 +29,10 @@ export default function TabNav() {
             <Tab.Screen name="Notifications" component={Browse} options={{
                 headerShown: false,
                 tabBarItemStyle: {
-                    marginBottom: 10
                 },
                 tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
                 tabBarBadge: 3,
-                tabBarBadgeStyle: { backgroundColor: '#005A9C', marginTop: 5 }
+                tabBarBadgeStyle: { backgroundColor: '#005A9C' }
             }} listeners={{
                 tabPress: (e) => {
                     e.preventDefault();
@@ -48,7 +47,6 @@ export default function TabNav() {
                 headerRight: () => (
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         marginLeft: 200,
-                        marginBottom: 10
                     }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
                 tabBarBadge: 3,
                 tabBarBadgeStyle: { backgroundColor: '#005A9C' }

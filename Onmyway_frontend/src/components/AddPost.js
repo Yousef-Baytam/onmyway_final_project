@@ -2,9 +2,11 @@ import { StyleSheet, View } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import AddPostIcon from '../assets/icons/AddPostIcon';
 
-export default function BackArrow({ action }) {
+export default function AddPost({ action }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {
+
+        }]}>
             <Pressable onPress={action}>
                 <AddPostIcon />
             </Pressable>
@@ -15,8 +17,9 @@ export default function BackArrow({ action }) {
 const styles = StyleSheet.create({
     container: {
         width: 50,
-        height: 45,
+        height: 50,
         alignItems: 'center',
-        marginLeft: 20
+        marginLeft: 20,
+        elevation: 2,
     }
 });

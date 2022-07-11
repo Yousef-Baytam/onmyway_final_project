@@ -1,10 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
+import AddPost from '../../components/AddPost';
 
 export default function Browse() {
 
     return (
         <View style={styles.container}>
-            <Text>POSTS!!!! YAAYYY</Text>
+            <AddPost />
         </View >
     );
 }

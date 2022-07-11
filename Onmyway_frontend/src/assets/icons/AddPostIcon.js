@@ -4,9 +4,9 @@ export default function AddPostIcon() {
 
     return (
         <Svg
-            width={30}
-            height={50}
-            viewBox="0 0 28 30"
+            width={80}
+            height={100}
+            viewBox="0 0 80 120"
         >
             <Circle cx={30} cy={30} r={30} fill="#005A9C" />
             <Path
