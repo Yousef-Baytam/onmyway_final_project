@@ -5,8 +5,8 @@ export default function DayPicker({ }) {
     return (
         <View style={styles.container}>
             <Pressable>
-                <View style={styles.letterContainer}>
-                    <Text>M</Text>
+                <View style={styles.selectedLetterContainer}>
+                    <Text style={styles.selectedLetter}>M</Text>
                 </View>
             </Pressable>
         </View>
@@ -23,13 +23,28 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     unselectedLetterContainer: {
-        width: 20,
-        height: 20,
+        width: 35,
+        height: 35,
         borderRadius: 50,
         marginBottom: 18,
         marginHorizontal: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     unselectedLetter: {
         color: '#000'
-    }
+    },
+    selectedLetterContainer: {
+        width: 35,
+        height: 35,
+        borderRadius: 50,
+        marginBottom: 18,
+        marginHorizontal: 5,
+        backgroundColor: '#A1CCE4',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    selectedLetter: {
+        color: '#fff'
+    },
 });
