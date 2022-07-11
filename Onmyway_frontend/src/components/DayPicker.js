@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     unselectedLetterContainer: {
         width: 35,
         height: 35,
-        marginBottom: 18,
+        marginBottom: 20,
         marginHorizontal: 0,
         justifyContent: 'center',
         alignItems: 'center'
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     selectedLetterContainer: {
         width: 35,
         height: 35,
-        marginBottom: 18,
+        marginBottom: 20,
         marginHorizontal: 0,
         justifyContent: 'center',
         alignItems: 'center'
