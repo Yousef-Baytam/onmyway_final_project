@@ -14,7 +14,7 @@ export default function NewPost({ navigation }) {
     const [days, setDays] = useState({ monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false })
     const [departureTime, setDepartureTime] = useState(new Date())
     const [returnTime, setReturnTime] = useState(new Date())
-    const [availableSeats, setAvailableSeats] = useState(3)
+    const [availableSeats, setAvailableSeats] = useState('3')
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? null)
@@ -26,7 +26,7 @@ export default function NewPost({ navigation }) {
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
             <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
             <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
-            <AvailableSeats text={'Available Seats'} />
+            <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
         </View >
     );
 }

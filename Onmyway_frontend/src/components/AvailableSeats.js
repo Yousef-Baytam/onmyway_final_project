@@ -1,13 +1,24 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
-export default function AvailableSeats({ text }) {
+export default function AvailableSeats({ text, availableSeats, setAvailableSeats, keyboard }) {
+
+    const onChange = ({ nativeEvent }) => {
+        if (parseInt(nativeEvent.text) > 3) setAvailableSeats('3')
+        else if (parseInt(nativeEvent.text) < 1) setAvailableSeats('1')
+        else if (isNaN(parseInt(nativeEvent.text))) setAvailableSeats('3')
+        else setAvailableSeats(nativeEvent.text)
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.view}>
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <TextInput />
+                <TextInput value={availableSeats}
+                    onChangeText={setAvailableSeats}
+                    onEndEditing={onChange}
+                    keyboardType={keyboard} />
             </View>
         </View>
     );
@@ -35,3 +46,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     }
 });
+
+AvailableSeats.defaultProps = {
+    keyboard: 'number-pad',
+}
