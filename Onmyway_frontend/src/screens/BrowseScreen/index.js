@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
 import AddPost from '../../components/AddPost';
 
-export default function Browse() {
+export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <AddPost />
+            <AddPost action={() => navigation.navigate('NewPost')} />
         </View >
     );
 }

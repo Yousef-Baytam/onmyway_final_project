@@ -4,9 +4,7 @@ import AddPostIcon from '../assets/icons/AddPostIcon';
 
 export default function AddPost({ action }) {
     return (
-        <View style={[styles.container, {
-
-        }]}>
+        <View style={styles.container}>
             <Pressable onPress={action}>
                 <AddPostIcon />
             </Pressable>
