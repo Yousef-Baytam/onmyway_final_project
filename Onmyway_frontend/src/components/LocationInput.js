@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function Input({ text, color }) {
+export default function LocationInput({ text, color }) {
 
     return (
         <View style={styles.inputContainer}>
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     inputContainer: {
 
     },
-    input: {
+    indicator: {
 
     }
 });
