@@ -1,14 +1,14 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Input } from 'react-native';
 import Time from './Time';
 
-export default function TimePicker({ text, time, setTime }) {
+export default function TimePicker({ text, departureTime, setDepartureTime }) {
     return (
         <View style={styles.container}>
             <View style={styles.view}>
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Time date={time} setDate={setTime} placeholder={'Select a Time'} AuthInput={false} />
+                <Input />
             </View>
         </View>
     );

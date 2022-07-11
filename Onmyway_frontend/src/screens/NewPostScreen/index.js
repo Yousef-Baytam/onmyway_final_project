@@ -17,13 +17,14 @@ export default function NewPost({ navigation }) {
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? null)
+
     return (
         <View style={styles.container}>
             <LocationInput text={'From'} color={'#92D293'} />
             <LocationInput text={'To'} color={'#D2686E'} />
             <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
-            <TimePicker departureTime={departureTime} setDepartureTime={setDepartureTime} text={'Departure Time'} />
-            <TimePicker departureTime={departureTime} setDepartureTime={setDepartureTime} text={'Retun Time (optional)'} />
+            <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
+            <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
         </View >
     );
 }
