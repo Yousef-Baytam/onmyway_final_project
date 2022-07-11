@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function DayPicker({ setDays }) {
-    const [monday, setMonday] = useState(false)
-    const [tuesday, setTuesday] = useState(false)
-    const [wednesday, setWednesday] = useState(false)
-    const [thursday, setThursday] = useState(false)
-    const [friday, setFriday] = useState(false)
-    const [saturday, setSaturday] = useState(false)
-    const [sunday, setSunday] = useState(false)
+export default function DayPicker({ setDays, days }) {
+    const [monday, setMonday] = useState(days.monday)
+    const [tuesday, setTuesday] = useState(days.tuesdayy)
+    const [wednesday, setWednesday] = useState(days.wednesday)
+    const [thursday, setThursday] = useState(days.thursday)
+    const [friday, setFriday] = useState(days.friday)
+    const [saturday, setSaturday] = useState(days.saturday)
+    const [sunday, setSunday] = useState(days.sunday)
 
     const handleSetDays = () => {
 

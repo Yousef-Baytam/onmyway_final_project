@@ -4,13 +4,13 @@ import Checkbox from 'expo-checkbox';
 import DatePicker from './DatePicker';
 import DayPicker from './DayPicker';
 
-export default function DateInput({ repeat, setRepeat, date, setDate, setDays }) {
+export default function DateInput({ repeat, setRepeat, date, setDate, setDays, days }) {
     return (
         <View style={styles.container}>
             <RepeatIcon />
             <Checkbox value={repeat} onValueChange={setRepeat} color={'#A1CCE4'} style={{ marginBottom: 20, marginHorizontal: 15 }} />
             {repeat ?
-                <DayPicker setDays={setDays} /> :
+                <DayPicker setDays={setDays} days={days} /> :
                 <DatePicker date={date} setDate={setDate} placeholder={'Date'} AuthInput={false} />}
         </View>
     );
