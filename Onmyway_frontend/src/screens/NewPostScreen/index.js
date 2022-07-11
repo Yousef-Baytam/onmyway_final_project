@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import LocationInput from '../../components/LocationInput';
 import { useUser } from '../../context/UserContext';
 
 export default function NewPost({ navigation }) {
@@ -16,7 +17,7 @@ export default function NewPost({ navigation }) {
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? null)
     return (
         <View style={styles.container}>
-            <Text>New POST YAAAYY!!!</Text>
+            <LocationInput />
         </View >
     );
 }
