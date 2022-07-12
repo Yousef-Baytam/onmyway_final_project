@@ -52,7 +52,7 @@ const postSchema = new Schema({
         required: true,
         enum: [0, 1, 2, 3]
     },
-    prefferedGender: {
+    preferredGender: {
         type: String,
         enum: ['male', 'female', 'any'],
         default: 'any'

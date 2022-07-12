@@ -9,6 +9,7 @@ import PreferredGenderPicker from '../../components/PreferredGenderPicker';
 import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
+import { addPost } from '../../controllers/postsController';
 
 export default function NewPost({ navigation }) {
     const { user } = useUser()
@@ -22,6 +23,20 @@ export default function NewPost({ navigation }) {
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences.length > 0 ? user.musicPrefrences : 'Any')
+
+    const handleAddPost = async () => {
+        try {
+            let res
+            if (repeat)
+                res = await addPost({ repeat, days, departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
+            else
+                res = await addPost({ repeat, date, departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
+            console.log(res)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <View style={styles.container}>

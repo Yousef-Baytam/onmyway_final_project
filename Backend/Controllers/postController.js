@@ -31,8 +31,8 @@ module.exports.addPosts = async (req, res) => {
         "repeat": req.body.repeat,
         "departureTime": req.body.departureTime,
         "returnTime": req.body.returnTime,
-        "remainingSeats": req.body.remainingSeats,
-        "prefferedGender": req.body.prefferedGender,
+        "remainingSeats": req.body.availableSeats,
+        "preferredGender": req.body.prefferedGender,
         "shareExpenses": req.body.shareExpenses,
         "owner": req.user,
         "comment": req.body.comment
@@ -51,7 +51,7 @@ module.exports.updatePosts = async (req, res) => {
         "departureTime": req.body.departureTime,
         "returnTime": req.body.returnTime,
         "remainingSeats": req.body.remainingSeats,
-        "prefferedGender": req.body.prefferedGender,
+        "preferredGender": req.body.prefferedGender,
         "shareExpenses": req.body.shareExpenses,
         "owner": req.user,
         "comment": req.body.comment
