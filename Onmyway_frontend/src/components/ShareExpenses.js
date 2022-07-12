@@ -9,7 +9,7 @@ export default function ShareExpenses({ text, value, setValue }) {
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Checkbox value={value} onValueChange={setValue} color={'#A1CCE4'} style={{ marginBottom: 20, marginHorizontal: 18, width: 15, height: 15 }} />
+                <Checkbox value={value} onValueChange={setValue} color={'#A1CCE4'} style={{ marginHorizontal: 18, width: 15, height: 15 }} />
             </View>
         </View>
     );

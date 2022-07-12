@@ -4,6 +4,7 @@ import AvailableSeats from '../../components/AvailableSeats';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
 import PreferredGenderPicker from '../../components/PreferredGenderPicker';
+import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 
@@ -18,7 +19,7 @@ export default function NewPost({ navigation }) {
     const [availableSeats, setAvailableSeats] = useState('3')
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
-    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? null)
+    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? 'Any')
 
     return (
         <View style={styles.container}>
@@ -33,6 +34,7 @@ export default function NewPost({ navigation }) {
                 { label: 'F', value: 'female' },
                 { label: 'Any', value: 'any' }
             ]} text={'Preferred Gender'} />
+            <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
         </View >
     );
 }
