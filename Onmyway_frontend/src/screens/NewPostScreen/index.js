@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
@@ -24,19 +24,25 @@ export default function NewPost({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <LocationInput text={'From'} color={'#92D293'} />
-            <LocationInput text={'To'} color={'#D2686E'} />
-            <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
-            <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
-            <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
-            <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
-            <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
-                { label: 'M', value: 'male' },
-                { label: 'F', value: 'female' },
-                { label: 'Any', value: 'any' }
-            ]} text={'Preferred Gender'} />
-            <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
-            <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
+            <View style={styles.view1}>
+                <LocationInput text={'From'} color={'#92D293'} />
+                <LocationInput text={'To'} color={'#D2686E'} />
+            </View>
+            <View style={styles.view2}>
+                <View style={{ height: 60, width: '100%', marginTop: 20 }}>
+                    <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
+                </View>
+                <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
+                <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
+                <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
+                <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
+                    { label: 'M', value: 'male' },
+                    { label: 'F', value: 'female' },
+                    { label: 'Any', value: 'any' }
+                ]} text={'Preferred Gender'} />
+                <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
+                <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
+            </View>
         </View>
     );
 }
@@ -48,4 +54,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    view1: {
+        height: 80,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    view2: {
+        height: 500
+    }
 });

@@ -18,15 +18,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '80%',
-        height: 100,
+        height: 50,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
     },
     view: {
-        marginTop: 20,
-        height: 80,
         width: '50%',
+        height: 73,
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 0.2,

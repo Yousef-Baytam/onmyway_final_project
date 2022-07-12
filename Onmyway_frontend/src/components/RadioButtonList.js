@@ -7,7 +7,7 @@ export default function RadioButtonList({ items, checked, setChecked, AuthInput 
 
     const handleButtons = () => {
         return (
-            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5, marginBottom: AuthInput ? 25 : 0, }]}>
+            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 0, marginBottom: AuthInput ? 25 : 0, }]}>
                 {items.map((i) => {
                     return (
                         <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center', height: 20 }}>
