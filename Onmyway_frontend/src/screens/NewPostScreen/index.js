@@ -22,8 +22,6 @@ export default function NewPost({ navigation }) {
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences.length > 0 ? user.musicPrefrences : 'Any')
 
-    console.log(user.musicPrefrences ?? 'Any')
-
     return (
         <View style={styles.container}>
             <LocationInput text={'From'} color={'#92D293'} />
