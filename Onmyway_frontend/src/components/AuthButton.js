@@ -5,7 +5,7 @@ export default function AuthButton({ value, action }) {
     return (
         <View style={styles.buttonContainer}>
             <View style={styles.button}>
-                <Pressable android_ripple={{ color: '#A1CCE4', borderless: true }} onPress={() => { action() }}>
+                <Pressable android_ripple={{ color: '#002C4D', borderless: true }} onPress={() => { action() }}>
                     <Text style={styles.text} numberOfLines={1}>{value}</Text>
                 </Pressable>
             </View>

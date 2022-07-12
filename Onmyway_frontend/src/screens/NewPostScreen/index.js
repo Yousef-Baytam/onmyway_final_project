@@ -44,7 +44,9 @@ export default function NewPost({ navigation }) {
                 <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
                 <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
             </View>
-            <CustomButton text={'Confirm'} />
+            <View style={{ marginTop: '10%' }}>
+                <CustomButton text={'Confirm'} />
+            </View>
         </View>
     );
 }

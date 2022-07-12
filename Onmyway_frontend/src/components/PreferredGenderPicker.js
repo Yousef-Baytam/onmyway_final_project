@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     },
     view: {
         width: '50%',
+        height: 73,
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 0.2,
