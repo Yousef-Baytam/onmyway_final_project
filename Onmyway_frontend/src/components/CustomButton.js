@@ -3,11 +3,13 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function CustomButton({ text, action }) {
     return (
-        <Pressable onPress={action}>
-            <View style={styles.container}>
-                <Text style={styles.text}>{text}</Text>
+        <View style={styles.container}>
+            <View style={styles.textContainer}>
+                <Pressable onPress={action} android_ripple={{ color: '#002C4D', borderless: true }}>
+                    <Text style={styles.text}>{text}</Text>
+                </Pressable>
             </View>
-        </Pressable>
+        </View>
     );
 }
 
@@ -17,12 +19,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textContainer: {
+        borderRadius: 10,
+        backgroundColor: '#005A9C',
+    },
     text: {
         paddingHorizontal: 25,
         paddingVertical: 10,
         fontSize: 10,
         color: '#fff',
-        borderRadius: 10,
-        backgroundColor: '#005A9C',
     }
 });
