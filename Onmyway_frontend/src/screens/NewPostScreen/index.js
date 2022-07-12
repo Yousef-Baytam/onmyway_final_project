@@ -35,7 +35,7 @@ export default function NewPost({ navigation }) {
                 { label: 'Any', value: 'any' }
             ]} text={'Preferred Gender'} />
             <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
-        </View >
+        </View>
     );
 }
 
