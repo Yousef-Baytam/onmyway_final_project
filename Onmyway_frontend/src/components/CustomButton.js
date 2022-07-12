@@ -5,7 +5,7 @@ export default function CustomButton({ text, action }) {
     return (
         <Pressable onPress={action}>
             <View style={styles.container}>
-                <Text>{text}</Text>
+                <Text style={styles.text}>{text}</Text>
             </View>
         </Pressable>
     );
@@ -13,11 +13,16 @@ export default function CustomButton({ text, action }) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '20%',
-        backgroundColor: '#005A9C',
-        height: 45,
+        width: '30%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 20
+    },
+    text: {
+        paddingHorizontal: 25,
+        paddingVertical: 10,
+        fontSize: 10,
+        color: '#fff',
+        borderRadius: 10,
+        backgroundColor: '#005A9C',
     }
 });
