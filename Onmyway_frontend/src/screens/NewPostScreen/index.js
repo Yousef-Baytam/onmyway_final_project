@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
+import PreferredGenderPicker from '../../components/PreferredGenderPicker';
 import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 
@@ -27,6 +28,11 @@ export default function NewPost({ navigation }) {
             <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
             <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
             <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
+            <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
+                { label: 'M', value: 'male' },
+                { label: 'F', value: 'female' },
+                { label: 'Any', value: 'any' }
+            ]} text={'Preferred Gender'} />
         </View >
     );
 }

@@ -3,14 +3,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 
-export default function RadioButtonList({ items, checked, setChecked }) {
+export default function RadioButtonList({ items, checked, setChecked, AuthInput }) {
 
     const handleButtons = () => {
         return (
-            <View style={styles.input}>
+            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5, marginBottom: AuthInput ? 25 : 0, }]}>
                 {items.map((i) => {
                     return (
-                        <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center', height: 20 }}>
                             <Text>{i.label}</Text>
                             <RadioButton
                                 color='#005A9C'
@@ -44,9 +44,12 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.2,
         borderColor: 'rgba(0,0,0, 0.7)',
         paddingBottom: 5,
-        marginBottom: 25,
         paddingLeft: 10,
         flexDirection: "row",
         alignItems: 'center'
     }
 });
+
+RadioButtonList.defaultProps = {
+    AuthInput: true,
+}
