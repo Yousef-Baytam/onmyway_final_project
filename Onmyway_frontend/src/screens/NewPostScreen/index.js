@@ -39,7 +39,7 @@ export default function NewPost({ navigation }) {
                 <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
                     { label: 'M', value: 'male' },
                     { label: 'F', value: 'female' },
-                    { label: 'Any', value: 'any' }
+                    { label: 'A', value: 'any' }
                 ]} text={'Preferred Gender'} />
                 <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
                 <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />

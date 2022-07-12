@@ -32,7 +32,6 @@ export default function Register({ navigation }) {
 
     const handleRegister = async () => {
         try {
-            console.log({ username, email, phone, dob: date, gender, password })
             const res = await register({ username, email, phone, dob: date, gender, password })
             handleUser(res.results)
             await storage.save({ key: 'token', data: res.token.token })
