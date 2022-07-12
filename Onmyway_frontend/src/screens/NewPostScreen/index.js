@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
+import MusicPrefrence from '../../components/MusicPrefrence';
 import PreferredGenderPicker from '../../components/PreferredGenderPicker';
 import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
@@ -19,7 +20,9 @@ export default function NewPost({ navigation }) {
     const [availableSeats, setAvailableSeats] = useState('3')
     const [preferedGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
-    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences ?? 'Any')
+    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences.length > 0 ? user.musicPrefrences : 'Any')
+
+    console.log(user.musicPrefrences ?? 'Any')
 
     return (
         <View style={styles.container}>
@@ -35,6 +38,7 @@ export default function NewPost({ navigation }) {
                 { label: 'Any', value: 'any' }
             ]} text={'Preferred Gender'} />
             <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
+            <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
         </View>
     );
 }
