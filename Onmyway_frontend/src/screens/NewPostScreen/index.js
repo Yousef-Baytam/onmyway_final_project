@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
+import CustomButton from '../../components/CustomButton';
 import DateInput from '../../components/DateInput';
 import LocationInput from '../../components/LocationInput';
 import MusicPrefrence from '../../components/MusicPrefrence';
@@ -43,6 +44,7 @@ export default function NewPost({ navigation }) {
                 <ShareExpenses text={'Share Expenses?'} value={shareExpenses} setValue={setShareExpences} />
                 <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
             </View>
+            <CustomButton text={'Confirm'} />
         </View>
     );
 }
