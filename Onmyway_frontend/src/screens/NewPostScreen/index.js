@@ -28,7 +28,7 @@ export default function NewPost({ navigation }) {
         try {
             let res
             if (repeat)
-                res = await addPost({ repeat, days, departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
+                res = await addPost({ repeat, days: JSON.stringify(days), departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
             else
                 res = await addPost({ repeat, date, departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
             console.log(res)
@@ -60,7 +60,7 @@ export default function NewPost({ navigation }) {
                 <MusicPrefrence text={'Music Prefrence'} value={musicPrefrence} />
             </View>
             <View style={{ marginTop: '10%' }}>
-                <CustomButton text={'Confirm'} />
+                <CustomButton text={'Confirm'} action={handleAddPost} />
             </View>
         </View>
     );

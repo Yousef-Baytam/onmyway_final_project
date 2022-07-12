@@ -30,8 +30,7 @@ const postSchema = new Schema({
         }
     },
     days: {
-        type: [String],
-        enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+        type: String,
     },
     date: {
         type: [Date]
