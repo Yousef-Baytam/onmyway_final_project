@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Image } from 'react-native';
+import PingIcon from '../assets/icons/PingIcon';
 
 export default function PostCard(data) {
     return (
@@ -15,7 +16,9 @@ export default function PostCard(data) {
                         <View style={{ flex: 1 }}>
                             <View style={styles.text}>
                                 <Text numberOfLines={1}>Jbeil</Text>
-                                {/* Icon */}
+                                <View style={{ marginHorizontal: 5 }}>
+                                    <PingIcon />
+                                </View>
                             </View>
                             <View style={styles.text}>
                                 <Text>Date</Text>
@@ -29,8 +32,10 @@ export default function PostCard(data) {
                     <View style={styles.halfInfoContainer}>
                         <View style={{ flex: 1 }}>
                             <View style={styles.text}>
+                                <View style={{ marginHorizontal: 5 }}>
+                                    <PingIcon />
+                                </View>
                                 <Text numberOfLines={1}>Beirut</Text>
-                                {/* Icon */}
                             </View>
                             <View style={styles.text}>
                                 <Text>Date</Text>
@@ -91,7 +96,7 @@ const styles = StyleSheet.create({
     sideBar: {
         height: '100%',
         backgroundColor: '#000',
-        width: 10,
+        width: 8,
     },
     text: {
         flexDirection: 'row',
