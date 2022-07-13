@@ -12,6 +12,10 @@ import TimePicker from '../../components/TimePicker';
 export default function Post({ navigation }) {
     const route = useRoute()
     const data = route.params
+    let days
+    if (data.days)
+        days = JSON.parse(data.days)
+    else days = ''
 
     return (
         <View style={styles.container}>
@@ -21,7 +25,7 @@ export default function Post({ navigation }) {
             </View>
             <View style={styles.view2}>
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>
-                    <DateInput repeat={data.repeat} date={data.date} days={JSON.parse(data.days)} display={true} />
+                    <DateInput repeat={data.repeat} date={data.date} days={days} display={true} />
                 </View>
             </View>
 
