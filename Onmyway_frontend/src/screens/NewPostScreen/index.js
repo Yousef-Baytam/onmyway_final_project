@@ -18,6 +18,7 @@ export default function NewPost({ navigation }) {
     const [repeat, setRepeat] = useState(false)
     const [days, setDays] = useState({ monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false })
     const [departureTime, setDepartureTime] = useState(new Date())
+    const [resturnSet, setResturnSet] = useState(false)
     const [returnTime, setReturnTime] = useState(new Date())
     const [availableSeats, setAvailableSeats] = useState('3')
     const [preferedGender, setPreferredGender] = useState('any')
@@ -48,8 +49,8 @@ export default function NewPost({ navigation }) {
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>
                     <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
                 </View>
-                <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} />
-                <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} />
+                <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} pressed={setResturnSet} departure={true} />
+                <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} pressed={setResturnSet} departure={false} />
                 <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
                 <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
                     { label: 'M', value: 'male' },
