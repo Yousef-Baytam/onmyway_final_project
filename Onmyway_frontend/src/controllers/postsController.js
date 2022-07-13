@@ -20,4 +20,22 @@ const addPost = async (data) => {
     }
 }
 
-export { addPost }
+const getPost = async () => {
+    try {
+        const token = await storage.load({ key: 'token' })
+        let res = await axios({
+            url: `${ url }/post/`,
+            method: "GET",
+            data: data,
+            headers: {
+                Authorization: `bearer ${ token }`
+            }
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { addPost, getPost }

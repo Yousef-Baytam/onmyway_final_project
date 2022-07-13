@@ -31,7 +31,7 @@ export default function NewPost({ navigation }) {
                 res = await addPost({ repeat, days: JSON.stringify(days), departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
             else
                 res = await addPost({ repeat, date, departureTime, returnTime, availableSeats, preferedGender, shareExpenses })
-            console.log(res)
+            navigation.navigate('Browse')
         }
         catch (e) {
             console.log(e)
