@@ -6,7 +6,7 @@ export default function PostCard(data) {
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
-                <View>
+                <View style={{ width: '33.333%' }}>
                     <Image source={require('../assets/blank-profile.webp')} style={styles.image} />
                 </View>
                 <View style={styles.infoConatiner}>
@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
     },
     infoConatiner: {
         height: 110,
-        width: '62.33%',
+        width: '62.333%',
         backgroundColor: '#fff',
-        marginLeft: 5,
+        marginLeft: 10,
         borderRadius: 10,
         overflow: 'hidden',
         justifyContent: 'space-between',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     image: {
         borderRadius: 10,
         marginLeft: 5,
-        width: 110,
+        width: '100%',
         height: 110
     },
     halfInfoContainer: {

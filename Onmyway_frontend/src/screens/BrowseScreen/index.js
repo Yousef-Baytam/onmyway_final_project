@@ -20,7 +20,15 @@ export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <AddPost action={() => navigation.navigate('NewPost')} />
+            <FlatList
+                data={posts}
+                renderItem={({ i }) => (<PostCard />)}
+                showsVerticalScrollIndicator={false}
+                style={{ width: '100%', marginLeft: 60 }}
+            />
+            <View style={{ position: 'absolute', bottom: 10, right: '3%' }}>
+                <AddPost action={() => navigation.navigate('NewPost')} />
+            </View>
         </View >
     );
 }
