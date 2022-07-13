@@ -47,7 +47,7 @@ export default function PostCard(data) {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={() => navigation.navigate('NewPost')} >
+            <Pressable onPress={() => navigation.navigate('Post', data.data)} >
                 <View style={styles.cardContainer}>
                     <View style={{ width: '33.333%' }}>
                         {/* data.owner.image ? { uri: data.owner.image } : */}

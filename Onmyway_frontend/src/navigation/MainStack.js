@@ -7,6 +7,7 @@ import DrawerToggler from '../components/DrawerToggler';
 import { CommonActions, DrawerActions } from '@react-navigation/native';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 import BackArrow from '../components/BackArrow';
+import Post from '../screens/PostScreen';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -32,6 +33,7 @@ export function MainStack() {
                 <Stack.Screen name="NewPost" component={NewPost} options={{
                     headerTitle: 'New Post'
                 }} />
+                <Stack.Screen name="Post" component={Post} />
                 <Stack.Screen name="Map" component={Map} />
             </Stack.Group>
 
