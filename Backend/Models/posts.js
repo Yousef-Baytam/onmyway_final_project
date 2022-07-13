@@ -33,7 +33,7 @@ const postSchema = new Schema({
         type: String,
     },
     date: {
-        type: [Date]
+        type: Date
     },
     repeat: {
         type: Boolean,

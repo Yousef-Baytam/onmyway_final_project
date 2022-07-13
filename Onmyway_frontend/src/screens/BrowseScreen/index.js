@@ -5,7 +5,7 @@ import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
 
 export default function Browse({ navigation }) {
-    const [posts, setPosts] = useState('')
+    const [posts, setPosts] = useState(null)
 
     const handleGetPosts = async () => {
         try {
@@ -20,12 +20,12 @@ export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <FlatList
+            {posts && <FlatList
                 data={posts}
-                renderItem={({ i }) => (<PostCard data={i} />)}
+                renderItem={({ item }) => (<PostCard data={item} />)}
                 showsVerticalScrollIndicator={false}
                 style={{ width: '100%', marginLeft: 42 }}
-            />
+            />}
             <View style={{ position: 'absolute', bottom: 10, right: '3%' }}>
                 <AddPost action={() => navigation.navigate('NewPost')} />
             </View>
