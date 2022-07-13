@@ -21,7 +21,7 @@ export default function NewPost({ navigation }) {
     const [resturnSet, setResturnSet] = useState(false)
     const [returnTime, setReturnTime] = useState(new Date())
     const [availableSeats, setAvailableSeats] = useState('3')
-    const [preferedGender, setPreferredGender] = useState('any')
+    const [preferredGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences.length > 0 ? user.musicPrefrences : 'Any')
 
@@ -29,9 +29,9 @@ export default function NewPost({ navigation }) {
         try {
             let res
             if (repeat)
-                res = await addPost({ repeat, days: JSON.stringify(days), departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferedGender, shareExpenses })
+                res = await addPost({ repeat, days: JSON.stringify(days), departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             else
-                res = await addPost({ repeat, date, departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferedGender, shareExpenses })
+                res = await addPost({ repeat, date, departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             navigation.navigate('Browse')
         }
         catch (e) {
@@ -52,7 +52,7 @@ export default function NewPost({ navigation }) {
                 <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} pressed={setResturnSet} departure={true} />
                 <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} pressed={setResturnSet} departure={false} />
                 <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
-                <PreferredGenderPicker value={preferedGender} setValue={setPreferredGender} items={[
+                <PreferredGenderPicker value={preferredGender} setValue={setPreferredGender} items={[
                     { label: 'M', value: 'male' },
                     { label: 'F', value: 'female' },
                     { label: 'A', value: 'any' }

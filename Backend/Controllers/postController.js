@@ -32,7 +32,7 @@ module.exports.addPosts = async (req, res) => {
         "departureTime": req.body.departureTime,
         "returnTime": req.body.returnTime,
         "remainingSeats": req.body.availableSeats,
-        "preferredGender": req.body.prefferedGender,
+        "preferredGender": req.body.preferredGender,
         "shareExpenses": req.body.shareExpenses,
         "owner": req.user,
         "comment": req.body.comment
