@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import AvailableSeats from '../../components/AvailableSeats';
 import CustomButton from '../../components/CustomButton';
 import DateInput from '../../components/DateInput';
@@ -9,10 +10,15 @@ import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 
 export default function Post({ navigation }) {
-    const data = route.params;
+    const route = useRoute()
+    const data = route.params
 
     return (
         <View style={styles.container}>
+            <View style={styles.view1}>
+                <LocationInput text={'From'} color={'#92D293'} />
+                <LocationInput text={'To'} color={'#D2686E'} />
+            </View>
         </View>
     );
 }
