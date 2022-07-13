@@ -11,23 +11,23 @@ export default function PostCard(data) {
     const navigation = useNavigation();
 
     const handleDate = () => {
-        const next7Days = [moment().format('dddd').toLowerCase(),
-        moment().add(1, 'days').format('dddd').toLowerCase(),
-        moment().add(2, 'days').format('dddd').toLowerCase(),
-        moment().add(3, 'days').format('dddd').toLowerCase(),
-        moment().add(4, 'days').format('dddd').toLowerCase(),
-        moment().add(5, 'days').format('dddd').toLowerCase(),
-        moment().add(6, 'days').format('dddd').toLowerCase()]
+        const next7Days = [moment().format('dddd'),
+        moment().add(1, 'days').format('dddd'),
+        moment().add(2, 'days').format('dddd'),
+        moment().add(3, 'days').format('dddd'),
+        moment().add(4, 'days').format('dddd'),
+        moment().add(5, 'days').format('dddd'),
+        moment().add(6, 'days').format('dddd')]
         if (data.data.repeat) {
             const temp = JSON.parse(data.data.days)
             const trueDays = Object.keys(temp).filter((i) => temp[i])
-            if (trueDays.includes(next7Days[0]))
+            if (trueDays.includes(next7Days[0].toLowerCase()))
                 setDate('Today')
-            else if (trueDays.includes(next7Days[1]))
+            else if (trueDays.includes(next7Days[1].toLowerCase()))
                 setDate('Tomorrow')
             else {
                 for (let i = 2; i < next7Days.length; i++) {
-                    if (trueDays.includes(next7Days[i])) {
+                    if (trueDays.includes(next7Days[i].toLowerCase())) {
                         setDate(next7Days[i])
                         break
                     }
@@ -84,14 +84,18 @@ export default function PostCard(data) {
                                     </View>
                                     <Text numberOfLines={1}>Beirut</Text>
                                 </View>
-                                <View style={styles.text}>
-                                    <View style={{ marginHorizontal: 5 }}>
-                                        <CalendarsTickIcon />
+                                {data.data.returnTime != 'Invalid date' ?
+                                    <View style={styles.text}>
+                                        <View style={{ marginHorizontal: 5 }}>
+                                            <CalendarsTickIcon />
+                                        </View>
+                                        <Text>{date}</Text>
                                     </View>
-                                    <Text>{date}</Text>
-                                </View>
+                                    : <View style={styles.text}>
+                                        <Text>Return time </Text>
+                                    </View>}
                                 <View style={styles.text}>
-                                    <Text>Time</Text>
+                                    {data.data.returnTime != 'Invalid date' ? <Text>Time</Text> : <Text>not set</Text>}
                                 </View>
                             </View>
                             <View>
