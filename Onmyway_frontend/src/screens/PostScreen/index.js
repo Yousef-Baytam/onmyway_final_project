@@ -34,6 +34,10 @@ export default function Post({ navigation }) {
                 <ShareExpenses text={'Share Expenses?'} value={data.shareExpenses} display={true} />
                 <MusicPrefrence text={'Music Prefrence'} value={data.owner.musicPrefrence || 'Any'} />
             </View>
+            <View style={{ marginTop: '10%', flexDirection: 'row' }}>
+                <CustomButton text={'User Profile'} action={() => navigation.navigate('userProfile', data.owner)} />
+                <CustomButton text={'Join Request'} />
+            </View>
         </View>
     );
 }
