@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import RadioButtonList from './RadioButtonList'
 
-export default function PreferredGenderPicker({ text, value, setValue, items }) {
+export default function PreferredGenderPicker({ text, value, setValue, items, display }) {
 
     return (
         <View style={styles.container}>
@@ -9,7 +9,10 @@ export default function PreferredGenderPicker({ text, value, setValue, items }) 
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <RadioButtonList items={items} checked={value} setChecked={setValue} AuthInput={false} />
+                {display ?
+                    <Text>{value}</Text>
+                    : <RadioButtonList items={items} checked={value} setChecked={setValue} AuthInput={false} />
+                }
             </View>
         </View>
     );
@@ -36,3 +39,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     }
 });
+
+PreferredGenderPicker.defaultProps = {
+    display: false
+}

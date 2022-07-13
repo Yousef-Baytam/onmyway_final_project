@@ -30,6 +30,7 @@ export default function Post({ navigation }) {
                 <TimePicker time={data.departureTime} text={'Departure Time'} display={true} />
                 <TimePicker time={data.returnTime} text={'Return Time'} display={true} />
                 <AvailableSeats text={'Available Seats'} availableSeats={data.remainingSeats} display={true} />
+                <PreferredGenderPicker value={data.preferredGender} text={'Preferred Gender'} display={true} />
             </View>
         </View>
     );
