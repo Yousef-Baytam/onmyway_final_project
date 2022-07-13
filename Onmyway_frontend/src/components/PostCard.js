@@ -7,8 +7,9 @@ export default function PostCard(data) {
                 <View>
                     <Image source={require('../assets/blank-profile.webp')} style={styles.image} />
                 </View>
-                <View>
+                <View style={styles.infoConatiner}>
                     <View>
+                        <View></View>
                         <View>
                             <Text></Text>
                             {/* Icon */}
@@ -35,6 +36,7 @@ export default function PostCard(data) {
                                 <Text></Text>
                             </View>
                         </View>
+                        <View></View>
                     </View>
                 </View>
             </View>
@@ -57,7 +59,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 10,
-
+    },
+    infoConatiner: {
+        height: 110,
+        width: '62.33%',
+        backgroundColor: '#fff',
+        marginLeft: 5,
+        borderRadius: 10,
+        overflow: 'hidden'
     },
     image: {
         borderRadius: 10,
