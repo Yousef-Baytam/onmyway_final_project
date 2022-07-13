@@ -8,21 +8,25 @@ export default function PostCard(data) {
                     <Image source={require('../assets/blank-profile.webp')} style={styles.image} />
                 </View>
                 <View style={styles.infoConatiner}>
-                    <View style>
-                        <View style={styles.sideBar}></View>
+                    <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA' }]}>
                         <View>
-                            <Text></Text>
-                            {/* Icon */}
+                            <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
                         </View>
                         <View>
-                            <Text></Text>
-                            {/* Icon */}
-                        </View>
-                        <View>
-                            <Text></Text>
+                            <View>
+                                <Text></Text>
+                                {/* Icon */}
+                            </View>
+                            <View>
+                                <Text></Text>
+                                {/* Icon */}
+                            </View>
+                            <View>
+                                <Text></Text>
+                            </View>
                         </View>
                     </View>
-                    <View>
+                    <View style={styles.halfInfoContainer}>
                         <View>
                             <View>
                                 <Text></Text>
@@ -36,7 +40,9 @@ export default function PostCard(data) {
                                 <Text></Text>
                             </View>
                         </View>
-                        <View style={styles.sideBar}></View>
+                        <View>
+                            <View style={[styles.sideBar, { backgroundColor: '#D2686E' }]}></View>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -67,7 +73,8 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         borderRadius: 10,
         overflow: 'hidden',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        flexDirection: 'row',
     },
     image: {
         borderRadius: 10,
@@ -75,10 +82,14 @@ const styles = StyleSheet.create({
         width: 110,
         height: 110
     },
+    halfInfoContainer: {
+        width: '50%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     sideBar: {
         height: '100%',
         backgroundColor: '#000',
         width: 10,
     },
-
 });
