@@ -56,9 +56,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#EAEAEA',
         flexDirection: 'row',
         alignItems: 'center',
+        borderRadius: 10,
+
     },
     image: {
-        width: 50,
-        height: 50
+        borderRadius: 10,
+        marginLeft: 5,
+        width: 110,
+        height: 110
     }
 });
