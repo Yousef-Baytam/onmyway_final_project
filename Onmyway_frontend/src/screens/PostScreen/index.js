@@ -32,6 +32,7 @@ export default function Post({ navigation }) {
                 <AvailableSeats text={'Available Seats'} availableSeats={data.remainingSeats} display={true} />
                 <PreferredGenderPicker value={data.preferredGender} text={'Preferred Gender'} display={true} />
                 <ShareExpenses text={'Share Expenses?'} value={data.shareExpenses} display={true} />
+                <MusicPrefrence text={'Music Prefrence'} value={data.owner.musicPrefrence || 'Any'} />
             </View>
         </View>
     );

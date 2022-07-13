@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, TextInput } from 'react-native';
 import RadioButtonList from './RadioButtonList'
 
 export default function PreferredGenderPicker({ text, value, setValue, items, display }) {
-
+    console.log(value)
     return (
         <View style={styles.container}>
             <View style={styles.view}>
@@ -10,7 +10,7 @@ export default function PreferredGenderPicker({ text, value, setValue, items, di
             </View>
             <View style={styles.view}>
                 {display ?
-                    <Text>{value}</Text>
+                    <Text>{`${ value[0].toUpperCase() }${ value.slice(1) }`}</Text>
                     : <RadioButtonList items={items} checked={value} setChecked={setValue} AuthInput={false} />
                 }
             </View>
