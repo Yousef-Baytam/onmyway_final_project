@@ -4,13 +4,13 @@ import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import moment from 'moment'
 
-export default function Time({ date, setDate, placeholder, AuthInput }) {
+export default function Time({ date, setDate, placeholder, AuthInput, display }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
     const [text, setText] = useState('')
 
     useEffect(() => {
-        setText(placeholder)
+        !display && setText(placeholder)
     }, [])
 
     const onChange = (evt, pickedDate) => {
@@ -30,9 +30,12 @@ export default function Time({ date, setDate, placeholder, AuthInput }) {
     return (
         <View style={[styles.inputContainer, { width: !AuthInput ? '76%' : '85%' }]}>
             <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5 }]}>
-                <Pressable onPress={() => showMode('time')}>
-                    <Text >{text}</Text>
-                </Pressable>
+                {display ?
+                    <Text >{date}</Text>
+                    : <Pressable onPress={() => showMode('time')}>
+                        <Text >{text}</Text>
+                    </Pressable>
+                }
             </View>
             {show && <DateTimePicker
                 testID='dateTimePicker'
@@ -58,5 +61,6 @@ const styles = StyleSheet.create({
 
 Time.defaultProps = {
     AuthInput: true,
-    placeholder: 'Date of Birth'
+    placeholder: 'Date of Birth',
+    display: false
 }

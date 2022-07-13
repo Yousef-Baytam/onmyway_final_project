@@ -28,6 +28,7 @@ export default function Post({ navigation }) {
                     <DateInput repeat={data.repeat} date={data.date} days={days} display={true} />
                 </View>
             </View>
+            <TimePicker time={data.departureTime} text={'Departure Time'} display={true} />
 
         </View>
     );
