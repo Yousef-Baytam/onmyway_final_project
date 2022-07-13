@@ -1,7 +1,7 @@
 import Checkbox from 'expo-checkbox';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function ShareExpenses({ text, value, setValue }) {
+export default function ShareExpenses({ text, value, setValue, display }) {
 
     return (
         <View style={styles.container}>
@@ -9,7 +9,11 @@ export default function ShareExpenses({ text, value, setValue }) {
                 <Text style={styles.text}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Checkbox value={value} onValueChange={setValue} color={'#A1CCE4'} style={{ marginHorizontal: 18, width: 15, height: 15 }} />
+                {
+                    display ?
+                        <Checkbox value={value} disabled={true} color={'#A1CCE4'} style={{ marginHorizontal: 18, width: 15, height: 15 }} />
+                        : <Checkbox value={value} onValueChange={setValue} color={'#A1CCE4'} style={{ marginHorizontal: 18, width: 15, height: 15 }} />
+                }
             </View>
         </View>
     );
@@ -37,3 +41,7 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
     }
 });
+
+ShareExpenses.defaultProps = {
+    display: false
+}
