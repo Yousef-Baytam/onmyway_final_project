@@ -22,9 +22,9 @@ export default function Browse({ navigation }) {
         <View style={styles.container}>
             <FlatList
                 data={posts}
-                renderItem={({ i }) => (<PostCard />)}
+                renderItem={({ i }) => (<PostCard data={i} />)}
                 showsVerticalScrollIndicator={false}
-                style={{ width: '100%', marginLeft: 60 }}
+                style={{ width: '100%', marginLeft: 42 }}
             />
             <View style={{ position: 'absolute', bottom: 10, right: '3%' }}>
                 <AddPost action={() => navigation.navigate('NewPost')} />

@@ -62,7 +62,7 @@ export default function PostCard(data) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '85%',
+        width: '90%',
         height: 120,
         alignItems: 'flex-start',
         justifyContent: 'center',
