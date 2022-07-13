@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
         width: '62.333%',
         backgroundColor: '#fff',
         marginLeft: 10,
+        marginRight: 5,
         borderRadius: 10,
         overflow: 'hidden',
         justifyContent: 'space-between',
