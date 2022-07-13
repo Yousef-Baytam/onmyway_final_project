@@ -19,6 +19,12 @@ export default function Post({ navigation }) {
                 <LocationInput text={'From'} color={'#92D293'} />
                 <LocationInput text={'To'} color={'#D2686E'} />
             </View>
+            <View style={styles.view2}>
+                <View style={{ height: 60, width: '100%', marginTop: 20 }}>
+                    <DateInput repeat={data.repeat} date={data.date} days={data.days} display={true} />
+                </View>
+            </View>
+
         </View>
     );
 }

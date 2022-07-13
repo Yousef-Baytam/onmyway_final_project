@@ -98,3 +98,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center'
     },
 });
+
+DateInput.defaultProps = {
+    display: false
+}
