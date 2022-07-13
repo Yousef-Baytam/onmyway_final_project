@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Image } from 'react-native';
+import CalendarsTickIcon from '../assets/icons/CalendarsTickIcon';
 import PingIcon from '../assets/icons/PingIcon';
 
 export default function PostCard(data) {
@@ -22,7 +23,9 @@ export default function PostCard(data) {
                             </View>
                             <View style={styles.text}>
                                 <Text>Date</Text>
-                                {/* Icon */}
+                                <View style={{ marginHorizontal: 5 }}>
+                                    <CalendarsTickIcon />
+                                </View>
                             </View>
                             <View style={styles.text}>
                                 <Text>Time</Text>
@@ -38,8 +41,10 @@ export default function PostCard(data) {
                                 <Text numberOfLines={1}>Beirut</Text>
                             </View>
                             <View style={styles.text}>
+                                <View style={{ marginHorizontal: 5 }}>
+                                    <CalendarsTickIcon />
+                                </View>
                                 <Text>Date</Text>
-                                {/* Icon */}
                             </View>
                             <View style={styles.text}>
                                 <Text>Time</Text>

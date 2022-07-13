@@ -4,8 +4,8 @@ export default function CalendarsTickIcon() {
 
     return (
         <Svg
-            width={8}
-            height={10}
+            width={16}
+            height={16}
             viewBox="0 0 16 16"
         >
             <Path
