@@ -6,7 +6,6 @@ import moment from 'moment'
 
 export default function PostCard(data) {
     const [date, setDate] = useState('')
-    const [days, setDays] = useState('')
 
     const handleDate = () => {
         const next7Days = [moment().format('dddd').toLowerCase(),
@@ -17,7 +16,6 @@ export default function PostCard(data) {
         moment().add(5, 'days').format('dddd').toLowerCase(),
         moment().add(6, 'days').format('dddd').toLowerCase()]
         if (data.data.repeat) {
-            setDays(JSON.parse(data.data.days))
             const temp = JSON.parse(data.data.days)
             const trueDays = Object.keys(temp).filter((i) => temp[i])
             if (trueDays.includes(next7Days[0]))
@@ -34,7 +32,10 @@ export default function PostCard(data) {
             }
 
         }
-        else { }
+        else {
+            moment(data.data.date) == moment() ? setDate('Today') :
+                moment(data.data.date) == moment().add(1, 'days') ? setDate('Tomorrow') : setDate(moment(data.data.date).format('MMMM Do'))
+        }
     }
 
     useEffect(() => {
@@ -83,7 +84,7 @@ export default function PostCard(data) {
                                 <View style={{ marginHorizontal: 5 }}>
                                     <CalendarsTickIcon />
                                 </View>
-                                <Text>Date</Text>
+                                <Text>{date}</Text>
                             </View>
                             <View style={styles.text}>
                                 <Text>Time</Text>
