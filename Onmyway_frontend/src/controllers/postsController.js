@@ -26,7 +26,6 @@ const getPost = async () => {
         let res = await axios({
             url: `${ url }/post/`,
             method: "GET",
-            data: data,
             headers: {
                 Authorization: `bearer ${ token }`
             }
