@@ -27,9 +27,9 @@ export default function Post({ navigation }) {
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>
                     <DateInput repeat={data.repeat} date={data.date} days={days} display={true} />
                 </View>
+                <TimePicker time={data.departureTime} text={'Departure Time'} display={true} />
+                <TimePicker time={data.returnTime} text={'Return Time'} display={true} />
             </View>
-            <TimePicker time={data.departureTime} text={'Departure Time'} display={true} />
-
         </View>
     );
 }
