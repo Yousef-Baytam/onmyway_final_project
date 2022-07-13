@@ -3,9 +3,12 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import CalendarsTickIcon from '../assets/icons/CalendarsTickIcon';
 import PingIcon from '../assets/icons/PingIcon';
 import moment from 'moment'
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PostCard(data) {
     const [date, setDate] = useState('')
+    const navigation = useNavigation();
 
     const handleDate = () => {
         const next7Days = [moment().format('dddd').toLowerCase(),
@@ -44,58 +47,60 @@ export default function PostCard(data) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.cardContainer}>
-                <View style={{ width: '33.333%' }}>
-                    {/* data.owner.image ? { uri: data.owner.image } : */}
-                    <Image source={require('../assets/blank-profile.webp')} style={styles.image} />
-                </View>
-                <View style={styles.infoConatiner}>
-                    <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA' }]}>
-                        <View>
-                            <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
+            <Pressable onPress={() => navigation.navigate('NewPost')} >
+                <View style={styles.cardContainer}>
+                    <View style={{ width: '33.333%' }}>
+                        {/* data.owner.image ? { uri: data.owner.image } : */}
+                        <Image source={require('../assets/blank-profile.webp')} style={styles.image} />
+                    </View>
+                    <View style={styles.infoConatiner}>
+                        <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA' }]}>
+                            <View>
+                                <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <View style={styles.text}>
+                                    <Text numberOfLines={1}>Jbeil</Text>
+                                    <View style={{ marginHorizontal: 5 }}>
+                                        <PingIcon />
+                                    </View>
+                                </View>
+                                <View style={styles.text}>
+                                    <Text>{date}</Text>
+                                    <View style={{ marginHorizontal: 5 }}>
+                                        <CalendarsTickIcon />
+                                    </View>
+                                </View>
+                                <View style={styles.text}>
+                                    <Text>{data.data.departureTime}</Text>
+                                </View>
+                            </View>
                         </View>
-                        <View style={{ flex: 1 }}>
-                            <View style={styles.text}>
-                                <Text numberOfLines={1}>Jbeil</Text>
-                                <View style={{ marginHorizontal: 5 }}>
-                                    <PingIcon />
+                        <View style={styles.halfInfoContainer}>
+                            <View style={{ flex: 1 }}>
+                                <View style={styles.text}>
+                                    <View style={{ marginHorizontal: 5 }}>
+                                        <PingIcon />
+                                    </View>
+                                    <Text numberOfLines={1}>Beirut</Text>
+                                </View>
+                                <View style={styles.text}>
+                                    <View style={{ marginHorizontal: 5 }}>
+                                        <CalendarsTickIcon />
+                                    </View>
+                                    <Text>{date}</Text>
+                                </View>
+                                <View style={styles.text}>
+                                    <Text>Time</Text>
                                 </View>
                             </View>
-                            <View style={styles.text}>
-                                <Text>{date}</Text>
-                                <View style={{ marginHorizontal: 5 }}>
-                                    <CalendarsTickIcon />
-                                </View>
-                            </View>
-                            <View style={styles.text}>
-                                <Text>{data.data.departureTime}</Text>
+                            <View>
+                                <View style={[styles.sideBar, { backgroundColor: '#D2686E' }]}></View>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.halfInfoContainer}>
-                        <View style={{ flex: 1 }}>
-                            <View style={styles.text}>
-                                <View style={{ marginHorizontal: 5 }}>
-                                    <PingIcon />
-                                </View>
-                                <Text numberOfLines={1}>Beirut</Text>
-                            </View>
-                            <View style={styles.text}>
-                                <View style={{ marginHorizontal: 5 }}>
-                                    <CalendarsTickIcon />
-                                </View>
-                                <Text>{date}</Text>
-                            </View>
-                            <View style={styles.text}>
-                                <Text>Time</Text>
-                            </View>
-                        </View>
-                        <View>
-                            <View style={[styles.sideBar, { backgroundColor: '#D2686E' }]}></View>
-                        </View>
-                    </View>
                 </View>
-            </View>
+            </Pressable>
         </View >
     );
 }
