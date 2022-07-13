@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function DayPicker({ setDays, days }) {
+export default function DayPicker({ setDays, days, display }) {
     const [monday, setMonday] = useState(days.monday)
     const [tuesday, setTuesday] = useState(days.tuesdayy)
     const [wednesday, setWednesday] = useState(days.wednesday)
@@ -16,7 +16,7 @@ export default function DayPicker({ setDays, days }) {
     }
 
     useEffect(() => {
-        handleSetDays()
+        !display && handleSetDays()
     }, [monday, tuesday, wednesday, thursday, friday, saturday, sunday])
 
     return (
@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
     },
 });
 
-DateInput.defaultProps = {
+DayPicker.defaultProps = {
     display: false
 }
