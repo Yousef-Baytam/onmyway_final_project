@@ -12,32 +12,32 @@ export default function PostCard(data) {
                         <View>
                             <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
                         </View>
-                        <View>
-                            <View>
-                                <Text></Text>
+                        <View style={{ flex: 1 }}>
+                            <View style={styles.text}>
+                                <Text numberOfLines={1}>Jbeil</Text>
                                 {/* Icon */}
                             </View>
-                            <View>
-                                <Text></Text>
+                            <View style={styles.text}>
+                                <Text>Date</Text>
                                 {/* Icon */}
                             </View>
-                            <View>
-                                <Text></Text>
+                            <View style={styles.text}>
+                                <Text>Time</Text>
                             </View>
                         </View>
                     </View>
                     <View style={styles.halfInfoContainer}>
-                        <View>
-                            <View>
-                                <Text></Text>
+                        <View style={{ flex: 1 }}>
+                            <View style={styles.text}>
+                                <Text numberOfLines={1}>Beirut</Text>
                                 {/* Icon */}
                             </View>
-                            <View>
-                                <Text></Text>
+                            <View style={styles.text}>
+                                <Text>Date</Text>
                                 {/* Icon */}
                             </View>
-                            <View>
-                                <Text></Text>
+                            <View style={styles.text}>
+                                <Text>Time</Text>
                             </View>
                         </View>
                         <View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         height: 120,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        marginVertical: 20
+        marginVertical: 5
     },
     cardContainer: {
         width: '100%',
@@ -86,10 +86,17 @@ const styles = StyleSheet.create({
         width: '50%',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center'
     },
     sideBar: {
         height: '100%',
         backgroundColor: '#000',
         width: 10,
     },
+    text: {
+        flexDirection: 'row',
+        height: '33%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
