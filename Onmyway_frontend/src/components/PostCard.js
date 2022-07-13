@@ -95,7 +95,7 @@ export default function PostCard(data) {
                                         <Text>Return time </Text>
                                     </View>}
                                 <View style={styles.text}>
-                                    {data.data.returnTime != 'Invalid date' ? <Text>Time</Text> : <Text>not set</Text>}
+                                    {data.data.returnTime != 'Invalid date' ? <Text>{data.data.returnTime}</Text> : <Text>not set</Text>}
                                 </View>
                             </View>
                             <View>
