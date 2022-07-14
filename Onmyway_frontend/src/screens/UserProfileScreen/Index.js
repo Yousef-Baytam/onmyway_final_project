@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Image } from 'react-native';
+import StarRating from '../../components/StarRating';
 import { useUser } from '../../context/UserContext';
 
 export default function UserProfile({ navigation }) {
@@ -8,7 +9,7 @@ export default function UserProfile({ navigation }) {
         <View style={styles.container}>
             <View style={styles.imageView}>
                 <Image style={styles.image} source={require('../../assets/blank-profile.webp')} />
-                {/* <StarRating/> */}
+                <StarRating />
             </View>
             <View>
                 <View>
