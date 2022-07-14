@@ -1,5 +1,6 @@
 const User = require("../Models/user")
 const Report = require('../Models/reports')
+const { uploadImage } = require("../Utils/cloudinary")
 
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params
@@ -19,6 +20,13 @@ module.exports.updateUser = async (req, res, next) => {
         'adress': req.body.adress,
     }, { new: true, runValidators: true })
     return res.send({ "success": true, "results": update })
+}
+
+module.exports.updateImage = async (req, res, next) => {
+    const user = req.user
+    const resUrl = await uploadImage(req.image)
+    console.log(resUrl)
+    // return res.send({ "success": true, "results": update })
 }
 
 module.exports.blockUser = async (req, res, next) => {
