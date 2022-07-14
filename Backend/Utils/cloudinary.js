@@ -12,6 +12,10 @@ module.exports.uploadImage = async (imagePath) => {
         use_filename: true,
         unique_filename: false,
         overwrite: true,
+        width: 250,
+        height: 250,
+        gravity: "faces",
+        crop: "fill"
     };
 
     try {
