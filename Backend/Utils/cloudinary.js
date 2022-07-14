@@ -27,4 +27,13 @@ module.exports.uploadImage = async (imagePath) => {
     } catch (error) {
         console.error(error)
     }
+}
+
+module.exports.deleteImage = async (public_id) => {
+    try {
+        const result = await cloudinary.uploader.destroy(public_id)
+        return result
+    } catch (error) {
+        console.error(error)
+    }
 };
