@@ -5,14 +5,13 @@ import { useUser } from '../../context/UserContext';
 
 export default function UserProfile({ navigation }) {
     const { user } = useUser()
-    const [rating, setRating] = useState(null)
-    console.log(user)
+    const [rating, setRating] = useState(Math.round(user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length))
 
     return (
         <View style={styles.container}>
             <View style={styles.imageView}>
                 <Image style={styles.image} source={require('../../assets/blank-profile.webp')} />
-                <StarRating />
+                <StarRating rating={rating} display={true} />
             </View>
             <View>
                 <View>
