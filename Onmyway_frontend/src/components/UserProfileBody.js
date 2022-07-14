@@ -1,9 +1,10 @@
 import { StyleSheet, View, Text } from 'react-native';
+import UserName from './UserName';
 
 export default function UserProfileBody({ user }) {
     return (
         <View style={styles.container}>
-            {/* <UserName/> */}
+            <UserName text={user.username} />
             {/* <UserEmail/> */}
             {/* <UserPhone/> */}
             {/* <UserGender/> */}
