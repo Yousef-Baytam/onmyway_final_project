@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        paddingVertical: 10
     },
     keyStyle: {
         width: '35%',
