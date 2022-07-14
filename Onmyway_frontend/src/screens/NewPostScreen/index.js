@@ -23,7 +23,7 @@ export default function NewPost({ navigation }) {
     const [availableSeats, setAvailableSeats] = useState('3')
     const [preferredGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
-    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences.length > 0 ? user.musicPrefrences : 'Any')
+    const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences || 'Any')
 
     const handleAddPost = async () => {
         try {
