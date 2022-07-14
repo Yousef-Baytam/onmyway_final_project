@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
 
     },
     imageView: {
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         height: 180,
         elevation: 5,
         borderRadius: 100,
+        marginTop: 20
     },
     image: {
         borderRadius: 100,
@@ -69,6 +70,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         width: '100%',
-        marginTop: 20
+        marginVertical: 20
     }
 });
