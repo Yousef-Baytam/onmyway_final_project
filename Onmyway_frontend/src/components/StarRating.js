@@ -2,7 +2,7 @@ import { Rating } from 'react-native-ratings';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { useState } from 'react';
 
-export default function StarRating({ }) {
+export default function StarRating({ rating, display }) {
     const onFinishRating = (e) => {
         console.log(e)
     }
@@ -28,4 +28,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 });
+
+StarRating.defaultProps = {
+    display: false,
+    rating: 3.5
+}
 
