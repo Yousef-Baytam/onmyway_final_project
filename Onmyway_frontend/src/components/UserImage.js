@@ -1,6 +1,7 @@
 import { StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { updateImage } from '../controllers/userController';
 
 export default function UserImage({ image, setImage }) {
 
@@ -23,7 +24,6 @@ export default function UserImage({ image, setImage }) {
             aspect: [4, 4],
             quality: 1,
         })
-        console.log(result)
 
         if (!result.cancelled) {
             handleImageUpload(result.uri)
