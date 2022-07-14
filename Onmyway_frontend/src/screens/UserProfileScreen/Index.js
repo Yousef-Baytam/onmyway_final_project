@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
@@ -18,9 +19,9 @@ export default function UserProfile({ navigation }) {
                 <UserProfileBody user={user} />
             </View>
             <View>
-                <View>
-                    {/* RidesOffered RN */}
-                    {/* RidesJoined RN*/}
+                <View style={styles.ridesRn}>
+                    <PressableText text={'Rides Offered'} />
+                    <PressableText text={'Rides Joined'} />
                 </View>
                 <View>
                     {/* RidesOffered history*/}
@@ -58,5 +59,10 @@ const styles = StyleSheet.create({
     userContainer: {
         width: '90%',
         height: 220
+    },
+    ridesRn: {
+        width: '40%',
+        height: 50,
+        flexDirection: 'row'
     }
 });
