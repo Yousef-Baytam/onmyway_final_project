@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import StarRating from '../../components/StarRating';
 import { useUser } from '../../context/UserContext';
 
 export default function UserProfile({ navigation }) {
     const { user } = useUser()
+    const [rating, setRating] = useState(null)
+    console.log(user)
 
     return (
         <View style={styles.container}>

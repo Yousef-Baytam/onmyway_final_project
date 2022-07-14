@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { useState } from 'react';
 
 export default function StarRating({ }) {
-    const [rating, setRating] = useState(null)
-
     const onFinishRating = (e) => {
         console.log(e)
     }
@@ -12,6 +10,8 @@ export default function StarRating({ }) {
     return (
         <View style={styles.container}>
             <Rating
+                fractions={2}
+                jumpValue={0.5}
                 ratingColor='#A1CCE4'
                 onFinishRating={onFinishRating}
                 style={{ paddingVertical: 10 }}
