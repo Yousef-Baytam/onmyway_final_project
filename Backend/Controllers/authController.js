@@ -16,7 +16,6 @@ module.exports.login = (req, res) => {
 
 module.exports.me = async (req, res) => {
     const reviews = await Review.find({ 'reviewed': req.user.id })
-    console.log(reviews)
     req.user = { ...req.user._doc, reviews }
     res.send({ 'user': req.user })
 }
