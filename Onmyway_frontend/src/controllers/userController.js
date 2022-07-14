@@ -13,3 +13,5 @@ const updateImage = async (data) => {
         console.log(e);
     }
 }
+
+export { updateImage }

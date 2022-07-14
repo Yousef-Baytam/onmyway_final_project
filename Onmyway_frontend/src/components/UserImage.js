@@ -3,6 +3,18 @@ import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function UserImage({ image, setImage }) {
+
+    const handleImageUpload = async (image) => {
+        try {
+            const res = await updateImage(image)
+            setImage(result.uri)
+            console.log(res)
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -14,7 +26,7 @@ export default function UserImage({ image, setImage }) {
         console.log(result)
 
         if (!result.cancelled) {
-            setImage(result.uri)
+            handleImageUpload(result.uri)
         }
     }
 
