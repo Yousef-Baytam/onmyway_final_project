@@ -23,7 +23,6 @@ module.exports.uploadImage = async (imagePath) => {
 
     try {
         const result = await cloudinary.uploader.upload(base64, options)
-        console.log(result)
         return result
     } catch (error) {
         console.error(error)
