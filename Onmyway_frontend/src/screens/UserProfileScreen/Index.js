@@ -4,17 +4,19 @@ import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
+import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
 
 export default function UserProfile({ navigation }) {
     const { user } = useUser()
+    const [image, setImage] = useState(user.image || null);
     const [rating, setRating] = useState(Math.round(user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length))
 
     return (
         <View style={styles.container}>
             <View style={styles.imageView}>
-                <Image style={styles.image} source={require('../../assets/blank-profile.webp')} />
+                <UserImage image={image} setImage={setImage} />
             </View>
             <StarRating rating={rating} display={true} />
             <View style={styles.userContainer}>
@@ -55,11 +57,6 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 100,
         marginTop: 20
-    },
-    image: {
-        borderRadius: 100,
-        width: '100%',
-        height: '100%',
     },
     userContainer: {
         width: '90%',

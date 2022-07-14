@@ -1,15 +1,17 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-export default function UserImage({ user }) {
+export default function UserImage({ image, setImage }) {
     return (
-        <View style={styles.container}>
-
-        </View >
+        <>
+            <Image style={styles.image} source={require('../assets/blank-profile.webp')} />
+        </>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    image: {
+        borderRadius: 100,
         width: '100%',
         height: '100%',
     },
