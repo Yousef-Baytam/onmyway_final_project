@@ -8,7 +8,7 @@ export default function UserImage({ image, setImage }) {
     const handleImageUpload = async (image) => {
         try {
             const res = await updateImage(image)
-            setImage(result.uri)
+            setImage(image.uri)
             console.log(res)
         } catch (e) {
             console.log(e)
@@ -26,7 +26,7 @@ export default function UserImage({ image, setImage }) {
         })
 
         if (!result.cancelled) {
-            handleImageUpload(result.uri)
+            handleImageUpload(result)
         }
     }
 

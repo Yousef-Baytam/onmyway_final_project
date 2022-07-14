@@ -24,9 +24,8 @@ module.exports.updateUser = async (req, res, next) => {
 
 module.exports.updateImage = async (req, res, next) => {
     const user = req.user
-    const resUrl = await uploadImage(req.image)
-    console.log(resUrl)
-    // return res.send({ "success": true, "results": update })
+    const resUrl = await uploadImage(req.body.base64)
+    return res.send({ "success": true, "results": resUrl })
 }
 
 module.exports.blockUser = async (req, res, next) => {

@@ -17,17 +17,15 @@ module.exports.uploadImage = async (imagePath) => {
         use_filename: true,
         unique_filename: false,
         overwrite: true,
-        width: 250,
-        height: 250,
-        gravity: "faces",
-        crop: "fill"
     };
 
+    const base64 = `data:image/png;base64,${ imagePath }`
+
     try {
-        const result = await cloudinary.uploader.upload(imagePath, options);
-        console.log(result);
-        return result.public_id;
+        const result = await cloudinary.uploader.upload(base64, options)
+        console.log(result)
+        return result
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
 };
