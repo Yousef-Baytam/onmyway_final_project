@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
 import UserProfileBody from '../../components/UserProfileBody';
@@ -29,8 +30,8 @@ export default function UserProfile({ navigation }) {
                 </View>
             </View>
             <View>
-                <View>
-                    {/* Button */}
+                <View style={styles.buttonContainer}>
+                    <CustomButton text={'My Reviews'} />
                 </View>
             </View>
         </View >
@@ -65,5 +66,9 @@ const styles = StyleSheet.create({
         width: '40%',
         height: 50,
         flexDirection: 'row'
+    },
+    buttonContainer: {
+        width: '100%',
+        marginTop: 20
     }
 });
