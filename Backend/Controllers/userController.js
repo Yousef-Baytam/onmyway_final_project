@@ -1,6 +1,6 @@
 const User = require("../Models/user")
 const Report = require('../Models/reports')
-const { uploadImage } = require("../Utils/cloudinary")
+const { uploadImage, deleteImage } = require("../Utils/cloudinary")
 
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params
@@ -24,6 +24,7 @@ module.exports.updateUser = async (req, res, next) => {
 
 module.exports.updateImage = async (req, res, next) => {
     const user = req.user
+    const toBeDeleted = user.image.public_id
     const resUrl = await uploadImage(req.body.base64)
     const update = await User.findByIdAndUpdate(user.id, {
         'image': {
@@ -31,6 +32,7 @@ module.exports.updateImage = async (req, res, next) => {
             public_id: resUrl.public_id,
         }
     }, { new: true })
+    const del = await deleteImage(toBeDeleted)
     return res.send({ "success": true, "results": update })
 }
 
