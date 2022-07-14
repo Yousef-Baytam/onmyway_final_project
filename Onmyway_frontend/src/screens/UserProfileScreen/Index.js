@@ -6,8 +6,35 @@ export default function UserProfile({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <View>
+            <View style={styles.imageView}>
                 <Image source={require('../../assets/blank-profile.webp')} />
+                {/* <StarRating/> */}
+            </View>
+            <View>
+                <View>
+                    {/* <UserName/> */}
+                    {/* <UserEmail/> */}
+                    {/* <UserPhone/> */}
+                    {/* <UserGender/> */}
+                    {/* <UserDob/> */}
+                    {/* <UserCar/> */}
+                    {/* <MusicPrefrence/> */}
+                </View>
+            </View>
+            <View>
+                <View>
+                    {/* RidesOffered RN */}
+                    {/* RidesJoined RN*/}
+                </View>
+                <View>
+                    {/* RidesOffered history*/}
+                    {/* RidesJoined history*/}
+                </View>
+            </View>
+            <View>
+                <View>
+                    {/* Button */}
+                </View>
             </View>
         </View >
     );
@@ -20,4 +47,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    imageView: {
+        width: '40%',
+        height: '40%'
+    }
 });
