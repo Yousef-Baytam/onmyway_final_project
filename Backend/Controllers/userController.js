@@ -26,7 +26,10 @@ module.exports.updateImage = async (req, res, next) => {
     const user = req.user
     const resUrl = await uploadImage(req.body.base64)
     const update = await User.findByIdAndUpdate(user.id, {
-        'image': resUrl.url,
+        'image': {
+            url: resUrl.url,
+            public_id: resUrl.public_id,
+        }
     }, { new: true })
     return res.send({ "success": true, "results": update })
 }
