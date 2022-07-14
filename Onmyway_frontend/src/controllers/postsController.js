@@ -1,17 +1,11 @@
 import axios from 'axios'
-import { url } from '../constants/vars'
-import storage from "../storage/asyncStorage";
 
 const addPost = async (data) => {
     try {
-        const token = await storage.load({ key: 'token' })
         let res = await axios({
-            url: `${ url }/post/new`,
+            url: `/post/new`,
             method: "POST",
             data: data,
-            headers: {
-                Authorization: `bearer ${ token }`
-            }
         })
         return res.data
     }
@@ -22,13 +16,9 @@ const addPost = async (data) => {
 
 const getPost = async () => {
     try {
-        const token = await storage.load({ key: 'token' })
         let res = await axios({
-            url: `${ url }/post/`,
+            url: `/post/`,
             method: "GET",
-            headers: {
-                Authorization: `bearer ${ token }`
-            }
         })
         return res.data
     }
