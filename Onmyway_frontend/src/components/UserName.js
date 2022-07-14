@@ -16,13 +16,19 @@ export default function UserName({ text }) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        width: '95%',
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingHorizontal: 20
     },
     key: {
-
+        width: '35%',
+        paddingLeft: 10
+    },
+    value: {
+        width: '65%',
+        paddingLeft: 10
     }
 });
 
