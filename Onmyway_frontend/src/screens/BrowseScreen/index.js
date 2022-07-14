@@ -31,6 +31,7 @@ export default function Browse({ navigation }) {
                 data={posts}
                 renderItem={({ item }) => (<PostCard data={item} />)}
                 showsVerticalScrollIndicator={false}
+                keyExtractor={(item, index) => item._id}
                 style={{ width: '100%', marginLeft: 42 }}
                 refreshControl={
                     <RefreshControl
