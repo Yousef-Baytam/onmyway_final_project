@@ -1,10 +1,12 @@
 import { StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function UserImage({ image, setImage }) {
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
+            base64: true,
             allowsEditing: true,
             aspect: [4, 4],
             quality: 1,
@@ -18,7 +20,9 @@ export default function UserImage({ image, setImage }) {
 
     return (
         <>
-            <Image style={styles.image} source={require('../assets/blank-profile.webp')} />
+            <Pressable onPress={pickImage}>
+                <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
+            </Pressable>
         </>
     );
 }
