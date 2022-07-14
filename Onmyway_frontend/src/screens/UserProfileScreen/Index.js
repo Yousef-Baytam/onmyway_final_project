@@ -23,9 +23,9 @@ export default function UserProfile({ navigation }) {
                     <PressableText text={'Rides Offered'} />
                     <PressableText text={'Rides Joined'} />
                 </View>
-                <View>
-                    {/* RidesOffered history*/}
-                    {/* RidesJoined history*/}
+                <View style={styles.ridesRn}>
+                    <PressableText text={'Rides Offered'} />
+                    <PressableText text={'Rides Joined'} />
                 </View>
             </View>
             <View>
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     },
     userContainer: {
         width: '90%',
-        height: 220
+        height: 220,
+        marginBottom: 20
     },
     ridesRn: {
         width: '40%',
