@@ -1,14 +1,14 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function UserName({ text }) {
+export default function BodyElement({ keyWord, value }) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.key}>
-                <Text>Username</Text>
+            <View style={styles.keyStyle}>
+                <Text>{keyWord}</Text>
             </View>
-            <View style={styles.value}>
-                <Text>{text}</Text>
+            <View style={styles.valueStyle}>
+                <Text>{value}</Text>
             </View>
         </View>
     );
@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 20
     },
-    key: {
+    keyStyle: {
         width: '35%',
         paddingLeft: 10
     },
-    value: {
+    valueStyle: {
         width: '65%',
         paddingLeft: 10
     }
