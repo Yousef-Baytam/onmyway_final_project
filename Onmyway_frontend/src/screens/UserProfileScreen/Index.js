@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
@@ -19,14 +20,16 @@ export default function UserProfile({ navigation }) {
             <View style={styles.userContainer}>
                 <UserProfileBody user={user} />
             </View>
-            <View>
+            <View style={{ justifyContent: 'center', width: '100%' }}>
                 <View style={styles.ridesRn}>
                     <PressableText text={'Rides Offered'} />
                     <PressableText text={'Rides Joined'} />
                 </View>
                 <View style={styles.ridesRn}>
+                    <HistoryIcon />
                     <PressableText text={'Rides Offered'} />
                     <PressableText text={'Rides Joined'} />
+                    <HistoryIcon />
                 </View>
             </View>
             <View>
@@ -64,9 +67,11 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     ridesRn: {
-        width: '40%',
+        width: '100%',
         height: 50,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     buttonContainer: {
         width: '100%',

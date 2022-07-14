@@ -13,7 +13,7 @@ export default function PressableText({ text, action }) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        width: '30%',
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',

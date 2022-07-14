@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function EmailIcon() {
+export default function HistoryIcon() {
 
     return (
         <Svg
