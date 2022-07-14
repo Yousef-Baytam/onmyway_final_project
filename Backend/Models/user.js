@@ -39,7 +39,7 @@ const UserSchema = new Schema({
         }
     }],
     musicPrefrences: {
-        type: [String]
+        type: String
     },
     dob: {
         type: Date,

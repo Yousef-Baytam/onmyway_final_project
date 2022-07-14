@@ -11,7 +11,7 @@ export default function UserProfileBody({ user }) {
             <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} />
             <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} />
             <BodyElement keyWord={'Car'} value={user.car || 'None'} />
-            <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences.length != 0 ? user.musicPrefrences : 'Any'} />
+            <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} />
         </View >
     );
 }
