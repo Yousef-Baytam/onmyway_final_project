@@ -2,7 +2,6 @@ import { StyleSheet, View, Text, TextInput } from 'react-native';
 import RadioButtonList from './RadioButtonList'
 
 export default function PreferredGenderPicker({ text, value, setValue, items, display }) {
-    console.log(value)
     return (
         <View style={styles.container}>
             <View style={styles.view}>
