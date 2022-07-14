@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
     },
     userContainer: {
         width: '90%',
-        height: 200
+        height: 250
     }
 });
