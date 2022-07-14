@@ -9,7 +9,6 @@ export default function UserImage({ image, setImage }) {
         try {
             const res = await updateImage(image)
             setImage(image.uri)
-            console.log(res)
         } catch (e) {
             console.log(e)
         }
