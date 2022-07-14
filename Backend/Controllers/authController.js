@@ -1,3 +1,4 @@
+const Review = require('../Models/review')
 const User = require('../Models/user')
 const jwt = require('../Utils/jwtGen')
 
@@ -13,7 +14,10 @@ module.exports.login = (req, res) => {
     res.send({ 'response': 'success', "user": req.user, "token": token })
 }
 
-module.exports.me = (req, res) => {
+module.exports.me = async (req, res) => {
+    const reviews = await Review.find({ 'reviewed': req.user.id })
+    console.log(reviews)
+    req.user = { ...req.user._doc, reviews }
     res.send({ 'user': req.user })
 }
 
