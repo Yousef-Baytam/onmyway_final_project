@@ -7,7 +7,7 @@ export default function UserProfile({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.imageView}>
-                <Image source={require('../../assets/blank-profile.webp')} />
+                <Image style={styles.image} source={require('../../assets/blank-profile.webp')} />
                 {/* <StarRating/> */}
             </View>
             <View>
@@ -48,7 +48,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imageView: {
-        width: '40%',
-        height: '40%'
-    }
+        width: 200,
+        height: 200,
+        elevation: 5,
+        borderRadius: 100,
+    },
+    image: {
+        borderRadius: 100,
+        width: '100%',
+        height: '100%',
+    },
 });
