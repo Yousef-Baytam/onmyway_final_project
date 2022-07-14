@@ -9,14 +9,14 @@ import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
 
 export default function UserProfile({ navigation }) {
-    const { user } = useUser()
+    const { user, handleUser } = useUser()
     const [image, setImage] = useState(user.image || null);
     const [rating, setRating] = useState(Math.round(user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length))
 
     return (
         <View style={styles.container}>
             <View style={styles.imageView}>
-                <UserImage image={image} setImage={setImage} />
+                <UserImage image={image} setImage={setImage} handleUser={handleUser} />
             </View>
             <StarRating rating={rating} display={true} />
             <View style={styles.userContainer}>

@@ -3,12 +3,13 @@ import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
 
-export default function UserImage({ image, setImage }) {
+export default function UserImage({ image, setImage, handleUser }) {
 
     const handleImageUpload = async (image) => {
         try {
             const res = await updateImage(image)
             setImage(image.uri)
+            handleUser(res.results)
         } catch (e) {
             console.log(e)
         }
