@@ -1,7 +1,8 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
+import PressableText from './PressableText';
 
 export default function UserImage({ image, setImage, handleUser }) {
 
@@ -35,6 +36,9 @@ export default function UserImage({ image, setImage, handleUser }) {
             <Pressable onPress={pickImage}>
                 <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
             </Pressable>
+            <View>
+                <PressableText text={'Hello'} />
+            </View>
         </>
     );
 }
