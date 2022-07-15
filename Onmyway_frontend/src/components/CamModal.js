@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal, Text, Dimensions, Image } from 'react-native';
+import { StyleSheet, View, Modal, Text, Dimensions, Image, ActivityIndicator } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
 import { useEffect, useRef, useState } from 'react';
@@ -14,6 +14,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
     const [camReady, setCamReady] = useState(false);
     const [showPic, setShowPic] = useState(false)
     const [currPic, setCurrPic] = useState(null)
+    const [loading, setLoading] = useState(false)
     const { width } = Dimensions.get('window');
     const navigation = useNavigation()
 
@@ -37,6 +38,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
     }
 
     const takePic = async () => {
+        setLoading(true)
         try {
             let pic = await camRef.current.takePictureAsync({
                 allowsEditing: true,
@@ -44,6 +46,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                 quality: 0.2,
                 base64: true,
             })
+            await camRef.current.pausePreview()
             setCurrPic(pic)
             setShowPic(true)
         }
@@ -68,7 +71,10 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                             <Image source={{ uri: currPic.uri }} style={[styles.camera, { width: width, height: height }]} />
                             <View style={styles.buttonContainer}>
                                 <View style={styles.button}>
-                                    <CustomButton text={'Upload Image'} action={() => { handleImageUpload(currPic); navigation.dispatch(CommonActions.goBack()) }} custom={{ width: '100%' }} />
+                                    <CustomButton text={'Upload Image'} action={() => {
+                                        handleImageUpload(currPic);
+                                        navigation.dispatch(CommonActions.goBack())
+                                    }} custom={{ width: '100%' }} />
                                 </View>
                                 <View style={styles.button}>
                                     <Pressable onPress={() => {
@@ -84,7 +90,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                             <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
                             </Camera>
                             <View style={styles.buttonContainer}>
-                                <View style={styles.button}>
+                                <View style={[styles.button, { marginTop: 20 }]}>
                                     <Pressable
                                         style={styles.button}
                                         onPress={() => {
@@ -93,14 +99,17 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                                         <RepeatIcon />
                                     </Pressable>
                                 </View>
-                                <View style={styles.button}>
-                                    {
-                                        camReady &&
-                                        <Pressable onPress={takePic}>
-                                            <CameraIcon />
-                                        </Pressable>
-                                    }
-                                </View>
+                                {loading ?
+                                    <ActivityIndicator style={styles.button} color={'#005A9C'} size={'large'} />
+                                    :
+                                    <View style={styles.button}>
+                                        {
+                                            camReady &&
+                                            <Pressable onPress={takePic}>
+                                                <CameraIcon />
+                                            </Pressable>
+                                        }
+                                    </View>}
                                 <View style={styles.button}>
                                     <CustomButton text={'cancel'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
                                 </View>
