@@ -3,7 +3,7 @@ import DatePicker from './DatePicker';
 import PhoneCustomInput from './PhoneCustomInput';
 import RadioButtonList from './RadioButtonList';
 
-export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue, gender, date }) {
+export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue, editDisplay }) {
 
     return (
         <View style={styles.container}>
@@ -15,11 +15,11 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                     editMode ?
                         editType == 'input' ?
                             <TextInput style={styles.input}
-                                value={value}
+                                value={editDisplay}
                                 onChangeText={setValue}
                                 keyboardType={keyboard} />
                             : editType == 'phone' ?
-                                <PhoneCustomInput phone={value} setPhone={setValue} custom={{
+                                <PhoneCustomInput phone={editDisplay} setPhone={setValue} custom={{
                                     width: '100%',
                                     borderBottomWidth: 0,
                                     borderColor: 'rgba(0,0,0, 0.7)',
@@ -29,7 +29,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                     paddingLeft: 0
                                 }} />
                                 : editType == 'gender' ?
-                                    <RadioButtonList checked={gender} setChecked={setValue} custom={{
+                                    <RadioButtonList checked={editDisplay} setChecked={setValue} custom={{
                                         width: '100%',
                                         borderBottomWidth: 0,
                                         borderColor: 'rgba(0,0,0, 0.7)',
@@ -38,7 +38,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         flexDirection: "row",
                                         alignItems: 'center',
                                     }} AuthInput={false} />
-                                    : <DatePicker date={date} setDate={setValue} placeholder={value} custom={{
+                                    : <DatePicker date={editDisplay} setDate={setValue} placeholder={value} custom={{
                                         width: '100%',
                                         borderColor: 'rgba(0,0,0, 0.7)',
                                         marginBottom: 0,
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
 
 BodyElement.defaultProps = {
     keyboard: 'default',
-    gender: null,
-    date: null
+    editDisplay: null
 }
 
