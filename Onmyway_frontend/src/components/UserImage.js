@@ -3,8 +3,10 @@ import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
 import PressableText from './PressableText';
+import { useState } from 'react';
 
 export default function UserImage({ image, setImage, handleUser }) {
+    const [visible, setVisible] = useState(false)
 
     const handleImageUpload = async (image) => {
         try {
@@ -14,6 +16,9 @@ export default function UserImage({ image, setImage, handleUser }) {
         } catch (e) {
             console.log(e)
         }
+    }
+
+    const toggleImageBox = () => {
 
     }
 
@@ -33,13 +38,12 @@ export default function UserImage({ image, setImage, handleUser }) {
 
     return (
         <>
-            <Pressable onPress={pickImage}>
+            <Pressable onPress={toggleImageBox}>
                 <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
             </Pressable>
             <View style={styles.imageViewBox}>
-                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
-                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
-                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
+                <PressableText text={'Hello'} custom={{ width: '100%', height: '40%' }} />
+                <PressableText text={'Hello'} custom={{ width: '100%', height: '40%' }} />
             </View>
         </>
     );
