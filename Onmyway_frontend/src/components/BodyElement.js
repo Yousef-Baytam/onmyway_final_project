@@ -38,7 +38,14 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         flexDirection: "row",
                                         alignItems: 'center',
                                     }} AuthInput={false} />
-                                    : <DatePicker date={date} setDate={setValue} placeholder={value} />
+                                    : <DatePicker date={date} setDate={setValue} placeholder={value} custom={{
+                                        width: '100%',
+                                        borderColor: 'rgba(0,0,0, 0.7)',
+                                        marginBottom: 0,
+                                        marginTop: 0,
+                                        paddingLeft: 0,
+                                        paddingBottom: 0
+                                    }} AuthInput={false} />
                         : <Text>{value}</Text>
                 }
 
