@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import PhoneCustomInput from './PhoneCustomInput';
+import RadioButtonList from './RadioButtonList';
 
 export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue }) {
 
@@ -26,7 +27,9 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                     marginTop: 0,
                                     paddingLeft: 0
                                 }} />
-                                : null
+                                : editType == 'gender' ?
+                                    <RadioButtonList />
+                                    : null
                         : <Text>{value}</Text>
                 }
 
