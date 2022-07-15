@@ -48,6 +48,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
             })
             await camRef.current.pausePreview()
             setCurrPic(pic)
+            setLoading(false)
             setShowPic(true)
         }
         catch (e) {
