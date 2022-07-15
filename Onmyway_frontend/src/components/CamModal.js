@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal, Text } from 'react-native';
+import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
 import { useEffect, useState } from 'react';
@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 export default function CamModal({ modalVisible, setModalVisible }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(CameraType.back);
+    const { width } = Dimensions.get('window');
+    let height = 4 / 3 * width
 
     useEffect(() => {
         (async () => {
@@ -33,20 +35,20 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                 }}
             >
                 <View style={styles.container}>
-                    <Camera style={styles.camera} type={type}>
-                        <View style={styles.buttonContainer}>
-                            <Pressable
-                                style={styles.button}
-                                onPress={() => {
-                                    setType(type === CameraType.back ? CameraType.front : CameraType.back);
-                                }}>
-                                <Text style={styles.text}> Flip </Text>
-                            </Pressable>
-                        </View>
+                    <Camera style={[styles.camera, { width: width, height: height }]} type={type}>
                     </Camera>
+                    <View style={styles.buttonContainer}>
+                        <Pressable
+                            style={styles.button}
+                            onPress={() => {
+                                setType(type === CameraType.back ? CameraType.front : CameraType.back);
+                            }}>
+                            <Text style={styles.text}> Flip </Text>
+                        </Pressable>
+                    </View>
                 </View>
-            </Modal>
-        </View>
+            </Modal >
+        </View >
     );
 }
 
@@ -62,8 +64,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center'
     },
-    camera: {
-        height: 400,
-        width: '100%'
+    buttonContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
