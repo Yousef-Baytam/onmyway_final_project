@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
 import { useEffect, useState } from 'react';
@@ -23,7 +23,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
     }
 
     return (
-        <View>
+        <View style={styles.modalConatiner}>
             <Modal
                 animationType="slide"
                 transparent={false}
@@ -32,11 +32,38 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                     setModalVisible(!modalVisible)
                 }}
             >
+                <View style={styles.container}>
+                    <Camera style={styles.camera} type={type}>
+                        <View style={styles.buttonContainer}>
+                            <Pressable
+                                style={styles.button}
+                                onPress={() => {
+                                    setType(type === CameraType.back ? CameraType.front : CameraType.back);
+                                }}>
+                                <Text style={styles.text}> Flip </Text>
+                            </Pressable>
+                        </View>
+                    </Camera>
+                </View>
             </Modal>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    modalConatiner: {
+        height: '100%',
+        width: '100%',
 
+    },
+    container: {
+        height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    camera: {
+        height: 400,
+        width: '100%'
+    }
 })
