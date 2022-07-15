@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View } from 'react-native';
+import { StyleSheet, Image, View, Modal, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function UserImage({ image, setImage, handleUser }) {
     const [visible, setVisible] = useState(false)
     const [coordinates, setCoordinates] = useState({})
+    const [modalVisible, setModalVisible] = useState(false)
 
     const handleImageUpload = async (image) => {
         try {
@@ -47,9 +48,21 @@ export default function UserImage({ image, setImage, handleUser }) {
                 visible &&
                 <View style={[styles.imageViewBox, coordinates]}>
                     <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
-                    <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} />
+                    <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
                 </View>
             }
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.")
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                </Modal>
+            </View>
         </>
     );
 }
