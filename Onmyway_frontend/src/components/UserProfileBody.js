@@ -20,10 +20,15 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} />
             </ScrollView>
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
-                <Pressable onPress={() => setEditMode(true)} android_ripple={{ color: '#002C4D', borderless: true }}>
-                    <EditPenIcon />
-                    <CancelIcon />
-                </Pressable>
+                {
+                    editMode ? <Pressable onPress={() => setEditMode(false)}>
+                        <CancelIcon />
+                    </Pressable> : <Pressable onPress={() => setEditMode(true)}>
+                        <EditPenIcon />
+                    </Pressable>
+                }
+
+
             </View>
         </View >
     );
