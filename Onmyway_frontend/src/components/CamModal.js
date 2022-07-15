@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Modal, Text, Dimensions, Image } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
 import { useEffect, useRef, useState } from 'react';
@@ -10,7 +10,9 @@ export default function CamModal({ modalVisible, setModalVisible }) {
     const [type, setType] = useState(CameraType.back);
     const [camReady, setCamReady] = useState(false);
     const [showPic, setShowPic] = useState(false)
+    const [currPic, setCurrPic] = useState(null)
     const { width } = Dimensions.get('window');
+
     let height = 4 / 3 * width
 
     const camRef = useRef(null)
@@ -37,7 +39,8 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                 quality: 1,
                 base64: true,
             })
-            set
+            setCurrPic(pic)
+            setShowPic(true)
         }
         catch (e) {
             console.log(e)
@@ -57,7 +60,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                 {
                     showPic ?
                         <View style={styles.buttonContainer}>
-
+                            <Image source={{ uri: currPic.uri }} style={[styles.camera, { width: width, height: height }]} />
                         </View> :
                         <View style={styles.container}>
                             <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
