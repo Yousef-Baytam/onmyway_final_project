@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
-export default function BodyElement({ keyWord, value, editMode, editType, keyboard }) {
+export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue }) {
 
     return (
         <View style={styles.container}>
@@ -40,6 +40,13 @@ const styles = StyleSheet.create({
     valueStyle: {
         width: '65%',
         paddingLeft: 10
+    },
+    input: {
+        height: 20
     }
 });
+
+BodyElement.defaultProps = {
+    keyboard: 'default'
+}
 
