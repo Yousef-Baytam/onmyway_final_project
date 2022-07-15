@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 export default function UserImage({ image, setImage, handleUser }) {
     const [visible, setVisible] = useState(false)
+    const [coordinates, setCoordinates] = useState({})
 
     const handleImageUpload = async (image) => {
         try {
@@ -18,8 +19,9 @@ export default function UserImage({ image, setImage, handleUser }) {
         }
     }
 
-    const toggleImageBox = () => {
-
+    const toggleImageBox = (e) => {
+        setVisible(!visible)
+        setCoordinates({ top: e.nativeEvent.locationY, left: e.nativeEvent.locationX })
     }
 
     const pickImage = async () => {
@@ -41,10 +43,13 @@ export default function UserImage({ image, setImage, handleUser }) {
             <Pressable onPress={toggleImageBox}>
                 <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
             </Pressable>
-            <View style={styles.imageViewBox}>
-                <PressableText text={'Hello'} custom={{ width: '100%', height: '40%' }} />
-                <PressableText text={'Hello'} custom={{ width: '100%', height: '40%' }} />
-            </View>
+            {
+                visible &&
+                <View style={[styles.imageViewBox, coordinates]}>
+                    <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
+                    <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} />
+                </View>
+            }
         </>
     );
 }
@@ -62,6 +67,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,
     }
 });
