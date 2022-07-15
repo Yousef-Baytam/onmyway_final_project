@@ -37,8 +37,9 @@ export default function UserImage({ image, setImage, handleUser }) {
                 <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
             </Pressable>
             <View style={styles.imageViewBox}>
-                <PressableText text={'Hello'} />
-                <PressableText text={'Hello'} />
+                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
+                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
+                <PressableText text={'Hello'} custom={{ width: '100%', height: '33%' }} />
             </View>
         </>
     );

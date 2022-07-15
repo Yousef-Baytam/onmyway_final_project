@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function PressableText({ text, action }) {
+export default function PressableText({ text, action, custom }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, custom]}>
             <Pressable onPress={action}>
                 <Text>{text}</Text>
             </Pressable>
@@ -19,3 +19,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+PressableText.defaultProps = {
+    custom: {}
+}
