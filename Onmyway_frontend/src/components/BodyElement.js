@@ -28,7 +28,15 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                     paddingLeft: 0
                                 }} />
                                 : editType == 'gender' ?
-                                    <RadioButtonList />
+                                    <RadioButtonList checked={value} setChecked={setValue} custom={{
+                                        width: '100%',
+                                        borderBottomWidth: 0,
+                                        borderColor: 'rgba(0,0,0, 0.7)',
+                                        paddingBottom: 0,
+                                        paddingLeft: 0,
+                                        flexDirection: "row",
+                                        alignItems: 'center',
+                                    }} AuthInput={false} />
                                     : null
                         : <Text>{value}</Text>
                 }

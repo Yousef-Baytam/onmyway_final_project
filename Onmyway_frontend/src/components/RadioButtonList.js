@@ -3,11 +3,11 @@ import { StyleSheet, View, Text } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 
-export default function RadioButtonList({ items, checked, setChecked, AuthInput }) {
+export default function RadioButtonList({ items, checked, setChecked, AuthInput, custom }) {
 
     const handleButtons = () => {
         return (
-            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 0, marginBottom: AuthInput ? 25 : 0, }]}>
+            <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 0, marginBottom: AuthInput ? 25 : 0, }, custom]}>
                 {items.map((i) => {
                     return (
                         <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center', height: 20 }}>
@@ -53,8 +53,9 @@ const styles = StyleSheet.create({
 RadioButtonList.defaultProps = {
     AuthInput: true,
     items: [
-        { label: 'Male', value: 'male' },
-        { label: 'Female', value: 'female' },
-        { label: 'Other', value: 'other' }
-    ]
+        { label: 'M', value: 'male' },
+        { label: 'F', value: 'female' },
+        { label: 'O', value: 'other' }
+    ],
+    custom: {}
 }

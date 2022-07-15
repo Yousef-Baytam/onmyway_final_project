@@ -12,7 +12,7 @@ export default function PhoneCustomInput({ setPhone, phone, custom }) {
             <PhoneInput
                 ref={phoneInput}
                 value={phone}
-                initialValue="+961"
+                initialValue={phone || '+961'}
                 onChangePhoneNumber={setPhone}
                 style={[styles.input, custom]}
                 autoFormat={true}
