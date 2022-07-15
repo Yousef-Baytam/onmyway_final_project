@@ -11,7 +11,7 @@ import { useUser } from '../../context/UserContext';
 export default function UserProfile({ navigation }) {
     const { user, handleUser } = useUser()
     const [image, setImage] = useState(user.image.url || null);
-    const [rating, setRating] = useState(Math.round(user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length))
+    const [rating, setRating] = useState(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
 
     return (
         <View style={styles.container}>
