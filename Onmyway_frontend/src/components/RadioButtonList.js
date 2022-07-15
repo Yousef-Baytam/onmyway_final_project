@@ -52,4 +52,9 @@ const styles = StyleSheet.create({
 
 RadioButtonList.defaultProps = {
     AuthInput: true,
+    items: [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+        { label: 'Other', value: 'other' }
+    ]
 }
