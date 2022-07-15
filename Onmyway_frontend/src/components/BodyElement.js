@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 
-export default function BodyElement({ keyWord, value }) {
+export default function BodyElement({ keyWord, value, editMode, editType, keyboard }) {
 
     return (
         <View style={styles.container}>
@@ -8,7 +8,17 @@ export default function BodyElement({ keyWord, value }) {
                 <Text>{keyWord}</Text>
             </View>
             <View style={styles.valueStyle}>
-                <Text>{value}</Text>
+                {
+                    editMode ?
+                        editType == 'input' ?
+                            <TextInput style={styles.input}
+                                value={value}
+                                onChangeText={setValue}
+                                keyboardType={keyboard} />
+                            : null
+                        : <Text>{value}</Text>
+                }
+
             </View>
         </View>
     );

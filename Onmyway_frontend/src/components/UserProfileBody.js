@@ -12,13 +12,13 @@ export default function UserProfileBody({ user }) {
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <BodyElement keyWord={'Username'} value={user.username} editMode={editMode} />
-                <BodyElement keyWord={'Email'} value={user.email} editMode={editMode} />
-                <BodyElement keyWord={'Phone'} value={user.phone} editMode={editMode} />
-                <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} editMode={editMode} />
-                <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} />
-                <BodyElement keyWord={'Car'} value={user.car || 'None'} editMode={editMode} />
-                <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} />
+                <BodyElement keyWord={'Username'} value={user.username} editMode={editMode} editType={'input'} />
+                <BodyElement keyWord={'Email'} value={user.email} editMode={editMode} editType={'input'} />
+                <BodyElement keyWord={'Phone'} value={user.phone} editMode={editMode} editType={'phone'} />
+                <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} editMode={editMode} editType={'gender'} />
+                <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} editType={'date'} />
+                <BodyElement keyWord={'Car'} value={user.car || 'None'} editMode={editMode} editType={'input'} />
+                <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} editType={'input'} />
             </ScrollView>
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
                 {
