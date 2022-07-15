@@ -1,6 +1,7 @@
 const User = require("../Models/user")
 const Report = require('../Models/reports')
 const { uploadImage, deleteImage } = require("../Utils/cloudinary")
+const Review = require('../Models/review')
 
 module.exports.getUser = async (req, res, next) => {
     const { id } = req.params
@@ -32,8 +33,10 @@ module.exports.updateImage = async (req, res, next) => {
             public_id: resUrl.public_id,
         }
     }, { new: true })
-    const del = await deleteImage(toBeDeleted)
-    return res.send({ "success": true, "results": update })
+    const reviews = await Review.find({ 'reviewed': user.id })
+    const newUser = { ...update._doc, reviews }
+    await deleteImage(toBeDeleted)
+    return res.send({ "success": true, "results": newUser })
 }
 
 module.exports.blockUser = async (req, res, next) => {
