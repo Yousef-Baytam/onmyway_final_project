@@ -31,7 +31,7 @@ export default function UserImage({ image, setImage, handleUser }) {
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             base64: true,
             allowsEditing: true,
-            aspect: [4, 3],
+            aspect: [4, 4],
             quality: 0.2,
         })
 
