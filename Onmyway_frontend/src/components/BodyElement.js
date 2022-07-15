@@ -46,7 +46,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         paddingLeft: 0,
                                         paddingBottom: 0
                                     }} AuthInput={false} />
-                        : <Text>{value}</Text>
+                        : <Text numberOfLines={1}>{value}</Text>
                 }
             </View>
         </View>
