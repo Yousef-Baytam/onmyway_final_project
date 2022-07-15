@@ -4,6 +4,7 @@ import moment from 'moment'
 import EditPenIcon from '../assets/icons/EditPenIcon'
 import { useState } from 'react';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import CancelIcon from '../assets/icons/CancelIcon';
 
 export default function UserProfileBody({ user }) {
     const [editMode, setEditMode] = useState(false)
@@ -21,6 +22,7 @@ export default function UserProfileBody({ user }) {
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
                 <Pressable onPress={() => setEditMode(true)} android_ripple={{ color: '#002C4D', borderless: true }}>
                     <EditPenIcon />
+                    <CancelIcon />
                 </Pressable>
             </View>
         </View >
