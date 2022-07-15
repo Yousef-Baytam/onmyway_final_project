@@ -1,11 +1,12 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import BodyElement from './BodyElement';
 import moment from 'moment'
+import EditPenIcon from '../assets/icons/EditPenIcon'
 
 export default function UserProfileBody({ user }) {
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <BodyElement keyWord={'Username'} value={user.username} />
                 <BodyElement keyWord={'Email'} value={user.email} />
                 <BodyElement keyWord={'Phone'} value={user.phone} />
@@ -14,6 +15,9 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Car'} value={user.car || 'None'} />
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} />
             </ScrollView>
+            <View style={{ position: 'absolute', right: 10, top: 10 }}>
+                <EditPenIcon />
+            </View>
         </View >
     );
 }
