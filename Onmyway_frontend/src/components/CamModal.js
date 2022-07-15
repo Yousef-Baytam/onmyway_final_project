@@ -6,14 +6,16 @@ import RepeatIcon from '../assets/icons/RepeatIcon'
 import CameraIcon from '../assets/icons/CameraIcon'
 import BackArrowIcon from '../assets/icons/BackArrowIcon'
 import CustomButton from './CustomButton';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
-export default function CamModal({ modalVisible, setModalVisible }) {
+export default function CamModal({ modalVisible, setModalVisible, handleImageUpload }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(CameraType.back);
     const [camReady, setCamReady] = useState(false);
     const [showPic, setShowPic] = useState(false)
     const [currPic, setCurrPic] = useState(null)
     const { width } = Dimensions.get('window');
+    const navigation = useNavigation()
 
     let height = 4 / 3 * width
 
@@ -39,7 +41,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
             let pic = await camRef.current.takePictureAsync({
                 allowsEditing: true,
                 aspect: [4, 3],
-                quality: 1,
+                quality: 0.2,
                 base64: true,
             })
             setCurrPic(pic)
@@ -66,7 +68,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                             <Image source={{ uri: currPic.uri }} style={[styles.camera, { width: width, height: height }]} />
                             <View style={styles.buttonContainer}>
                                 <View style={styles.button}>
-                                    <CustomButton text={'Upload Image'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
+                                    <CustomButton text={'Upload Image'} action={() => { handleImageUpload(currPic); navigation.dispatch(CommonActions.goBack()) }} custom={{ width: '100%' }} />
                                 </View>
                                 <View style={styles.button}>
                                     <Pressable onPress={() => {

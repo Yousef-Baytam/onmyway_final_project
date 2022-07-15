@@ -32,7 +32,7 @@ export default function UserImage({ image, setImage, handleUser }) {
             base64: true,
             allowsEditing: true,
             aspect: [4, 3],
-            quality: 1,
+            quality: 0.2,
         })
 
         if (!result.cancelled) {
@@ -52,7 +52,7 @@ export default function UserImage({ image, setImage, handleUser }) {
                     <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
                 </View>
             }
-            <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} />
+            <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
         </>
     );
 }
