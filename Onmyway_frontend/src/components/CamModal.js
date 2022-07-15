@@ -33,11 +33,11 @@ export default function CamModal({ modalVisible, setModalVisible }) {
     const takePic = async () => {
         try {
             let pic = await camRef.current.takePictureAsync({
-                aspect: [4, 3],
+                aspect: [4, 4],
                 quality: 1,
                 base64: true,
             })
-            console.log(pic)
+            set
         }
         catch (e) {
             console.log(e)
@@ -54,25 +54,31 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                     setModalVisible(!modalVisible)
                 }}
             >
-                <View style={styles.container}>
-                    <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
-                    </Camera>
-                    <View style={styles.buttonContainer}>
-                        <Pressable
-                            style={styles.button}
-                            onPress={() => {
-                                setType(type === CameraType.back ? CameraType.front : CameraType.back);
-                            }}>
-                            <RepeatIcon />
-                        </Pressable>
-                        {
-                            camReady &&
-                            <Pressable onPress={takePic}>
-                                <CameraIcon />
-                            </Pressable>
-                        }
-                    </View>
-                </View>
+                {
+                    showPic ?
+                        <View style={styles.buttonContainer}>
+
+                        </View> :
+                        <View style={styles.container}>
+                            <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
+                            </Camera>
+                            <View style={styles.buttonContainer}>
+                                <Pressable
+                                    style={styles.button}
+                                    onPress={() => {
+                                        setType(type === CameraType.back ? CameraType.front : CameraType.back);
+                                    }}>
+                                    <RepeatIcon />
+                                </Pressable>
+                                {
+                                    camReady &&
+                                    <Pressable onPress={takePic}>
+                                        <CameraIcon />
+                                    </Pressable>
+                                }
+                            </View>
+                        </View>
+                }
             </Modal >
         </View >
     );
