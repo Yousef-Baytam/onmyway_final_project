@@ -4,6 +4,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
 import PressableText from './PressableText';
 import { useState } from 'react';
+import CamModal from './CamModal';
 
 export default function UserImage({ image, setImage, handleUser }) {
     const [visible, setVisible] = useState(false)
@@ -51,18 +52,7 @@ export default function UserImage({ image, setImage, handleUser }) {
                     <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
                 </View>
             }
-            <View style={styles.centeredView}>
-                <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.")
-                        setModalVisible(!modalVisible);
-                    }}
-                >
-                </Modal>
-            </View>
+            <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} />
         </>
     );
 }
