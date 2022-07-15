@@ -9,6 +9,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(CameraType.back);
     const [camReady, setCamReady] = useState(false);
+    const [showPic, setShowPic] = useState(false)
     const { width } = Dimensions.get('window');
     let height = 4 / 3 * width
 
@@ -27,6 +28,20 @@ export default function CamModal({ modalVisible, setModalVisible }) {
 
     if (hasPermission === false) {
         return <Text>No access to camera</Text>;
+    }
+
+    const takePic = async () => {
+        try {
+            let pic = await camRef.current.takePictureAsync({
+                aspect: [4, 3],
+                quality: 1,
+                base64: true,
+            })
+            console.log(pic)
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
     return (
@@ -52,7 +67,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                         </Pressable>
                         {
                             camReady &&
-                            <Pressable>
+                            <Pressable onPress={takePic}>
                                 <CameraIcon />
                             </Pressable>
                         }
