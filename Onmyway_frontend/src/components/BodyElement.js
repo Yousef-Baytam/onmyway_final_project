@@ -17,7 +17,15 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                 onChangeText={setValue}
                                 keyboardType={keyboard} />
                             : editType == 'phone' ?
-                                <PhoneCustomInput phone={value} setPhone={setValue} custom />
+                                <PhoneCustomInput phone={value} setPhone={setValue} custom={{
+                                    width: '100%',
+                                    borderBottomWidth: 0,
+                                    borderColor: 'rgba(0,0,0, 0.7)',
+                                    paddingBottom: 0,
+                                    marginBottom: 0,
+                                    marginTop: 0,
+                                    paddingLeft: 0
+                                }} />
                                 : null
                         : <Text>{value}</Text>
                 }
