@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import PhoneInput from 'react-native-phone-input'
 
 
-export default function PhoneCustomInput({ setPhone, phone }) {
+export default function PhoneCustomInput({ setPhone, phone, custom }) {
 
     const phoneInput = useRef()
 
@@ -38,3 +38,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     }
 });
+
+PhoneCustomInput.defaultProps = {
+    custom: {}
+}

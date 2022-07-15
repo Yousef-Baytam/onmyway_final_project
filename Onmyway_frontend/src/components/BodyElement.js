@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import PhoneCustomInput from './PhoneCustomInput';
 
 export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue }) {
 
@@ -15,7 +16,9 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                 value={value}
                                 onChangeText={setValue}
                                 keyboardType={keyboard} />
-                            : null
+                            : editType == 'phone' ?
+                                <PhoneCustomInput phone={value} setPhone={setValue} custom />
+                                : null
                         : <Text>{value}</Text>
                 }
 
