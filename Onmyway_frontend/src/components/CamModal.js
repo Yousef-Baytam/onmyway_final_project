@@ -1,14 +1,18 @@
 import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import RepeatIcon from '../assets/icons/RepeatIcon'
+import CameraIcon from '../assets/icons/CameraIcon'
 
 export default function CamModal({ modalVisible, setModalVisible }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(CameraType.back);
+    const [camReady, setCamReady] = useState(false);
     const { width } = Dimensions.get('window');
     let height = 4 / 3 * width
+
+    const camRef = useRef(null)
 
     useEffect(() => {
         (async () => {
@@ -36,7 +40,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                 }}
             >
                 <View style={styles.container}>
-                    <Camera style={[styles.camera, { width: width, height: height }]} type={type}>
+                    <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
                     </Camera>
                     <View style={styles.buttonContainer}>
                         <Pressable
@@ -46,6 +50,12 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                             }}>
                             <RepeatIcon />
                         </Pressable>
+                        {
+                            camReady &&
+                            <Pressable>
+                                <CameraIcon />
+                            </Pressable>
+                        }
                     </View>
                 </View>
             </Modal >
