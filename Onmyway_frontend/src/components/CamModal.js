@@ -2,6 +2,7 @@ import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { Camera, CameraType } from 'expo-camera';
 import { useEffect, useState } from 'react';
+import RepeatIcon from '../assets/icons/RepeatIcon'
 
 export default function CamModal({ modalVisible, setModalVisible }) {
     const [hasPermission, setHasPermission] = useState(null);
@@ -43,7 +44,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                             onPress={() => {
                                 setType(type === CameraType.back ? CameraType.front : CameraType.back);
                             }}>
-                            <Text style={styles.text}> Flip </Text>
+                            <RepeatIcon />
                         </Pressable>
                     </View>
                 </View>
