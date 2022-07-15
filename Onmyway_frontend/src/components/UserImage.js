@@ -36,7 +36,8 @@ export default function UserImage({ image, setImage, handleUser }) {
             <Pressable onPress={pickImage}>
                 <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
             </Pressable>
-            <View>
+            <View style={styles.imageViewBox}>
+                <PressableText text={'Hello'} />
                 <PressableText text={'Hello'} />
             </View>
         </>
@@ -49,4 +50,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    imageViewBox: {
+        width: 100,
+        height: 100,
+        backgroundColor: '#EAEAEA',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10
+    }
 });
