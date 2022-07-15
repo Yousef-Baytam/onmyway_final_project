@@ -2,8 +2,11 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import BodyElement from './BodyElement';
 import moment from 'moment'
 import EditPenIcon from '../assets/icons/EditPenIcon'
+import { useState } from 'react';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 export default function UserProfileBody({ user }) {
+    const [editMode, setEditMode] = useState(false)
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -16,7 +19,9 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} />
             </ScrollView>
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
-                <EditPenIcon />
+                <Pressable onPress={() => setEditMode(true)} android_ripple={{ color: '#002C4D', borderless: true }}>
+                    <EditPenIcon />
+                </Pressable>
             </View>
         </View >
     );
