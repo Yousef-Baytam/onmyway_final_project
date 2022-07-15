@@ -20,7 +20,7 @@ export default function UserProfileBody({ user }) {
 
     const handleUpdateUserInfo = async () => {
         try {
-            const res = await updateUserInfo({ username, email, phone, gender, date, carDetails: car, musicPrefrences })
+            const res = await updateUserInfo({ username, email, phone, gender, dob: date, carDetails: car, musicPrefrences })
             setEditMode(false)
             console.log(res)
         } catch (e) {

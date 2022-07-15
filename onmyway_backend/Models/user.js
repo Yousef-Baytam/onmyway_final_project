@@ -27,17 +27,7 @@ const UserSchema = new Schema({
         enum: ['male', 'female', 'other'],
         required: true
     },
-    carDetails: [{
-        brand: {
-            type: String,
-        },
-        model: {
-            type: String,
-        },
-        productionYear: {
-            type: Number
-        }
-    }],
+    carDetails: String,
     musicPrefrences: {
         type: String
     },

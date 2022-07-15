@@ -10,8 +10,10 @@ module.exports.getUser = async (req, res, next) => {
 }
 
 module.exports.updateUser = async (req, res, next) => {
+    console.log('hello')
     const user = req.user
     const update = await User.findByIdAndUpdate(user.id, {
+        'username': req.body.username,
         'email': req.body.email,
         'phone': req.body.phone,
         'gender': req.body.gender,
@@ -20,6 +22,7 @@ module.exports.updateUser = async (req, res, next) => {
         'dob': req.body.dob,
         'adress': req.body.adress,
     }, { new: true, runValidators: true })
+    console.log(update)
     return res.send({ "success": true, "results": update })
 }
 
