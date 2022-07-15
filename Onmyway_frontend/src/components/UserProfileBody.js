@@ -5,6 +5,7 @@ import EditPenIcon from '../assets/icons/EditPenIcon'
 import { useState } from 'react';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
+import TickIcon from '../assets/icons/TickIcon';
 
 export default function UserProfileBody({ user }) {
     const [editMode, setEditMode] = useState(false)
@@ -21,11 +22,18 @@ export default function UserProfileBody({ user }) {
             </ScrollView>
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
                 {
-                    editMode ? <Pressable onPress={() => setEditMode(false)}>
-                        <CancelIcon />
-                    </Pressable> : <Pressable onPress={() => setEditMode(true)}>
-                        <EditPenIcon />
-                    </Pressable>
+                    editMode ?
+                        <View style={styles.editButtonsConatainer}>
+                            <Pressable onPress={() => setEditMode(false)} style={{ marginLeft: 10 }}>
+                                <TickIcon />
+                            </Pressable>
+                            <Pressable onPress={() => setEditMode(false)}>
+                                <CancelIcon />
+                            </Pressable>
+                        </View> :
+                        <Pressable onPress={() => setEditMode(true)}>
+                            <EditPenIcon />
+                        </Pressable>
                 }
 
 
@@ -44,4 +52,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 10
     },
+    editButtonsConatainer: {
+        flexDirection: 'row-reverse'
+    }
 });
