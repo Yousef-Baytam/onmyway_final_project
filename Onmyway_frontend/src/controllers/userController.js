@@ -14,4 +14,18 @@ const updateImage = async (data) => {
     }
 }
 
-export { updateImage }
+const updateUserInfo = async (data) => {
+    try {
+        let res = await axios({
+            url: `/user/`,
+            method: "PATCH",
+            data: data,
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo }

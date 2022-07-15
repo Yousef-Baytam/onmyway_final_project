@@ -48,7 +48,6 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                     }} AuthInput={false} />
                         : <Text>{value}</Text>
                 }
-
             </View>
         </View>
     );
