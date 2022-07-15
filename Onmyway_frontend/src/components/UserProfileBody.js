@@ -13,7 +13,7 @@ export default function UserProfileBody({ user }) {
     const [email, setEmail] = useState(user.email)
     const [phone, setPhone] = useState(user.phone)
     const [gender, setGender] = useState(user.gender)
-    const [date, setDate] = useState(user.dob)
+    const [date, setDate] = useState(new Date(user.dob))
     const [car, setCar] = useState(user.car)
     const [musicPrefrences, setMusicPrefrences] = useState(user.musicPrefrences)
 
@@ -24,7 +24,7 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Email'} value={user.email} editMode={editMode} editType={'input'} setValue={setEmail} />
                 <BodyElement keyWord={'Phone'} value={user.phone} editMode={editMode} editType={'phone'} setValue={setPhone} />
                 <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} gender={gender} setValue={setGender} editMode={editMode} editType={'gender'} />
-                <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} setValue={setDate} editType={'date'} />
+                <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} setValue={setDate} editType={'date'} date={date} />
                 <BodyElement keyWord={'Car'} value={user.car || 'None'} editMode={editMode} editType={'input'} setValue={setCar} />
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} setValue={setMusicPrefrences} editType={'input'} />
             </ScrollView>

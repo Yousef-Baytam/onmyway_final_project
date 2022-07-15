@@ -4,7 +4,7 @@ import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import moment from 'moment'
 
-export default function DatePicker({ date, setDate, placeholder, AuthInput, display }) {
+export default function DatePicker({ date, setDate, placeholder, AuthInput, display, custom }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
     const [text, setText] = useState('')
@@ -67,5 +67,6 @@ const styles = StyleSheet.create({
 DatePicker.defaultProps = {
     AuthInput: true,
     placeholder: 'Date of Birth',
-    display: false
+    display: false,
+    custom: {}
 }

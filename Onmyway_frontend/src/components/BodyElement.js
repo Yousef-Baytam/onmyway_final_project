@@ -1,8 +1,9 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import DatePicker from './DatePicker';
 import PhoneCustomInput from './PhoneCustomInput';
 import RadioButtonList from './RadioButtonList';
 
-export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue, gender }) {
+export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue, gender, date }) {
 
     return (
         <View style={styles.container}>
@@ -37,7 +38,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         flexDirection: "row",
                                         alignItems: 'center',
                                     }} AuthInput={false} />
-                                    : null
+                                    : <DatePicker date={date} setDate={setValue} placeholder={value} />
                         : <Text>{value}</Text>
                 }
 
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
 
 BodyElement.defaultProps = {
     keyboard: 'default',
-    gender: null
+    gender: null,
+    date: null
 }
 
