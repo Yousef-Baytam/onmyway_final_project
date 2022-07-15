@@ -23,7 +23,7 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Username'} value={user.username} editMode={editMode} editType={'input'} setValue={setUsername} />
                 <BodyElement keyWord={'Email'} value={user.email} editMode={editMode} editType={'input'} setValue={setEmail} />
                 <BodyElement keyWord={'Phone'} value={user.phone} editMode={editMode} editType={'phone'} setValue={setPhone} />
-                <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} setValue={setGender} editMode={editMode} editType={'gender'} />
+                <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} gender={gender} setValue={setGender} editMode={editMode} editType={'gender'} />
                 <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} setValue={setDate} editType={'date'} />
                 <BodyElement keyWord={'Car'} value={user.car || 'None'} editMode={editMode} editType={'input'} setValue={setCar} />
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} setValue={setMusicPrefrences} editType={'input'} />
