@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import TickIcon from '../assets/icons/TickIcon';
+import { updateUserInfo } from '../controllers/userController';
 
 export default function UserProfileBody({ user }) {
     const [editMode, setEditMode] = useState(false)
@@ -16,6 +17,15 @@ export default function UserProfileBody({ user }) {
     const [date, setDate] = useState(new Date(user.dob))
     const [car, setCar] = useState(user.car)
     const [musicPrefrences, setMusicPrefrences] = useState(user.musicPrefrences)
+
+    const handleUpdateUserInfo = async () => {
+        try {
+            const res = await updateUserInfo({ username, email, phone, gender, date, carDetails: car, musicPrefrences })
+            console.log(res)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <View style={styles.container}>
