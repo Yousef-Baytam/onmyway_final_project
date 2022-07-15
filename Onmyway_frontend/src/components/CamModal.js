@@ -62,14 +62,21 @@ export default function CamModal({ modalVisible, setModalVisible }) {
             >
                 {
                     showPic ?
-                        <View style={styles.buttonContainer}>
+                        <View style={styles.container}>
                             <Image source={{ uri: currPic.uri }} style={[styles.camera, { width: width, height: height }]} />
-                            <Pressable onPress={() => {
-                                setCurrPic(null)
-                                setShowPic(false)
-                            }}>
-                                <BackArrowIcon />
-                            </Pressable>
+                            <View style={styles.buttonContainer}>
+                                <View style={styles.button}>
+                                    <CustomButton text={'Upload Image'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
+                                </View>
+                                <View style={styles.button}>
+                                    <Pressable onPress={() => {
+                                        setCurrPic(null)
+                                        setShowPic(false)
+                                    }}>
+                                        <BackArrowIcon />
+                                    </Pressable>
+                                </View>
+                            </View>
                         </View> :
                         <View style={styles.container}>
                             <Camera style={[styles.camera, { width: width, height: height }]} type={type} ref={camRef} onCameraReady={() => setCamReady(true)}>
@@ -93,7 +100,7 @@ export default function CamModal({ modalVisible, setModalVisible }) {
                                     }
                                 </View>
                                 <View style={styles.button}>
-                                    <CustomButton text={'cancel'} action={() => setModalVisible(false)} />
+                                    <CustomButton text={'cancel'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
                                 </View>
                             </View>
                         </View>
