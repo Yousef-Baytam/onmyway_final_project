@@ -14,6 +14,7 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 setShowAllReviews(!showAllReviews);
             }}>
             <View style={styles.reviewContainer}>
+                <Text style={styles.text}>All Reviews</Text>
                 <Pressable onPress={() => setShowAllReviews(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
@@ -40,18 +41,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    buttonContainer: {
-        width: '100%',
-        marginVertical: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
     text: {
         width: '90%',
-        height: '20%',
-        backgroundColor: '#EAEAEA',
-        borderRadius: 10,
-        padding: 20
+        height: 50,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 20
     },
     cancel: {
         position: 'absolute',
