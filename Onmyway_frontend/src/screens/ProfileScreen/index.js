@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
+import ProfileOptions from '../../components/ProfileOptions';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
@@ -18,7 +19,7 @@ export default function Profile({ navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (null)
+            headerRight: () => (<ProfileOptions />)
         })
         try {
             (async () => {

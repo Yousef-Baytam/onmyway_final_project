@@ -14,13 +14,15 @@ export default function ProfileOptions({ action, custom }) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '30%',
+        width: 15,
         height: '100%',
+        marginRight: 20,
+        marginTop: 5,
         alignItems: 'center',
         justifyContent: 'center',
     },
 });
 
-PressableText.defaultProps = {
+ProfileOptions.defaultProps = {
     custom: {}
 }
