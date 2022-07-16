@@ -75,6 +75,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                                     <CustomButton text={'Upload Image'} action={() => {
                                         handleImageUpload(currPic);
                                         setModalVisible(!modalVisible)
+                                        setShowPic(false)
                                     }} custom={{ width: '100%' }} />
                                 </View>
                                 <View style={styles.button}>
