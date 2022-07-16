@@ -1,13 +1,13 @@
 import { Rating } from 'react-native-ratings';
 import { StyleSheet, View } from 'react-native';
 
-export default function StarRating({ rating, display, setRating, review }) {
+export default function StarRating({ rating, display, setRating, review, custom }) {
     const onFinishRating = (e) => {
         setRating(e)
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, custom]}>
             {display ? <Rating
                 type='custom'
                 startingValue={rating}
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
 StarRating.defaultProps = {
     display: false,
     rating: 2.5,
-    review: false
+    review: false,
+    custom: {}
 }
 

@@ -9,7 +9,7 @@ export default function ReviewCard({ body, author, rating }) {
                 <Image source={{ uri: author.image.url } || require('../assets/blank-profile.webp')} style={styles.image} />
                 <Text>{author.username}</Text>
             </View>
-            <StarRating rating={rating} display={true} review={true} />
+            <StarRating rating={rating} display={true} review={true} custom={{ justifyContent: 'flex-start' }} />
             <Text style={styles.text}>{body}</Text>
         </View>
     );
@@ -32,5 +32,9 @@ const styles = StyleSheet.create({
     authorInfo: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    text: {
+        paddingHorizontal: 20,
+        paddingVertical: 10
     }
 });
