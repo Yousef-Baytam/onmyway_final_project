@@ -22,6 +22,7 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                     renderItem={({ item }) => (<>
                         <ReviewCard body={item.body} author={item.author} rating={item.rating} />
                     </>)}
+                    style={{ width: '100%', marginLeft: 42 }}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item._id}
                 />
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     cancel: {
         position: 'absolute',
         top: 10,
-        right: 10
+        right: 10,
+        zIndex: 1
     }
 });
