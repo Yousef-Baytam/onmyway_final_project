@@ -28,4 +28,17 @@ const updateUserInfo = async (data) => {
     }
 }
 
-export { updateImage, updateUserInfo }
+const getUserReviews = async (id) => {
+    try {
+        let res = await axios({
+            url: `/review/user/${ id }`,
+            method: "GET",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo, getUserReviews }
