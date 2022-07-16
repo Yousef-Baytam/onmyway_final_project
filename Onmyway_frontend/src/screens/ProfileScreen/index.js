@@ -56,13 +56,25 @@ export default function Profile({ navigation }) {
     }, [user])
 
     const handleSubmitReview = async () => {
-        const res = await addNewReview({ rating: newRating, body: review }, user._id)
-        setShowReviewModal(false)
+        try {
+            const res = await addNewReview({ rating: newRating, body: review }, user._id)
+            setShowReviewModal(false)
+            alert('Review posted successfully!')
+        } catch (e) {
+            console.log(e)
+            alert('Error posting the review, try again')
+        }
     }
 
     const handleUpdateReview = async () => {
-        const res = await updateReview({ rating: newRating, body: review }, loggedUserReview._id)
-        setShowReviewModal(false)
+        try {
+            const res = await updateReview({ rating: newRating, body: review }, loggedUserReview._id)
+            setShowReviewModal(false)
+            alert('Review posted successfully!')
+        } catch (e) {
+            console.log(e)
+            alert('Error posting the review, try again')
+        }
     }
 
     return (
