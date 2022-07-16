@@ -8,9 +8,13 @@ import ProfileOptions from '../../components/ProfileOptions';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
-import { getUserReviews } from '../../controllers/userController'
+import { useUser } from '../../context/UserContext';
+import { addNewReview, getUserReviews } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
+
+    const { user: loggedUser } = useUser()
+
     const route = useRoute()
     const param = route.params
     const [image, setImage] = useState(null)
@@ -44,7 +48,7 @@ export default function Profile({ navigation }) {
     }, [user])
 
     const handleSubmitReview = async () => {
-        const res = await addNewReview(user._id)
+        const res = await addNewReview({ rating: newRating, body: review }, user._id)
         setShowReviewModal(false)
     }
 
@@ -92,7 +96,7 @@ export default function Profile({ navigation }) {
                         keyboardType="default" />
                     <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
                         <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
-                        <CustomButton text={'Submit'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
+                        <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReview} />
                     </View>
                 </View>
             </Modal>

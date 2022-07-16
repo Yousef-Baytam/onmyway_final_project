@@ -44,7 +44,7 @@ const getUserReviews = async (id) => {
 const addNewReview = async (data, id) => {
     try {
         let res = await axios({
-            url: `/review/user/${ id }`,
+            url: `/review/new/${ id }`,
             method: "POST",
             data: data
         })
