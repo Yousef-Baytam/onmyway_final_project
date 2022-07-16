@@ -56,12 +56,13 @@ const styles = StyleSheet.create({
         height: 180,
         elevation: 5,
         borderRadius: 100,
-        marginTop: 20
+        marginTop: 20,
+        zIndex: 1
     },
     userContainer: {
         width: '90%',
         height: 220,
-        marginBottom: 20
+        marginBottom: 20,
     },
     ridesRn: {
         width: '100%',

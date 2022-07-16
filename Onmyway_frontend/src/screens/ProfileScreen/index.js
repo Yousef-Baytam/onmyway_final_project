@@ -16,11 +16,12 @@ export default function Profile({ navigation }) {
     const [image, setImage] = useState(null)
     const [rating, setRating] = useState(0)
     const [user, setUser] = useState(null)
+    const [optionsDisplay, setOptionsDisplay] = useState(false)
 
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (<ProfileOptions />)
+            headerRight: () => (<ProfileOptions action={() => setOptionsDisplay(true)} />)
         })
         try {
             (async () => {
@@ -41,11 +42,14 @@ export default function Profile({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.userOptions}>
-                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
-                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
-                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
-            </View>
+            {
+                optionsDisplay &&
+                <View style={styles.userOptions}>
+                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                </View>
+            }
             {
                 user && <>
                     <View style={styles.imageView}>
