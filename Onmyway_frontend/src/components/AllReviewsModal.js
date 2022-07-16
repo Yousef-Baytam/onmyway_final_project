@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StyleSheet, View, Text, Modal } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
@@ -5,6 +6,7 @@ import StarRating from './StarRating';
 
 
 export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
+    const [reviews, setReviews] = useState(null)
 
     return (
         <Modal
@@ -17,8 +19,15 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 <Pressable onPress={() => setShowAllReviews(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
-                {/* <StarRating rating={newRating} setRating={setNewRating} />
-                <Text style={styles.text}></Text> */}
+                {reviews && <FlatList
+                    data={reviews}
+                    renderItem={({ item }) => (<>
+                        <StarRating rating={item.rating} setRating={setNewRating} />
+                        <Text style={styles.text}></Text>
+                    </>)}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => item._id}
+                />}
             </View>
         </Modal>
     );
