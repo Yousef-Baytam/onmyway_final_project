@@ -1,7 +1,7 @@
 import { Rating } from 'react-native-ratings';
 import { StyleSheet, View } from 'react-native';
 
-export default function StarRating({ rating, display, setRating }) {
+export default function StarRating({ rating, display, setRating, review }) {
     const onFinishRating = (e) => {
         setRating(e)
     }
@@ -12,7 +12,7 @@ export default function StarRating({ rating, display, setRating }) {
                 type='custom'
                 startingValue={rating}
                 ratingColor='#A1CCE4'
-                tintColor='#fff'
+                tintColor={review ? '#EAEAEA' : '#fff'}
                 ratingBackgroundColor='#EAEAEA'
                 readonly={true}
                 imageSize={25}
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
 
 StarRating.defaultProps = {
     display: false,
-    rating: 3.5
+    rating: 2.5,
+    review: false
 }
 

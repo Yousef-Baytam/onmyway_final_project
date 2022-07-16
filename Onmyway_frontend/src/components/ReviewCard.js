@@ -9,7 +9,7 @@ export default function ReviewCard({ body, author, rating }) {
                 <Image source={{ uri: author.image.url } || require('../assets/blank-profile.webp')} />
                 <Text>{author.username}</Text>
             </View>
-            <StarRating rating={rating} display={true} />
+            <StarRating rating={rating} display={true} review={true} />
             <Text style={styles.text}>{body}</Text>
         </View>
     );
