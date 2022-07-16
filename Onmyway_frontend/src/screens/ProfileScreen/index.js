@@ -54,7 +54,7 @@ export default function Profile({ navigation }) {
             {
                 user && <>
                     <View style={styles.imageView}>
-                        <UserImage image={image} setImage={setImage} />
+                        <UserImage image={image} display={true} />
                     </View>
                     <StarRating rating={rating} display={true} />
                     <View style={styles.userContainer}>

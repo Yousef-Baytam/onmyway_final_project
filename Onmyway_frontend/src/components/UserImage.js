@@ -6,7 +6,7 @@ import PressableText from './PressableText';
 import { useState } from 'react';
 import CamModal from './CamModal';
 
-export default function UserImage({ image, setImage, handleUser, setVisible, visible }) {
+export default function UserImage({ image, setImage, handleUser, setVisible, visible, display }) {
     const [coordinates, setCoordinates] = useState({})
     const [modalVisible, setModalVisible] = useState(false)
 
@@ -41,17 +41,24 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
 
     return (
         <>
-            <Pressable onPress={toggleImageBox}>
-                <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
-            </Pressable>
             {
-                visible &&
-                <View style={[styles.imageViewBox, coordinates]}>
-                    <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
-                    <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
-                </View>
+                display ?
+                    <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
+                    :
+                    <>
+                        <Pressable onPress={toggleImageBox}>
+                            <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
+                        </Pressable>
+                        {
+                            visible &&
+                            <View style={[styles.imageViewBox, coordinates]}>
+                                <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
+                                <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
+                            </View>
+                        }
+                        <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
+                    </>
             }
-            <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
         </>
     );
 }
@@ -72,3 +79,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     }
 });
+
+UserImage.defaultProps = {
+    display: false
+}
