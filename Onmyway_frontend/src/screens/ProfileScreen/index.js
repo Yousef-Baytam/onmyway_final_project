@@ -42,7 +42,9 @@ export default function Profile({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.userOptions}>
-                <PressableText text={'hello'} />
+                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
             </View>
             {
                 user && <>
@@ -112,6 +114,9 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         right: 20,
-        backgroundColor: '#EAEAEA'
+        backgroundColor: '#EAEAEA',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
