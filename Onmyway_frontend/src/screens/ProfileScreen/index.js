@@ -19,6 +19,8 @@ export default function Profile({ navigation }) {
     const [optionsDisplay, setOptionsDisplay] = useState(false)
     const [showReviewModal, setShowReviewModal] = useState(false)
 
+    const [newRating, setNewRating] = useState(2.5)
+
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -75,6 +77,7 @@ export default function Profile({ navigation }) {
                     setModalVisible(!setShowReviewModal);
                 }}>
                 <View style={styles.reviewContainer}>
+                    <StarRating rating={newRating} setRating={setNewRating} />
                     <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
                         <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
                         <CustomButton text={'Submit'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />

@@ -1,9 +1,9 @@
 import { Rating } from 'react-native-ratings';
 import { StyleSheet, View } from 'react-native';
 
-export default function StarRating({ rating, display }) {
+export default function StarRating({ rating, display, setRating }) {
     const onFinishRating = (e) => {
-        console.log(e)
+        setRating(e)
     }
 
     return (
