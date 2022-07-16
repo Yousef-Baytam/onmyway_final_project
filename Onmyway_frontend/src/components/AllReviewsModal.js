@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text, Modal } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
+import ReviewCard from './ReviewCard';
 import StarRating from './StarRating';
 
 
@@ -21,8 +22,7 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 {user.reviews ? <FlatList
                     data={user.reviews}
                     renderItem={({ item }) => (<>
-                        <StarRating rating={item.rating} setRating={setNewRating} />
-                        <Text style={styles.text}></Text>
+                        <ReviewCard body={item.body} author={item.author} rating={item.rating} />
                     </>)}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item._id}
