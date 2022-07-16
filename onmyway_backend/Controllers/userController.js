@@ -21,7 +21,7 @@ module.exports.updateUser = async (req, res, next) => {
         'dob': req.body.dob,
         'adress': req.body.adress,
     }, { new: true, runValidators: true })
-    const reviews = await Review.find({ 'reviewed': user.id })
+    const reviews = await Review.find({ 'reviewed': user.id }).populate('author')
     const newUser = { ...update._doc, reviews }
     return res.send({ "success": true, "results": newUser })
 }
@@ -36,7 +36,7 @@ module.exports.updateImage = async (req, res, next) => {
             public_id: resUrl.public_id,
         }
     }, { new: true })
-    const reviews = await Review.find({ 'reviewed': user.id })
+    const reviews = await Review.find({ 'reviewed': user.id }).populate('author')
     const newUser = { ...update._doc, reviews }
     await deleteImage(toBeDeleted)
     return res.send({ "success": true, "results": newUser })

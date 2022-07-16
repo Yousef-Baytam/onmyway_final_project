@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
+import AllReviewsModal from '../../components/AllReviewsModal';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
@@ -14,6 +15,7 @@ export default function UserProfile({ navigation }) {
     const { user, handleUser } = useUser()
     const [image, setImage] = useState(user.image.url || null);
     const [rating, setRating] = useState(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+    const [showAllReviews, setShowAllReviews] = useState(false)
 
     return (
         <Pressable style={styles.container} onPress={() => { visible && setVisible(false) }}>
@@ -38,9 +40,10 @@ export default function UserProfile({ navigation }) {
             </View>
             <View>
                 <View style={styles.buttonContainer}>
-                    <CustomButton text={'My Reviews'} />
+                    <CustomButton text={'My Reviews'} action={() => setShowAllReviews(true)} />
                 </View>
             </View>
+            <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
         </Pressable >
     );
 }
