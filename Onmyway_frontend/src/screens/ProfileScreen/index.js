@@ -58,7 +58,7 @@ export default function Profile({ navigation }) {
                     </View>
                     <StarRating rating={rating} display={true} />
                     <View style={styles.userContainer}>
-                        <UserProfileBody user={user} />
+                        <UserProfileBody user={user} display={true} />
                     </View>
                     <View style={{ justifyContent: 'center', width: '100%' }}>
                         <View style={styles.ridesRn}>

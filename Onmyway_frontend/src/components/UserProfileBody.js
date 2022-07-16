@@ -9,7 +9,7 @@ import TickIcon from '../assets/icons/TickIcon';
 import { updateUserInfo } from '../controllers/userController';
 import { useUser } from '../context/UserContext';
 
-export default function UserProfileBody({ user }) {
+export default function UserProfileBody({ user, display }) {
     const [editMode, setEditMode] = useState(false)
     const [username, setUsername] = useState(user.username)
     const [email, setEmail] = useState(user.email)
@@ -44,22 +44,28 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Car'} value={user.carDetails || 'None'} editMode={editMode} editType={'input'} setValue={setCar} editDisplay={car} />
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} setValue={setMusicPrefrences} editType={'input'} editDisplay={musicPrefrences} />
             </ScrollView>
-            <View style={{ position: 'absolute', right: 10, top: 10 }}>
-                {
-                    editMode ?
-                        <View style={styles.editButtonsConatainer}>
-                            <Pressable onPress={handleUpdateUserInfo} style={{ marginLeft: 10 }}>
-                                <TickIcon />
-                            </Pressable>
-                            <Pressable onPress={() => setEditMode(false)}>
-                                <CancelIcon />
-                            </Pressable>
-                        </View> :
-                        <Pressable onPress={() => setEditMode(true)}>
-                            <EditPenIcon />
-                        </Pressable>
-                }
-            </View>
+            {
+                display ?
+                    null
+                    :
+                    <View style={{ position: 'absolute', right: 10, top: 10 }}>
+                        {
+                            editMode ?
+                                <View style={styles.editButtonsConatainer}>
+                                    <Pressable onPress={handleUpdateUserInfo} style={{ marginLeft: 10 }}>
+                                        <TickIcon />
+                                    </Pressable>
+                                    <Pressable onPress={() => setEditMode(false)}>
+                                        <CancelIcon />
+                                    </Pressable>
+                                </View> :
+                                <Pressable onPress={() => setEditMode(true)}>
+                                    <EditPenIcon />
+                                </Pressable>
+                        }
+                    </View>
+            }
+
         </View >
     );
 }
@@ -78,3 +84,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row-reverse'
     }
 });
+
+UserProfileBody.defaultProps = {
+    display: false
+}
