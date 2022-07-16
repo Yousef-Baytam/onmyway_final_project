@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
@@ -16,7 +16,10 @@ export default function Profile({ navigation }) {
     const [rating, setRating] = useState(0)
     const [user, setUser] = useState(null)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (null)
+        })
         try {
             (async () => {
                 const reviews = await getUserReviews(param._id)
@@ -27,7 +30,7 @@ export default function Profile({ navigation }) {
         }
     }, [])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (user) {
             setImage(user.image.url || null)
             setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
