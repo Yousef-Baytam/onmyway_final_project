@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Modal } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
@@ -17,6 +17,7 @@ export default function Profile({ navigation }) {
     const [rating, setRating] = useState(0)
     const [user, setUser] = useState(null)
     const [optionsDisplay, setOptionsDisplay] = useState(false)
+    const [showReviewModal, setShowReviewModal] = useState(false)
 
 
     useLayoutEffect(() => {
@@ -67,6 +68,16 @@ export default function Profile({ navigation }) {
                     </View>
                 </>
             }
+            <Modal
+                animationType="slide"
+                visible={showReviewModal}
+                onRequestClose={() => {
+                    setModalVisible(!setShowReviewModal);
+                }}>
+                <View style={styles.reviewContainer}>
+
+                </View>
+            </Modal>
         </Pressable>
     );
 }
@@ -113,5 +124,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1
+    },
+    reviewContainer: {
+        width: '100%',
+        height: '100%'
     }
 });
