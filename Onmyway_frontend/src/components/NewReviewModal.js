@@ -25,8 +25,8 @@ export default function NewReviewModal({ showReviewModal, setShowReviewModal, ha
                     <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
                     {
                         loggedUserReview ?
-                            <CustomButton text={'Update Review'} custom={{ width: '40%' }} action={handleSubmitReview} />
-                            : <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleUpdateReview} />
+                            <CustomButton text={'Update Review'} custom={{ width: '40%' }} action={handleUpdateReview} />
+                            : <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReview} />
                     }
 
                 </View>

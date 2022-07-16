@@ -14,6 +14,7 @@ module.exports.addReview = async (req, res) => {
 
 module.exports.updateReview = async (req, res) => {
     const { rating, body } = req.body
+    console.log(rating, body)
     const review = Review.findByIdAndUpdate(req.params.id, { body, rating }, { runValidators: true, new: true })
     res.send({ "success": true, "results": review })
 }
