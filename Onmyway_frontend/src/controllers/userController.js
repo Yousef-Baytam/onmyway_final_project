@@ -34,7 +34,7 @@ const getUserReviews = async (id) => {
             url: `/review/user/${ id }`,
             method: "GET",
         })
-        return res.data
+        return res.data.results
     }
     catch (e) {
         console.log(e);

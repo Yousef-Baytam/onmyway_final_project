@@ -11,45 +11,55 @@ import { getUserReviews } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
     const route = useRoute()
-    const user = route.params
+    const param = route.params
     const [image, setImage] = useState(null)
     const [rating, setRating] = useState(0)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         (async () => {
-            const reviews = await getUserReviews(user._id)
-            console.log(reviews)
-            // setImage(user.image.url || null)
-            // setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+            const reviews = await getUserReviews(param._id)
+            setUser({ ...param, reviews })
         })()
     }, [])
 
+    useEffect(() => {
+        if (user) {
+            setImage(user.image.url || null)
+            setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+        }
+    }, [user])
+
     return (
         <View style={styles.container}>
-            <View style={styles.imageView}>
-                <UserImage image={image} setImage={setImage} />
-            </View>
-            <StarRating rating={rating} display={true} />
-            <View style={styles.userContainer}>
-                <UserProfileBody user={user} />
-            </View>
-            <View style={{ justifyContent: 'center', width: '100%' }}>
-                <View style={styles.ridesRn}>
-                    <PressableText text={'Rides Offered'} />
-                    <PressableText text={'Rides Joined'} />
-                </View>
-                <View style={styles.ridesRn}>
-                    <HistoryIcon />
-                    <PressableText text={'Rides Offered'} />
-                    <PressableText text={'Rides Joined'} />
-                    <HistoryIcon />
-                </View>
-            </View>
-            <View>
-                <View style={styles.buttonContainer}>
-                    <CustomButton text={'My Reviews'} />
-                </View>
-            </View>
+            {
+                user && <>
+                    <View style={styles.imageView}>
+                        <UserImage image={image} setImage={setImage} />
+                    </View>
+                    <StarRating rating={rating} display={true} />
+                    <View style={styles.userContainer}>
+                        <UserProfileBody user={user} />
+                    </View>
+                    <View style={{ justifyContent: 'center', width: '100%' }}>
+                        <View style={styles.ridesRn}>
+                            <PressableText text={'Rides Offered'} />
+                            <PressableText text={'Rides Joined'} />
+                        </View>
+                        <View style={styles.ridesRn}>
+                            <HistoryIcon />
+                            <PressableText text={'Rides Offered'} />
+                            <PressableText text={'Rides Joined'} />
+                            <HistoryIcon />
+                        </View>
+                    </View>
+                    <View>
+                        <View style={styles.buttonContainer}>
+                            <CustomButton text={'My Reviews'} />
+                        </View>
+                    </View>
+                </>
+            }
         </View >
     );
 }
