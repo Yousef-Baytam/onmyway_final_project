@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { StyleSheet, View, Text, Modal } from 'react-native';
+import { StyleSheet, View, Text, Modal, FlatList } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import ReviewCard from './ReviewCard';
-import StarRating from './StarRating';
 
 
 export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
