@@ -6,7 +6,7 @@ export default function ReviewCard({ body, author, rating }) {
     return (
         <View style={styles.container}>
             <View>
-                <Image source={{ uri: author.image.url } || require('../assets/blank-profile.webp')} />
+                <Image source={{ uri: author.image.url } || require('../assets/blank-profile.webp')} style={styles.image} />
                 <Text>{author.username}</Text>
             </View>
             <StarRating rating={rating} display={true} review={true} />
@@ -22,5 +22,10 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         backgroundColor: '#EAEAEA',
         borderRadius: 10
+    },
+    image: {
+        width: 35,
+        height: 35,
+        borderRadius: 17.5,
     }
 });
