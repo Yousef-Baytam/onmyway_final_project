@@ -63,7 +63,7 @@ export default function Profile({ navigation }) {
                     <View>
                         <View style={styles.buttonContainer}>
                             <CustomButton text={'All Reviews'} custom={{ width: '40%' }} />
-                            <CustomButton text={'Leave a Review'} custom={{ width: '40%' }} />
+                            <CustomButton text={'Leave a Review'} custom={{ width: '40%' }} action={() => setShowReviewModal(true)} />
                         </View>
                     </View>
                 </>
@@ -75,7 +75,10 @@ export default function Profile({ navigation }) {
                     setModalVisible(!setShowReviewModal);
                 }}>
                 <View style={styles.reviewContainer}>
-
+                    <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
+                        <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
+                        <CustomButton text={'Submit'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
+                    </View>
                 </View>
             </Modal>
         </Pressable>
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
         width: '100%',
         marginVertical: 20,
         flexDirection: 'row',
+        alignItems: 'center',
     },
     userOptions: {
         position: 'absolute',
