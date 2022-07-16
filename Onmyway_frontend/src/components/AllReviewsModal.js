@@ -12,8 +12,8 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 setShowReviewModal(!setShowAllReviews);
             }}>
             <View style={styles.reviewContainer}>
-                <StarRating rating={newRating} setRating={setNewRating} />
-                <Text style={styles.text}></Text>
+                {/* <StarRating rating={newRating} setRating={setNewRating} />
+                <Text style={styles.text}></Text> */}
             </View>
         </Modal>
     );

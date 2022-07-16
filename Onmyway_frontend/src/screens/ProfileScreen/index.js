@@ -98,7 +98,7 @@ export default function Profile({ navigation }) {
                     </View>
                     <View>
                         <View style={styles.buttonContainer}>
-                            <CustomButton text={'All Reviews'} custom={{ width: '40%' }} />
+                            <CustomButton text={'All Reviews'} custom={{ width: '40%' }} action={() => setShowAllReviews(true)} />
                             <CustomButton text={'Leave a Review'} custom={{ width: '40%' }} action={() => setShowReviewModal(true)} />
                         </View>
                     </View>
@@ -109,7 +109,7 @@ export default function Profile({ navigation }) {
                         review={review} setReview={setReview}
                         setNewRating={setNewRating} newRating={newRating}
                         loggedUserReview={loggedUserReview} />
-                    <AllReviewsModal user={user} />
+                    <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
                 </>
             }
 
