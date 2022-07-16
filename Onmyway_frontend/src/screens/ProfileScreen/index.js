@@ -10,7 +10,7 @@ import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
-import { addNewReview, getUserReviews } from '../../controllers/userController'
+import { addNewReview, getUserReviews, updateReview } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
 

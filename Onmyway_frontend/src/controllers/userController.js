@@ -55,4 +55,18 @@ const addNewReview = async (data, id) => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews, addNewReview }
+const updateReview = async (data, id) => {
+    try {
+        let res = await axios({
+            url: `/review/update/${ id }`,
+            method: "PATCH",
+            data: data
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview }
