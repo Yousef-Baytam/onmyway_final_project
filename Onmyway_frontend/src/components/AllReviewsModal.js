@@ -6,7 +6,6 @@ import StarRating from './StarRating';
 
 
 export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
-    const [reviews, setReviews] = useState(null)
 
     return (
         <Modal
@@ -19,15 +18,17 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 <Pressable onPress={() => setShowAllReviews(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
-                {reviews && <FlatList
-                    data={reviews}
+                {user.reviews ? <FlatList
+                    data={user.reviews}
                     renderItem={({ item }) => (<>
                         <StarRating rating={item.rating} setRating={setNewRating} />
                         <Text style={styles.text}></Text>
                     </>)}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item._id}
-                />}
+                />
+                    : <Text> No Reviews Yet!</Text>
+                }
             </View>
         </Modal>
     );
