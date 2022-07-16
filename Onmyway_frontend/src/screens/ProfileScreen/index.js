@@ -23,6 +23,7 @@ export default function Profile({ navigation }) {
     const [user, setUser] = useState(null)
     const [optionsDisplay, setOptionsDisplay] = useState(false)
     const [showReviewModal, setShowReviewModal] = useState(false)
+    const [loggedUserReview, setLoggedUserReview] = useState(null)
 
     const [newRating, setNewRating] = useState(2.5)
     const [review, setReview] = useState(null)
@@ -35,6 +36,10 @@ export default function Profile({ navigation }) {
             (async () => {
                 const reviews = await getUserReviews(param._id)
                 setUser({ ...param, reviews })
+                const oldLoggedUserReview = reviews.find(e => e.author._id == loggedUser._id)
+                setLoggedUserReview(oldLoggedUserReview)
+                setReview(oldLoggedUserReview.body)
+                setNewRating(oldLoggedUserReview.rating)
             })()
         } catch (e) {
             console.log(e)
@@ -79,10 +84,11 @@ export default function Profile({ navigation }) {
                         </View>
                     </View>
                     <NewReviewModal showReviewModal={showReviewModal}
-                        etShowReviewModal={setShowReviewModal}
+                        setShowReviewModal={setShowReviewModal}
                         handleSubmitReview={handleSubmitReview}
                         review={review} setReview={setReview}
-                        setNewRating={setNewRating} newRating={newRating} />
+                        setNewRating={setNewRating} newRating={newRating}
+                        loggedUserReview={loggedUserReview} />
                 </>
             }
 

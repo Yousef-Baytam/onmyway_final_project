@@ -3,7 +3,7 @@ import CustomButton from './CustomButton';
 import StarRating from './StarRating';
 
 
-export default function NewReviewModal({ showReviewModal, setShowReviewModal, handleSubmitReview, review, setReview, newRating, setNewRating }) {
+export default function NewReviewModal({ showReviewModal, setShowReviewModal, handleUpdateReview, handleSubmitReview, review, setReview, newRating, loggedUserReview, setNewRating }) {
 
     return (
         <Modal
@@ -23,7 +23,12 @@ export default function NewReviewModal({ showReviewModal, setShowReviewModal, ha
                     keyboardType="default" />
                 <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
                     <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
-                    <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReview} />
+                    {
+                        loggedUserReview ?
+                            <CustomButton text={'Update Review'} custom={{ width: '40%' }} action={handleSubmitReview} />
+                            : <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleUpdateReview} />
+                    }
+
                 </View>
             </View>
         </Modal>
