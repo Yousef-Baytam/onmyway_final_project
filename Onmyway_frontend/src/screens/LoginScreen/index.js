@@ -9,6 +9,7 @@ import Input from '../../components/Input';
 import { useUser } from '../../context/UserContext';
 import { login } from '../../controllers/authController'
 import storage from '../../storage/asyncStorage'
+import axios from 'axios'
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
@@ -20,6 +21,7 @@ export default function Login({ navigation }) {
             const res = await login({ username, password })
             handleUser(res.user)
             await storage.save({ key: 'token', data: res.token.token })
+            axios.defaults.headers.common['Authorization'] = `bearer ${ token }`
         }
         catch (e) {
             console.log(e)
