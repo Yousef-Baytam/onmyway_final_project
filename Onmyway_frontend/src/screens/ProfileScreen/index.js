@@ -59,8 +59,7 @@ export default function Profile({ navigation }) {
     }
 
     const handleUpdateReview = async () => {
-        console.log('hello')
-        const res = await updateReview({ rating: newRating, body: review }, user._id)
+        const res = await updateReview({ rating: newRating, body: review }, loggedUserReview._id)
         setShowReviewModal(false)
     }
 
