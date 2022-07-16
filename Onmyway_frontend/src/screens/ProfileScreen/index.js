@@ -22,7 +22,6 @@ export default function Profile({ navigation }) {
     const [newRating, setNewRating] = useState(2.5)
     const [review, setReview] = useState(null)
 
-
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (<ProfileOptions action={() => setOptionsDisplay(true)} />)
@@ -142,12 +141,15 @@ const styles = StyleSheet.create({
     },
     reviewContainer: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     input: {
         width: '90%',
         height: '20%',
         backgroundColor: '#EAEAEA',
         borderRadius: 10,
-    }
+        padding: 20
+    },
 });
