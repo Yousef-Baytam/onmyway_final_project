@@ -41,4 +41,18 @@ const getUserReviews = async (id) => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews }
+const addNewReview = async (data, id) => {
+    try {
+        let res = await axios({
+            url: `/review/user/${ id }`,
+            method: "POST",
+            data: data
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo, getUserReviews, addNewReview }
