@@ -43,6 +43,11 @@ export default function Profile({ navigation }) {
         }
     }, [user])
 
+    const handleSubmitReview = async () => {
+        const res = await addNewReview(user._id)
+        setShowReviewModal(false)
+    }
+
     return (
         <Pressable style={styles.container} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
