@@ -7,6 +7,7 @@ import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
+import { getUserReviews } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
     const route = useRoute()
@@ -15,11 +16,12 @@ export default function Profile({ navigation }) {
     const [rating, setRating] = useState(0)
 
     useEffect(() => {
-        async () => {
-            const reviews = await getUserReviews(user.id)
-            setImage(user.image.url || null)
-            setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
-        }
+        (async () => {
+            const reviews = await getUserReviews(user._id)
+            console.log(reviews)
+            // setImage(user.image.url || null)
+            // setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+        })()
     }, [])
 
     return (
