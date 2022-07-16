@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
@@ -41,7 +42,7 @@ export default function Profile({ navigation }) {
     }, [user])
 
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
                 optionsDisplay &&
                 <View style={styles.userOptions}>
@@ -78,7 +79,7 @@ export default function Profile({ navigation }) {
                     </View>
                 </>
             }
-        </View >
+        </Pressable>
     );
 }
 
@@ -121,6 +122,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#EAEAEA',
         borderRadius: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 1
     }
 });
