@@ -17,6 +17,7 @@ export default function Profile({ navigation }) {
     const [rating, setRating] = useState(0)
     const [user, setUser] = useState(null)
 
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (<ProfileOptions />)
@@ -40,6 +41,9 @@ export default function Profile({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <View style={styles.userOptions}>
+                <PressableText text={'hello'} />
+            </View>
             {
                 user && <>
                     <View style={styles.imageView}>
@@ -102,5 +106,12 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '100%',
         marginVertical: 20
+    },
+    userOptions: {
+        position: 'absolute',
+        width: 100,
+        height: 100,
+        right: 20,
+        backgroundColor: '#EAEAEA'
     }
 });
