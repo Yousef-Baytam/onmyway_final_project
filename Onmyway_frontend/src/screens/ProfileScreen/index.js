@@ -58,6 +58,11 @@ export default function Profile({ navigation }) {
         setShowReviewModal(false)
     }
 
+    const handleUpdateReview = async () => {
+        const res = await updateReview({ rating: newRating, body: review }, user._id)
+        setShowReviewModal(false)
+    }
+
     return (
         <Pressable style={styles.container} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
@@ -86,6 +91,7 @@ export default function Profile({ navigation }) {
                     <NewReviewModal showReviewModal={showReviewModal}
                         setShowReviewModal={setShowReviewModal}
                         handleSubmitReview={handleSubmitReview}
+                        handleUpdateReview={handleUpdateReview}
                         review={review} setReview={setReview}
                         setNewRating={setNewRating} newRating={newRating}
                         loggedUserReview={loggedUserReview} />
