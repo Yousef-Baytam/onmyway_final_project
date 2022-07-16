@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
@@ -11,13 +11,21 @@ import UserProfileBody from '../../components/UserProfileBody';
 export default function Profile({ navigation }) {
     const route = useRoute()
     const user = route.params
-    const [image, setImage] = useState(user.image.url || null);
-    const [rating, setRating] = useState(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+    const [image, setImage] = useState(null)
+    const [rating, setRating] = useState(0)
+
+    useEffect(() => {
+        async () => {
+            const reviews = await getUserReviews(user.id)
+            setImage(user.image.url || null)
+            setRating(Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2)
+        }
+    }, [])
 
     return (
         <View style={styles.container}>
             <View style={styles.imageView}>
-                <UserImage image={image} setImage={setImage} handleUser={handleUser} />
+                <UserImage image={image} setImage={setImage} />
             </View>
             <StarRating rating={rating} display={true} />
             <View style={styles.userContainer}>
