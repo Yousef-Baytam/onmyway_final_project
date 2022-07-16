@@ -4,7 +4,7 @@ export default function ThreeDotsIcon() {
 
     return (
         <Svg
-            width={4}
+            width={40}
             height={20}
             viewBox="0 0 4 20"
             fill='#858585'

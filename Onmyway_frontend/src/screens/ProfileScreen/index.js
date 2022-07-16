@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import HistoryIcon from '../../assets/icons/HistoryIcon';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
 import ProfileOptions from '../../components/ProfileOptions';
@@ -60,21 +59,10 @@ export default function Profile({ navigation }) {
                     <View style={styles.userContainer}>
                         <UserProfileBody user={user} display={true} />
                     </View>
-                    <View style={{ justifyContent: 'center', width: '100%' }}>
-                        <View style={styles.ridesRn}>
-                            <PressableText text={'Rides Offered'} />
-                            <PressableText text={'Rides Joined'} />
-                        </View>
-                        <View style={styles.ridesRn}>
-                            <HistoryIcon />
-                            <PressableText text={'Rides Offered'} />
-                            <PressableText text={'Rides Joined'} />
-                            <HistoryIcon />
-                        </View>
-                    </View>
                     <View>
                         <View style={styles.buttonContainer}>
-                            <CustomButton text={'My Reviews'} />
+                            <CustomButton text={'All Reviews'} custom={{ width: '40%' }} />
+                            <CustomButton text={'Leave a Review'} custom={{ width: '40%' }} />
                         </View>
                     </View>
                 </>
@@ -88,7 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
 
     },
     imageView: {
@@ -112,7 +100,8 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         width: '100%',
-        marginVertical: 20
+        marginVertical: 20,
+        flexDirection: 'row',
     },
     userOptions: {
         position: 'absolute',
