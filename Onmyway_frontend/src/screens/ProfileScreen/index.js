@@ -17,10 +17,14 @@ export default function Profile({ navigation }) {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        (async () => {
-            const reviews = await getUserReviews(param._id)
-            setUser({ ...param, reviews })
-        })()
+        try {
+            (async () => {
+                const reviews = await getUserReviews(param._id)
+                setUser({ ...param, reviews })
+            })()
+        } catch (e) {
+            console.log(e)
+        }
     }, [])
 
     useEffect(() => {
