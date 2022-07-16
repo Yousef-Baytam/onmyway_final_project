@@ -8,6 +8,7 @@ import { CommonActions, DrawerActions } from '@react-navigation/native';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 import BackArrow from '../components/BackArrow';
 import Post from '../screens/PostScreen';
+import Profile from '../screens/ProfileScreen';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -34,6 +35,7 @@ export function MainStack() {
                     headerTitle: 'New Post'
                 }} />
                 <Stack.Screen name="Post" component={Post} />
+                <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="Map" component={Map} />
             </Stack.Group>
 
