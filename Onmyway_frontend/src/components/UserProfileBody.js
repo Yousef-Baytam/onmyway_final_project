@@ -7,6 +7,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import TickIcon from '../assets/icons/TickIcon';
 import { updateUserInfo } from '../controllers/userController';
+import { useUser } from '../context/UserContext';
 
 export default function UserProfileBody({ user }) {
     const [editMode, setEditMode] = useState(false)
@@ -15,13 +16,16 @@ export default function UserProfileBody({ user }) {
     const [phone, setPhone] = useState(user.phone)
     const [gender, setGender] = useState(user.gender)
     const [date, setDate] = useState(new Date(user.dob))
-    const [car, setCar] = useState(user.car)
+    const [car, setCar] = useState(user.carDetails)
     const [musicPrefrences, setMusicPrefrences] = useState(user.musicPrefrences)
+
+    const { handleUser } = useUser()
 
     const handleUpdateUserInfo = async () => {
         try {
             const res = await updateUserInfo({ username, email, phone, gender, dob: date, carDetails: car, musicPrefrences })
             setEditMode(false)
+            handleUser(res.results)
             console.log(res)
         } catch (e) {
             console.log(e)
@@ -37,7 +41,7 @@ export default function UserProfileBody({ user }) {
                 <BodyElement keyWord={'Phone'} value={user.phone} editMode={editMode} editType={'phone'} setValue={setPhone} editDisplay={phone} />
                 <BodyElement keyWord={'Gender'} value={`${ user.gender[0].toUpperCase() }${ user.gender.slice(1) }`} setValue={setGender} editMode={editMode} editType={'gender'} editDisplay={gender} />
                 <BodyElement keyWord={'DOB'} value={moment(user.dob).format('MMMM Do YYYY')} editMode={editMode} setValue={setDate} editType={'date'} editDisplay={date} />
-                <BodyElement keyWord={'Car'} value={user.car || 'None'} editMode={editMode} editType={'input'} setValue={setCar} editDisplay={car} />
+                <BodyElement keyWord={'Car'} value={user.carDetails || 'None'} editMode={editMode} editType={'input'} setValue={setCar} editDisplay={car} />
                 <BodyElement keyWord={'Music Taste'} value={user.musicPrefrences || 'Any'} editMode={editMode} setValue={setMusicPrefrences} editType={'input'} editDisplay={musicPrefrences} />
             </ScrollView>
             <View style={{ position: 'absolute', right: 10, top: 10 }}>
