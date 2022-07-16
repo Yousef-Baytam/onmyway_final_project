@@ -5,7 +5,7 @@ export default function ReviewCard({ body, author, rating }) {
 
     return (
         <View style={styles.container}>
-            <View>
+            <View style={styles.authorInfo}>
                 <Image source={{ uri: author.image.url } || require('../assets/blank-profile.webp')} style={styles.image} />
                 <Text>{author.username}</Text>
             </View>
@@ -27,5 +27,10 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         borderRadius: 17.5,
+        marginRight: 20
+    },
+    authorInfo: {
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });
