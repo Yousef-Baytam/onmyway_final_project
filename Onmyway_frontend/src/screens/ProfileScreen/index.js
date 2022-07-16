@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CustomButton from '../../components/CustomButton';
 import PressableText from '../../components/PressableText';
@@ -20,6 +20,7 @@ export default function Profile({ navigation }) {
     const [showReviewModal, setShowReviewModal] = useState(false)
 
     const [newRating, setNewRating] = useState(2.5)
+    const [review, setReview] = useState(null)
 
 
     useLayoutEffect(() => {
@@ -78,6 +79,13 @@ export default function Profile({ navigation }) {
                 }}>
                 <View style={styles.reviewContainer}>
                     <StarRating rating={newRating} setRating={setNewRating} />
+                    <TextInput style={styles.input}
+                        onChangeText={setReview}
+                        value={review}
+                        multiline={true}
+                        numberOfLines={5}
+                        placeholder="Add a Review"
+                        keyboardType="default" />
                     <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
                         <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
                         <CustomButton text={'Submit'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
@@ -135,5 +143,11 @@ const styles = StyleSheet.create({
     reviewContainer: {
         width: '100%',
         height: '100%'
+    },
+    input: {
+        width: '90%',
+        height: '20%',
+        backgroundColor: '#EAEAEA',
+        borderRadius: 10,
     }
 });
