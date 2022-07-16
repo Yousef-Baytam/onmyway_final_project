@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Modal, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import AllReviewsModal from '../../components/AllReviewsModal';
 import CustomButton from '../../components/CustomButton';
 import NewReviewModal from '../../components/NewReviewModal';
 import PressableText from '../../components/PressableText';
@@ -24,6 +25,7 @@ export default function Profile({ navigation }) {
     const [optionsDisplay, setOptionsDisplay] = useState(false)
     const [showReviewModal, setShowReviewModal] = useState(false)
     const [loggedUserReview, setLoggedUserReview] = useState(null)
+    const [showAllReviews, setShowAllReviews] = useState(false)
 
     const [newRating, setNewRating] = useState(2.5)
     const [review, setReview] = useState(null)
@@ -95,6 +97,7 @@ export default function Profile({ navigation }) {
                         review={review} setReview={setReview}
                         setNewRating={setNewRating} newRating={newRating}
                         loggedUserReview={loggedUserReview} />
+                    <AllReviewsModal user={user} />
                 </>
             }
 

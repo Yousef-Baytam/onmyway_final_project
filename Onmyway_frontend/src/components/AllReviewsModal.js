@@ -2,14 +2,14 @@ import { StyleSheet, View, Text, Modal } from 'react-native';
 import StarRating from './StarRating';
 
 
-export default function AllReviewsModal({ user }) {
+export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
 
     return (
         <Modal
             animationType="slide"
-            visible={showReviewModal}
+            visible={showAllReviews}
             onRequestClose={() => {
-                setShowReviewModal(!showReviewModal);
+                setShowReviewModal(!setShowAllReviews);
             }}>
             <View style={styles.reviewContainer}>
                 <StarRating rating={newRating} setRating={setNewRating} />
