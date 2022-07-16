@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Modal } from 'react-native';
 import StarRating from './StarRating';
 
 
-export default function AllReviewModal({ user }) {
+export default function AllReviewsModal({ user }) {
 
     return (
         <Modal
