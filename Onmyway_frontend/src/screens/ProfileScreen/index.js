@@ -3,6 +3,7 @@ import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Modal, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CustomButton from '../../components/CustomButton';
+import NewReviewModal from '../../components/NewReviewModal';
 import PressableText from '../../components/PressableText';
 import ProfileOptions from '../../components/ProfileOptions';
 import StarRating from '../../components/StarRating';
@@ -77,29 +78,14 @@ export default function Profile({ navigation }) {
                             <CustomButton text={'Leave a Review'} custom={{ width: '40%' }} action={() => setShowReviewModal(true)} />
                         </View>
                     </View>
+                    <NewReviewModal showReviewModal={showReviewModal}
+                        etShowReviewModal={setShowReviewModal}
+                        handleSubmitReview={handleSubmitReview}
+                        review={review} setReview={setReview}
+                        setNewRating={setNewRating} newRating={newRating} />
                 </>
             }
-            <Modal
-                animationType="slide"
-                visible={showReviewModal}
-                onRequestClose={() => {
-                    setModalVisible(!setShowReviewModal);
-                }}>
-                <View style={styles.reviewContainer}>
-                    <StarRating rating={newRating} setRating={setNewRating} />
-                    <TextInput style={styles.input}
-                        onChangeText={setReview}
-                        value={review}
-                        multiline={true}
-                        numberOfLines={5}
-                        placeholder="Add a Review"
-                        keyboardType="default" />
-                    <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
-                        <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReviewModal(false)} />
-                        <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReview} />
-                    </View>
-                </View>
-            </Modal>
+
         </Pressable>
     );
 }
@@ -147,18 +133,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1
-    },
-    reviewContainer: {
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    input: {
-        width: '90%',
-        height: '20%',
-        backgroundColor: '#EAEAEA',
-        borderRadius: 10,
-        padding: 20
     },
 });
