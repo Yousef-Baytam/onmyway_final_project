@@ -6,8 +6,7 @@ import PressableText from './PressableText';
 import { useState } from 'react';
 import CamModal from './CamModal';
 
-export default function UserImage({ image, setImage, handleUser }) {
-    const [visible, setVisible] = useState(false)
+export default function UserImage({ image, setImage, handleUser, setVisible, visible }) {
     const [coordinates, setCoordinates] = useState({})
     const [modalVisible, setModalVisible] = useState(false)
 
@@ -22,7 +21,7 @@ export default function UserImage({ image, setImage, handleUser }) {
     }
 
     const toggleImageBox = (e) => {
-        setVisible(!visible)
+        setVisible(true)
         setCoordinates({ top: e.nativeEvent.locationY, left: e.nativeEvent.locationX })
     }
 
