@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import ArrowHeadIcon from '../assets/icons/ArrowHeadIcon';
+import LocationInput from './LocationInput';
 
 export default function FilterBar({ filter }) {
 
@@ -19,8 +20,11 @@ export default function FilterBar({ filter }) {
                     </View>
                 </View>
             </View>
-            <View style={styles.dopPannel}>
-
+            <View style={styles.dropPannel}>
+                <View style={styles.view1}>
+                    <LocationInput text={'From'} color={'#92D293'} />
+                    <LocationInput text={'To'} color={'#D2686E'} />
+                </View>
             </View>
         </View >
     );
@@ -54,5 +58,17 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 10
+    },
+    dropPannel: {
+        width: '100%',
+        position: 'absolute',
+        top: '100%',
+        zIndex: 1,
+        backgroundColor: '#fff',
+    },
+    view1: {
+        width: '100%',
+        height: 100,
+        transform: [{ scale: 0.7 }]
     }
 });

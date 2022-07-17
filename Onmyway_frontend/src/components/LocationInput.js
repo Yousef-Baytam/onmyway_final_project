@@ -14,11 +14,11 @@ export default function LocationInput({ text, color }) {
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flex: 1,
         width: '60%',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginVertical: 5
     },
     indicator: {
         width: 30,
