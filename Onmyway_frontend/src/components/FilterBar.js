@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, LayoutAnimation } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import ArrowHeadIcon from '../assets/icons/ArrowHeadIcon';
 import CustomButton from './CustomButton';
 import DatePicker from './DatePicker';
@@ -7,12 +8,18 @@ import LocationInput from './LocationInput';
 
 export default function FilterBar({ filter }) {
     const [dateFilter, setDateFilter] = useState(new Date())
+    const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
 
     return (
         <View style={styles.container}>
             <View style={styles.topBarContainer}>
                 <Text>Filters</Text>
-                <View style={styles.filtersContainer}>
+                <Pressable style={styles.filtersContainer} onPress={() => {
+                    LayoutAnimation.configureNext(
+                        LayoutAnimation.create(150, 'easeInEaseOut', 'opacity')
+                    )
+                    setShowFIlterDropDown(!showFIlterDropDown)
+                }}>
                     <View style={styles.textConstainer}>
                         <Text style={{ color: '#92D293', fontWeight: 'bold' }}>From</Text>
                     </View>
@@ -20,11 +27,11 @@ export default function FilterBar({ filter }) {
                         <Text style={{ color: '#D2686E', fontWeight: 'bold' }}>To</Text>
                     </View>
                     <View style={styles.icon}>
-                        <ArrowHeadIcon up={true} />
+                        <ArrowHeadIcon up={showFIlterDropDown ? true : false} />
                     </View>
-                </View>
+                </Pressable>
             </View>
-            <View style={styles.dropPannel}>
+            <View style={[styles.dropPannel, { maxHeight: showFIlterDropDown ? '100%' : 0 }]}>
                 <View style={styles.topBarContainer}>
                     <Text>Date   </Text>
                     <View style={[styles.filtersContainer, { height: 38, marginBottom: 0, paddingLeft: 0 }]}>
@@ -87,6 +94,8 @@ const styles = StyleSheet.create({
         top: '100%',
         zIndex: 1,
         backgroundColor: '#fff',
+        overflow: 'hidden',
+        transform: [{ scaleY: 1 }],
     },
     view1: {
         width: '115%',
@@ -94,5 +103,5 @@ const styles = StyleSheet.create({
         transform: [{ scale: 0.7 }],
         flexDirection: 'row',
         alignItems: 'center',
-    }
+    },
 });
