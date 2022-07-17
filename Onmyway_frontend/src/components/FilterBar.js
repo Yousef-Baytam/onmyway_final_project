@@ -26,8 +26,8 @@ export default function FilterBar({ filter }) {
             </View>
             <View style={styles.dropPannel}>
                 <View style={styles.topBarContainer}>
-                    <Text>Date</Text>
-                    <View style={styles.filtersContainer}>
+                    <Text>Date   </Text>
+                    <View style={[styles.filtersContainer, { height: 38, marginBottom: 0, paddingLeft: 0 }]}>
                         <DatePicker date={dateFilter} setDate={setDateFilter} placeholder={'Ride Date'} custom={{
                             width: '100%',
                             borderColor: 'rgba(0,0,0, 0.7)',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     topBarContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         width: '100%'
     },
     container: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
     view1: {
         width: '115%',
-        height: 80,
+        height: 70,
         transform: [{ scale: 0.7 }],
         flexDirection: 'row',
         alignItems: 'center',
