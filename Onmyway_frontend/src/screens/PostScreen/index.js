@@ -10,7 +10,7 @@ import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useLayoutEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext'
-import { joinPost } from '../../controllers/postsController';
+import { joinPost, quitPost } from '../../controllers/postsController';
 
 export default function Post({ navigation }) {
     const { user } = useUser()
@@ -40,6 +40,14 @@ export default function Post({ navigation }) {
                 setJoined('pending')
             else
                 Alert.alert('Unable to Join', 'Error joining this ride, try again later')
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const handleQuitPost = async () => {
+        try {
+
         } catch (e) {
             console.log(e)
         }

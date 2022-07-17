@@ -53,4 +53,4 @@ const quitPost = async (id) => {
     }
 }
 
-export { addPost, getPost, joinPost }
+export { addPost, getPost, joinPost, quitPost }
