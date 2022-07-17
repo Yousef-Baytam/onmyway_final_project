@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/drawer';
 import { View, StyleSheet, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import LogoutIcon from '../assets/icons/LogoutIcon';
 import { useLoggedIn } from '../context/LoggedInContext';
 import storage from '../storage/asyncStorage';
 import TabNav from './TabNav';
@@ -20,7 +21,8 @@ function CustomDrawerContent(props) {
             </DrawerContentScrollView>
             <View>
                 <Pressable onPress={() => { storage.remove({ key: 'token' }); handleLoggedIn(false) }} style={styles.logoutBtn} >
-                    <Text>Logout</Text>
+                    <Text style={{ color: '#fff', fontWeight: 'bold' }}>Logout</Text>
+                    <LogoutIcon />
                 </Pressable>
             </View>
         </View>
@@ -38,10 +40,14 @@ export function DrawerNav() {
 }
 const styles = StyleSheet.create({
     logoutBtn: {
-        width: '100%',
+        width: '93%',
         height: 50,
-        justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#D2686E',
         margin: 10,
-        paddingLeft: 30
+        paddingLeft: 30,
+        borderRadius: 5,
+        flexDirection: 'row'
     }
 });
