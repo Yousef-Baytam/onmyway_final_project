@@ -13,7 +13,9 @@ export default function FilterBar({ filter }) {
                 <View style={styles.textConstainer}>
                     <Text>To</Text>
                 </View>
-                <ArrowHeadIcon up={false} />
+                <View style={styles.icon}>
+                    <ArrowHeadIcon up={false} />
+                </View>
             </View>
         </View >
     );
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     textConstainer: {
-        width: '50%'
+        width: '45%'
+    },
+    icon: {
+        marginLeft: 10
     }
 });

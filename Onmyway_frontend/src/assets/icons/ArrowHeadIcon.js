@@ -4,10 +4,10 @@ export default function ArrowHeadIcon({ up }) {
 
     return (
         <Svg
-            width={25}
+            width={20}
             height={25}
-            viewBox="0 0 1000 500"
-            fill='#858585'
+            viewBox="0 0 800 500"
+            fill='#A1CCE4'
         >
             {
                 up ?
