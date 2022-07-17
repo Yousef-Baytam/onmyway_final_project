@@ -8,14 +8,27 @@ import MusicPrefrence from '../../components/MusicPrefrence';
 import PreferredGenderPicker from '../../components/PreferredGenderPicker';
 import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
+import { useLayoutEffect, useState } from 'react';
+import { useUser } from '../../context/UserContext'
 
 export default function Post({ navigation }) {
+    const { user } = useUser()
     const route = useRoute()
+    const [joined, setJoined] = useState('noRequest') //enum=[noRequest, pending, approved, declined]
+
     const data = route.params
     let days
     if (data.days)
         days = JSON.parse(data.days)
     else days = ''
+
+    useLayoutEffect(() => {
+        let ids = data.joinRequests.filter(i => i.joined)
+        if (ids.includes(user._id)) {
+            let userJoinRequestStatus = data.joinRequests.find(i => i.joined == user._id)
+            setJoined(userJoinRequestStatus.status)
+        }
+    }, [])
 
     return (
         <View style={styles.container}>
