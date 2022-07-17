@@ -27,4 +27,17 @@ const getPost = async () => {
     }
 }
 
+const joinPost = async (id) => {
+    try {
+        let res = await axios({
+            url: `/post/join/${ id }`,
+            method: "POST",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 export { addPost, getPost }
