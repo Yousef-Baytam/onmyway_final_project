@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Alert } from 'react-native';
 import BodyElement from './BodyElement';
 import moment from 'moment'
 import EditPenIcon from '../assets/icons/EditPenIcon'
@@ -33,6 +33,19 @@ export default function UserProfileBody({ user, display }) {
         }
     }
 
+    const editConfirmationAlert = () => {
+        return Alert.alert('Confirm Action', 'Are you sure you want update your information?',
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: handleUpdateUserInfo
+                }
+            ])
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -52,7 +65,7 @@ export default function UserProfileBody({ user, display }) {
                         {
                             editMode ?
                                 <View style={styles.editButtonsConatainer}>
-                                    <Pressable onPress={handleUpdateUserInfo} style={{ marginLeft: 10 }}>
+                                    <Pressable onPress={editConfirmationAlert} style={{ marginLeft: 10 }}>
                                         <TickIcon />
                                     </Pressable>
                                     <Pressable onPress={() => setEditMode(false)}>
