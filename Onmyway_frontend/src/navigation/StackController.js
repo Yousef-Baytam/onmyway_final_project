@@ -8,9 +8,10 @@ import { DrawerNav } from "./DrawerNav";
 import axios from 'axios'
 import { url } from "../constants/vars";
 import { useLoggedIn } from "../context/LoggedInContext";
+import { StatusBar } from 'react-native';
 
 export default function StackController() {
-    const { user, handleUser } = useUser()
+    const { handleUser } = useUser()
     const { loggedIn, handleLoggedIn } = useLoggedIn()
 
     SplashScreen.preventAutoHideAsync()
@@ -35,5 +36,22 @@ export default function StackController() {
         axios.defaults.baseURL = `${ url }`
     }, [])
 
-    return loggedIn ? <DrawerNav /> : <AuthStack />
+    return loggedIn ?
+        <>
+            <DrawerNav />
+            <StatusBar
+                animated={true}
+                backgroundColor="#fff"
+                barStyle={'dark-content'}
+            />
+        </>
+        :
+        <>
+            <AuthStack />
+            <StatusBar
+                animated={true}
+                backgroundColor="#fff"
+                barStyle={'dark-content'}
+            />
+        </>
 }
