@@ -19,9 +19,9 @@ export default function Login({ navigation }) {
     const handleLogin = async () => {
         try {
             const res = await login({ username, password })
-            handleUser(res.user)
-            await storage.save({ key: 'token', data: res.token.token })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
+            await storage.save({ key: 'token', data: res.token.token })
+            handleUser(res.user)
         }
         catch (e) {
             console.log(e)

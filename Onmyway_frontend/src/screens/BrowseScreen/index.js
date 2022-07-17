@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { RefreshControl, StyleSheet, View, FlatList } from 'react-native';
 import AddPost from '../../components/AddPost';
+import FilterBar from '../../components/FilterBar';
 import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
 
@@ -27,6 +28,7 @@ export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <FilterBar />
             {posts && <FlatList
                 data={posts}
                 renderItem={({ item }) => (<PostCard data={item} />)}
