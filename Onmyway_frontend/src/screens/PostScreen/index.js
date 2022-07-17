@@ -22,10 +22,9 @@ export default function Post({ navigation }) {
     if (data.days)
         days = JSON.parse(data.days)
     else days = ''
-    console.log(data)
 
     useLayoutEffect(() => {
-        let ids = data.joinRequests.filter(i => i.joined)
+        let ids = data.joinRequests.map(i => i.joined)
         if (ids.includes(user._id)) {
             let userJoinRequestStatus = data.joinRequests.find(i => i.joined == user._id)
             setJoined(userJoinRequestStatus.status)
@@ -71,7 +70,13 @@ export default function Post({ navigation }) {
                         :
                         joined == 'noRequest' ?
                             <CustomButton text={'Join Request'} action={handleJoinPost} />
-                            : null
+                            : joined == 'pending' ?
+                                <CustomButton text={'Pending'} customButton={styles.pendingStyle} customText={{ color: '#000' }} />
+                                : joined == 'accepted' ?
+                                    <CustomButton text={'Accepted'} customButton={styles.acceptedStyle} customText={{ color: '#000' }} />
+                                    : joined == 'rejected' ?
+                                        <CustomButton text={'Rejected'} customButton={styles.rejectedStyle} customText={{ color: '#000' }} />
+                                        : null
                 }
             </View>
         </View>
@@ -93,5 +98,20 @@ const styles = StyleSheet.create({
     },
     view2: {
         height: 500
+    },
+    pendingStyle: {
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#FFA500',
+    },
+    acceptedStyle: {
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#92D293',
+    },
+    rejectedStyle: {
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#D2686E',
     }
 });
