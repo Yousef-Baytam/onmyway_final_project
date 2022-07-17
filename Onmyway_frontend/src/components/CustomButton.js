@@ -1,11 +1,11 @@
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
-export default function CustomButton({ text, action, custom, customButton, customText, customRipple }) {
+export default function CustomButton({ text, action, custom, customButton, customText }) {
     return (
         <View style={[styles.container, custom]}>
             <View style={[styles.textContainer, customButton]}>
-                <Pressable onPress={action} android_ripple={[{ color: '#002C4D', borderless: true }, customRipple]}>
+                <Pressable onPress={action} android_ripple={{ color: '#002C4D', borderless: true }}>
                     <Text style={[styles.text, customText]}>{text}</Text>
                 </Pressable>
             </View>
@@ -35,5 +35,4 @@ CustomButton.defaultProps = {
     custom: {},
     customButton: {},
     customText: {},
-    customRipple: {}
 }
