@@ -4,13 +4,17 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
+import { useUser } from '../context/UserContext';
+import storage from '../storage/asyncStorage';
 import TabNav from './TabNav';
 
 function CustomDrawerContent(props) {
+    const { handleUser } = useUser()
+
     return (
         <DrawerContentScrollView {...props}>
             <DrawerItemList {...props} />
-            <DrawerItem label="Help" onPress={() => alert('Link to help')} />
+            <DrawerItem label="Logout" onPress={() => { storage.remove({ key: 'token' }); handleUser({}) }} />
         </DrawerContentScrollView>
     );
 }
