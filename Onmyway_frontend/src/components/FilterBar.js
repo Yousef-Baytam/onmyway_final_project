@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import ArrowHeadIcon from '../assets/icons/ArrowHeadIcon';
 
 export default function FilterBar({ filter }) {
 
@@ -12,6 +13,7 @@ export default function FilterBar({ filter }) {
                 <View style={styles.textConstainer}>
                     <Text>To</Text>
                 </View>
+                <ArrowHeadIcon up={false} />
             </View>
         </View >
     );
