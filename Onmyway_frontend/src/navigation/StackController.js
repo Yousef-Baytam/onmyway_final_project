@@ -7,9 +7,11 @@ import { me } from "../controllers/authController";
 import { DrawerNav } from "./DrawerNav";
 import axios from 'axios'
 import { url } from "../constants/vars";
+import { useLoggedIn } from "../context/LoggedInContext";
 
 export default function StackController() {
     const { user, handleUser } = useUser()
+    const { loggedIn, handleLoggedIn } = useLoggedIn()
 
     SplashScreen.preventAutoHideAsync()
 
@@ -18,8 +20,10 @@ export default function StackController() {
             const token = await storage.load({ key: 'token' })
             axios.defaults.headers.common['Authorization'] = `bearer ${ token }`
             const res = await me(token)
-            if (res.user.status != 'banned')
+            if (res.user.status != 'banned') {
                 handleUser(res.user)
+                handleLoggedIn(true)
+            }
             await SplashScreen.hideAsync()
         } catch (e) {
             await SplashScreen.hideAsync()
@@ -31,5 +35,5 @@ export default function StackController() {
         axios.defaults.baseURL = `${ url }`
     }, [])
 
-    return user ? <DrawerNav /> : <AuthStack />
+    return loggedIn ? <DrawerNav /> : <AuthStack />
 }

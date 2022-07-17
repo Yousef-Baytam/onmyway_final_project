@@ -22,7 +22,7 @@ const AuthenticationProvider = ({ children }) => {
 
 export default AuthenticationProvider;
 
-export const useLoading = () => {
+export const useLoggedIn = () => {
     const { loggedIn, handleLoggedIn } = React.useContext(AuthenticationContext)
 
     return {

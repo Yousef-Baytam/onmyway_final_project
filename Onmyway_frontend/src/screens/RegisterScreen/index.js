@@ -12,6 +12,7 @@ import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import PhoneCustomInput from '../../components/PhoneCustomInput';
 import RadioButtonList from '../../components/RadioButtonList';
+import { useLoggedIn } from '../../context/LoggedInContext';
 import { useUser } from '../../context/UserContext';
 import { register } from '../../controllers/authController'
 
@@ -29,6 +30,7 @@ export default function Register({ navigation }) {
         { label: 'Other', value: 'other' }
     ]);
     const { handleUser } = useUser()
+    const { handleLoggedIn } = useLoggedIn()
 
     const handleRegister = async () => {
         try {
@@ -36,6 +38,7 @@ export default function Register({ navigation }) {
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
             await storage.save({ key: 'token', data: res.token.token })
             handleUser(res.results)
+            handleLoggedIn(true)
         }
         catch (e) {
             console.log(e)
