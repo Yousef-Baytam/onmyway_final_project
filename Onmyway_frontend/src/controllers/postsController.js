@@ -40,4 +40,4 @@ const joinPost = async (id) => {
     }
 }
 
-export { addPost, getPost }
+export { addPost, getPost, joinPost }

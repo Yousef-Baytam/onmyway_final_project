@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import AvailableSeats from '../../components/AvailableSeats';
 import CustomButton from '../../components/CustomButton';
@@ -30,6 +30,15 @@ export default function Post({ navigation }) {
         }
     }, [])
 
+    const handleJoinPost = async () => {
+        try {
+            if (!data.remainingSeats)
+                return Alert.alert('No Available Seats', 'There are no available seats in this ride at the moment')
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.view1}>
@@ -49,7 +58,12 @@ export default function Post({ navigation }) {
             </View>
             <View style={{ marginTop: '10%', flexDirection: 'row' }}>
                 <CustomButton text={'User Profile'} action={() => navigation.navigate('Profile', data.owner)} />
-                <CustomButton text={'Join Request'} />
+                {
+                    !data.remainingSeats && joined == 'noRequest' ?
+                        null
+                        :
+                        <CustomButton text={'Join Request'} action={handleJoinPost} />
+                }
             </View>
         </View>
     );
