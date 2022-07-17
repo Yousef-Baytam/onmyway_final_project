@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import Browse from '../screens/BrowseScreen'
 import UserProfile from '../screens/UserProfileScreen'
 import NewPost from '../screens/NewPostScreen'
@@ -15,6 +15,7 @@ export function MainStack() {
 
     return (
         <Stack.Navigator screenOptions={({ navigation }) => ({
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             headerRight: () => (
                 <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float', headerStyle: { elevation: 0 }
         })
@@ -22,6 +23,7 @@ export function MainStack() {
             <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
                 headerTitle: 'Browse', headerTitleAlign: 'center', headerLeft: () => (
                     <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
+
             })
             } />
             <Stack.Group screenOptions={({ navigation }) => ({
