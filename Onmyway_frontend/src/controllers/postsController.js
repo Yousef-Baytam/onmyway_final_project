@@ -43,7 +43,7 @@ const joinPost = async (id) => {
 const quitPost = async (id) => {
     try {
         let res = await axios({
-            url: `/quit/${ id }`,
+            url: `/post/quit/${ id }`,
             method: "POST",
         })
         return res.data

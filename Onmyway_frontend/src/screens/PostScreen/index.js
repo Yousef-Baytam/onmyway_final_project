@@ -47,10 +47,27 @@ export default function Post({ navigation }) {
 
     const handleQuitPost = async () => {
         try {
-
+            const res = await quitPost(data._id)
+            if (res.success)
+                setJoined('noRequest')
+            else
+                Alert.alert('Unable to Quit', 'Error quitting this ride, try again later')
         } catch (e) {
             console.log(e)
         }
+    }
+
+    const quitPostAlert = () => {
+        return Alert.alert('Confirm Action', 'Are you sure you want to quit this ride?',
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: handleQuitPost
+                }
+            ])
     }
 
     return (
@@ -79,7 +96,7 @@ export default function Post({ navigation }) {
                         joined == 'noRequest' ?
                             <CustomButton text={'Join Request'} action={handleJoinPost} />
                             : joined == 'pending' ?
-                                <CustomButton text={'Pending'} customButton={styles.pendingStyle} customText={{ color: '#000' }} />
+                                <CustomButton text={'Pending'} action={quitPostAlert} customButton={styles.pendingStyle} customText={{ color: '#000' }} />
                                 : joined == 'accepted' ?
                                     <CustomButton text={'Accepted'} customButton={styles.acceptedStyle} customText={{ color: '#000' }} />
                                     : joined == 'rejected' ?
