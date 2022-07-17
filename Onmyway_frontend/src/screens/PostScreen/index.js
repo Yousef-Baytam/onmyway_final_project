@@ -96,7 +96,7 @@ export default function Post({ navigation }) {
                         joined == 'noRequest' ?
                             <CustomButton text={'Join Request'} action={handleJoinPost} />
                             : joined == 'pending' ?
-                                <CustomButton text={'Pending'} action={quitPostAlert} customButton={styles.pendingStyle} customText={{ color: '#000' }} />
+                                <CustomButton text={'Pending'} action={quitPostAlert} customButton={styles.pendingStyle} customText={{ color: '#000' }} customRipple={{ borderColor: '#FFA500' }} />
                                 : joined == 'accepted' ?
                                     <CustomButton text={'Accepted'} customButton={styles.acceptedStyle} customText={{ color: '#000' }} />
                                     : joined == 'rejected' ?
