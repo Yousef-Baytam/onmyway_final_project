@@ -9,8 +9,10 @@ module.exports.register = async (req, res) => {
     res.send({ "results": result, "token": token })
 }
 
-module.exports.login = (req, res) => {
+module.exports.login = async (req, res) => {
     const token = jwt(req.user)
+    const reviews = await Review.find({ 'reviewed': req.user.id }).populate('author')
+    req.user = { ...req.user._doc, reviews }
     res.send({ 'response': 'success', "user": req.user, "token": token })
 }
 
