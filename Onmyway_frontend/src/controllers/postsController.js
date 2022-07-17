@@ -40,4 +40,17 @@ const joinPost = async (id) => {
     }
 }
 
+const quitPost = async (id) => {
+    try {
+        let res = await axios({
+            url: `/quit/${ id }`,
+            method: "POST",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 export { addPost, getPost, joinPost }
