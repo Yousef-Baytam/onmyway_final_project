@@ -5,28 +5,38 @@ export default function FilterBar({ filter }) {
 
     return (
         <View style={styles.container}>
-            <Text>Filters</Text>
-            <View style={styles.filtersContainer}>
-                <View style={styles.textConstainer}>
-                    <Text>From</Text>
+            <View style={styles.topBarContainer}>
+                <Text>Filters</Text>
+                <View style={styles.filtersContainer}>
+                    <View style={styles.textConstainer}>
+                        <Text style={{ color: '#92D293', fontWeight: 'bold' }}>From</Text>
+                    </View>
+                    <View style={styles.textConstainer}>
+                        <Text style={{ color: '#D2686E', fontWeight: 'bold' }}>To</Text>
+                    </View>
+                    <View style={styles.icon}>
+                        <ArrowHeadIcon up={true} />
+                    </View>
                 </View>
-                <View style={styles.textConstainer}>
-                    <Text>To</Text>
-                </View>
-                <View style={styles.icon}>
-                    <ArrowHeadIcon up={false} />
-                </View>
+            </View>
+            <View style={styles.dopPannel}>
+
             </View>
         </View >
     );
 }
 
 const styles = StyleSheet.create({
+    topBarContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+    },
     container: {
         width: '100%',
         height: '10%',
         alignItems: 'center',
-        flexDirection: "row",
         justifyContent: 'center'
     },
     filtersContainer: {
