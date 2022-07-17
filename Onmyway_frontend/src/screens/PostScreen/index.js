@@ -10,6 +10,7 @@ import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useLayoutEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext'
+import { joinPost } from '../../controllers/postsController';
 
 export default function Post({ navigation }) {
     const { user } = useUser()
@@ -21,6 +22,7 @@ export default function Post({ navigation }) {
     if (data.days)
         days = JSON.parse(data.days)
     else days = ''
+    console.log(data)
 
     useLayoutEffect(() => {
         let ids = data.joinRequests.filter(i => i.joined)
@@ -34,6 +36,11 @@ export default function Post({ navigation }) {
         try {
             if (!data.remainingSeats)
                 return Alert.alert('No Available Seats', 'There are no available seats in this ride at the moment')
+            const res = await joinPost(data._id)
+            if (res.success)
+                setJoined('pending')
+            else
+                Alert.alert('Unable to Join', 'Error joining this ride, try again later')
         } catch (e) {
             console.log(e)
         }
@@ -62,7 +69,9 @@ export default function Post({ navigation }) {
                     !data.remainingSeats && joined == 'noRequest' ?
                         null
                         :
-                        <CustomButton text={'Join Request'} action={handleJoinPost} />
+                        joined == 'noRequest' ?
+                            <CustomButton text={'Join Request'} action={handleJoinPost} />
+                            : null
                 }
             </View>
         </View>
