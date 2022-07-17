@@ -7,7 +7,8 @@ import { getPost } from '../../controllers/postsController'
 
 export default function Browse({ navigation }) {
     const [posts, setPosts] = useState(null)
-    const [refreshing, setRefreshing] = useState(false);
+    const [refreshing, setRefreshing] = useState(false)
+
 
     const handleGetPosts = async () => {
         try {
