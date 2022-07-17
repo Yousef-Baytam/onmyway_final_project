@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, LayoutAnimation } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import AllReviewsModal from '../../components/AllReviewsModal';
@@ -18,7 +18,14 @@ export default function UserProfile({ navigation }) {
     const [showAllReviews, setShowAllReviews] = useState(false)
 
     return (
-        <Pressable style={styles.container} onPress={() => { visible && setVisible(false) }}>
+        <Pressable style={styles.container} onPress={() => {
+            if (visible) {
+                LayoutAnimation.configureNext(
+                    LayoutAnimation.create(100, 'easeInEaseOut', 'scaleXY')
+                )
+                setVisible(false)
+            }
+        }}>
             <View style={styles.imageView}>
                 <UserImage image={image} setImage={setImage} handleUser={handleUser} setVisible={setVisible} visible={visible} />
             </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Modal, Text } from 'react-native';
+import { StyleSheet, Image, View, Modal, Text, LayoutAnimation } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
@@ -21,6 +21,9 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
     }
 
     const toggleImageBox = (e) => {
+        LayoutAnimation.configureNext(
+            LayoutAnimation.create(100, 'easeInEaseOut', 'scaleXY')
+        )
         setVisible(true)
         setCoordinates({ top: e.nativeEvent.locationY, left: e.nativeEvent.locationX })
     }
@@ -49,13 +52,10 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                         <Pressable onPress={toggleImageBox}>
                             <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
                         </Pressable>
-                        {
-                            visible &&
-                            <View style={[styles.imageViewBox, coordinates]}>
-                                <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
-                                <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
-                            </View>
-                        }
+                        <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0 }]}>
+                            <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
+                            <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
+                        </View>
                         <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
                     </>
             }
