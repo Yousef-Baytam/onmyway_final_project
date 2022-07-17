@@ -20,7 +20,7 @@ export function MainStack() {
         })
         }>
             <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
-                headerTitle: '', headerLeft: () => (
+                headerTitle: 'Browse', headerTitleAlign: 'center', headerLeft: () => (
                     <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />),
             })
             } />
