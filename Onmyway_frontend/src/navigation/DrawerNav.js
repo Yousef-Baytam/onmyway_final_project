@@ -22,7 +22,9 @@ function CustomDrawerContent(props) {
             <View>
                 <Pressable onPress={() => { storage.remove({ key: 'token' }); handleLoggedIn(false) }} style={styles.logoutBtn} >
                     <Text style={{ color: '#fff', fontWeight: 'bold' }}>Logout</Text>
-                    <LogoutIcon />
+                    <View style={styles.icon}>
+                        <LogoutIcon />
+                    </View>
                 </Pressable>
             </View>
         </View>
@@ -49,5 +51,12 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         borderRadius: 5,
         flexDirection: 'row'
+    },
+    text: {
+        color: '#fff',
+        fontWeight: 'bold'
+    },
+    icon: {
+        marginRight: 15
     }
 });
