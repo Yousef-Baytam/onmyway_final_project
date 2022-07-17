@@ -6,10 +6,10 @@ export default function FilterBar({ filter }) {
         <View style={styles.container}>
             <Text>Filters</Text>
             <View style={styles.filtersContainer}>
-                <View>
+                <View style={styles.textConstainer}>
                     <Text>From</Text>
                 </View>
-                <View>
+                <View style={styles.textConstainer}>
                     <Text>To</Text>
                 </View>
             </View>
@@ -26,6 +26,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     filtersContainer: {
-        width: '75%'
+        width: '75%',
+        alignItems: 'center',
+        flexDirection: "row",
+        justifyContent: 'center',
+        padding: 10,
+        margin: 10,
+        backgroundColor: '#EAEAEA',
+        borderRadius: 10
+    },
+    textConstainer: {
+        width: '50%'
     }
 });
