@@ -15,6 +15,8 @@ import RadioButtonList from '../../components/RadioButtonList';
 import { useLoggedIn } from '../../context/LoggedInContext';
 import { useUser } from '../../context/UserContext';
 import { register } from '../../controllers/authController'
+import { auth } from '../../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/compat/auth';
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
@@ -39,6 +41,8 @@ export default function Register({ navigation }) {
             await storage.save({ key: 'token', data: res.token.token })
             handleUser(res.results)
             handleLoggedIn(true)
+            const firebaseRegister = await createUserWithEmailAndPassword(auth, email, password)
+
         }
         catch (e) {
             console.log(e)
