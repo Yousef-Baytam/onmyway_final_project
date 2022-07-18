@@ -21,9 +21,7 @@ export default function Map({ showMapModal, setShowMapModal }) {
             }
 
             let location = await Location.getCurrentPositionAsync({});
-            console.log(location)
             setInitailLocation({ ...initialLocation, latitude: location.coords.latitude, longitude: location.coords.longitude });
-            console.log(initialLocation)
             setLocationLoaded(true)
         })();
     }, []);
