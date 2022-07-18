@@ -34,18 +34,21 @@ export default function Profile({ navigation }) {
         navigation.setOptions({
             headerRight: () => (<ProfileOptions action={() => setOptionsDisplay(true)} />)
         })
-        try {
-            (async () => {
+        const getOldRev = async () => {
+            try {
                 const reviews = await getUserReviews(param._id)
                 setUser({ ...param, reviews })
                 const oldLoggedUserReview = reviews.find(e => e.author._id == loggedUser._id)
-                setLoggedUserReview(oldLoggedUserReview)
-                setReview(oldLoggedUserReview.body)
-                setNewRating(oldLoggedUserReview.rating)
-            })()
-        } catch (e) {
-            console.log(e)
+                if (oldLoggedUserReview) {
+                    setLoggedUserReview(oldLoggedUserReview)
+                    setReview(oldLoggedUserReview.body)
+                    setNewRating(oldLoggedUserReview.rating)
+                }
+            } catch (e) {
+                console.log(e)
+            }
         }
+        getOldRev()
     }, [])
 
     useLayoutEffect(() => {
