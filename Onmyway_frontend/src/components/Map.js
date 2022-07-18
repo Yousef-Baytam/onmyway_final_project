@@ -1,7 +1,8 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Modal, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 export default function Map({ showMapModal, setShowMapModal }) {
     const [initialLocation, setInitailLocation] = useState({
@@ -34,6 +35,16 @@ export default function Map({ showMapModal, setShowMapModal }) {
                 setShowMapModal(!showMapModal);
             }}>
             <View style={styles.container}>
+                <GooglePlacesAutocomplete
+                    placeholder='Search'
+                    onPress={(data, details = null) => {
+                        console.log(data, details);
+                    }}
+                    query={{
+                        key: 'YOUR API KEY',
+                        language: 'en',
+                    }}
+                />
                 {
                     locationLoaded &&
                     <MapView style={styles.map}
