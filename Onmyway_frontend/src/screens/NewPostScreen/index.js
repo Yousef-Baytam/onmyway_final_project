@@ -10,6 +10,7 @@ import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 import { addPost } from '../../controllers/postsController';
+import Map from '../../components/Map'
 
 export default function NewPost({ navigation }) {
     const { user } = useUser()
@@ -24,6 +25,7 @@ export default function NewPost({ navigation }) {
     const [preferredGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences || 'Any')
+    const [showMapModal, setShowMapModal] = useState(false)
 
     const handleAddPost = async () => {
         try {
@@ -63,6 +65,7 @@ export default function NewPost({ navigation }) {
             <View style={{ marginTop: '10%' }}>
                 <CustomButton text={'Confirm'} action={handleAddPost} />
             </View>
+            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} />
         </View>
     );
 }
