@@ -44,8 +44,8 @@ export default function NewPost({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.view1}>
-                <LocationInput text={'From'} color={'#92D293'} />
-                <LocationInput text={'To'} color={'#D2686E'} />
+                <LocationInput text={'From'} color={'#92D293'} action={() => setShowMapModal(true)} />
+                <LocationInput text={'To'} color={'#D2686E'} action={() => setShowMapModal(true)} />
             </View>
             <View style={styles.view2}>
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>

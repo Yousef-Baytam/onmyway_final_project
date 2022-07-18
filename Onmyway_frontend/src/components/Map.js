@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default function Map({ showMapModal, setShowMapModal }) {
@@ -23,5 +23,9 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    map: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     },
 });
