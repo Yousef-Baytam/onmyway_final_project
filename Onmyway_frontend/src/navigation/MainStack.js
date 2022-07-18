@@ -9,6 +9,7 @@ import UserProfileHeaderButton from '../components/UserProfileHeaderButton';
 import BackArrow from '../components/BackArrow';
 import Post from '../screens/PostScreen';
 import Profile from '../screens/ProfileScreen';
+import Chat from '../screens/ChatScreen';
 
 export function MainStack() {
     const Stack = createStackNavigator();
@@ -39,6 +40,7 @@ export function MainStack() {
                 <Stack.Screen name="Post" component={Post} />
                 <Stack.Screen name="Profile" component={Profile} options={({ route }) => ({ title: route.params.username })} />
                 <Stack.Screen name="Map" component={Map} />
+                <Stack.Screen name="Chat" component={Chat} />
             </Stack.Group>
 
         </Stack.Navigator>

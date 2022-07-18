@@ -82,9 +82,10 @@ export default function Profile({ navigation }) {
             {
                 optionsDisplay &&
                 <View style={styles.userOptions}>
-                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
-                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
-                    <PressableText text={'hello'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
+                        action={() => navigation.navigate('Chat', user)} />
+                    <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }} />
                 </View>
             }
             {
