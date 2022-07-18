@@ -52,7 +52,7 @@ export default function PostCard(data) {
             <Pressable onPress={() => navigation.navigate('Post', data.data)} >
                 <View style={styles.cardContainer}>
                     <View style={{ width: '33.333%' }}>
-                        <Image source={{ uri: user.image.url } || require('../assets/blank-profile.webp')} style={styles.image} />
+                        <Image source={Object.keys(user.image).length ? { uri: user.image.url } : require('../assets/blank-profile.webp')} style={styles.image} />
                     </View>
                     <View style={styles.infoConatiner}>
                         <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA' }]}>

@@ -10,7 +10,7 @@ export default function UserProfileHeaderButton({ action }) {
         <View style={styles.container}>
             <Pressable onPress={action}>
                 {
-                    user.image.url ?
+                    Object.keys(user.image).length ?
                         <Image style={styles.image} source={{ uri: user.image.url }} />
                         :
                         <UserHeaderIcon />

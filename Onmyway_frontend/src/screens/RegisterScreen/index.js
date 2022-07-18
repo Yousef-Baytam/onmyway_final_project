@@ -15,6 +15,8 @@ import RadioButtonList from '../../components/RadioButtonList';
 import { useLoggedIn } from '../../context/LoggedInContext';
 import { useUser } from '../../context/UserContext';
 import { register } from '../../controllers/authController'
+import axios from 'axios'
+import storage from '../../storage/asyncStorage';
 import { auth } from '../../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/compat/auth';
 
@@ -37,6 +39,7 @@ export default function Register({ navigation }) {
     const handleRegister = async () => {
         try {
             const res = await register({ username, email, phone, dob: date, gender, password })
+            console.log({ username, email, phone, dob: date, gender, password })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
             await storage.save({ key: 'token', data: res.token.token })
             handleUser(res.results)

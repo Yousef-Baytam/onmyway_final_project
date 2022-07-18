@@ -50,7 +50,7 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                     :
                     <>
                         <Pressable onPress={toggleImageBox}>
-                            <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
+                            <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                         </Pressable>
                         <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0 }]}>
                             <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
