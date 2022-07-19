@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
 import { GiftedChat, Bubble, Send } from 'react-native-gifted-chat';
 import DownArrowIcon from '../../assets/icons/DownArrowIcon';
 import SendButtonIcon from '../../assets/icons/SendButtonIcon';
@@ -66,6 +66,13 @@ export default function Chat({ navigation }) {
             </View>
         )
     }
+    const renderLoading = () => {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#6646ee" />
+            </View>
+        )
+    }
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -108,6 +115,7 @@ export default function Chat({ navigation }) {
             scrollToBottom={true}
             scrollToBottomComponent={scrollToBottom}
             scrollToBottomStyle={{ width: 20, height: 20 }}
+            renderLoading={renderLoading}
         />
     );
 }
@@ -148,5 +156,10 @@ const styles = StyleSheet.create({
         height: 25,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    loadingContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
