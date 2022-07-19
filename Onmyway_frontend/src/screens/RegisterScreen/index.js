@@ -18,7 +18,7 @@ import { register } from '../../controllers/authController'
 import axios from 'axios'
 import storage from '../../storage/asyncStorage';
 import { auth } from '../../../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
@@ -44,7 +44,8 @@ export default function Register({ navigation }) {
             handleUser(res.results)
             handleLoggedIn(true)
             const firebaseRegister = await createUserWithEmailAndPassword(auth, email, password)
-            console.log('firebase:', firebaseRegister)
+            const user = firebaseRegister.user
+            await updateProfile(user, { username: username })
         }
         catch (e) {
             console.log(e)
