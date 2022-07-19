@@ -69,11 +69,12 @@ const updateReview = async (data, id) => {
     }
 }
 
-const getUser = async (id) => {
+const getUser = async (ids) => {
     try {
         let res = await axios({
-            url: `/user/${ id }`,
+            url: `/user`,
             method: "GEt",
+            data: ids
         })
         return res.data.results
     }

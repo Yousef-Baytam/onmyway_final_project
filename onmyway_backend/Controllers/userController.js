@@ -4,9 +4,11 @@ const { uploadImage, deleteImage } = require("../Utils/cloudinary")
 const Review = require('../Models/review')
 
 module.exports.getUser = async (req, res, next) => {
-    const { id } = req.params
-    const user = await User.findById(id)
-    return res.send({ "success": true, "results": user })
+    const ids = req.body.ids
+    const users = await User.find({
+        '_id': { $in: [...ids] }
+    })
+    return res.send({ "success": true, "results": users })
 }
 
 module.exports.updateUser = async (req, res, next) => {
