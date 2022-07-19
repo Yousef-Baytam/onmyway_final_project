@@ -127,4 +127,9 @@ const styles = StyleSheet.create({
     input: {
         padding: 0,
     },
+    sendingContainer: {
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
