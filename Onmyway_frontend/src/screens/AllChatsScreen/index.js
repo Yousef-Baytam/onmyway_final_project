@@ -36,7 +36,6 @@ export default function AllChats({ navigation }) {
     useEffect(() => {
         const allUsers = async () => {
             const users = await getUsers(threadsUsersIds)
-            console.log(users)
             setThreadsUsers(users)
         }
         threadsUsersIds.length != 0 && allUsers()
@@ -54,7 +53,7 @@ export default function AllChats({ navigation }) {
                         renderItem={({ item }) => (<ChatRoomCard data={item} />)}
                         showsVerticalScrollIndicator={false}
                         keyExtractor={(item, index) => item._id}
-                        style={{ width: '100%', marginLeft: 42 }}
+                        style={{ width: '100%' }}
                     />
                 }
             </View >

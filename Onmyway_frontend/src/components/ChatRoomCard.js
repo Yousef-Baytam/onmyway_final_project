@@ -1,11 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
 const ChatRoomCard = ({ data }) => {
     console.log(data)
     return (
         <View style={styles.container}>
-            <Text>ChatRoomCard</Text>
+            <Image style={styles.image} source={data.hasOwnProperty('image') && Object.keys(data.image).length ? { uri: data.image.url } : require('../assets/blank-profile.webp')} />
+            <Text>{data.username}</Text>
         </View>
     )
 }
@@ -15,8 +16,16 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        padding: 15
     },
+    image: {
+        width: 45,
+        height: 45,
+        borderRadius: 22.5,
+        marginRight: 20
+    }
 });
 
 export default ChatRoomCard
