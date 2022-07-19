@@ -10,3 +10,5 @@ const addChatRoom = async (roomId, message) => {
         console.log(e)
     }
 }
+
+export { addChatRoom }

@@ -4,6 +4,7 @@ import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
+import { addChatRoom } from '../../controllers/firebaseControllers/messagesController';
 import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helper'
 
 export default function Chat({ navigation }) {
@@ -23,10 +24,18 @@ export default function Chat({ navigation }) {
             createdAt: new Date().getTime(),
             user: {
                 _id: 2,
-                name: 'Test User'
             }
         }
-    ]);
+    ])
+
+    const hanldeSendMessage = async () => {
+        const res = await addChatRoom(chatRoom.chatRoomId, {
+            text: messages[0].text, createdAt: new Date().getTime(),
+            user: {
+                _id: chatRoom._id,
+            }
+        })
+    }
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -49,6 +58,7 @@ export default function Chat({ navigation }) {
 
     const onSend = useCallback((messages = []) => {
         setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+        hanldeSendMessage()
     }, [])
 
     return (
