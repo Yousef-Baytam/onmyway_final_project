@@ -11,7 +11,7 @@ import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
-import { addChatRoom } from '../../controllers/firebaseControllers/chatRooms';
+import { addChatRoom, getChatRoom } from '../../controllers/firebaseControllers/chatRooms';
 import { addNewReview, getUserReviews, updateReview } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
@@ -82,8 +82,11 @@ export default function Profile({ navigation }) {
     }
 
     const handleCreateChatRoom = async () => {
-        await addChatRoom(loggedUser.email, user.email)
-        navigation.navigate('Chat', user)
+        let room
+        if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id))
+            return navigation.navigate('Chat', room)
+        let newRoom = await addChatRoom(loggedUser.email, user.email, loggedUser._id, user._id)
+        navigation.navigate('Chat', newRoom)
     }
 
     return (

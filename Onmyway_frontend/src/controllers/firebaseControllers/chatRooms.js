@@ -1,9 +1,10 @@
-import { setDoc, doc, getDoc } from "firebase/firestore"
+import { setDoc, doc, getDoc, query, where, collection } from "firebase/firestore"
 import { db } from "../../../firebase"
 
-const addChatRoom = async (email1, email2) => {
+const addChatRoom = async (email1, email2, id1, id2) => {
     try {
-        let docRef = await setDoc(doc(db, "chatRooms", `${ email1 }_${ email2 }`), {
+        let docRef = await setDoc(doc(db, "chatRooms", `${ id1 }_${ id2 }`), {
+            userLocalDbIds: [id1, id2],
             users: [email1, email2]
         })
         console.log(docRef)
@@ -12,15 +13,15 @@ const addChatRoom = async (email1, email2) => {
     }
 }
 
-const getChatRoom = async (email1, email2) => {
+const getChatRoom = async (id1, id2) => {
     try {
-        const docRef = doc(db, "chatRooms", `${ email1 }_${ email2 }`);
+        const docRef = doc(db, "chatRooms", `${ id1 }_${ id2 }`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
+            return docSnap.data()
         } else {
-            console.log("No such document!");
+            return false
         }
     } catch (e) {
         console.log(e)
