@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
@@ -26,6 +26,28 @@ export default function Chat({ navigation }) {
             }
         }
     ]);
+
+    const renderBubble = (props) => {
+        return <Bubble
+            {...props}
+            wrapperStyle={{
+                right: {
+                    backgroundColor: '#A1CCE4'
+                },
+                left: {
+                    backgroundColor: '#005A9C'
+                }
+            }}
+            textStyle={{
+                right: {
+                    color: '#000'
+                },
+                left: {
+                    color: '#fff'
+                }
+            }}
+        />
+    }
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -54,9 +76,16 @@ export default function Chat({ navigation }) {
         <GiftedChat
             messages={messages}
             onSend={messages => onSend(messages)}
+            renderBubble={renderBubble}
+            showUserAvatar
+            placeholder="Type your message here..."
             user={{
                 _id: 1,
             }}
+            alwaysShowSend
+            textInputStyle={styles.input}
+            minComposerHeight={50}
+            minInputToolbarHeight={55}
         />
     );
 }
@@ -83,5 +112,8 @@ const styles = StyleSheet.create({
         paddingRight: 60,
         paddingLeft: 30,
         marginTop: 20
+    },
+    input: {
+        padding: 0,
     }
 });
