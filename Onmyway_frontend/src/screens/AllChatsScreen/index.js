@@ -3,12 +3,13 @@ import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { db } from '../../../firebase'
 import { useUser } from '../../context/UserContext';
+import { getUsers } from '../../controllers/userController';
 
 export default function AllChats({ navigation }) {
     const { user } = useUser()
 
     const [chatThreads, setChatThreads] = useState([])
-    const [threadsUsers, setThreadUsers] = useState([])
+    const [threadsUsers, setThreadsUsers] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -19,7 +20,9 @@ export default function AllChats({ navigation }) {
                 chatRooms.push({ ...doc.data(), id: doc.id })
             })
             setChatThreads(chatRooms)
-            setThreadUsers(chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0]))
+            let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
+            users != threadsUsers &&
+                setThreadsUsers(users)
 
             if (loading) {
                 setLoading(false);
@@ -27,6 +30,14 @@ export default function AllChats({ navigation }) {
         })
         return () => unsubscribe()
     }, [])
+
+    useEffect(() => {
+        const allUsers = async () => {
+            const users = await getUsers(threadsUsers)
+            console.log(users)
+        }
+        threadsUsers.length != 0 && allUsers()
+    }, [threadsUsers])
 
     return (<>
         {loading ?

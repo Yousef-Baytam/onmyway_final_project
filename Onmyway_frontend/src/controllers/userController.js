@@ -73,7 +73,7 @@ const getUsers = async (ids) => {
     try {
         let res = await axios({
             url: `/user`,
-            method: "GEt",
+            method: "POST",
             data: ids
         })
         return res.data.results
