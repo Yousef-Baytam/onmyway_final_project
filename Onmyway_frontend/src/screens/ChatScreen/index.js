@@ -75,6 +75,8 @@ export default function Chat({ navigation }) {
                 scrollToBottomComponent={scrollToBottom}
                 scrollToBottomStyle={{ width: 20, height: 20 }}
                 renderLoading={renderLoading}
+                keyboardShouldPersistTaps='never'
+                renderAvatar={null}
             />
         </>
     );
