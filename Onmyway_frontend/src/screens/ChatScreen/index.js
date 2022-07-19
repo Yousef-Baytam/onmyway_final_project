@@ -29,7 +29,13 @@ export default function Chat({ navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: `${ chatRoom.username }`, headerTitleContainerStyle: styles.headerStyle, headerRight: () => (<View style={styles.headerIcon}>
+            title: `${ chatRoom.username }`, headerLeftContainerStyle: { marginTop: 20 },
+            headerBackgroundContainerStyle: { height: 80 },
+            headerRightContainerStyle: { marginTop: 20 },
+            headerTitleContainerStyle: styles.headerStyle,
+            headerStyle: { backgroundColor: '#A1CCE4' },
+            headerTintColor: '#fff',
+            headerRight: () => (<View style={styles.headerIcon}>
                 <View style={styles.imageHeaderContainer}>
                     <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }} image={chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url} />
                 </View>
@@ -75,6 +81,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
         paddingRight: 60,
-        paddingLeft: 30
+        paddingLeft: 30,
+        marginTop: 20
     }
 });
