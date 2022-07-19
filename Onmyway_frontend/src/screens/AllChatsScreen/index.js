@@ -15,7 +15,7 @@ export default function AllChats({ navigation }) {
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const chatRooms = []
             querySnapshot.forEach((doc) => {
-                chatRooms.push(doc.data())
+                chatRooms.push({ ...doc.data(), id: doc.id })
             })
             setChatThreads(chatRooms)
 
