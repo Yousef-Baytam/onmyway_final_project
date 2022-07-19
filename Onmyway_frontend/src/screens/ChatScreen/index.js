@@ -1,6 +1,10 @@
+import { useRoute } from '@react-navigation/native';
 import { StyleSheet, View, Text } from 'react-native';
 
 export default function Chat({ navigation }) {
+    const route = useRoute()
+    const chatRoom = route.params
+    console.log(chatRoom)
 
     return (
         <View style={styles.container}>
