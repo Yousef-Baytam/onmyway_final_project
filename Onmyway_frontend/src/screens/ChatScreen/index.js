@@ -1,7 +1,8 @@
 import { useRoute } from '@react-navigation/native';
-import { useCallback, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
+import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
 export default function Chat({ navigation }) {
     const route = useRoute()
@@ -24,6 +25,15 @@ export default function Chat({ navigation }) {
             }
         }
     ]);
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: `${ chatRoom.username }`, headerRight: () => (
+                <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />)
+        })
+
+    }, [])
+
 
     const onSend = useCallback((messages = []) => {
         setMessages(previousMessages => GiftedChat.append(previousMessages, messages))

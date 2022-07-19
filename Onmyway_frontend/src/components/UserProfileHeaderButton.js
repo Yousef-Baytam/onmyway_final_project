@@ -3,7 +3,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import UserHeaderIcon from '../assets/icons/UserHeaderIcon';
 import { useUser } from '../context/UserContext';
 
-export default function UserProfileHeaderButton({ action }) {
+export default function UserProfileHeaderButton({ action, image }) {
     const { user } = useUser()
 
     return (
