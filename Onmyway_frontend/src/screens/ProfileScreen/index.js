@@ -12,7 +12,7 @@ import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
 import { addChatRoom, getChatRoom } from '../../controllers/firebaseControllers/chatRooms';
-import { addNewReview, getUserReviews, updateReview } from '../../controllers/userController'
+import { addNewReview, getUserReviews, getUsers, updateReview } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
 
@@ -84,10 +84,13 @@ export default function Profile({ navigation }) {
     const handleCreateChatRoom = async () => {
         try {
             let room
-            if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id))
-                return navigation.navigate('Chat', room)
+            if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id)) {
+                const res = await getUsers([user._id])
+                return navigation.navigate('Chat', { ...res[0], chatRoom: room.id })
+            }
             let newRoom = await addChatRoom(loggedUser.email, user.email, loggedUser._id, user._id, loggedUser.username, user.username)
-            navigation.navigate('Chat', newRoom)
+            const res = await getUsers([user._id])
+            navigation.navigate('Chat', { ...res[0], chatRoom: newRoom.id })
         } catch (e) {
             alert('Error creating the chat room! try again later')
         }
