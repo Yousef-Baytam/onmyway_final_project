@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
@@ -19,7 +19,7 @@ export default function Chat({ navigation }) {
         },
         {
             _id: 1,
-            text: 'Henlo!',
+            text: 'Hello!',
             createdAt: new Date().getTime(),
             user: {
                 _id: 2,
@@ -52,25 +52,31 @@ export default function Chat({ navigation }) {
     }, [])
 
     return (
-        <GiftedChat
-            messages={messages}
-            onSend={messages => onSend(messages)}
-            renderBubble={renderBubble}
-            showUserAvatar={true}
-            placeholder="Type your message here..."
-            user={{
-                _id: 1,
-            }}
-            alwaysShowSend
-            textInputStyle={styles.input}
-            minComposerHeight={50}
-            minInputToolbarHeight={55}
-            renderSend={renderSend}
-            scrollToBottom={true}
-            scrollToBottomComponent={scrollToBottom}
-            scrollToBottomStyle={{ width: 20, height: 20 }}
-            renderLoading={renderLoading}
+        <><StatusBar
+            animated={true}
+            backgroundColor="#A1CCE4"
+            barStyle={'light-content'}
         />
+            <GiftedChat
+                messages={messages}
+                onSend={messages => onSend(messages)}
+                renderBubble={renderBubble}
+                showUserAvatar={true}
+                placeholder="Type your message here..."
+                user={{
+                    _id: 1,
+                }}
+                alwaysShowSend
+                textInputStyle={styles.input}
+                minComposerHeight={50}
+                minInputToolbarHeight={55}
+                renderSend={renderSend}
+                scrollToBottom={true}
+                scrollToBottomComponent={scrollToBottom}
+                scrollToBottomStyle={{ width: 20, height: 20 }}
+                renderLoading={renderLoading}
+            />
+        </>
     );
 }
 
