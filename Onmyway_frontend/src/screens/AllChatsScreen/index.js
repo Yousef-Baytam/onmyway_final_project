@@ -49,19 +49,18 @@ export default function AllChats({ navigation }) {
 
     return (<>
         {loading ?
-            <ActivityIndicator color={'#005A9C'} size={'large'} />
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator color={'#005A9C'} size={'large'} />
+            </View>
             :
             <View style={styles.container}>
-                {
-                    threadsUsers.length &&
-                    <FlatList
-                        data={threadsUsers}
-                        renderItem={({ item }) => (<ChatRoomCard data={item} action={() => navigation.navigate('Chat', item)} />)}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, index) => item._id}
-                        style={{ width: '100%' }}
-                    />
-                }
+                <FlatList
+                    data={threadsUsers}
+                    renderItem={({ item }) => (<ChatRoomCard data={item} action={() => navigation.navigate('Chat', item)} />)}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => item._id}
+                    style={{ width: '100%' }}
+                />
             </View >
         }
     </>
@@ -75,4 +74,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    loadingContainer: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
+    }
 });

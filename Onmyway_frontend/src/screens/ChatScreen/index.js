@@ -6,7 +6,6 @@ import { GiftedChat } from 'react-native-gifted-chat';
 export default function Chat({ navigation }) {
     const route = useRoute()
     const chatRoom = route.params
-    console.log(chatRoom)
 
     const [messages, setMessages] = useState([
         {
