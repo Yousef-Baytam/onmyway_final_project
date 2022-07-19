@@ -6,7 +6,6 @@ module.exports.register = async (req, res) => {
     const user = new User(req.body)
     const result = await User.register(user, req.body.password)
     const userInfo = { ...result._doc, image: {} }
-    console.log(userInfo)
     const token = jwt(user)
     res.send({ "results": userInfo, "token": token })
 }
