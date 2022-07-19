@@ -75,7 +75,7 @@ export default function Chat({ navigation }) {
                 showUserAvatar={true}
                 placeholder="Type your message here..."
                 user={{
-                    _id: 1,
+                    _id: chatRoom._id,
                 }}
                 alwaysShowSend
                 textInputStyle={styles.input}
