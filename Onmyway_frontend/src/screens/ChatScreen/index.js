@@ -30,7 +30,8 @@ export default function Chat({ navigation }) {
 
     const hanldeSendMessage = async () => {
         const res = await addChatRoom(chatRoom.chatRoomId, {
-            text: messages[0].text, createdAt: new Date().getTime(),
+            text: messages[0].text,
+            createdAt: new Date().getTime(),
             user: {
                 _id: chatRoom._id,
             }
