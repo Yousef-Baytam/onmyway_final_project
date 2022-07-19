@@ -11,6 +11,7 @@ import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
+import { addChatRoom } from '../../controllers/firebaseControllers/chatRooms';
 import { addNewReview, getUserReviews, updateReview } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
@@ -80,13 +81,18 @@ export default function Profile({ navigation }) {
         }
     }
 
+    const handleCreateChatRoom = async () => {
+        await addChatRoom(loggedUser.email, user.email)
+        navigation.navigate('Chat', user)
+    }
+
     return (
         <Pressable style={styles.container} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
                 optionsDisplay &&
                 <View style={styles.userOptions}>
                     <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
-                        action={() => navigation.navigate('Chat', user)} />
+                        action={handleCreateChatRoom} />
                     <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }} />
                     <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }} />
                 </View>
