@@ -2,11 +2,11 @@ import { StyleSheet, View } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import BackArrowIcon from '../assets/icons/BackArrowIcon';
 
-export default function BackArrow({ action }) {
+export default function BackArrow({ action, custom }) {
     return (
         <View style={styles.container}>
             <Pressable onPress={action}>
-                <BackArrowIcon />
+                <BackArrowIcon custom={custom} />
             </Pressable>
         </View>
     );
