@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { GiftedChat, Bubble, Send } from 'react-native-gifted-chat';
+import DownArrowIcon from '../../assets/icons/DownArrowIcon';
 import SendButtonIcon from '../../assets/icons/SendButtonIcon';
 import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
@@ -56,7 +57,14 @@ export default function Chat({ navigation }) {
                 <SendButtonIcon />
             </View>
         </Send>
+    }
 
+    const scrollToBottom = () => {
+        return (
+            <View style={styles.bottomComponentContainer}>
+                <DownArrowIcon />
+            </View>
+        )
     }
 
     useLayoutEffect(() => {
@@ -87,7 +95,7 @@ export default function Chat({ navigation }) {
             messages={messages}
             onSend={messages => onSend(messages)}
             renderBubble={renderBubble}
-            showUserAvatar
+            showUserAvatar={true}
             placeholder="Type your message here..."
             user={{
                 _id: 1,
@@ -97,6 +105,9 @@ export default function Chat({ navigation }) {
             minComposerHeight={50}
             minInputToolbarHeight={55}
             renderSend={renderSend}
+            scrollToBottom={true}
+            scrollToBottomComponent={scrollToBottom}
+            scrollToBottomStyle={{ width: 20, height: 20 }}
         />
     );
 }
@@ -131,5 +142,11 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    bottomComponentContainer: {
+        width: 25,
+        height: 25,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
