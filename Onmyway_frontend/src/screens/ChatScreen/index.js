@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
-import ThreeDotsIcon from '../../assets/icons/ThreeDotsIcon';
+import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
 export default function Chat({ navigation }) {
@@ -29,9 +29,11 @@ export default function Chat({ navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: `${ chatRoom.username }`, headerRight: () => (<View style={styles.headerIcon}>
-                <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }} image={chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url} />
-                <ThreeDotsIcon />
+            title: `${ chatRoom.username }`, headerTitleContainerStyle: styles.headerStyle, headerRight: () => (<View style={styles.headerIcon}>
+                <View style={styles.imageHeaderContainer}>
+                    <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }} image={chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url} />
+                </View>
+                <ProfileOptions custom={{ width: 8 }} />
             </View>)
         })
 
@@ -60,4 +62,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    headerIcon: {
+        flexDirection: 'row'
+    },
+    imageHeaderContainer: {
+        marginRight: 8,
+        marginLeft: 0
+    },
+    headerStyle: {
+        textAlign: 'right',
+        width: '100%',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        paddingRight: 60,
+        paddingLeft: 30
+    }
 });
