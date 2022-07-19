@@ -1,7 +1,8 @@
 import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble, Send } from 'react-native-gifted-chat';
+import SendButtonIcon from '../../assets/icons/SendButtonIcon';
 import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
@@ -49,6 +50,15 @@ export default function Chat({ navigation }) {
         />
     }
 
+    const renderSend = (props) => {
+        return <Send {...props}>
+            <View style={styles.sendingContainer}>
+                <SendButtonIcon />
+            </View>
+        </Send>
+
+    }
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: `${ chatRoom.username }`, headerLeftContainerStyle: { marginTop: 20 },
@@ -86,6 +96,7 @@ export default function Chat({ navigation }) {
             textInputStyle={styles.input}
             minComposerHeight={50}
             minInputToolbarHeight={55}
+            renderSend={renderSend}
         />
     );
 }
@@ -115,5 +126,5 @@ const styles = StyleSheet.create({
     },
     input: {
         padding: 0,
-    }
+    },
 });

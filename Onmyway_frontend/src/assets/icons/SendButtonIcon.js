@@ -1,6 +1,6 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function EditPenIcon() {
+export default function SendButtonIcon() {
 
     return (
         <Svg
