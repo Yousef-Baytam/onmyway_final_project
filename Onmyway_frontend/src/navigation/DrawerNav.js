@@ -9,7 +9,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import LogoutIcon from '../assets/icons/LogoutIcon';
 import { useLoggedIn } from '../context/LoggedInContext';
 import storage from '../storage/asyncStorage';
-import TabNav from './TabNav';
+import { ParentStack } from './ParentStack';
 
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
@@ -36,7 +36,7 @@ export function DrawerNav() {
 
     return (
         <Drawer.Navigator screenOptions={{ headerShown: false, drawerPosition: 'right' }} initialRouteName="Browse" drawerContent={props => <CustomDrawerContent {...props} />}>
-            <Drawer.Screen name="Home" component={TabNav} />
+            <Drawer.Screen name="Home" component={ParentStack} />
         </Drawer.Navigator>
     );
 }
