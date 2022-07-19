@@ -2,6 +2,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { db } from '../../../firebase'
+import { ActivityIndicator } from 'react-native-web';
 
 export default function AllChats({ navigation }) {
     const [chatThreads, setChatThreads] = useState([])
@@ -23,11 +24,17 @@ export default function AllChats({ navigation }) {
         return () => unsubscribe()
     }, [])
 
-    return (
-        <View style={styles.container}>
-            <Text>All Chats YAAAYY!!!</Text>
-        </View >
-    );
+    return (<>
+        {loading ?
+            <ActivityIndicator color={'#005A9C'} size={'large'} />
+            :
+            <View style={styles.container}>
+                <Text>All Chats YAAAYY!!!</Text>
+            </View >
+
+        }
+    </>
+    )
 }
 
 const styles = StyleSheet.create({
