@@ -45,7 +45,7 @@ export default function Register({ navigation }) {
             handleLoggedIn(true)
             const firebaseRegister = await createUserWithEmailAndPassword(auth, email, password)
             const user = firebaseRegister.user
-            await updateProfile(user, { username: username })
+            await updateProfile(user, { displayName: username })
         }
         catch (e) {
             console.log(e)

@@ -11,6 +11,8 @@ import { login } from '../../controllers/authController'
 import storage from '../../storage/asyncStorage'
 import axios from 'axios'
 import { useLoggedIn } from '../../context/LoggedInContext';
+import { auth } from '../../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
@@ -25,6 +27,7 @@ export default function Login({ navigation }) {
             await storage.save({ key: 'token', data: res.token.token })
             handleUser(res.user)
             handleLoggedIn(true)
+            const firebaseSignin = await signInWithEmailAndPassword(auth, res.user.email, password)
         }
         catch (e) {
             console.log(e)
