@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native';
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
@@ -11,26 +11,11 @@ export default function Chat({ navigation }) {
     const route = useRoute()
     const chatRoom = route.params
 
-    const [messages, setMessages] = useState([
-        {
-            _id: 0,
-            text: 'New room created.',
-            createdAt: new Date().getTime(),
-            system: true
-        },
-        {
-            _id: 1,
-            text: 'Hello!',
-            createdAt: new Date().getTime(),
-            user: {
-                _id: 2,
-            }
-        }
-    ])
+    const [messages, setMessages] = useState([])
 
-    const hanldeSendMessage = async () => {
+    const hanldeSendMessage = async (text) => {
         const res = await addChatRoom(chatRoom.chatRoomId, {
-            text: messages[0].text,
+            text: text,
             createdAt: new Date().getTime(),
             user: {
                 _id: chatRoom._id,
@@ -56,10 +41,10 @@ export default function Chat({ navigation }) {
 
     }, [])
 
-
-    const onSend = useCallback((messages = []) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-        hanldeSendMessage()
+    const onSend = useCallback((message = []) => {
+        console.log(message)
+        setMessages(previousMessages => GiftedChat.append(previousMessages, message))
+        hanldeSendMessage(message[0].text)
     }, [])
 
     return (

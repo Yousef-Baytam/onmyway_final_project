@@ -25,7 +25,7 @@ export default function AllChats({ navigation }) {
             let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
             users != threadsUsersIds &&
                 setThreadsUsersIds(users)
-            console.log(chatRooms)
+
             if (loading) {
                 setLoading(false);
             }
