@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-const ChatRoomCard = () => {
-
+const ChatRoomCard = ({ data }) => {
+    console.log(data)
     return (
         <View style={styles.container}>
             <Text>ChatRoomCard</Text>
