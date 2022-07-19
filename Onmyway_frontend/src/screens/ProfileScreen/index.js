@@ -54,7 +54,7 @@ export default function Profile({ navigation }) {
 
     useLayoutEffect(() => {
         if (user) {
-            setImage(user.image.url || null)
+            setImage(user.hasOwnProperty('image') && Object.keys(user.image).length ? user.image.url : null)
             setRating(user.reviews.length ? Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2 : 0)
         }
     }, [user])

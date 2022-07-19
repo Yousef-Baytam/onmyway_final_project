@@ -37,7 +37,8 @@ const UserSchema = new Schema({
     },
     image: {
         public_id: String,
-        url: String
+        url: String,
+        default: {}
     },
     userType: {
         type: String,

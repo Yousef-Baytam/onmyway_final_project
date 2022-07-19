@@ -46,7 +46,7 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
         <>
             {
                 display ?
-                    <Image style={styles.image} source={{ uri: image } || require('../assets/blank-profile.webp')} />
+                    <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                     :
                     <>
                         <Pressable onPress={toggleImageBox}>
