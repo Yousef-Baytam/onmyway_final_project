@@ -1,13 +1,14 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 
-const ChatRoomCard = ({ data }) => {
+const ChatRoomCard = ({ data, action }) => {
     console.log(data)
     return (
-        <View style={styles.container}>
+        <Pressable style={styles.container} onPress={action}>
             <Image style={styles.image} source={data.hasOwnProperty('image') && Object.keys(data.image).length ? { uri: data.image.url } : require('../assets/blank-profile.webp')} />
             <Text>{data.username}</Text>
-        </View>
+        </Pressable>
     )
 }
 

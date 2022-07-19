@@ -25,7 +25,7 @@ export default function AllChats({ navigation }) {
             let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
             users != threadsUsersIds &&
                 setThreadsUsersIds(users)
-
+            console.log(chatRooms)
             if (loading) {
                 setLoading(false);
             }
@@ -36,6 +36,12 @@ export default function AllChats({ navigation }) {
     useEffect(() => {
         const allUsers = async () => {
             const users = await getUsers(threadsUsersIds)
+            for (let i = 0; i < users.length; i++) {
+                for (let j of chatThreads) {
+                    if (j.userLocalDbIds.includes(users[i]._id))
+                        users[i].chatRoomId = j.id
+                }
+            }
             setThreadsUsers(users)
         }
         threadsUsersIds.length != 0 && allUsers()
@@ -50,7 +56,7 @@ export default function AllChats({ navigation }) {
                     threadsUsers.length &&
                     <FlatList
                         data={threadsUsers}
-                        renderItem={({ item }) => (<ChatRoomCard data={item} />)}
+                        renderItem={({ item }) => (<ChatRoomCard data={item} action={() => navigation.navigate('Chat', item)} />)}
                         showsVerticalScrollIndicator={false}
                         keyExtractor={(item, index) => item._id}
                         style={{ width: '100%' }}
