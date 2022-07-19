@@ -82,11 +82,15 @@ export default function Profile({ navigation }) {
     }
 
     const handleCreateChatRoom = async () => {
-        let room
-        if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id))
-            return navigation.navigate('Chat', room)
-        let newRoom = await addChatRoom(loggedUser.email, user.email, loggedUser._id, user._id)
-        navigation.navigate('Chat', newRoom)
+        try {
+            let room
+            if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id))
+                return navigation.navigate('Chat', room)
+            let newRoom = await addChatRoom(loggedUser.email, user.email, loggedUser._id, user._id, loggedUser.username, user.username)
+            navigation.navigate('Chat', newRoom)
+        } catch (e) {
+            alert('Error creating the chat room! try again later')
+        }
     }
 
     return (
