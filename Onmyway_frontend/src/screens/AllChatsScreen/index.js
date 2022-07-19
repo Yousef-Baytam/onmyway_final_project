@@ -8,6 +8,7 @@ export default function AllChats({ navigation }) {
     const { user } = useUser()
 
     const [chatThreads, setChatThreads] = useState([])
+    const [threadsUsers, setThreadUsers] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -18,6 +19,7 @@ export default function AllChats({ navigation }) {
                 chatRooms.push({ ...doc.data(), id: doc.id })
             })
             setChatThreads(chatRooms)
+            setThreadUsers(chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0]))
 
             if (loading) {
                 setLoading(false);
