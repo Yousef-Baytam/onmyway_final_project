@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
+import ThreeDotsIcon from '../../assets/icons/ThreeDotsIcon';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 
 export default function Chat({ navigation }) {
@@ -28,8 +29,10 @@ export default function Chat({ navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: `${ chatRoom.username }`, headerRight: () => (
-                <UserProfileHeaderButton action={() => { navigation.navigate('UserProfile') }} />)
+            title: `${ chatRoom.username }`, headerRight: () => (<View style={styles.headerIcon}>
+                <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }} image={chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url} />
+                <ThreeDotsIcon />
+            </View>)
         })
 
     }, [])
