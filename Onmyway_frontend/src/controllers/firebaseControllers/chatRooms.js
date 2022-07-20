@@ -5,6 +5,8 @@ const addChatRoom = async (email1, email2, id1, id2, username1, username2, image
     try {
         let docRef = await setDoc(doc(db, "chatRooms", `${ id1 }_${ id2 }`), {
             userLocalDbIds: [id1, id2],
+            user2Online: false,
+            user1Online: false,
             users1: {
                 userId: id1,
                 usename: username1,
