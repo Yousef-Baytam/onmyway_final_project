@@ -1,17 +1,21 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
+import moment from 'moment'
 
 const ChatRoomCard = ({ data, action }) => {
     console.log(data)
     return (
         <Pressable style={styles.container} onPress={action}>
             <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
-            <View>
+            <View style={styles.userInfo}>
                 <Text>{data.user.usename}</Text>
                 {
                     data.lastMessage.text ?
-                        <Text numberOfLines={1} style={styles.message}>{data.lastMessage.text}</Text>
+                        <View style={styles.mesasgeInfoWrapper}>
+                            <Text numberOfLines={1} style={styles.message}>{data.lastMessage.text}</Text>
+                            <Text numberOfLines={1} style={styles.message}>{moment(data.lastMessage.createdAt).format('hh:mm a')}</Text>
+                        </View>
                         : null
                 }
             </View>
@@ -36,6 +40,14 @@ const styles = StyleSheet.create({
     },
     message: {
         color: '#858585',
+    },
+    mesasgeInfoWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%'
+    },
+    userInfo: {
+        width: '80%'
     }
 });
 
