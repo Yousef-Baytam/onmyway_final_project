@@ -46,6 +46,21 @@ const getChatRoom = async (id1, id2) => {
     }
 }
 
+const getaChatRoom = async (roomId) => {
+    try {
+        const docRef = doc(db, "chatRooms", roomId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            return { ...docSnap.data(), id: docSnap.id }
+        } else {
+            return false
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 const updateInChatRoomStatus = async (roomId, userTag, status) => {
     try {
         const roomRef = doc(db, 'chatRooms', roomId)
