@@ -22,7 +22,7 @@ export default function AllChats({ navigation }) {
                 chatRooms.push({ ...doc.data(), id: doc.id })
             })
             // setChatThreads(chatRooms)
-            setThreadsUsers(chatRooms.map((e) => { return { id: e.id, user: e.users1.userId == user._id ? e.users2 : e.users1 } }))
+            setThreadsUsers(chatRooms.map((e) => { return { id: e.id, user: e.users1.userId == user._id ? e.users2 : e.users1, lastMessage: e.latestMessage } }))
             // let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
             // users != threadsUsersIds &&
             //     setThreadsUsersIds(users)
