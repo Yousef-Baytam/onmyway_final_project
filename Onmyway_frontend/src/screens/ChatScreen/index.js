@@ -8,7 +8,7 @@ import { addChatRoom } from '../../controllers/firebaseControllers/messagesContr
 import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helper'
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
-import { updateInChatRoomStatus } from '../../controllers/firebaseControllers/chatRooms';
+import { getaChatRoom, updateInChatRoomStatus } from '../../controllers/firebaseControllers/chatRooms';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
@@ -30,8 +30,16 @@ export default function Chat({ navigation, use }) {
         )
     }
 
+    const handleChatRoomStatus = async () => {
+        const room = await getaChatRoom(chatRoom.chatRoomId)
+        if (room.sender == chatRoom.userTag) {
+            await updateReadStatus(true)
+        }
+    }
+
     useFocusEffect(
         useCallback(() => {
+            handleChatRoomStatus()
             updateInChatRoomStatus(chatRoom.chatRoomId, chatRoom.userTag, true)
             return () => {
                 updateInChatRoomStatus(chatRoom.chatRoomId, chatRoom.userTag, false)

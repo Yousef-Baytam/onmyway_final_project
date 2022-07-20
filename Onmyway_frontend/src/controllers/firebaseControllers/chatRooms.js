@@ -79,4 +79,4 @@ const updateInChatRoomStatus = async (roomId, userTag, status) => {
     }
 }
 
-export { addChatRoom, getChatRoom, updateInChatRoomStatus }
+export { addChatRoom, getChatRoom, updateInChatRoomStatus, getaChatRoom }
