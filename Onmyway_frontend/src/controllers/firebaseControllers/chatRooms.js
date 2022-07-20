@@ -43,4 +43,22 @@ const getChatRoom = async (id1, id2) => {
     }
 }
 
+const updateInChatRoomStatus = async (userTag, status) => {
+    try {
+        const roomRef = doc(db, 'chatRooms', roomId)
+        if (userTag == 'user1') {
+            await updateDoc(roomRef, {
+                user1Online: status
+            })
+        }
+        else {
+            await updateDoc(roomRef, {
+                user2Online: status
+            })
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export { addChatRoom, getChatRoom }
