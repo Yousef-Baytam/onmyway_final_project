@@ -64,17 +64,32 @@ const getaChatRoom = async (roomId) => {
 const updateInChatRoomStatus = async (roomId, userTag, status) => {
     try {
         const roomRef = doc(db, 'chatRooms', roomId)
-        if (userTag == 'users1') {
-            await updateDoc(roomRef, {
-                user1Online: status,
-                numberOfMessages: 0
-            })
+        const docRef = await getDoc(roomRef)
+        if (status && docRef.data().sender != userTag) {
+            if (userTag == 'users1') {
+                await updateDoc(roomRef, {
+                    user1Online: status,
+                    numberOfMessages: 0
+                })
+            }
+            else {
+                await updateDoc(roomRef, {
+                    user2Online: status,
+                    numberOfMessages: 0
+                })
+            }
         }
         else {
-            await updateDoc(roomRef, {
-                user2Online: status,
-                numberOfMessages: 0
-            })
+            if (userTag == 'users1') {
+                await updateDoc(roomRef, {
+                    user1Online: status,
+                })
+            }
+            else {
+                await updateDoc(roomRef, {
+                    user2Online: status,
+                })
+            }
         }
     } catch (e) {
         console.log(e)

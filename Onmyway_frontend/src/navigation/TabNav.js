@@ -18,39 +18,39 @@ export default function TabNav() {
     const [newMessages, setNewMessages] = useState(null)
     const { user } = useUser()
 
-    useEffect(() => {
-        const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id), orderBy('latestMessage.createdAt', "desc"))
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const chatRooms = []
-            querySnapshot.forEach((doc) => {
-                chatRooms.push({ ...doc.data(), id: doc.id })
-            })
+    // useEffect(() => {
+    //     const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id), orderBy('latestMessage.createdAt', "desc"))
+    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    //         const chatRooms = []
+    //         querySnapshot.forEach((doc) => {
+    //             chatRooms.push({ ...doc.data(), id: doc.id })
+    //         })
 
-            let msgs = chatRooms.map((e) => {
-                return {
-                    userTag: e.users1.userId == user._id ? 'users2' : 'users1',
-                    readStatus: e.readStatus,
-                    sender: e.sender,
-                    numberOfMessages: e.numberOfMessages
-                }
-            })
-            console.log(msgs)
+    //         let msgs = chatRooms.map((e) => {
+    //             return {
+    //                 userTag: e.users1.userId == user._id ? 'users2' : 'users1',
+    //                 readStatus: e.readStatus,
+    //                 sender: e.sender,
+    //                 numberOfMessages: e.numberOfMessages
+    //             }
+    //         })
+    //         console.log(msgs)
 
-            // setThreadsUsers(chatRooms.map((e) => {
-            //     return {
-            //         id: e.id,
-            //         user: e.users1.userId == user._id ? e.users2 : e.users1,
-            //         lastMessage: e.latestMessage,
-            //         userTag: e.users1.userId == user._id ? 'users2' : 'users1',
-            //         readStatus: e.readStatus,
-            //         sender: e.sender,
-            //         numberOfMessages: e.numberOfMessages
-            //     }
-            // }))
+    //         // setThreadsUsers(chatRooms.map((e) => {
+    //         //     return {
+    //         //         id: e.id,
+    //         //         user: e.users1.userId == user._id ? e.users2 : e.users1,
+    //         //         lastMessage: e.latestMessage,
+    //         //         userTag: e.users1.userId == user._id ? 'users2' : 'users1',
+    //         //         readStatus: e.readStatus,
+    //         //         sender: e.sender,
+    //         //         numberOfMessages: e.numberOfMessages
+    //         //     }
+    //         // }))
 
-        })
-        return () => unsubscribe()
-    }, [])
+    //     })
+    //     return () => unsubscribe()
+    // }, [])
 
     return (
         <Tab.Navigator screenOptions={{
