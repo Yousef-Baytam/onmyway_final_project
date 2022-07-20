@@ -89,8 +89,8 @@ export default function Profile({ navigation }) {
             let newRoom = await addChatRoom(loggedUser.email, user.email,
                 loggedUser._id, user._id,
                 loggedUser.username, user.username,
-                loggedUser.hasOwnProperty(image) ? Object.keys(loggedUser.image).length > 0 ? loggedUser.image.url : null : null,
-                user.hasOwnProperty(image) ? Object.keys(user.image).length > 0 ? user.image.url : null : null)
+                loggedUser.hasOwnProperty('image') ? Object.keys(loggedUser.image).length > 0 ? loggedUser.image.url : null : null,
+                user.hasOwnProperty('image') ? Object.keys(user.image).length > 0 ? user.image.url : null : null)
             const res = await getUsers([user._id])
             navigation.navigate('Chat', { ...res[0], chatRoomId: newRoom.id })
         } catch (e) {
