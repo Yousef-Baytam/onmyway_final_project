@@ -1,5 +1,5 @@
-import { useRoute } from '@react-navigation/native';
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
@@ -9,7 +9,7 @@ import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helpe
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
 
-export default function Chat({ navigation }) {
+export default function Chat({ navigation, use }) {
     const route = useRoute()
     const chatRoom = route.params
     const [messages, setMessages] = useState([])
@@ -22,11 +22,17 @@ export default function Chat({ navigation }) {
             user: {
                 _id: chatRoom._id,
             },
-            sender: chatRoom._id,
-            readStatus: readStatus,
-            numberOfMessages: numberOfMessages,
         })
     }
+
+    useFocusEffect(
+        useCallback(() => {
+            alert('Screen was focused')
+            return () => {
+                alert('Screen was unfocused')
+            }
+        }, [])
+    )
 
     useLayoutEffect(() => {
         const roomRef = doc(db, 'chatRooms', chatRoom.chatRoomId)
