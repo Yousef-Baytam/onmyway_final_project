@@ -41,6 +41,16 @@ export default function Chat({ navigation }) {
     }, [])
 
     useLayoutEffect(() => {
+        const roomRef = doc(db, 'chatRooms', chatRoom.chatRoomId)
+        const unsub = onSnapshot(
+            roomRef,
+            (docs) => {
+                console.log(docs.data())
+            })
+        return () => unsub()
+    }, [])
+
+    useLayoutEffect(() => {
         navigation.setOptions({
             title: `${ chatRoom.username }`, headerLeftContainerStyle: { marginTop: 20 },
             headerBackgroundContainerStyle: { height: 80 },

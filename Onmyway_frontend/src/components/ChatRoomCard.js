@@ -4,7 +4,6 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import moment from 'moment'
 
 const ChatRoomCard = ({ data, action }) => {
-    console.log(data)
     return (
         <Pressable style={styles.container} onPress={action}>
             <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
