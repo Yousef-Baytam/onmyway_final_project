@@ -1,4 +1,4 @@
-import { setDoc, doc, getDoc } from "firebase/firestore"
+import { setDoc, doc, getDoc, updateDoc } from "firebase/firestore"
 import { db } from "../../../firebase"
 
 const addChatRoom = async (email1, email2, id1, id2, username1, username2, image1, image2) => {
@@ -43,7 +43,7 @@ const getChatRoom = async (id1, id2) => {
     }
 }
 
-const updateInChatRoomStatus = async (userTag, status) => {
+const updateInChatRoomStatus = async (roomId, userTag, status) => {
     try {
         const roomRef = doc(db, 'chatRooms', roomId)
         if (userTag == 'user1') {
@@ -61,4 +61,4 @@ const updateInChatRoomStatus = async (userTag, status) => {
     }
 }
 
-export { addChatRoom, getChatRoom }
+export { addChatRoom, getChatRoom, updateInChatRoomStatus }

@@ -8,6 +8,7 @@ import { addChatRoom } from '../../controllers/firebaseControllers/messagesContr
 import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helper'
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
+import { updateInChatRoomStatus } from '../../controllers/firebaseControllers/chatRooms';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
@@ -27,9 +28,9 @@ export default function Chat({ navigation, use }) {
 
     useFocusEffect(
         useCallback(() => {
-            alert('Screen was focused')
+            updateInChatRoomStatus(chatRoom.chatRoomId, chatRoom.userTag, true)
             return () => {
-                alert('Screen was unfocused')
+                updateInChatRoomStatus(chatRoom.chatRoomId, chatRoom.userTag, false)
             }
         }, [])
     )
