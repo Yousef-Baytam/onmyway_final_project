@@ -65,7 +65,6 @@ export default function Profile({ navigation }) {
             setShowReviewModal(false)
             alert('Review posted successfully!')
         } catch (e) {
-            console.log(e)
             alert('Error posting the review, try again')
         }
     }
@@ -76,7 +75,6 @@ export default function Profile({ navigation }) {
             setShowReviewModal(false)
             alert('Review posted successfully!')
         } catch (e) {
-            console.log(e)
             alert('Error posting the review, try again')
         }
     }
@@ -86,11 +84,11 @@ export default function Profile({ navigation }) {
             let room
             if (room = await getChatRoom(loggedUser._id, user._id) || await getChatRoom(user._id, loggedUser._id)) {
                 const res = await getUsers([user._id])
-                return navigation.navigate('Chat', { ...res[0], chatRoom: room.id })
+                return navigation.navigate('Chat', { ...res[0], chatRoomId: room.id })
             }
             let newRoom = await addChatRoom(loggedUser.email, user.email, loggedUser._id, user._id, loggedUser.username, user.username)
             const res = await getUsers([user._id])
-            navigation.navigate('Chat', { ...res[0], chatRoom: newRoom.id })
+            navigation.navigate('Chat', { ...res[0], chatRoomId: newRoom.id })
         } catch (e) {
             alert('Error creating the chat room! try again later')
         }

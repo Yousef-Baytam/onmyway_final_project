@@ -60,7 +60,6 @@ export default function Chat({ navigation }) {
     }, [])
 
     const onSend = useCallback((message = []) => {
-        console.log(message)
         setMessages(previousMessages => GiftedChat.append(previousMessages, message))
         hanldeSendMessage(message[0].text)
     }, [])
