@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native';
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ProfileOptions from '../../components/ProfileOptions';
@@ -8,7 +8,7 @@ import { addChatRoom } from '../../controllers/firebaseControllers/messagesContr
 import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helper'
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
-import { getaChatRoom, updateInChatRoomStatus } from '../../controllers/firebaseControllers/chatRooms';
+import { getaChatRoom, updateInChatRoomStatus, updateReadStatus } from '../../controllers/firebaseControllers/chatRooms';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
@@ -25,15 +25,15 @@ export default function Chat({ navigation, use }) {
             },
         },
             chatRoom.userTag,
-            chatRoom.userTag == 'user1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
+            chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
             chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
         )
     }
 
     const handleChatRoomStatus = async () => {
         const room = await getaChatRoom(chatRoom.chatRoomId)
-        if (room.sender == chatRoom.userTag) {
-            await updateReadStatus(true)
+        if (room.sender != chatRoom.userTag) {
+            await updateReadStatus(chatRoom.chatRoomId, true)
         }
     }
 
@@ -95,7 +95,7 @@ export default function Chat({ navigation, use }) {
     const onSend = useCallback((message = []) => {
         setMessages(previousMessages => GiftedChat.append(previousMessages, message))
         hanldeSendMessage(message[0].text)
-    }, [])
+    }, [chatRoomInfo])
 
     return (
         <><StatusBar

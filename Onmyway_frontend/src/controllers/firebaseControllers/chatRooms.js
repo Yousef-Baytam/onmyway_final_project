@@ -64,7 +64,7 @@ const getaChatRoom = async (roomId) => {
 const updateInChatRoomStatus = async (roomId, userTag, status) => {
     try {
         const roomRef = doc(db, 'chatRooms', roomId)
-        if (userTag == 'user1') {
+        if (userTag == 'users1') {
             await updateDoc(roomRef, {
                 user1Online: status
             })
@@ -79,4 +79,15 @@ const updateInChatRoomStatus = async (roomId, userTag, status) => {
     }
 }
 
-export { addChatRoom, getChatRoom, updateInChatRoomStatus, getaChatRoom }
+const updateReadStatus = async (roomId, status) => {
+    try {
+        const roomRef = doc(db, 'chatRooms', roomId)
+        await updateDoc(roomRef, {
+            readStatus: status
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export { addChatRoom, getChatRoom, updateInChatRoomStatus, getaChatRoom, updateReadStatus }
