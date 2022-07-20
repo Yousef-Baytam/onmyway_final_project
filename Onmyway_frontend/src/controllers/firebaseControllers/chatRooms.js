@@ -66,12 +66,14 @@ const updateInChatRoomStatus = async (roomId, userTag, status) => {
         const roomRef = doc(db, 'chatRooms', roomId)
         if (userTag == 'users1') {
             await updateDoc(roomRef, {
-                user1Online: status
+                user1Online: status,
+                numberOfMessages: 0
             })
         }
         else {
             await updateDoc(roomRef, {
-                user2Online: status
+                user2Online: status,
+                numberOfMessages: 0
             })
         }
     } catch (e) {
