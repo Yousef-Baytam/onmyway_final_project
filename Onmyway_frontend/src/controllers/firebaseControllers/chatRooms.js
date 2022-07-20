@@ -7,6 +7,9 @@ const addChatRoom = async (email1, email2, id1, id2, username1, username2, image
             userLocalDbIds: [id1, id2],
             user2Online: false,
             user1Online: false,
+            numberOfMessages: 0,
+            sender: null,
+            readStatus: null,
             users1: {
                 userId: id1,
                 usename: username1,

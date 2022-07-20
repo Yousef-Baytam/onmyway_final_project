@@ -18,39 +18,27 @@ export default function TabNav() {
     const [newMessages, setNewMessages] = useState(null)
     const { user } = useUser()
 
-    // useEffect(() => {
-    //     const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id), orderBy('latestMessage.createdAt', "desc"))
-    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    //         const chatRooms = []
-    //         querySnapshot.forEach((doc) => {
-    //             chatRooms.push({ ...doc.data(), id: doc.id })
-    //         })
+    useEffect(() => {
+        const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id))
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const chatRooms = []
+            querySnapshot.forEach((doc) => {
+                chatRooms.push({ ...doc.data(), id: doc.id })
+            })
+            let msgs = 0
+            if (chatRooms.length > 0) {
+                msgs = chatRooms.map((e) => {
+                    if (e.sender != (e.users1.userId == user._id ? 'users2' : 'users1') && !e.readStatus)
+                        return e.numberOfMessages
+                    return 0
 
-    //         let msgs = chatRooms.map((e) => {
-    //             return {
-    //                 userTag: e.users1.userId == user._id ? 'users2' : 'users1',
-    //                 readStatus: e.readStatus,
-    //                 sender: e.sender,
-    //                 numberOfMessages: e.numberOfMessages
-    //             }
-    //         })
-    //         console.log(msgs)
-
-    //         // setThreadsUsers(chatRooms.map((e) => {
-    //         //     return {
-    //         //         id: e.id,
-    //         //         user: e.users1.userId == user._id ? e.users2 : e.users1,
-    //         //         lastMessage: e.latestMessage,
-    //         //         userTag: e.users1.userId == user._id ? 'users2' : 'users1',
-    //         //         readStatus: e.readStatus,
-    //         //         sender: e.sender,
-    //         //         numberOfMessages: e.numberOfMessages
-    //         //     }
-    //         // }))
-
-    //     })
-    //     return () => unsubscribe()
-    // }, [])
+                })
+            }
+            let total = msgs.reduce((a, b) => a + b, 0)
+            setNewMessages(total != 0 ? total : null)
+        })
+        return () => unsubscribe()
+    }, [])
 
     return (
         <Tab.Navigator screenOptions={{
@@ -89,7 +77,7 @@ export default function TabNav() {
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
                         marginLeft: 200,
                     }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
-                tabBarBadge: 3,
+                tabBarBadge: newMessages,
                 tabBarBadgeStyle: { backgroundColor: '#005A9C' }
             })
             } />
