@@ -13,6 +13,7 @@ export default function Chat({ navigation }) {
     const route = useRoute()
     const chatRoom = route.params
     const [messages, setMessages] = useState([])
+    const [chatRoomInfo, setChatRoomInfo] = useState(null)
 
     const hanldeSendMessage = async (text) => {
         const res = await addChatRoom(chatRoom.chatRoomId, {
@@ -45,7 +46,7 @@ export default function Chat({ navigation }) {
         const unsub = onSnapshot(
             roomRef,
             (docs) => {
-                console.log(docs.data())
+                setChatRoomInfo(docs.data())
             })
         return () => unsub()
     }, [])
