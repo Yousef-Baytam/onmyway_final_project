@@ -48,6 +48,11 @@ export default function AllChats({ navigation }) {
     //     threadsUsersIds.length != 0 && allUsers()
     // }, [threadsUsersIds])
 
+    const handleUser = async (item) => {
+        const user = await getUsers([item.user.userId])
+        navigation.navigate('Chat', { ...user[0], chatRoomId: item.id })
+    }
+
     return (<>
         {loading ?
             <View style={styles.loadingContainer}>
@@ -57,7 +62,7 @@ export default function AllChats({ navigation }) {
             <View style={styles.container}>
                 <FlatList
                     data={threadsUsers}
-                    renderItem={({ item }) => (<ChatRoomCard data={item} action={() => navigation.navigate('Chat', item)} />)}
+                    renderItem={({ item }) => (<ChatRoomCard data={item} action={() => handleUser(item)} />)}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item.id}
                     style={{ width: '100%' }}
