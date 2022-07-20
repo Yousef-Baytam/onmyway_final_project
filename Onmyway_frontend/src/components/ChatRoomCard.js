@@ -5,7 +5,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 const ChatRoomCard = ({ data, action }) => {
     return (
         <Pressable style={styles.container} onPress={action}>
-            <Image style={styles.image} source={data.user.hasOwnProperty('image') && Object.keys(data.user.image).length ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
+            <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
             <Text>{data.user.usename}</Text>
         </Pressable>
     )
