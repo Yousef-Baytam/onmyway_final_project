@@ -3,11 +3,11 @@ import React from 'react'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 
 const ChatRoomCard = ({ data, action }) => {
-
+    console.log(data.id)
     return (
         <Pressable style={styles.container} onPress={action}>
-            <Image style={styles.image} source={data.hasOwnProperty('image') && Object.keys(data.image).length ? { uri: data.image.url } : require('../assets/blank-profile.webp')} />
-            <Text>{data.username}</Text>
+            <Image style={styles.image} source={data.user.hasOwnProperty('image') && Object.keys(data.user.image).length ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
+            <Text>{data.user.usename}</Text>
         </Pressable>
     )
 }

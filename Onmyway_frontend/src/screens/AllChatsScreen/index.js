@@ -21,10 +21,11 @@ export default function AllChats({ navigation }) {
             querySnapshot.forEach((doc) => {
                 chatRooms.push({ ...doc.data(), id: doc.id })
             })
-            setChatThreads(chatRooms)
-            let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
-            users != threadsUsersIds &&
-                setThreadsUsersIds(users)
+            // setChatThreads(chatRooms)
+            setThreadsUsers(chatRooms.map((e) => { return { id: e.id, user: e.users1.userId == user._id ? e.users2 : e.users1 } }))
+            // let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
+            // users != threadsUsersIds &&
+            //     setThreadsUsersIds(users)
 
             if (loading) {
                 setLoading(false);
@@ -33,19 +34,19 @@ export default function AllChats({ navigation }) {
         return () => unsubscribe()
     }, [])
 
-    useEffect(() => {
-        const allUsers = async () => {
-            const users = await getUsers(threadsUsersIds)
-            for (let i = 0; i < users.length; i++) {
-                for (let j of chatThreads) {
-                    if (j.userLocalDbIds.includes(users[i]._id))
-                        users[i].chatRoomId = j.id
-                }
-            }
-            setThreadsUsers(users)
-        }
-        threadsUsersIds.length != 0 && allUsers()
-    }, [threadsUsersIds])
+    // useEffect(() => {
+    //     const allUsers = async () => {
+    //         const users = await getUsers(threadsUsersIds)
+    //         for (let i = 0; i < users.length; i++) {
+    //             for (let j of chatThreads) {
+    //                 if (j.userLocalDbIds.includes(users[i]._id))
+    //                     users[i].chatRoomId = j.id
+    //             }
+    //         }
+    //         setThreadsUsers(users)
+    //     }
+    //     threadsUsersIds.length != 0 && allUsers()
+    // }, [threadsUsersIds])
 
     return (<>
         {loading ?
@@ -58,7 +59,7 @@ export default function AllChats({ navigation }) {
                     data={threadsUsers}
                     renderItem={({ item }) => (<ChatRoomCard data={item} action={() => navigation.navigate('Chat', item)} />)}
                     showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => item._id}
+                    keyExtractor={(item, index) => item.id}
                     style={{ width: '100%' }}
                 />
             </View >
