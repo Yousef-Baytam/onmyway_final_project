@@ -29,8 +29,8 @@ export default function AllChats({ navigation }) {
             if (loading) {
                 setLoading(false);
             }
-            return () => unsubscribe()
         })
+        return unsubscribe()
     }, [])
 
     useEffect(() => {

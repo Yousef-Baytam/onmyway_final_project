@@ -6,7 +6,7 @@ import ProfileOptions from '../../components/ProfileOptions';
 import UserProfileHeaderButton from '../../components/UserProfileHeaderButton';
 import { addChatRoom } from '../../controllers/firebaseControllers/messagesController';
 import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helper'
-import { doc, onSnapshot, collection } from "firebase/firestore"
+import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
 
 export default function Chat({ navigation }) {
@@ -28,11 +28,18 @@ export default function Chat({ navigation }) {
     useLayoutEffect(() => {
         const roomRef = doc(db, 'chatRooms', chatRoom.chatRoomId)
         const messageRef = collection(roomRef, 'messages')
+        const q = query(messageRef, orderBy("createdAt", "desc"))
         const unsub = onSnapshot(
-            messageRef,
-            (doc) => {
-                console.log(doc)
+            q,
+            (docs) => {
+                let msgs = []
+                docs.forEach((doc) => {
+                    console.log({ ...doc.data(), _id: doc.id })
+                    msgs.push({ ...doc.data(), _id: doc.id })
+                })
+                setMessages(msgs)
             })
+        return unsub()
     }, [])
 
     useLayoutEffect(() => {
