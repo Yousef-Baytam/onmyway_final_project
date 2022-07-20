@@ -21,7 +21,10 @@ export default function Chat({ navigation }) {
             createdAt: new Date().getTime(),
             user: {
                 _id: chatRoom._id,
-            }
+            },
+            sender: chatRoom._id,
+            readStatus: readStatus,
+            numberOfMessages: numberOfMessages,
         })
     }
 

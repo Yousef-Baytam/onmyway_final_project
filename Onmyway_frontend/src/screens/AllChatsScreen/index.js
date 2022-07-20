@@ -22,7 +22,14 @@ export default function AllChats({ navigation }) {
                 chatRooms.push({ ...doc.data(), id: doc.id })
             })
             // setChatThreads(chatRooms)
-            setThreadsUsers(chatRooms.map((e) => { return { id: e.id, user: e.users1.userId == user._id ? e.users2 : e.users1, lastMessage: e.latestMessage } }))
+            setThreadsUsers(chatRooms.map((e) => {
+                return {
+                    id: e.id,
+                    user: e.users1.userId == user._id ? e.users2 : e.users1,
+                    lastMessage: e.latestMessage,
+                    userTag: e.users1.userId == user._id ? 'users2' : 'users1'
+                }
+            }))
             // let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
             // users != threadsUsersIds &&
             //     setThreadsUsersIds(users)
@@ -50,7 +57,7 @@ export default function AllChats({ navigation }) {
 
     const handleUser = async (item) => {
         const user = await getUsers([item.user.userId])
-        navigation.navigate('Chat', { ...user[0], chatRoomId: item.id })
+        navigation.navigate('Chat', { ...user[0], chatRoomId: item.id, userTag: item.userTag })
     }
 
     return (<>
