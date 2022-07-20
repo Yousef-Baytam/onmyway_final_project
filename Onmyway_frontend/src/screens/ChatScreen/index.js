@@ -23,7 +23,11 @@ export default function Chat({ navigation, use }) {
             user: {
                 _id: chatRoom._id,
             },
-        })
+        },
+            chatRoom.userTag,
+            chatRoom.userTag == 'user1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
+            chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
+        )
     }
 
     useFocusEffect(

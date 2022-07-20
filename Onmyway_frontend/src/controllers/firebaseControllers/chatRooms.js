@@ -20,6 +20,7 @@ const addChatRoom = async (email1, email2, id1, id2, username1, username2, image
                 image: image2
             },
             latestMessage: {
+                sender: null,
                 text: null,
                 createdAt: new Date().getTime()
             }
