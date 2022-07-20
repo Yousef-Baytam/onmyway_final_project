@@ -8,13 +8,13 @@ const ChatRoomCard = ({ data, action }) => {
         <Pressable style={styles.container} onPress={action}>
             <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
             <View style={styles.userInfo}>
-                <View>
+                <View style={styles.mesasgeInfoWrapper}>
                     <Text>{data.user.usename}</Text>
                     {
                         data.sender != data.userTag ?
                             !data.readStatus ?
-                                <View>
-                                    <Text>{data.numberOfMessages}</Text>
+                                <View style={styles.popUp}>
+                                    <Text style={{ color: '#fff' }}>{data.numberOfMessages}</Text>
                                 </View>
                                 : null
                             : null
@@ -63,6 +63,15 @@ const styles = StyleSheet.create({
     },
     userInfo: {
         width: '80%'
+    },
+    popUp: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        backgroundColor: '#005A9C',
+        color: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
