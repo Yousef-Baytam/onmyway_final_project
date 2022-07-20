@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ActivityIndicator, FlatList } from 'react-native';
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { db } from '../../../firebase'
 import { useUser } from '../../context/UserContext';
@@ -15,7 +15,7 @@ export default function AllChats({ navigation }) {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id))
+        const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id), orderBy('latestMessage.createdAt', "desc"))
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const chatRooms = []
             querySnapshot.forEach((doc) => {
