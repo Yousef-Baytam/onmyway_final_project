@@ -8,7 +8,18 @@ const ChatRoomCard = ({ data, action }) => {
         <Pressable style={styles.container} onPress={action}>
             <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
             <View style={styles.userInfo}>
-                <Text>{data.user.usename}</Text>
+                <View>
+                    <Text>{data.user.usename}</Text>
+                    {
+                        data.sender != data.userTag ?
+                            !data.readStatus ?
+                                <View>
+                                    <Text>{data.numberOfMessages}</Text>
+                                </View>
+                                : null
+                            : null
+                    }
+                </View>
                 {
                     data.lastMessage.text ?
                         <View style={styles.mesasgeInfoWrapper}>

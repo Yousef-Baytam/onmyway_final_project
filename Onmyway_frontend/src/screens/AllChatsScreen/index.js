@@ -27,7 +27,10 @@ export default function AllChats({ navigation }) {
                     id: e.id,
                     user: e.users1.userId == user._id ? e.users2 : e.users1,
                     lastMessage: e.latestMessage,
-                    userTag: e.users1.userId == user._id ? 'users2' : 'users1'
+                    userTag: e.users1.userId == user._id ? 'users2' : 'users1',
+                    readStatus: e.readStatus,
+                    sender: e.sender,
+                    numberOfMessages: e.numberOfMessages
                 }
             }))
             // let users = chatRooms.map((e) => e.userLocalDbIds.filter((i) => i != user._id)[0])
