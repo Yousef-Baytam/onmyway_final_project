@@ -1,16 +1,18 @@
 import { setDoc, doc, getDoc } from "firebase/firestore"
 import { db } from "../../../firebase"
 
-const addChatRoom = async (email1, email2, id1, id2, username1, username2) => {
+const addChatRoom = async (email1, email2, id1, id2, username1, username2, image1, image2) => {
     try {
         let docRef = await setDoc(doc(db, "chatRooms", `${ id1 }_${ id2 }`), {
             userLocalDbIds: [id1, id2],
             users1: {
+                userId: id1,
                 usename: username1,
                 email: email1,
                 image: image1
             },
             users2: {
+                userId: id2,
                 usename: username2,
                 email: email2,
                 image: image2
