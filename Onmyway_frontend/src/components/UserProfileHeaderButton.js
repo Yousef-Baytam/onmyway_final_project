@@ -10,8 +10,11 @@ export default function UserProfileHeaderButton({ action, image }) {
         <View style={styles.container}>
             <Pressable onPress={action}>
                 {
-                    image ?
-                        <Image style={styles.image} source={{ uri: image }} />
+                    image.status ?
+                        image.image ?
+                            <Image style={styles.image} source={{ uri: image.image }} />
+                            :
+                            <UserHeaderIcon />
                         :
                         Object.keys(user.image).length ?
                             <Image style={styles.image} source={{ uri: user.image.url }} />
@@ -38,5 +41,5 @@ const styles = StyleSheet.create({
 });
 
 UserProfileHeaderButton.defaultProps = {
-    image: false
+    image: { status: false }
 }

@@ -12,7 +12,6 @@ import { db } from '../../../firebase'
 export default function Chat({ navigation }) {
     const route = useRoute()
     const chatRoom = route.params
-    console.log(chatRoom)
     const [messages, setMessages] = useState([])
 
     const hanldeSendMessage = async (text) => {
@@ -51,7 +50,8 @@ export default function Chat({ navigation }) {
             headerTintColor: '#fff',
             headerRight: () => (<View style={styles.headerIcon}>
                 <View style={styles.imageHeaderContainer}>
-                    <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }} image={chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url} />
+                    <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }}
+                        image={{ status: true, image: chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url || null }} />
                 </View>
                 <ProfileOptions custom={{ width: 8 }} />
             </View>)
