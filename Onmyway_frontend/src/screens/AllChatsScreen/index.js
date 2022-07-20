@@ -30,7 +30,7 @@ export default function AllChats({ navigation }) {
                 setLoading(false);
             }
         })
-        return unsubscribe()
+        return () => unsubscribe()
     }, [])
 
     useEffect(() => {

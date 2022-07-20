@@ -34,12 +34,11 @@ export default function Chat({ navigation }) {
             (docs) => {
                 let msgs = []
                 docs.forEach((doc) => {
-                    console.log({ ...doc.data(), _id: doc.id })
                     msgs.push({ ...doc.data(), _id: doc.id })
                 })
                 setMessages(msgs)
             })
-        return unsub()
+        return () => unsub()
     }, [])
 
     useLayoutEffect(() => {
