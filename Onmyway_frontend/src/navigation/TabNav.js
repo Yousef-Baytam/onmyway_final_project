@@ -48,8 +48,18 @@ export default function TabNav() {
     useEffect(() => {
         const getPosts = async () => {
             const posts = await getUserPost()
-            if (posts.results.length > 0)
-                setUserPosts(posts.results.filter((e) => (e.joinRequests.length > 0 && (e.repeat || new Date(e.date) >= new Date()))).map((i) => ({ id: i._id, pendingRequests: i.joinRequests.filter((j) => (j.status == 'pending')) })))
+            let final = []
+            if (posts.results.length > 0) {
+                let res = (posts.results.filter((e) => (e.joinRequests.length > 0 && (e.repeat || new Date(e.date) >= new Date()))).map((i) => ({ id: i._id, pendingRequests: i.joinRequests.filter((j) => (j.status == 'pending')) })))
+                for (let i of res) {
+                    if (i.pendingRequests.length > 1)
+                        for (let j of i.pendingRequests)
+                            final.push({ id: i.id, data: j })
+                    else
+                        final.push({ id: i.id, data: i.pendingRequests[0] })
+                }
+                setUserPosts(final)
+            }
         }
         getPosts()
     }, [])

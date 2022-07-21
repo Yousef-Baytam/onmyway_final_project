@@ -2,28 +2,28 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
 const NotificationList = ({ data }) => {
-    console.log(data.pendingRequests)
+    console.log(data.data.joined)
     return (
-        <>
-            {
-                data.pendingRequests.map((e) => (
-                    <View style={styles.container} key={e._id}>
-                        <Image style={styles.image} source={e.joined?.image ? { uri: e.joined.image.url } : require('../assets/blank-profile.webp')} />
-                        <Text>{e.joined.username}</Text>
-                    </View>
-                ))
-            }
-        </>
+        <View style={styles.container}>
+            <Image style={styles.image} source={data.data.joined?.image ? { uri: data.data.joined.image.url } : require('../assets/blank-profile.webp')} />
+            <Text>{data.data.joined.username}</Text>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         width: '80%',
-        height: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
-    }
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+    },
+    image: {
+        width: 45,
+        height: 45,
+        borderRadius: 22.5,
+        marginRight: 10
+    },
 })
 
 export default NotificationList
