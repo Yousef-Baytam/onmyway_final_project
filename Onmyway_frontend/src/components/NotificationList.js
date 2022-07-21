@@ -4,8 +4,11 @@ import TickIcon from '../assets/icons/TickIcon'
 import CancelIcon from '../assets/icons/CancelIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { updateJoinRequestStatus } from '../controllers/postsController'
+import { useNavigation } from '@react-navigation/native'
 
 const NotificationList = ({ data, action }) => {
+    const navigation = useNavigation()
+
     const handleDecline = async () => {
         try {
             await updateJoinRequestStatus(data.id, data.data.joined._id, 'declined')
@@ -26,10 +29,10 @@ const NotificationList = ({ data, action }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.section}>
+            <Pressable style={styles.section} onPress={() => navigation.navigate('Profile', data.data.joined)}>
                 <Image style={styles.image} source={data.data.joined?.image ? { uri: data.data.joined.image.url } : require('../assets/blank-profile.webp')} />
                 <Text numberOfLines={1}>{data.data.joined.username}</Text>
-            </View>
+            </Pressable>
             <View style={styles.section}>
                 <Pressable style={styles.iconContainer} onPress={handleDecline}>
                     <CancelIcon />
