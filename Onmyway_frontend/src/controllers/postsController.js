@@ -69,9 +69,8 @@ const quitPost = async (id) => {
 const updateJoinRequestStatus = async (Pid, Uid, data) => {
     try {
         let res = await axios({
-            url: `/post/update_request/${ Pid }/${ Uid }`,
+            url: `/post/update_request/${ Pid }/${ Uid }/${ data }`,
             method: "POST",
-            data: data
         })
         return res.data
     }

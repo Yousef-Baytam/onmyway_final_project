@@ -100,13 +100,13 @@ module.exports.quitPosts = async (req, res) => {
 }
 
 module.exports.approveDeclinePosts = async (req, res) => {
-    const { user_id, post_id } = req.params
+    const { user_id, post_id, status } = req.params
     const post = await Post.findById(post_id).populate('joinRequests.joined')
     if (!post.remainingSeats)
         return res.send({ "success": false, "message": "no enough seats" })
     for (let i = 0; i < post.joinRequests.length; i++) {
         if (post.joinRequests[i].joined.id == user_id)
-            if (req.body.request == 'approve') {
+            if (status == 'approve') {
                 post.remainingSeats -= 1
                 post.joinRequests.status == 'approved'
             }

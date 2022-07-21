@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import TickIcon from '../assets/icons/TickIcon'
 import CancelIcon from '../assets/icons/CancelIcon'
-import MessagesIcon from '../assets/icons/MessagesIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { updateJoinRequestStatus } from '../controllers/postsController'
 
