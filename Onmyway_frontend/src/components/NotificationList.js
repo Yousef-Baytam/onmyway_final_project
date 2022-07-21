@@ -4,14 +4,23 @@ import TickIcon from '../assets/icons/TickIcon'
 import CancelIcon from '../assets/icons/CancelIcon'
 import MessagesIcon from '../assets/icons/MessagesIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
+import { updateJoinRequestStatus } from '../controllers/postsController'
 
 const NotificationList = ({ data }) => {
-
     const handleDecline = async () => {
-
+        try {
+            await updateJoinRequestStatus(data.id, data.data.joined._id, 'declined')
+        } catch (e) {
+            console.log(e)
+        }
     }
-    const handleAccept = async () => {
 
+    const handleAccept = async () => {
+        try {
+            await updateJoinRequestStatus(data.id, data.data.joined._id, 'approved')
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (

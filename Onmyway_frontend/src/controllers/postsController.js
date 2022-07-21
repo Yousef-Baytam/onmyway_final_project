@@ -66,10 +66,10 @@ const quitPost = async (id) => {
     }
 }
 
-const acceptJoinRequest = async (Pid, Uid, data) => {
+const updateJoinRequestStatus = async (Pid, Uid, data) => {
     try {
         let res = await axios({
-            url: `/update_request/${ Pid }/${ Uid }`,
+            url: `/post/update_request/${ Pid }/${ Uid }`,
             method: "POST",
             data: data
         })
@@ -80,4 +80,4 @@ const acceptJoinRequest = async (Pid, Uid, data) => {
     }
 }
 
-export { addPost, getPost, joinPost, quitPost, getUserPost }
+export { addPost, getPost, joinPost, quitPost, getUserPost, updateJoinRequestStatus }
