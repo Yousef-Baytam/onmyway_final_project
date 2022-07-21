@@ -27,6 +27,19 @@ const getPost = async () => {
     }
 }
 
+const getUserPost = async () => {
+    try {
+        let res = await axios({
+            url: `/post/user`,
+            method: "GET",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 const joinPost = async (id) => {
     try {
         let res = await axios({
@@ -53,4 +66,4 @@ const quitPost = async (id) => {
     }
 }
 
-export { addPost, getPost, joinPost, quitPost }
+export { addPost, getPost, joinPost, quitPost, getUserPost }
