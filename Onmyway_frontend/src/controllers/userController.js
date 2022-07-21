@@ -86,7 +86,7 @@ const getUsers = async (ids) => {
 const reportUser = async (id, data) => {
     try {
         let res = await axios({
-            url: `/user/${ id }`,
+            url: `/user/report/${ id }`,
             method: "POST",
             data: data
         })

@@ -1,10 +1,13 @@
 import { View, TextInput, Modal, StyleSheet } from 'react-native'
 import React from 'react'
 import CustomButton from './CustomButton';
+import { reportUser } from '../controllers/userController';
 
-const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setReportTitle, reportDesc, setReportDesc }) => {
+const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setReportTitle, reportDesc, setReportDesc, id }) => {
 
     const handleSubmitReport = async () => {
+        const res = await reportUser(id, { reportType: reportTitle, report: reportDesc })
+        console.log(res)
         setShowReportModal(false)
     }
 
@@ -19,7 +22,7 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
                 <TextInput style={styles.input}
                     onChangeText={setReportTitle}
                     value={reportTitle}
-                    placeholder="Report Title"
+                    placeholder="Report Type"
                     keyboardType="default" />
                 <TextInput style={styles.input}
                     onChangeText={setReportDesc}

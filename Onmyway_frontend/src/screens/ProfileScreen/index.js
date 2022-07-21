@@ -136,12 +136,12 @@ export default function Profile({ navigation }) {
                         setNewRating={setNewRating} newRating={newRating}
                         loggedUserReview={loggedUserReview} />
                     <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
+                    <ReportModal showReportModal={showReportModal}
+                        setShowReportModal={setShowReportModal}
+                        setReportTitle={setReportTitle} reportTitle={reportTitle}
+                        setReportDesc={setReportDesc} reportDesc={reportDesc} id={user._id} />
                 </>
             }
-            <ReportModal showReportModal={showReportModal}
-                setShowReportModal={setShowReportModal}
-                setReportTitle={setReportTitle} reportTitle={reportTitle}
-                setReportDesc={setReportDesc} reportDesc={reportDesc} />
         </Pressable>
     );
 }
