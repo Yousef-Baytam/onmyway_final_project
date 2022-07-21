@@ -66,4 +66,18 @@ const quitPost = async (id) => {
     }
 }
 
+const acceptJoinRequest = async (Pid, Uid, data) => {
+    try {
+        let res = await axios({
+            url: `/update_request/${ Pid }/${ Uid }`,
+            method: "POST",
+            data: data
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 export { addPost, getPost, joinPost, quitPost, getUserPost }
