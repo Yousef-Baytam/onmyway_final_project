@@ -98,7 +98,7 @@ export default function Post({ navigation }) {
                             : joined == 'pending' ?
                                 <CustomButton text={'Pending'} action={quitPostAlert} customButton={styles.pendingStyle} customText={{ color: '#000' }} customRipple={{ borderColor: '#FFA500' }} />
                                 : joined == 'approved' ?
-                                    <CustomButton text={'Accepted'} customButton={styles.acceptedStyle} customText={{ color: '#000' }} />
+                                    <CustomButton text={'Accepted'} customButton={styles.acceptedStyle} customText={{ color: '#000' }} action={quitPostAlert} />
                                     : joined == 'declined' ?
                                         <CustomButton text={'Rejected'} customButton={styles.rejectedStyle} customText={{ color: '#000' }} />
                                         : null
