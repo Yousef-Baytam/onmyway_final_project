@@ -29,7 +29,8 @@ export default function Profile({ navigation }) {
     const [loggedUserReview, setLoggedUserReview] = useState(null)
     const [showAllReviews, setShowAllReviews] = useState(false)
     const [showReportModal, setShowReportModal] = useState(false)
-
+    const [reportTitle, setReportTitle] = useState(null)
+    const [reportDesc, setReportDesc] = useState(null)
     const [newRating, setNewRating] = useState(2.5)
     const [review, setReview] = useState(null)
 
@@ -137,7 +138,10 @@ export default function Profile({ navigation }) {
                     <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
                 </>
             }
-            <ReportModal showReportModal={showReportModal} setShowReportModal={setShowReportModal} />
+            <ReportModal showReportModal={showReportModal}
+                setShowReportModal={setShowReportModal}
+                setReportTitle={setReportTitle} reportTitle={reportTitle}
+                setReportDesc={setReportDesc} reportDesc={reportDesc} />
         </Pressable>
     );
 }
