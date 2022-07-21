@@ -15,7 +15,7 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
             onRequestClose={() => {
                 setShowReportModal(!showReportModal)
             }}>
-            <View style={styles.Container}>
+            <View style={styles.container}>
                 <TextInput style={styles.input}
                     onChangeText={setReportTitle}
                     value={reportTitle}
@@ -28,7 +28,7 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
                     numberOfLines={5}
                     placeholder="Description"
                     keyboardType="default" />
-                <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
+                <View style={{ justifyContent: 'center' }}>
                     <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReport} />
                 </View>
             </View>
@@ -36,6 +36,19 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
     )
 }
 const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    input: {
+        backgroundColor: '#EAEAEA',
+        width: '80%',
+        padding: 10,
+        margin: 20,
+        borderRadius: 10
+    }
 })
 
 export default ReportModal
