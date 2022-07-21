@@ -11,10 +11,12 @@ import { useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
+import { View, StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
+    const [showNotifications, setShowNotifications] = useState(true)
     const [newMessages, setNewMessages] = useState(null)
     const { user } = useUser()
 
@@ -41,47 +43,59 @@ export default function TabNav() {
     }, [])
 
     return (
-        <Tab.Navigator screenOptions={{
-            tabBarShowLabel: false, tabBarStyle: {
-                borderTopWidth: 0,
-                height: 60,
-                elevation: 0
-            },
-        }}>
-
-            <Tab.Screen name="Main" component={MainStack} options={{
-                headerShown: false, tabBarItemStyle: {
-                    position: 'absolute'
-                }
-            }} />
-
-            <Tab.Screen name="Notifications" component={Browse} options={{
-                headerShown: false,
-                tabBarItemStyle: {
+        <>
+            <Tab.Navigator screenOptions={{
+                tabBarShowLabel: false, tabBarStyle: {
+                    borderTopWidth: 0,
+                    height: 60,
+                    elevation: 0
                 },
-                tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
-                tabBarBadge: 3,
-                tabBarBadgeStyle: { backgroundColor: '#005A9C' }
-            }} listeners={{
-                tabPress: (e) => {
-                    e.preventDefault();
-                },
-            }}
-            />
+            }}>
 
-            <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
-                headerTitle: 'Messages', headerTitleAlign: 'center', headerStyle: { elevation: 0 },
-                headerLeft: () => (
-                    <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
-                headerRight: () => (
-                    <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
-                        marginLeft: 200,
-                    }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
-                tabBarBadge: newMessages,
-                tabBarBadgeStyle: { backgroundColor: '#005A9C' }
-            })
-            } />
+                <Tab.Screen name="Main" component={MainStack} options={{
+                    headerShown: false, tabBarItemStyle: {
+                        position: 'absolute'
+                    }
+                }} />
 
-        </Tab.Navigator>
+                <Tab.Screen name="Notifications" component={Browse} options={{
+                    headerShown: false,
+                    tabBarItemStyle: {
+                    },
+                    tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
+                    tabBarBadge: 3,
+                    tabBarBadgeStyle: { backgroundColor: '#005A9C' }
+                }} listeners={{
+                    tabPress: (e) => {
+                        e.preventDefault();
+                    },
+                }}
+                />
+
+                <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
+                    headerTitle: 'Messages', headerTitleAlign: 'center', headerStyle: { elevation: 0 },
+                    headerLeft: () => (
+                        <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
+                    headerRight: () => (
+                        <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), tabBarItemStyle: {
+                            marginLeft: 200,
+                        }, tabBarIcon: ({ focused }) => (<MessagesIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
+                    tabBarBadge: newMessages,
+                    tabBarBadgeStyle: { backgroundColor: '#005A9C' }
+                })
+                } />
+
+            </Tab.Navigator>
+            {
+                showNotifications &&
+                <View>
+
+                </View>
+            }
+        </>
     );
 }
+
+const styles = StyleSheet.create({
+
+});
