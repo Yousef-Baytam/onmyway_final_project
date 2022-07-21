@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
-import { View, StyleSheet, LayoutAnimation } from 'react-native';
+import { View, StyleSheet, LayoutAnimation, FlatList } from 'react-native';
 import { getUserPost } from '../controllers/postsController';
 import NotificationList from '../components/NotificationList';
 
@@ -103,7 +103,13 @@ export default function TabNav() {
 
             </Tab.Navigator>
             <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
-                <NotificationList data={userPosts} />
+                <FlatList
+                    data={userPosts}
+                    renderItem={({ item }) => (<NotificationList data={item} />)}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => item.id}
+                    style={{ width: '100%', marginLeft: 42 }}
+                />
             </View>
         </>
     );
