@@ -1,7 +1,7 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
+import { useState, useEffect, useRef } from 'react';
+import { Platform } from 'react-native';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -11,8 +11,8 @@ Notifications.setNotificationHandler({
     }),
 })
 
-export default function Notification() {
-    const [expoPushToken, setExpoPushToken] = useState('');
+export default function Notification({ expoPushToken, setExpoPushToken }) {
+
     const [notification, setNotification] = useState(false);
     const notificationListener = useRef();
     const responseListener = useRef();
@@ -20,12 +20,10 @@ export default function Notification() {
     useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
 
-        // This listener is fired whenever a notification is received while the app is foregrounded
         notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
             setNotification(notification);
         });
 
-        // This listener is fired whenever a user taps on or interacts with a notification (works when app is foregrounded, backgrounded, or killed)
         responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
             console.log(response);
         });
@@ -39,7 +37,6 @@ export default function Notification() {
     return null
 }
 
-// Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
 async function sendPushNotification(expoPushToken) {
     const message = {
         to: expoPushToken,
@@ -70,7 +67,6 @@ async function registerForPushNotificationsAsync() {
             finalStatus = status;
         }
         if (finalStatus !== 'granted') {
-            alert('Failed to get push token for push notification!');
             return;
         }
         token = (await Notifications.getExpoPushTokenAsync()).data;

@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 export function MainStack() {
     const Stack = createStackNavigator();
-    const [expoPushToken, setExpoPushToken] = useState('');
+    const [expoPushToken, setExpoPushToken] = useState('')
 
     return (
         <>
@@ -46,7 +46,7 @@ export function MainStack() {
                 </Stack.Group>
 
             </Stack.Navigator>
-            <Notification etExpoPushToken={setExpoPushToken} expoPushToken={expoPushToken} />
+            <Notification setExpoPushToken={setExpoPushToken} expoPushToken={expoPushToken} />
         </>
     );
 }
