@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
-import { View, StyleSheet, LayoutAnimation, FlatList } from 'react-native';
+import { View, StyleSheet, LayoutAnimation, FlatList, Text } from 'react-native';
 import { getUserPost } from '../controllers/postsController';
 import NotificationList from '../components/NotificationList';
 
@@ -115,13 +115,21 @@ export default function TabNav() {
 
             </Tab.Navigator>
             <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
-                <FlatList
-                    data={userPosts}
-                    renderItem={({ item }) => (<NotificationList data={item} action={setRefreshData} />)}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => item.id}
-                    style={{ width: '100%' }}
-                />
+                {
+                    userPosts?.length != 0 ?
+                        <FlatList
+                            data={userPosts}
+                            renderItem={({ item }) => (<NotificationList data={item} action={setRefreshData} />)}
+                            showsVerticalScrollIndicator={false}
+                            keyExtractor={(item, index) => item.id}
+                            style={{ width: '100%' }}
+                        />
+                        :
+                        <View style={styles.noNotContainer}>
+                            <Text>No New Notifications!</Text>
+                        </View>
+                }
+
             </View>
         </>
     );
@@ -136,5 +144,11 @@ const styles = StyleSheet.create({
         bottom: 65,
         left: 20,
         borderRadius: 10
+    },
+    noNotContainer: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

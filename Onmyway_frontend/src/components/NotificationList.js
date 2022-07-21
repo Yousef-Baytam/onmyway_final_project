@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const NotificationList = ({ data, action }) => {
     const navigation = useNavigation()
+    console.log(data)
 
     const handleDecline = async () => {
         try {
