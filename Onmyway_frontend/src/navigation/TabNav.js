@@ -11,12 +11,12 @@ import { useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, LayoutAnimation } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
-    const [showNotifications, setShowNotifications] = useState(true)
+    const [showNotifications, setShowNotifications] = useState(false)
     const [newMessages, setNewMessages] = useState(null)
     const { user } = useUser()
 
@@ -68,6 +68,9 @@ export default function TabNav() {
                 }} listeners={{
                     tabPress: (e) => {
                         e.preventDefault()
+                        LayoutAnimation.configureNext(
+                            LayoutAnimation.create(150, 'easeInEaseOut', 'opacity')
+                        )
                         setShowNotifications(!showNotifications)
                     },
                 }}
@@ -87,12 +90,9 @@ export default function TabNav() {
                 } />
 
             </Tab.Navigator>
-            {
-                showNotifications &&
-                <View style={styles.notificationsContainer}>
+            <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
 
-                </View>
-            }
+            </View>
         </>
     );
 }
