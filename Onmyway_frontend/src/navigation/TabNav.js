@@ -40,8 +40,10 @@ export default function TabNav() {
 
                 })
             }
-            let total = msgs.reduce((a, b) => a + b, 0)
-            setNewMessages(total != 0 ? total : null)
+            if (msgs) {
+                let total = msgs.reduce((a, b) => a + b, 0)
+                setNewMessages(total != 0 ? total : null)
+            }
         })
         return () => unsubscribe()
     }, [])
