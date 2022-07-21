@@ -75,7 +75,7 @@ export default function TabNav() {
                     tabBarItemStyle: {
                     },
                     tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
-                    tabBarBadge: 3,
+                    tabBarBadge: userPosts.length || null,
                     tabBarBadgeStyle: { backgroundColor: '#005A9C' }
                 }} listeners={{
                     tabPress: (e) => {
@@ -103,7 +103,7 @@ export default function TabNav() {
 
             </Tab.Navigator>
             <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
-                <NotificationList />
+                <NotificationList data={userPosts} />
             </View>
         </>
     );
