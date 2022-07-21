@@ -67,7 +67,8 @@ export default function TabNav() {
                     tabBarBadgeStyle: { backgroundColor: '#005A9C' }
                 }} listeners={{
                     tabPress: (e) => {
-                        e.preventDefault();
+                        e.preventDefault()
+                        setShowNotifications(!showNotifications)
                     },
                 }}
                 />
@@ -88,7 +89,7 @@ export default function TabNav() {
             </Tab.Navigator>
             {
                 showNotifications &&
-                <View>
+                <View style={styles.notificationsContainer}>
 
                 </View>
             }
@@ -97,5 +98,13 @@ export default function TabNav() {
 }
 
 const styles = StyleSheet.create({
-
-});
+    notificationsContainer: {
+        width: '60%',
+        height: '40%',
+        position: 'absolute',
+        backgroundColor: '#EAEAEA',
+        bottom: 65,
+        left: 20,
+        borderRadius: 10
+    }
+})
