@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 
-const NotificationList = () => {
+const NotificationList = ({ data }) => {
     return (
         <ScrollView>
             <View style={styles.container}>
