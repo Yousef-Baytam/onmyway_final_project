@@ -106,7 +106,7 @@ module.exports.approveDeclinePosts = async (req, res) => {
         return res.send({ "success": false, "message": "no enough seats" })
     for (let i = 0; i < post.joinRequests.length; i++) {
         if (post.joinRequests[i].joined.id == user_id)
-            if (status == 'approve') {
+            if (status == 'approved') {
                 post.remainingSeats -= 1
                 post.joinRequests[i].status = 'approved'
             }
