@@ -118,7 +118,7 @@ export default function TabNav() {
                     renderItem={({ item }) => (<NotificationList data={item} />)}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item.id}
-                    style={{ width: '100%', marginLeft: 42 }}
+                    style={{ width: '100%' }}
                 />
             </View>
         </>
@@ -127,7 +127,7 @@ export default function TabNav() {
 
 const styles = StyleSheet.create({
     notificationsContainer: {
-        width: '60%',
+        width: '70%',
         height: '40%',
         position: 'absolute',
         backgroundColor: '#EAEAEA',

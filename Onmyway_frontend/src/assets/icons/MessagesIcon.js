@@ -1,11 +1,11 @@
 import Svg, { Path } from 'react-native-svg';
 
-export default function MessagesIcon({ color }) {
+export default function MessagesIcon({ color, customDim }) {
 
     return (
         <Svg
-            width={50}
-            height={50}
+            width={customDim?.width || 50}
+            height={customDim?.height || 50}
             viewBox="0 0 24 24"
         >
             <Path
