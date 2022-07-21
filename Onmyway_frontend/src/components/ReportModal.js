@@ -6,9 +6,12 @@ import { reportUser } from '../controllers/userController';
 const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setReportTitle, reportDesc, setReportDesc, id }) => {
 
     const handleSubmitReport = async () => {
-        const res = await reportUser(id, { reportType: reportTitle, report: reportDesc })
-        console.log(res)
-        setShowReportModal(false)
+        try {
+            await reportUser(id, { reportType: reportTitle, report: reportDesc })
+            setShowReportModal(false)
+        } catch (e) {
+            alert('Error reporting this user at the moment, try again later')
+        }
     }
 
     return (
