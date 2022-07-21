@@ -2,10 +2,12 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 
 const NotificationList = ({ data }) => {
+    console.log(data)
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text>NotificationList</Text>
+                {/* <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} /> */}
+                <Text></Text>
             </View>
         </ScrollView>
     )
