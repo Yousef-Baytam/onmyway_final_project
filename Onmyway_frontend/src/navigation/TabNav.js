@@ -12,12 +12,14 @@ import { collection, query, where, onSnapshot, orderBy } from "firebase/firestor
 import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
 import { View, StyleSheet, LayoutAnimation } from 'react-native';
+import { getUserPost } from '../controllers/postsController';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNav() {
     const [showNotifications, setShowNotifications] = useState(false)
     const [newMessages, setNewMessages] = useState(null)
+    const [userPosts, setUserPosts] = useState(null)
     const { user } = useUser()
 
     useEffect(() => {
@@ -40,6 +42,14 @@ export default function TabNav() {
             setNewMessages(total != 0 ? total : null)
         })
         return () => unsubscribe()
+    }, [])
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const posts = await getUserPost()
+            console.log(posts)
+        }
+        getPosts()
     }, [])
 
     return (
