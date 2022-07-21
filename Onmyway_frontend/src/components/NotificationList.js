@@ -5,20 +5,22 @@ import CancelIcon from '../assets/icons/CancelIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { updateJoinRequestStatus } from '../controllers/postsController'
 
-const NotificationList = ({ data }) => {
+const NotificationList = ({ data, action }) => {
     const handleDecline = async () => {
         try {
             await updateJoinRequestStatus(data.id, data.data.joined._id, 'declined')
+            action()
         } catch (e) {
-            console.log(e)
+            alert('Error updateing the status request, try again later')
         }
     }
 
     const handleAccept = async () => {
         try {
             await updateJoinRequestStatus(data.id, data.data.joined._id, 'approved')
+            action()
         } catch (e) {
-            console.log(e)
+            alert('Error updateing the status request, try again later')
         }
     }
 

@@ -21,6 +21,7 @@ export default function TabNav() {
     const [showNotifications, setShowNotifications] = useState(false)
     const [newMessages, setNewMessages] = useState(null)
     const [userPosts, setUserPosts] = useState(null)
+    const [refreshData, setRefreshData] = useState(false)
     const { user } = useUser()
 
     useEffect(() => {
@@ -63,11 +64,7 @@ export default function TabNav() {
             }
         }
         getPosts()
-    }, [])
-
-    useEffect(() => {
-        console.log(userPosts)
-    }, [userPosts])
+    }, [refreshData])
 
     return (
         <>
@@ -120,7 +117,7 @@ export default function TabNav() {
             <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
                 <FlatList
                     data={userPosts}
-                    renderItem={({ item }) => (<NotificationList data={item} />)}
+                    renderItem={({ item }) => (<NotificationList data={item} action={setRefreshData} />)}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item.id}
                     style={{ width: '100%' }}
