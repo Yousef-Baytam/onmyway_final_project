@@ -83,4 +83,18 @@ const getUsers = async (ids) => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers }
+const reportUser = async (id, data) => {
+    try {
+        let res = await axios({
+            url: `/user/${ id }`,
+            method: "POST",
+            data: data
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser }
