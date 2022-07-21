@@ -127,7 +127,7 @@ export default function TabNav() {
 
 const styles = StyleSheet.create({
     notificationsContainer: {
-        width: '70%',
+        width: '80%',
         height: '40%',
         position: 'absolute',
         backgroundColor: '#EAEAEA',
