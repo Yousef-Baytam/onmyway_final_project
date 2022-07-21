@@ -48,7 +48,7 @@ export default function TabNav() {
         const getPosts = async () => {
             const posts = await getUserPost()
             if (posts.results.length > 0)
-                setUserPosts(posts.results.filter((e) => (e.repeat || e.date > new Date())))
+                setUserPosts(posts.results.filter((e) => (e.joinRequests.length > 0 && (e.repeat || e.date > new Date()))))
         }
         getPosts()
     }, [])
