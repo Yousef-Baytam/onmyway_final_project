@@ -4,6 +4,7 @@ const catchAsync = require('../Utils/catchAsync')
 const router = express.Router()
 
 router.get('/', catchAsync(postsController.getPosts))
+router.get('/user', catchAsync(postsController.getUserPosts))
 router.get('/join_requests/:id', catchAsync(postsController.getJoinRequests))
 router.post('/new', catchAsync(postsController.addPosts))
 router.post('/join/:id', catchAsync(postsController.joinPosts))
