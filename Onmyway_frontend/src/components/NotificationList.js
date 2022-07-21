@@ -6,6 +6,14 @@ import MessagesIcon from '../assets/icons/MessagesIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 
 const NotificationList = ({ data }) => {
+
+    const handleDecline = async () => {
+
+    }
+    const handleAccept = async () => {
+
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.section}>
@@ -13,13 +21,10 @@ const NotificationList = ({ data }) => {
                 <Text numberOfLines={1}>{data.data.joined.username}</Text>
             </View>
             <View style={styles.section}>
-                <Pressable style={styles.iconContainer}>
-                    <MessagesIcon color={'#A1CCE4'} customDim={{ width: 38, height: 38 }} />
-                </Pressable>
-                <Pressable style={styles.iconContainer}>
+                <Pressable style={styles.iconContainer} onPress={handleDecline}>
                     <CancelIcon />
                 </Pressable>
-                <Pressable style={styles.iconContainer}>
+                <Pressable style={styles.iconContainer} onPress={handleAccept}>
                     <TickIcon />
                 </Pressable>
             </View>
