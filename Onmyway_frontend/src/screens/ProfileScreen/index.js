@@ -28,6 +28,7 @@ export default function Profile({ navigation }) {
     const [showReviewModal, setShowReviewModal] = useState(false)
     const [loggedUserReview, setLoggedUserReview] = useState(null)
     const [showAllReviews, setShowAllReviews] = useState(false)
+    const [showReportModal, setShowReportModal] = useState(false)
 
     const [newRating, setNewRating] = useState(2.5)
     const [review, setReview] = useState(null)
@@ -106,7 +107,8 @@ export default function Profile({ navigation }) {
                 <View style={styles.userOptions}>
                     <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
                         action={handleCreateChatRoom} />
-                    <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
+                        action={() => setShowReportModal(true)} />
                     <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }} />
                 </View>
             }
@@ -135,7 +137,7 @@ export default function Profile({ navigation }) {
                     <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
                 </>
             }
-            <ReportModal />
+            <ReportModal showReportModal={showReportModal} setShowReportModal={setShowReportModal} />
         </Pressable>
     );
 }
