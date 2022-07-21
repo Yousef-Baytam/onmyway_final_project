@@ -47,7 +47,8 @@ export default function TabNav() {
     useEffect(() => {
         const getPosts = async () => {
             const posts = await getUserPost()
-            console.log(posts)
+            if (posts.results.length > 0)
+                setUserPosts(posts.results.filter((e) => (e.repeat || e.date > new Date())))
         }
         getPosts()
     }, [])
