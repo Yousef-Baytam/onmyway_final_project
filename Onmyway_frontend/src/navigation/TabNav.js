@@ -75,7 +75,7 @@ export default function TabNav() {
                     tabBarItemStyle: {
                     },
                     tabBarIcon: ({ focused }) => (<NotificationsBellIcon color={focused ? '#005A9C' : '#A1CCE4'} />),
-                    tabBarBadge: userPosts.length || null,
+                    tabBarBadge: userPosts?.length || null,
                     tabBarBadgeStyle: { backgroundColor: '#005A9C' }
                 }} listeners={{
                     tabPress: (e) => {
