@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, Modal, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
+import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
@@ -48,7 +48,24 @@ export default function Map({ showMapModal, setShowMapModal }) {
                 {
                     locationLoaded &&
                     <MapView style={styles.map}
-                        initialRegion={initialLocation} />
+                        initialRegion={initialLocation}>
+                        <Marker
+                            coordinate={{ latitude: 33.888630, longitude: 35.496 }}
+                            title="Grocery 1"
+                            description="This is the first grocery"
+                        >
+                            <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
+                                <View>
+                                    <View style={styles.marker_tooltip}>
+                                        <Text style={styles.marker_title}>GROCERY ONE</Text>
+                                        <Text>A SHORT DESCRIPTION</Text>
+                                    </View>
+                                    <View style={styles.arrow_border} />
+                                    <View style={styles.arrow} />
+                                </View>
+                            </Callout>
+                        </Marker>
+                    </MapView>
                 }
             </View>
         </Modal>
@@ -65,5 +82,34 @@ const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
+    },
+    marker_tooltip: {
+        flexDirection: "column",
+        alignSelf: "flex-start",
+        backgroundColor: "#FFFFFF",
+        borderRadius: 6,
+        borderColor: "#000000",
+        borderWidth: 0.5,
+        padding: 15
+    },
+    marker_title: {
+        fontSize: 16,
+        marginBottom: 5
+    },
+    arrow_border: {
+        backgroundColor: "transparent",
+        borderColor: "transparent",
+        borderTopColor: "#ccc",
+        borderWidth: 16,
+        alignSelf: "center",
+        marginTop: -0.5
+    },
+    arrow: {
+        backgroundColor: "transparent",
+        borderColor: "transparent",
+        borderTopColor: "#fff",
+        borderWidth: 16,
+        alignSelf: "center",
+        marginTop: -32
     },
 });
