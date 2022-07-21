@@ -13,6 +13,7 @@ import { db } from '../../firebase'
 import { useUser } from '../context/UserContext';
 import { View, StyleSheet, LayoutAnimation } from 'react-native';
 import { getUserPost } from '../controllers/postsController';
+import NotificationList from '../components/NotificationList';
 
 const Tab = createBottomTabNavigator();
 
@@ -102,7 +103,7 @@ export default function TabNav() {
 
             </Tab.Navigator>
             <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
-
+                <NotificationList />
             </View>
         </>
     );
