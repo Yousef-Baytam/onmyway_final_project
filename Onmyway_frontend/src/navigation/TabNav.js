@@ -51,11 +51,12 @@ export default function TabNav() {
             let final = []
             if (posts.results.length > 0) {
                 let res = (posts.results.filter((e) => (e.joinRequests.length > 0 && (e.repeat || new Date(e.date) >= new Date()))).map((i) => ({ id: i._id, pendingRequests: i.joinRequests.filter((j) => (j.status == 'pending')) })))
+
                 for (let i of res) {
                     if (i.pendingRequests.length > 1)
                         for (let j of i.pendingRequests)
                             final.push({ id: i.id, data: j })
-                    else
+                    else if (i.pendingRequests.length == 1)
                         final.push({ id: i.id, data: i.pendingRequests[0] })
                 }
                 setUserPosts(final)
@@ -63,6 +64,10 @@ export default function TabNav() {
         }
         getPosts()
     }, [])
+
+    useEffect(() => {
+        console.log(userPosts)
+    }, [userPosts])
 
     return (
         <>

@@ -72,7 +72,7 @@ const updateJoinRequestStatus = async (Pid, Uid, data) => {
             url: `/post/update_request/${ Pid }/${ Uid }/${ data }`,
             method: "POST",
         })
-        return res.data
+        console.log(res.data)
     }
     catch (e) {
         console.log(e);
