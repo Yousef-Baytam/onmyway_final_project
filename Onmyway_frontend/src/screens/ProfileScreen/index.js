@@ -7,6 +7,7 @@ import CustomButton from '../../components/CustomButton';
 import NewReviewModal from '../../components/NewReviewModal';
 import PressableText from '../../components/PressableText';
 import ProfileOptions from '../../components/ProfileOptions';
+import ReportModal from '../../components/ReportModal';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
@@ -134,7 +135,7 @@ export default function Profile({ navigation }) {
                     <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
                 </>
             }
-
+            <ReportModal />
         </Pressable>
     );
 }
