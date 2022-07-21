@@ -10,11 +10,24 @@ import BackArrow from '../components/BackArrow';
 import Post from '../screens/PostScreen';
 import Profile from '../screens/ProfileScreen';
 import Notification from '../../NotificationRegister';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useUser } from '../context/UserContext';
+import { storeNotificationToken } from '../controllers/userController';
 
 export function MainStack() {
+    const { user } = useUser()
     const Stack = createStackNavigator();
-    const [expoPushToken, setExpoPushToken] = useState('')
+    const [expoPushToken, setExpoPushToken] = useState(null)
+
+
+    const handleSendNotificationToken = async () => {
+        if (expoPushToken)
+            await storeNotificationToken(user._id, expoPushToken)
+    }
+
+    useEffect(() => {
+        handleSendNotificationToken()
+    })
 
     return (
         <>

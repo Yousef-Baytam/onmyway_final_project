@@ -97,4 +97,17 @@ const reportUser = async (id, data) => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser }
+const storeNotificationToken = async (id, token) => {
+    try {
+        let res = await axios({
+            url: `/user/${ id }/${ token }`,
+            method: "POST",
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser, storeNotificationToken }
