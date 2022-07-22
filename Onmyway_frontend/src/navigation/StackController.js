@@ -10,10 +10,12 @@ import { url } from "../constants/vars";
 import { useLoggedIn } from "../context/LoggedInContext";
 import { StatusBar } from 'react-native';
 import { set } from "react-native-reanimated";
+import { useTheme } from '../context/ThemeContext';
 
 export default function StackController() {
     const { handleUser } = useUser()
     const { loggedIn, handleLoggedIn } = useLoggedIn()
+    const { theme } = useTheme()
 
     SplashScreen.preventAutoHideAsync()
 
@@ -44,8 +46,8 @@ export default function StackController() {
             <DrawerNav />
             <StatusBar
                 animated={true}
-                backgroundColor="#fff"
-                barStyle={'dark-content'}
+                backgroundColor={theme.bg}
+                barStyle={theme.bg == '#fff' ? 'dark-content' : 'light-content'}
             />
         </>
         :
