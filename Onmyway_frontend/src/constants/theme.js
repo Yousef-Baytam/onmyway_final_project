@@ -9,7 +9,7 @@ export default THEME_OPTIONS = {
         bg: '#000',
         outline: '#ACACAC',
         light: '#EAEAEA',
-        text: '#000'
+        text: '#fff'
     }
 }
 

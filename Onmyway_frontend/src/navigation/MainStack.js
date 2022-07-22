@@ -13,9 +13,11 @@ import Notification from '../../NotificationRegister';
 import { useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
 import { storeNotificationToken } from '../controllers/userController';
+import { useTheme } from '../context/ThemeContext';
 
 export function MainStack() {
     const { user } = useUser()
+    const { theme } = useTheme()
     const Stack = createStackNavigator();
     const [expoPushToken, setExpoPushToken] = useState(null)
 
@@ -34,7 +36,8 @@ export function MainStack() {
             <Stack.Navigator screenOptions={({ navigation }) => ({
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerRight: () => (
-                    <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float', headerStyle: { elevation: 0 }
+                    <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float', headerStyle: { elevation: 0 },
+                headerTintColor: theme.text
             })
             }>
                 <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
