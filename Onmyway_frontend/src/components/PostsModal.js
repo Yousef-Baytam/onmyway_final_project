@@ -1,8 +1,11 @@
 import { View, Modal, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
 import PostCard from './PostCard'
+import { useTheme } from '../context/ThemeContext';
 
 const PostsModal = ({ show, setShow, data }) => {
+    const { theme } = useTheme()
+
     return (
         <Modal
             animationType="slide"
@@ -10,7 +13,7 @@ const PostsModal = ({ show, setShow, data }) => {
             onRequestClose={() => {
                 setShow(!show)
             }}>
-            <View style={styles.container}>
+            <View style={[styles.container, { backgroundColor: theme.bg }]}>
                 <FlatList
                     data={data}
                     renderItem={({ item }) => (<PostCard data={item} notPressable={true} />)}
