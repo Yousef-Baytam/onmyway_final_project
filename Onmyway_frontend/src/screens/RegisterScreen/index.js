@@ -17,6 +17,7 @@ import { useUser } from '../../context/UserContext';
 import { register } from '../../controllers/authController'
 import axios from 'axios'
 import storage from '../../storage/asyncStorage';
+import { userSchema } from '../../constants/yupValidations';
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
