@@ -36,7 +36,7 @@ export default function Chat({ navigation, use }) {
             await updateReadStatus(chatRoom.chatRoomId, true)
         }
     }
-
+    console.log(chatRoom.chatRoomId, chatRoom.userTag)
     useFocusEffect(
         useCallback(() => {
             handleChatRoomStatus()

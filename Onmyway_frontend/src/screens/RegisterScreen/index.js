@@ -44,7 +44,7 @@ export default function Register({ navigation }) {
             phone: phone,
             password: password,
             passwordConfirmation: rePassword,
-        }).catch((e) => { alert(e.message); return })
+        })
         try {
             const res = await register({ username, email, phone, dob: date, gender, password })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
@@ -53,7 +53,7 @@ export default function Register({ navigation }) {
             handleLoggedIn(true)
         }
         catch (e) {
-            console.log(e.message)
+            alert(e.message || 'Something went wrong')
         }
     }
 

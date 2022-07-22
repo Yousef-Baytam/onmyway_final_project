@@ -95,7 +95,7 @@ export default function Profile({ navigation }) {
                 loggedUser.hasOwnProperty('image') ? Object.keys(loggedUser.image).length > 0 ? loggedUser.image.url : null : null,
                 user.hasOwnProperty('image') ? Object.keys(user.image).length > 0 ? user.image.url : null : null)
             const res = await getUsers([user._id])
-            navigation.navigate('Chat', { ...res[0], chatRoomId: newRoom.id, userTag: 'users1' })
+            navigation.navigate('Chat', { ...res[0], chatRoomId: newRoom.id, userTag: 'users2' })
         } catch (e) {
             alert('Error creating the chat room! try again later')
         }

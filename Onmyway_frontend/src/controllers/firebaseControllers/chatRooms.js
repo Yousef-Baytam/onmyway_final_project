@@ -4,7 +4,7 @@ import { db } from "../../../firebase"
 const addChatRoom = async (email1, email2, id1, id2, username1, username2, image1, image2) => {
     const room = {
         userLocalDbIds: [id1, id2],
-        user2Online: false,
+        user2Online: true,
         user1Online: false,
         numberOfMessages: 0,
         sender: null,
