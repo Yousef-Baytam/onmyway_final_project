@@ -1,4 +1,4 @@
-export const THEME_OPTIONS = {
+export default THEME_OPTIONS = {
     LIGHT: {
         bg: '#fff',
         outline: '#858585',
