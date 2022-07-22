@@ -9,6 +9,7 @@ import axios from 'axios'
 import { url } from "../constants/vars";
 import { useLoggedIn } from "../context/LoggedInContext";
 import { StatusBar } from 'react-native';
+import { set } from "react-native-reanimated";
 
 export default function StackController() {
     const { handleUser } = useUser()
@@ -25,7 +26,9 @@ export default function StackController() {
                 handleUser(res.user)
                 handleLoggedIn(true)
             }
-            await SplashScreen.hideAsync()
+            setTimeout(async () => {
+                await SplashScreen.hideAsync()
+            }, 500)
         } catch (e) {
             await SplashScreen.hideAsync()
         }

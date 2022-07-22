@@ -4,19 +4,26 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import LogoutIcon from '../assets/icons/LogoutIcon';
 import { useLoggedIn } from '../context/LoggedInContext';
+import { useUser } from '../context/UserContext';
 import storage from '../storage/asyncStorage';
 import { ParentStack } from './ParentStack';
 
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
+    const { user } = useUser()
 
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
+                <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} source={user?.image && Object.keys(user.image).length > 0 ? { uri: user.image.url } : require('../assets/blank-profile.webp')} />
+                    </View>
+                </View>
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
             <View>
@@ -51,6 +58,15 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         borderRadius: 5,
         flexDirection: 'row'
+    },
+    image: {
+        borderRadius: 100,
+        width: '100%',
+        height: '100%',
+    },
+    imageContainer: {
+        width: 200,
+        height: 200,
     },
     text: {
         color: '#fff',
