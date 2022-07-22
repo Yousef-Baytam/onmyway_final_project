@@ -13,6 +13,7 @@ import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
 import { getUserPost } from '../../controllers/postsController';
 import { getJoinedPosts } from '../../controllers/userController';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function UserProfile({ navigation }) {
     const [visible, setVisible] = useState(false)
@@ -26,6 +27,7 @@ export default function UserProfile({ navigation }) {
     const [showJoinedRidesHistoryModal, setShowJoinedRidesHistoryModal] = useState(false)
     const [showMyRidesModal, setShowMyRidesModal] = useState(false)
     const [showMyRidesHistoryModal, setShowMyRidesHistoryModal] = useState(false)
+    const { theme } = useTheme()
 
     useEffect(() => {
         (async () => {
@@ -37,7 +39,7 @@ export default function UserProfile({ navigation }) {
     }, [])
 
     return (
-        <Pressable style={styles.container} onPress={() => {
+        <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={() => {
             if (visible) {
                 LayoutAnimation.configureNext(
                     LayoutAnimation.create(100, 'easeInEaseOut', 'scaleXY')

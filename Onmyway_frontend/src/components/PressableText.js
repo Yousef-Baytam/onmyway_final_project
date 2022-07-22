@@ -1,11 +1,13 @@
 import { StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { useTheme } from '../context/ThemeContext';
 
 export default function PressableText({ text, action, custom }) {
+    const { theme } = useTheme()
     return (
         <View style={[styles.container, custom]}>
             <Pressable onPress={action}>
-                <Text>{text}</Text>
+                <Text style={{ color: theme.text }}>{text}</Text>
             </Pressable>
         </View >
     );
