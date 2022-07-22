@@ -20,7 +20,7 @@ const Tab = createBottomTabNavigator();
 export default function TabNav() {
     const [showNotifications, setShowNotifications] = useState(false)
     const [newMessages, setNewMessages] = useState(null)
-    const [userPosts, setUserPosts] = useState(null)
+    const [userPosts, setUserPosts] = useState([])
     const [refreshData, setRefreshData] = useState(false)
     const { user } = useUser()
 
