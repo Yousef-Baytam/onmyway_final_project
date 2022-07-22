@@ -4,8 +4,10 @@ import AddPost from '../../components/AddPost';
 import FilterBar from '../../components/FilterBar';
 import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Browse({ navigation }) {
+    const { theme } = useTheme()
     const [posts, setPosts] = useState(null)
     const [refreshing, setRefreshing] = useState(false)
     const [filter, setFilter] = useState(null)
@@ -28,7 +30,7 @@ export default function Browse({ navigation }) {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.bg }]}>
             <FilterBar setFilter={setFilter} posts={posts} filter={filter} />
             {posts && <FlatList
                 data={filter || posts}
