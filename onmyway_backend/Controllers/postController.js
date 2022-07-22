@@ -19,13 +19,13 @@ module.exports.getPosts = async (req, res) => {
 
 module.exports.getUserPosts = async (req, res) => {
     const user = req.user
-    const posts = await Post.find({ "owner": user._id }).populate('joinRequests.joined')
+    const posts = await Post.find({ "owner": user._id }).populate('joinRequests.joined').populate('owner')
     res.send({ "success": true, "results": posts })
 }
 
 module.exports.getJoinedPosts = async (req, res) => {
     const user = req.user
-    const posts = await Post.find({ "joinRequests.joined": user._id })
+    const posts = await Post.find({ "joinRequests.joined": user._id }).populate('owner')
     res.send({ "success": true, "results": posts })
 }
 

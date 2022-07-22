@@ -49,7 +49,7 @@ export default function PostCard(data) {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={() => navigation.navigate('Post', data.data)} >
+            <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', data.data) }} >
                 <View style={styles.cardContainer}>
                     <View style={{ width: '33.333%' }}>
                         <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')} style={styles.image} />
@@ -161,3 +161,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
+
+PostCard.defaultProps = {
+    notPressable: false
+}
