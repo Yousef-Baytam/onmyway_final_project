@@ -26,7 +26,6 @@ module.exports.getUserPosts = async (req, res) => {
 module.exports.getJoinedPosts = async (req, res) => {
     const user = req.user
     const posts = await Post.find({ "joinRequests.joined": user._id })
-    console.log(posts)
     res.send({ "success": true, "results": posts })
 }
 

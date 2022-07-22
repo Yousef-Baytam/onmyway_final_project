@@ -1,9 +1,11 @@
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, LayoutAnimation } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
 import AllReviewsModal from '../../components/AllReviewsModal';
 import CustomButton from '../../components/CustomButton';
+import PostsModal from '../../components/PostsModal';
 import PressableText from '../../components/PressableText';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
@@ -20,13 +22,17 @@ export default function UserProfile({ navigation }) {
     const [showAllReviews, setShowAllReviews] = useState(false)
     const [myRides, setMyRides] = useState([])
     const [ridesJoined, setRidesJoined] = useState([])
+    const [showJoinedRidesModal, setShowJoinedRidesModal] = useState(false)
+    const [showJoinedRidesHistoryModal, setShowJoinedRidesHistoryModal] = useState(false)
+    const [showMyRidesModal, setShowMyRidesModal] = useState(false)
+    const [showMyRidesHistoryModal, setShowMyRidesHistoryModal] = useState(false)
 
     useEffect(() => {
         (async () => {
             const res = await getJoinedPosts()
             setRidesJoined(res)
             const resu = await getUserPost()
-            setMyRides(resu)
+            setMyRides(resu.results)
         })()
     }, [])
 
@@ -64,7 +70,10 @@ export default function UserProfile({ navigation }) {
                 </View>
             </View>
             <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
-
+            <PostsModal show={showJoinedRidesModal} setShow={setShowJoinedRidesModal} data={ridesJoined.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
+            <PostsModal show={showJoinedRidesHistoryModal} setShow={setShowJoinedRidesHistoryModal} data={ridesJoined.filter((i) => (moment(i.date) < moment()))} />
+            <PostsModal show={showMyRidesModal} setShow={setShowMyRidesModal} data={myRides.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
+            <PostsModal show={showMyRidesHistoryModal} setShow={setShowMyRidesHistoryModal} data={myRides.filter((i) => (moment(i.date) < moment()))} />
         </Pressable >
     );
 }
