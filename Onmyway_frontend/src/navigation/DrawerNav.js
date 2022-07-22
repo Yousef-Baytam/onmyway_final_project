@@ -20,7 +20,7 @@ function CustomDrawerContent(props) {
 
     return (
         <View style={{ flex: 1 }}>
-            <DrawerContentScrollView {...props}>
+            <DrawerContentScrollView {...props} style={{ backgroundColor: theme.bg }}>
                 <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} source={user?.image && Object.keys(user.image).length > 0 ? { uri: user.image.url } : require('../assets/blank-profile.webp')} />
@@ -33,7 +33,7 @@ function CustomDrawerContent(props) {
                     </View>
                 </Pressable>
             </DrawerContentScrollView>
-            <View>
+            <View style={{ backgroundColor: theme.bg }}>
                 <Pressable onPress={() => { storage.remove({ key: 'token' }); handleLoggedIn(false) }} style={styles.logoutBtn} >
                     <Text style={{ color: '#fff', fontWeight: 'bold' }}>Logout</Text>
                     <View style={styles.icon}>
