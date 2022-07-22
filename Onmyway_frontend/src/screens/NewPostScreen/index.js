@@ -47,7 +47,7 @@ export default function NewPost({ navigation }) {
             navigation.navigate('Browse')
         }
         catch (e) {
-            console.log(e)
+            alert(e.message || 'Something went Wrong!')
         }
     }
 

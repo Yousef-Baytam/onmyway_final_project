@@ -25,7 +25,7 @@ let postSchema = yup.object().shape({
     // to: yup.string().required(),
     date: yup.date().min(
         moment().add(1, 'days'),
-        "Ride date should be starting tomorrow"
+        "Ride date should be starting tomorrow or on a schedule"
     ),
     departure: yup.string().required(),
     availableSeats: yup.string().required(),
