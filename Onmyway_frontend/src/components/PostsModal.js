@@ -1,9 +1,11 @@
-import { View, Modal, StyleSheet, FlatList } from 'react-native'
+import { View, Modal, StyleSheet, FlatList, Text } from 'react-native'
 import React from 'react'
 import PostCard from './PostCard'
 import { useTheme } from '../context/ThemeContext';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import CancelIcon from '../assets/icons/CancelIcon';
 
-const PostsModal = ({ show, setShow, data }) => {
+const PostsModal = ({ show, setShow, data, text }) => {
     const { theme } = useTheme()
 
     return (
@@ -14,6 +16,10 @@ const PostsModal = ({ show, setShow, data }) => {
                 setShow(!show)
             }}>
             <View style={[styles.container, { backgroundColor: theme.bg }]}>
+                <Text style={[styles.text, { color: theme.text }]}>{text}</Text>
+                <Pressable onPress={() => setShow(false)} style={styles.cancel}>
+                    <CancelIcon />
+                </Pressable>
                 <FlatList
                     data={data}
                     renderItem={({ item }) => (<PostCard data={item} notPressable={true} />)}
@@ -32,6 +38,19 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    text: {
+        width: '90%',
+        height: 50,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 20
+    },
+    cancel: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        zIndex: 1
     }
 })
 

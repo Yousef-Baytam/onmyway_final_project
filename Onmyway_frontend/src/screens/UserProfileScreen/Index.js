@@ -72,10 +72,10 @@ export default function UserProfile({ navigation }) {
                 </View>
             </View>
             <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
-            <PostsModal show={showJoinedRidesModal} setShow={setShowJoinedRidesModal} data={ridesJoined.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
-            <PostsModal show={showJoinedRidesHistoryModal} setShow={setShowJoinedRidesHistoryModal} data={ridesJoined.filter((i) => (moment(i.date) < moment()))} />
-            <PostsModal show={showMyRidesModal} setShow={setShowMyRidesModal} data={myRides.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
-            <PostsModal show={showMyRidesHistoryModal} setShow={setShowMyRidesHistoryModal} data={myRides.filter((i) => (moment(i.date) < moment()))} />
+            <PostsModal text={'Joined'} show={showJoinedRidesModal} setShow={setShowJoinedRidesModal} data={ridesJoined.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
+            <PostsModal text={'Joined History'} show={showJoinedRidesHistoryModal} setShow={setShowJoinedRidesHistoryModal} data={ridesJoined.filter((i) => (moment(i.date) < moment()))} />
+            <PostsModal text={'My Rides'} show={showMyRidesModal} setShow={setShowMyRidesModal} data={myRides.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
+            <PostsModal text={'My Rides History'} show={showMyRidesHistoryModal} setShow={setShowMyRidesHistoryModal} data={myRides.filter((i) => (moment(i.date) < moment()))} />
         </Pressable >
     );
 }
