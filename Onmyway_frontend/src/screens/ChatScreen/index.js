@@ -36,7 +36,7 @@ export default function Chat({ navigation, use }) {
             await updateReadStatus(chatRoom.chatRoomId, true)
         }
     }
-    console.log(chatRoom.chatRoomId, chatRoom.userTag)
+
     useFocusEffect(
         useCallback(() => {
             handleChatRoomStatus()
@@ -58,7 +58,8 @@ export default function Chat({ navigation, use }) {
                 docs.forEach((doc) => {
                     msgs.push({ ...doc.data(), _id: doc.id })
                 })
-                setMessages(msgs)
+                if (msgs != messages)
+                    setMessages(msgs)
             })
         return () => unsub()
     }, [])
@@ -68,7 +69,9 @@ export default function Chat({ navigation, use }) {
         const unsub = onSnapshot(
             roomRef,
             (docs) => {
-                setChatRoomInfo(docs.data())
+                if (docs.data() != chatRoomInfo) {
+                    setChatRoomInfo(docs.data())
+                }
             })
         return () => unsub()
     }, [])
