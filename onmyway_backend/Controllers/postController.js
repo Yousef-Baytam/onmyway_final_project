@@ -23,6 +23,12 @@ module.exports.getUserPosts = async (req, res) => {
     res.send({ "success": true, "results": posts })
 }
 
+module.exports.getJoinedPosts = async (req, res) => {
+    const user = req.user
+    const posts = await Post.find({ "joinRequests.joined": user._id })
+    res.send({ "success": true, "results": posts })
+}
+
 module.exports.getJoinRequests = async (req, res, next) => {
     const post = await Post.findById(req.params.id).populate('joinRequests.joined')
     return res.send({ "success": true, "results": post })
