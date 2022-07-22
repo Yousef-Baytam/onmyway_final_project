@@ -4,6 +4,7 @@ export default THEME_OPTIONS = {
         outline: '#858585',
         light: '#EAEAEA',
         postCard: '#EAEAEA',
+        postCardInfo: '#fff',
         text: '#000'
     },
     DARK: {
@@ -11,6 +12,7 @@ export default THEME_OPTIONS = {
         outline: '#ACACAC',
         light: '#EAEAEA',
         postCard: '#fff',
+        postCardInfo: '#373737',
         text: '#fff'
     }
 }

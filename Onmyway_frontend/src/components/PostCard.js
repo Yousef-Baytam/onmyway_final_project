@@ -57,48 +57,48 @@ export default function PostCard(data) {
                         <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')} style={styles.image} />
                     </View>
                     <View style={styles.infoConatiner}>
-                        <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA' }]}>
+                        <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA', backgroundColor: theme.postCardInfo }]}>
                             <View>
                                 <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
                             </View>
                             <View style={{ flex: 1 }}>
                                 <View style={styles.text}>
-                                    <Text numberOfLines={1}>Jbeil</Text>
+                                    <Text numberOfLines={1} style={{ color: theme.text }}>Jbeil</Text>
                                     <View style={{ marginHorizontal: 5 }}>
                                         <PingIcon />
                                     </View>
                                 </View>
                                 <View style={styles.text}>
-                                    <Text>{date}</Text>
+                                    <Text style={{ color: theme.text }}>{date}</Text>
                                     <View style={{ marginHorizontal: 5 }}>
                                         <CalendarsTickIcon />
                                     </View>
                                 </View>
                                 <View style={styles.text}>
-                                    <Text>{data.data.departureTime}</Text>
+                                    <Text style={{ color: theme.text }}>{data.data.departureTime}</Text>
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.halfInfoContainer}>
+                        <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>
                             <View style={{ flex: 1 }}>
                                 <View style={styles.text}>
                                     <View style={{ marginHorizontal: 5 }}>
                                         <PingIcon />
                                     </View>
-                                    <Text numberOfLines={1}>Beirut</Text>
+                                    <Text numberOfLines={1} style={{ color: theme.text }}>Beirut</Text>
                                 </View>
                                 {data.data.returnTime != 'Invalid date' ?
                                     <View style={styles.text}>
                                         <View style={{ marginHorizontal: 5 }}>
                                             <CalendarsTickIcon />
                                         </View>
-                                        <Text>{date}</Text>
+                                        <Text style={{ color: theme.text }}>{date}</Text>
                                     </View>
                                     : <View style={styles.text}>
-                                        <Text>—</Text>
+                                        <Text style={{ color: theme.text }}>—</Text>
                                     </View>}
                                 <View style={styles.text}>
-                                    {data.data.returnTime != 'Invalid date' ? <Text>{data.data.returnTime}</Text> : <Text>—</Text>}
+                                    {data.data.returnTime != 'Invalid date' ? <Text style={{ color: theme.text }}>{data.data.returnTime}</Text> : <Text style={{ color: theme.text }}>—</Text>}
                                 </View>
                             </View>
                             <View>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         width: '50%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     sideBar: {
         height: '100%',
