@@ -21,6 +21,7 @@ export default function NewPost({ navigation }) {
     const [repeat, setRepeat] = useState(false)
     const [days, setDays] = useState({ monday: false, tuesday: false, wednesday: false, thursday: false, friday: false, saturday: false, sunday: false })
     const [departureTime, setDepartureTime] = useState(new Date())
+    const [departureSet, setDepartureSet] = useState(false)
     const [resturnSet, setResturnSet] = useState(false)
     const [returnTime, setReturnTime] = useState(new Date())
     const [availableSeats, setAvailableSeats] = useState('3')
@@ -30,18 +31,22 @@ export default function NewPost({ navigation }) {
     const [showMapModal, setShowMapModal] = useState(false)
 
     const handleAddPost = async () => {
+        if (!departureSet) {
+            alert('Departure time not selected')
+            return
+        }
         try {
             await postSchema.validate({
                 // from: ,
                 // to: ,
-                date: repeat ? moment().add(1, 'days') : date,
+                date: repeat ? moment().add(1, 'days') : moment(date),
                 departure: departureTime,
                 availableSeats: availableSeats,
                 gender: preferredGender
             })
             let res
             if (repeat)
-                res = await addPost({ repeat, days: JSON.stringify(days), departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ repeat, days: JSON.stringify(days), departureTime: departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             else
                 res = await addPost({ repeat, date: date == new Date() ? null : date, departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             navigation.navigate('Browse')
@@ -61,7 +66,7 @@ export default function NewPost({ navigation }) {
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>
                     <DateInput repeat={repeat} setRepeat={setRepeat} date={date} setDate={setDate} setDays={setDays} days={days} />
                 </View>
-                <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} pressed={setResturnSet} departure={true} />
+                <TimePicker time={departureTime} setTime={setDepartureTime} text={'Departure Time'} pressed={setDepartureSet} departure={true} />
                 <TimePicker time={returnTime} setTime={setReturnTime} text={'Retun Time (optional)'} pressed={setResturnSet} departure={false} />
                 <AvailableSeats text={'Available Seats (3 max)'} availableSeats={availableSeats} setAvailableSeats={setAvailableSeats} />
                 <PreferredGenderPicker value={preferredGender} setValue={setPreferredGender} items={[

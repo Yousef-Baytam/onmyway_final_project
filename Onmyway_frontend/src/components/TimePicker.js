@@ -5,7 +5,7 @@ export default function TimePicker({ text, time, setTime, pressed, departure, di
 
     const onChange = (e) => {
         setTime(e)
-        !departure && pressed(true)
+        pressed(true)
     }
 
     return (
