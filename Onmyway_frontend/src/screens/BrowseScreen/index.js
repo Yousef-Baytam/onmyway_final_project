@@ -8,7 +8,7 @@ import { getPost } from '../../controllers/postsController'
 export default function Browse({ navigation }) {
     const [posts, setPosts] = useState(null)
     const [refreshing, setRefreshing] = useState(false)
-
+    const [filter, setFilter] = useState(null)
 
     const handleGetPosts = async () => {
         try {
@@ -29,7 +29,7 @@ export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <FilterBar />
+            <FilterBar setFilter={setFilter} />
             {posts && <FlatList
                 data={posts}
                 renderItem={({ item }) => (<PostCard data={item} />)}

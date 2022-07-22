@@ -6,7 +6,7 @@ import CustomButton from './CustomButton';
 import DatePicker from './DatePicker';
 import LocationInput from './LocationInput';
 
-export default function FilterBar({ filter }) {
+export default function FilterBar({ setFilter }) {
     const [dateFilter, setDateFilter] = useState(new Date())
     const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
 
