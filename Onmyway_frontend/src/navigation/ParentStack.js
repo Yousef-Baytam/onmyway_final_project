@@ -5,9 +5,11 @@ import BackArrow from '../components/BackArrow';
 import DrawerToggler from '../components/DrawerToggler';
 import Chat from '../screens/ChatScreen';
 import TabNav from './TabNav';
+import { useTheme } from '../context/ThemeContext';
 
 export function ParentStack() {
     const Stack = createStackNavigator();
+    const { theme } = useTheme()
 
     return (
         <Stack.Navigator screenOptions={({ navigation }) => ({
