@@ -11,6 +11,7 @@ import { login } from '../../controllers/authController'
 import storage from '../../storage/asyncStorage'
 import axios from 'axios'
 import { useLoggedIn } from '../../context/LoggedInContext';
+import GoogleAuth from '../../components/GoogleAuth';
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('')
@@ -48,6 +49,7 @@ export default function Login({ navigation }) {
                 <Text style={{ color: '#A1CCE4' }}>New to Onmyway? </Text>
                 <Pressable onPress={() => navigation.navigate('Register')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign up</Text></Pressable>
             </View>
+            <GoogleAuth />
         </View >
     );
 }
