@@ -107,7 +107,7 @@ export default function TabNav() {
 
                 <Tab.Screen name="All Chat" component={AllChatsScreen} options={({ navigation }) => ({
                     headerTintColor: theme.text,
-                    headerTitle: 'Messages', headerTitleAlign: 'center', headerStyle: { elevation: 0, backgroundColor: theme.bg },
+                    headerTitle: 'All Chats', headerTitleAlign: 'center', headerStyle: { elevation: 0, backgroundColor: theme.bg },
                     headerLeft: () => (
                         <BackArrow action={() => { navigation.dispatch(CommonActions.goBack()) }} />),
                     headerRight: () => (
