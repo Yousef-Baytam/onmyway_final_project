@@ -11,4 +11,12 @@ let userSchema = yup.object().shape({
         .oneOf([yup.ref('password'), null], 'Passwords must match')
 })
 
-export { userSchema }
+let updateUserSchema = yup.object().shape({
+    username: yup.string().required().min(8),
+    dob: yup.string().required(),
+    email: yup.string().email().required(),
+    gender: yup.string().required(),
+    phone: yup.string().required(),
+})
+
+export { userSchema, updateUserSchema }

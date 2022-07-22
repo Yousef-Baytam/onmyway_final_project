@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     phone: {
         type: String,
         required: [true, 'Phone is required'],
-        unique: [true, 'duplicate'],
+        unique: true,
         validate: {
             validator: function (e) {
                 return phone(e).isValid
