@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
             handleLoggedIn(true)
         }
         catch (e) {
-            console.log(e)
+            alert('Username or password is incorrect')
         }
     }
 
