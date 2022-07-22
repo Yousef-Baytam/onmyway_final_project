@@ -50,7 +50,8 @@
     "react-native-web": "0.17.7",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-google-app-auth": "~8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
