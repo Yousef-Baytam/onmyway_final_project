@@ -16,8 +16,7 @@ import { ParentStack } from './ParentStack';
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
     const { user } = useUser()
-    const { theme } = useTheme()
-    console.log(theme)
+    const { theme, toggleTheme } = useTheme()
 
     return (
         <View style={{ flex: 1 }}>
@@ -28,10 +27,9 @@ function CustomDrawerContent(props) {
                     </View>
                 </View>
                 <DrawerItemList {...props} />
-                <Pressable style={styles.logoutBtn}>
-                    <Text style={{ color: '#fff', fontWeight: 'bold' }}>{theme.bg == '#fff' ? 'Light Mode' : 'Dark Mode'}</Text>
+                <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn} onPress={toggleTheme}>
+                    <Text style={{ color: theme.bg, fontWeight: 'bold' }}>{theme.bg == '#fff' ? 'Light Mode' : 'Dark Mode'}</Text>
                     <View style={styles.icon}>
-                        <LogoutIcon />
                     </View>
                 </Pressable>
             </DrawerContentScrollView>
@@ -63,6 +61,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: '#D2686E',
+        margin: 10,
+        paddingLeft: 30,
+        borderRadius: 5,
+        flexDirection: 'row'
+    },
+    themeDarkBtn: {
+        width: '93%',
+        height: 48,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#000',
+        margin: 10,
+        paddingLeft: 30,
+        borderRadius: 5,
+        flexDirection: 'row'
+    },
+    themeLightBtn: {
+        width: '93%',
+        height: 48,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#fff',
         margin: 10,
         paddingLeft: 30,
         borderRadius: 5,
