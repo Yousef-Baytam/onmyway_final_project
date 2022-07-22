@@ -10,7 +10,7 @@ const addPost = async (data) => {
         return res.data
     }
     catch (e) {
-        console.log(e);
+        console.log(e.response.data);
     }
 }
 

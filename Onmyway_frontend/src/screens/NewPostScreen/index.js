@@ -11,6 +11,8 @@ import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 import { addPost } from '../../controllers/postsController';
 import Map from '../../components/Map'
+import { postSchema } from '../../constants/yupValidations';
+import moment from 'moment';
 
 export default function NewPost({ navigation }) {
     const { user } = useUser()
@@ -29,11 +31,19 @@ export default function NewPost({ navigation }) {
 
     const handleAddPost = async () => {
         try {
+            await postSchema.validate({
+                // from: ,
+                // to: ,
+                date: repeat ? moment().add(1, 'days') : date,
+                departure: departureTime,
+                availableSeats: availableSeats,
+                gender: preferredGender
+            })
             let res
             if (repeat)
-                res = await addPost({ repeat, days: JSON.stringify(days), departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ repeat, days: JSON.stringify(days), departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             else
-                res = await addPost({ repeat, date, departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ repeat, date: date == new Date() ? null : date, departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             navigation.navigate('Browse')
         }
         catch (e) {
