@@ -19,4 +19,12 @@ let updateUserSchema = yup.object().shape({
     phone: yup.string().required(),
 })
 
+let postSchema = yup.object().shape({
+    // from: yup.string().required(),
+    // to: yup.string().required(),
+    departure: yup.string().required(),
+    availableSeats: yup.string().required(),
+    gender: yup.string().required(),
+})
+
 export { userSchema, updateUserSchema }
