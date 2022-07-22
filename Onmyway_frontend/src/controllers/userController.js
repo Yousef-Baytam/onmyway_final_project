@@ -113,7 +113,7 @@ const storeNotificationToken = async (id, token) => {
 const getJoinedPosts = async () => {
     try {
         let res = await axios({
-            url: `/user/joinedPosts`,
+            url: `/post/user/joinedPosts`,
             method: "GET",
         })
         return res.data.results
@@ -123,4 +123,4 @@ const getJoinedPosts = async () => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser, storeNotificationToken }
+export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser, storeNotificationToken, getJoinedPosts }

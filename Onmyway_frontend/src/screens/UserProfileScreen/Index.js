@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Image, LayoutAnimation } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import HistoryIcon from '../../assets/icons/HistoryIcon';
@@ -9,6 +9,8 @@ import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
+import { getUserPost } from '../../controllers/postsController';
+import { getJoinedPosts } from '../../controllers/userController';
 
 export default function UserProfile({ navigation }) {
     const [visible, setVisible] = useState(false)
@@ -16,6 +18,17 @@ export default function UserProfile({ navigation }) {
     const [image, setImage] = useState(Object.keys(user.image).length ? user.image.url : null);
     const [rating, setRating] = useState(user.reviews.length ? Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2 : 0)
     const [showAllReviews, setShowAllReviews] = useState(false)
+    const [myRides, setMyRides] = useState([])
+    const [ridesJoined, setRidesJoined] = useState([])
+
+    useEffect(() => {
+        (async () => {
+            const res = await getJoinedPosts()
+            setRidesJoined(res)
+            const resu = await getUserPost()
+            setMyRides(resu)
+        })()
+    }, [])
 
     return (
         <Pressable style={styles.container} onPress={() => {
@@ -51,6 +64,7 @@ export default function UserProfile({ navigation }) {
                 </View>
             </View>
             <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
+
         </Pressable >
     );
 }
