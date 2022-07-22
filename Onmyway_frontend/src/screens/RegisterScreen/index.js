@@ -37,6 +37,14 @@ export default function Register({ navigation }) {
 
     const handleRegister = async () => {
         try {
+            await userSchema.validate({
+                username: username,
+                email: email,
+                dob: date,
+                gender: gender,
+                password: password,
+                passwordConfirmation: rePassword,
+            })
             const res = await register({ username, email, phone, dob: date, gender, password })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
             await storage.save({ key: 'token', data: res.token.token })
