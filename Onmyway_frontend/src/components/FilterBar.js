@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, LayoutAnimation } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
@@ -5,15 +6,30 @@ import ArrowHeadIcon from '../assets/icons/ArrowHeadIcon';
 import CustomButton from './CustomButton';
 import DatePicker from './DatePicker';
 import LocationInput from './LocationInput';
+import CancelIcon from '../assets/icons/CancelIcon'
 
-export default function FilterBar({ setFilter }) {
+export default function FilterBar({ setFilter, posts, filter }) {
     const [dateFilter, setDateFilter] = useState(new Date())
     const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
+
+
+    const handleFilter = () => {
+        if (posts && dateFilter != moment()) {
+            setFilter(posts.filter((i) => !i.repeat && moment(i.date).format('DD MM YYYY') == moment(dateFilter).format('DD MM YYYY')))
+        }
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.topBarContainer}>
-                <Text>Filters</Text>
+                {
+                    filter ?
+                        <Pressable onPress={() => setFilter(null)}>
+                            <CancelIcon />
+                        </Pressable>
+                        :
+                        <Text>Filters</Text>
+                }
                 <Pressable style={styles.filtersContainer} onPress={() => {
                     LayoutAnimation.configureNext(
                         LayoutAnimation.create(150, 'easeInEaseOut', 'opacity')
@@ -51,7 +67,7 @@ export default function FilterBar({ setFilter }) {
                         <LocationInput text={'To'} color={'#D2686E'} />
                     </View>
                     <View>
-                        <CustomButton text={'Apply'} custom={{ width: '100%', transform: [{ scale: 2 }] }} />
+                        <CustomButton text={'Apply'} custom={{ width: '100%', transform: [{ scale: 2 }] }} action={handleFilter} />
                     </View>
                 </View>
             </View>

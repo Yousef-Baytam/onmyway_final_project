@@ -29,9 +29,9 @@ export default function Browse({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <FilterBar setFilter={setFilter} />
+            <FilterBar setFilter={setFilter} posts={posts} filter={filter} />
             {posts && <FlatList
-                data={posts}
+                data={filter || posts}
                 renderItem={({ item }) => (<PostCard data={item} />)}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(item, index) => item._id}
