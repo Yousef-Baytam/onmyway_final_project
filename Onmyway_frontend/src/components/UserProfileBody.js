@@ -8,6 +8,7 @@ import CancelIcon from '../assets/icons/CancelIcon';
 import TickIcon from '../assets/icons/TickIcon';
 import { updateUserInfo } from '../controllers/userController';
 import { useUser } from '../context/UserContext';
+import { updateUserSchema } from '../constants/yupValidations';
 
 export default function UserProfileBody({ user, display }) {
     const [editMode, setEditMode] = useState(false)
@@ -23,13 +24,19 @@ export default function UserProfileBody({ user, display }) {
 
     const handleUpdateUserInfo = async () => {
         try {
+            updateUserSchema.validate({
+                username: username,
+                email: email,
+                phone: phone,
+                gender: gender,
+                dob: date,
+            }).catch((e) => { alert(e.message); return })
             const res = await updateUserInfo({ username, email, phone, gender, dob: date, carDetails: car, musicPrefrences })
             setEditMode(false)
             handleUser(res.results)
             console.log(res)
         } catch (e) {
-            console.log(e)
-            alert('something went wrong!')
+            alert('Something went wrong!')
         }
     }
 
