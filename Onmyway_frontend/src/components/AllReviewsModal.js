@@ -2,9 +2,10 @@ import { StyleSheet, View, Text, Modal, FlatList } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import ReviewCard from './ReviewCard';
-
+import { useTheme } from '../context/ThemeContext';
 
 export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
+    const { theme } = useTheme()
 
     return (
         <Modal
@@ -13,8 +14,8 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
             onRequestClose={() => {
                 setShowAllReviews(!showAllReviews);
             }}>
-            <View style={styles.reviewContainer}>
-                <Text style={styles.text}>All Reviews</Text>
+            <View style={[styles.reviewContainer, { backgroundColor: theme.bg }]}>
+                <Text style={[styles.text, { color: theme.text }]}>All Reviews</Text>
                 <Pressable onPress={() => setShowAllReviews(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
@@ -30,7 +31,7 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                     : <Text> No Reviews Yet!</Text>
                 }
             </View>
-        </Modal>
+        </Modal >
     );
 }
 
