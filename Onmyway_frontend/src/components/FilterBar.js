@@ -7,8 +7,10 @@ import CustomButton from './CustomButton';
 import DatePicker from './DatePicker';
 import LocationInput from './LocationInput';
 import CancelIcon from '../assets/icons/CancelIcon'
+import { useTheme } from '../context/ThemeContext';
 
 export default function FilterBar({ setFilter, posts, filter }) {
+    const { theme } = useTheme()
     const [dateFilter, setDateFilter] = useState(new Date())
     const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
 
@@ -28,7 +30,7 @@ export default function FilterBar({ setFilter, posts, filter }) {
                             <CancelIcon />
                         </Pressable>
                         :
-                        <Text>Filters</Text>
+                        <Text style={{ color: theme.text }}>Filters</Text>
                 }
                 <Pressable style={styles.filtersContainer} onPress={() => {
                     LayoutAnimation.configureNext(
@@ -47,9 +49,9 @@ export default function FilterBar({ setFilter, posts, filter }) {
                     </View>
                 </Pressable>
             </View>
-            <View style={[styles.dropPannel, { maxHeight: showFIlterDropDown ? '100%' : 0 }]}>
-                <View style={styles.topBarContainer}>
-                    <Text>Date   </Text>
+            <View style={[styles.dropPannel, { maxHeight: showFIlterDropDown ? '100%' : 0, backgroundColor: theme.bg }]}>
+                <View style={[styles.topBarContainer, { backgroundColor: theme.bg }]}>
+                    <Text style={{ color: theme.text }}>Date   </Text>
                     <View style={[styles.filtersContainer, { height: 38, marginBottom: 0, paddingLeft: 0 }]}>
                         <DatePicker date={dateFilter} setDate={setDateFilter} placeholder={'Ride Date'} custom={{
                             width: '100%',
@@ -61,7 +63,7 @@ export default function FilterBar({ setFilter, posts, filter }) {
                         }} AuthInput={false} />
                     </View>
                 </View>
-                <View style={styles.view1}>
+                <View style={[styles.view1, { backgroundColor: theme.bg }]}>
                     <View>
                         <LocationInput text={'From'} color={'#92D293'} />
                         <LocationInput text={'To'} color={'#D2686E'} />
