@@ -54,13 +54,13 @@ export default function UserProfile({ navigation }) {
             </View>
             <View style={{ justifyContent: 'center', width: '100%' }}>
                 <View style={styles.ridesRn}>
-                    <PressableText text={'Rides Offered'} />
-                    <PressableText text={'Rides Joined'} />
+                    <PressableText text={'Rides Offered'} action={() => setShowMyRidesModal(true)} />
+                    <PressableText text={'Rides Joined'} action={() => setShowJoinedRidesModal(true)} />
                 </View>
                 <View style={styles.ridesRn}>
                     <HistoryIcon />
-                    <PressableText text={'Rides Offered'} />
-                    <PressableText text={'Rides Joined'} />
+                    <PressableText text={'Rides Offered'} action={() => setShowMyRidesHistoryModal(true)} />
+                    <PressableText text={'Rides Joined'} action={() => setShowMyRidesHistoryModal(true)} />
                     <HistoryIcon />
                 </View>
             </View>
