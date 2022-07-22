@@ -37,7 +37,7 @@ export function MainStack() {
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerRight: () => (
                     <DrawerToggler action={() => navigation.dispatch(DrawerActions.openDrawer())} />), headerMode: 'float', headerStyle: { elevation: 0 },
-                headerTintColor: theme.text
+                headerTintColor: theme.text, headerStyle: { backgroundColor: theme.bg }
             })
             }>
                 <Stack.Screen name="Browse" component={Browse} options={({ navigation }) => ({
