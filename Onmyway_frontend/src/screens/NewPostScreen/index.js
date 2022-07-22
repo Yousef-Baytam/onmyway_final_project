@@ -13,6 +13,7 @@ import { addPost } from '../../controllers/postsController';
 import Map from '../../components/Map'
 import { postSchema } from '../../constants/yupValidations';
 import moment from 'moment';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function NewPost({ navigation }) {
     const { user } = useUser()
@@ -29,6 +30,7 @@ export default function NewPost({ navigation }) {
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences || 'Any')
     const [showMapModal, setShowMapModal] = useState(false)
+    const { theme } = useTheme()
 
     const handleAddPost = async () => {
         if (!departureSet) {
@@ -57,7 +59,7 @@ export default function NewPost({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.bg }]}>
             <View style={styles.view1}>
                 <LocationInput text={'From'} color={'#92D293'} action={() => setShowMapModal(true)} />
                 <LocationInput text={'To'} color={'#D2686E'} action={() => setShowMapModal(true)} />
