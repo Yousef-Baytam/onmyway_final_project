@@ -6,11 +6,13 @@ import moment from 'moment'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useNavigation } from '@react-navigation/native';
 import { useUser } from '../context/UserContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function PostCard(data) {
     const { user } = useUser()
     const [date, setDate] = useState('')
-    const navigation = useNavigation();
+    const navigation = useNavigation()
+    const { theme } = useTheme()
 
     const handleDate = () => {
         const next7Days = [moment().format('dddd'),
@@ -50,7 +52,7 @@ export default function PostCard(data) {
     return (
         <View style={styles.container}>
             <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', data.data) }} >
-                <View style={styles.cardContainer}>
+                <View style={[styles.cardContainer, { backgroundColor: theme.postCard }]}>
                     <View style={{ width: '33.333%' }}>
                         <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')} style={styles.image} />
                     </View>
