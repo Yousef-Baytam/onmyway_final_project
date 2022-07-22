@@ -41,7 +41,7 @@ const register = async (data) => {
         return res.data
     }
     catch (e) {
-        console.log(e.response.data);
+        alert(e.response.data);
     }
 }
 

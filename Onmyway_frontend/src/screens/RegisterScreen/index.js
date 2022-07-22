@@ -36,15 +36,16 @@ export default function Register({ navigation }) {
     const { handleLoggedIn } = useLoggedIn()
 
     const handleRegister = async () => {
+        userSchema.validate({
+            username: username,
+            email: email,
+            dob: date,
+            gender: gender,
+            phone: phone,
+            password: password,
+            passwordConfirmation: rePassword,
+        }).catch((e) => { alert(e.message); return })
         try {
-            await userSchema.validate({
-                username: username,
-                email: email,
-                dob: date,
-                gender: gender,
-                password: password,
-                passwordConfirmation: rePassword,
-            })
             const res = await register({ username, email, phone, dob: date, gender, password })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
             await storage.save({ key: 'token', data: res.token.token })
@@ -52,7 +53,7 @@ export default function Register({ navigation }) {
             handleLoggedIn(true)
         }
         catch (e) {
-            console.log(e)
+            console.log(e.message)
         }
     }
 

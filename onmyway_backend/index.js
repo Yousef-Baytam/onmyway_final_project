@@ -63,7 +63,7 @@ app.use('/admin', passport.authenticate('jwt', { session: false }), adminRoutes)
 
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = 'Something Went Wrong!' } = err
-    res.status(statusCode).send(err.stack)
+    res.status(statusCode).send(err.message)
 })
 
 app.listen('777', '192.168.0.100', () => {

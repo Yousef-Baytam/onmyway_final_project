@@ -5,6 +5,7 @@ let userSchema = yup.object().shape({
     dob: yup.string().required(),
     email: yup.string().email().required(),
     gender: yup.string().required(),
+    phone: yup.string().required(),
     password: yup.string().required('Password is required').min(6),
     passwordConfirmation: yup.string()
         .oneOf([yup.ref('password'), null], 'Passwords must match')
