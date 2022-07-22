@@ -14,6 +14,7 @@ import { useUser } from '../context/UserContext';
 import { View, StyleSheet, LayoutAnimation, FlatList, Text } from 'react-native';
 import { getUserPost } from '../controllers/postsController';
 import NotificationList from '../components/NotificationList';
+import { useTheme } from '../context/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +24,7 @@ export default function TabNav() {
     const [userPosts, setUserPosts] = useState([])
     const [refreshData, setRefreshData] = useState(false)
     const { user } = useUser()
+    const { theme } = useTheme()
 
     useEffect(() => {
         const q = query(collection(db, "chatRooms"), where('userLocalDbIds', 'array-contains', user._id))
@@ -74,7 +76,8 @@ export default function TabNav() {
                 tabBarShowLabel: false, tabBarStyle: {
                     borderTopWidth: 0,
                     height: 60,
-                    elevation: 0
+                    elevation: 0,
+                    backgroundColor: theme.bg
                 },
             }}>
 
