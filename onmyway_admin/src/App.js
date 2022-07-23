@@ -1,5 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom'
+import Auth from './pages/Auth';
+import Pannel from './pages/Pannel';
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
         ></Route>
         <Route
           path="/contacts"
-          element={<Contacts />}
+          element={<Pannel />}
         ></Route>
       </Routes>
     </div>
