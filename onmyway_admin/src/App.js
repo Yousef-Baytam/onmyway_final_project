@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Auth from './pages/Auth';
 import Pannel from './pages/Pannel';
 import { useEffect, useState } from 'react';
@@ -12,6 +12,7 @@ function App() {
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
+  const navigate = useNavigate()
 
   const handleLoggedinUser = async () => {
     const storedToken = localStorage.getItem('token')
@@ -20,6 +21,7 @@ function App() {
       const res = await me(storedToken)
       setUser(res.user)
       setToken(storedToken)
+      navigate('/pannel')
     } catch (e) {
       console.log(e)
     }
