@@ -16,7 +16,7 @@ function App() {
           element={<Auth username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}
         ></Route>
         <Route
-          path="/contacts"
+          path="/pannel"
           element={<Pannel />}
         ></Route>
       </Routes>
