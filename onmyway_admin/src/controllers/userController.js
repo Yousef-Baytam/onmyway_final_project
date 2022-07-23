@@ -69,4 +69,4 @@ const unbanUser = async (id) => {
     }
 }
 
-export { login, me, getUsers }
+export { login, me, getUsers, unbanUser, banUser }
