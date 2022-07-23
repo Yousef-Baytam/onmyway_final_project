@@ -1,7 +1,21 @@
 import React from 'react'
+import blank from '../assets/blank-profile.webp'
 
 export default function UserCard({ data }) {
     return (
-        <div key={data._id}>UserCard</div>
+        <div>
+            <img src={data?.image || blank} />
+            <div>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
     )
 }

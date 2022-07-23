@@ -19,7 +19,7 @@ export default function AllUsers() {
 
     const renderUsers = () => {
         const arr = [...activeUsers, ...bannedUsers]
-        return arr.map((i) => <UserCard data={i} />)
+        return arr.map((i) => <div key={i._id}><UserCard data={i} /></div>)
     }
 
     useEffect(() => {
