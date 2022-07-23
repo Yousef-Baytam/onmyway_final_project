@@ -14,4 +14,20 @@ const login = async (data) => {
     }
 }
 
-export { login }
+const me = async (token) => {
+    try {
+        let res = await axios({
+            url: `/me`,
+            method: "GET",
+            headers: {
+                Authorization: `bearer ${ token }`
+            }
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { login, me }
