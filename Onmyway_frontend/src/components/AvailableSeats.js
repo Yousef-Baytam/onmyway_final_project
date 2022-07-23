@@ -19,7 +19,7 @@ export default function AvailableSeats({ text, availableSeats, setAvailableSeats
             </View>
             <View style={[styles.view, { borderColor: theme.outline }]}>
                 {display ?
-                    <Text>{availableSeats}</Text>
+                    <Text style={{ color: theme.text }}>{availableSeats}</Text>
                     : <TextInput value={availableSeats}
                         onChangeText={setAvailableSeats}
                         onEndEditing={onChange}
