@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NavPannel() {
     return (
-        <div>
+        <div className='pannelContainer'>
             <div>
                 <div>
                     Users
