@@ -8,7 +8,7 @@ export default THEME_OPTIONS = {
         text: '#000'
     },
     DARK: {
-        bg: '#000',
+        bg: '#1A1A2E',
         outline: '#ACACAC',
         light: '#7D7D7D',
         postCard: '#fff',
