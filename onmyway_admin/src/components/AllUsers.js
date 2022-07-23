@@ -6,12 +6,17 @@ import UserCard from './UserCard'
 export default function AllUsers() {
     const [activeUsers, setActiveUsers] = useState([])
     const [bannedUsers, setBannedUsers] = useState([])
+    const [search, setSearch] = useState('')
     const [data, setData] = useState([])
 
     useEffect(() => {
         setData([...activeUsers, ...bannedUsers])
         console.log(data)
     }, [activeUsers])
+
+    useEffect(() => {
+        setData([...activeUsers, ...bannedUsers].filter((e) => (e.username.includes(search) || e.email.includes(search))))
+    }, [search])
 
     const handleGetUsers = async () => {
         try {
@@ -33,7 +38,7 @@ export default function AllUsers() {
 
     return (
         <div>
-            <Header title={'All Users'} />
+            <Header title={'All Users'} search={search} setSearch={setSearch} />
             <div className='cardsContainer'>
                 {activeUsers.length && renderUsers()}
             </div>

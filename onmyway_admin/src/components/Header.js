@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Input from './Input'
 
-export default function Header({ title }) {
-    const [search, setSearch] = useState('')
+export default function Header({ title, search, setSearch }) {
     return (
         <div className='haderContainer'>
             <div className='title'>
