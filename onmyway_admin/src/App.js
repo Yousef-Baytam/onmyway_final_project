@@ -14,12 +14,12 @@ function App() {
   const [token, setToken] = useState(null)
 
   const handleLoggedinUser = async () => {
-    const token = localStorage.getItem('token')
-    if (!token) return
+    const storedToken = localStorage.getItem('token')
+    if (!storedToken) return
     try {
-      const res = await me(token)
+      const res = await me(storedToken)
       setUser(res.user)
-      console.log(res)
+      setToken(storedToken)
     } catch (e) {
       console.log(e)
     }
