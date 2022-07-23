@@ -21,7 +21,7 @@ export default function Auth({ username, setUsername, password, setPassword, set
         <div className='App'>
             <img src={logo} className='logo' />
             <form className='authForm'>
-                <div>
+                <div className='formData'>
                     <Input type={'text'} name={'username'} placeholder={'Username'} value={username} setValue={setUsername} />
                     <Input type={'password'} name={'password'} placeholder={'Password'} value={password} setValue={setPassword} />
                     <Submit value={'Login'} run={handleLogin} />
