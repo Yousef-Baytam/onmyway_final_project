@@ -39,11 +39,21 @@ input {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
+  transition: all 200ms ease-in-out;
 }
 
 .submitContainer {
   width: 40%;
   margin-top: 20px;
+}
+
+.submit {
+  cursor: pointer;
+}
+
+.submit:hover {
+  transform: translateY(-5%);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .App-header {
