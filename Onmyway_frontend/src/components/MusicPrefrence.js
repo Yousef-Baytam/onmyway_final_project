@@ -1,14 +1,16 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { useTheme } from '../context/ThemeContext';
 
 export default function MusicPrefrence({ text, value, setValue }) {
+    const { theme } = useTheme()
 
     return (
         <View style={styles.container}>
             <View style={styles.view}>
-                <Text style={styles.text}>{text}</Text>
+                <Text style={[styles.text, { color: theme.text }]}>{text}</Text>
             </View>
             <View style={styles.view}>
-                <Text>{value}</Text>
+                <Text style={[styles.text, { color: theme.text }]}>{value}</Text>
             </View>
         </View>
     );
