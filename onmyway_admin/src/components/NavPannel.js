@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 export default function NavPannel() {
-    const [focused, setFocused] = useState(null)
+    const [focused, setFocused] = useState('users')
     return (
         <div className='pannelContainer'>
             <div>
-                <div className={focused == 'users' ? 'focused' : 'pannelTab'}>
+                <div className={`pannelTab ${ focused == 'users' && 'focused' }`}>
                     Users
                 </div>
-                <div className={focused == 'reports' ? 'focused' : 'pannelTab'}>
+                <div className={`pannelTab ${ focused == 'reports' && 'focused' }`}>
                     Reports
                 </div>
             </div>

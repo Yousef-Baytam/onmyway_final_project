@@ -68,6 +68,15 @@ input {
   transition: all 200ms ease-in-out;
 }
 
+.logout {
+  background-color: #8f272c;
+  margin-bottom: 0;
+}
+
+.focused {
+  background-color: #00375f;
+}
+
 .pannelContainer {
   background-color: #A1CCE4;
   height: 100vh;
