@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import blank from '../assets/blank-profile.webp'
 import moment from 'moment'
 import BanIcon from '../assets/icons/BanIcon'
@@ -6,11 +6,12 @@ import ActivateIcon from '../assets/icons/ActivateIcon'
 import { banUser, unbanUser } from '../controllers/userController'
 
 export default function UserCard({ data }) {
+    const [banned, setBanned] = useState(data.status == 'banned' ? true : false)
 
     const handleActivate = async () => {
         try {
             await unbanUser(data._id)
-            data.status = 'active'
+            setBanned(false)
         } catch (e) {
             console.log(e)
             data.status = 'banned'
@@ -20,6 +21,7 @@ export default function UserCard({ data }) {
     const handleBan = async () => {
         try {
             await banUser(data._id)
+            setBanned(true)
         } catch (e) {
             console.log(e)
         }
@@ -38,7 +40,7 @@ export default function UserCard({ data }) {
                 </div>
                 <div>
                     {
-                        data.status == 'banned' ?
+                        banned ?
                             <div onClick={handleActivate}>
                                 <ActivateIcon />
                             </div>
