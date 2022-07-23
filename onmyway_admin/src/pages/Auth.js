@@ -9,7 +9,6 @@ export default function Auth({ username, setUsername, password, setPassword, set
     const handleLogin = async () => {
         try {
             const res = await login({ username, password })
-            console.log(res)
             setUser(res.user)
             setToken(res.token.toekn)
             localStorage.setItem('token', res.token.token)
@@ -21,7 +20,7 @@ export default function Auth({ username, setUsername, password, setPassword, set
     return (
         <div className='App'>
             <img src={logo} className='logo' />
-            <form >
+            <form className='authForm'>
                 <div>
                     <Input type={'text'} name={'username'} placeholder={'Username'} value={username} setValue={setUsername} />
                     <Input type={'password'} name={'password'} placeholder={'Password'} value={password} setValue={setPassword} />
