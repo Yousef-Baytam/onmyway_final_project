@@ -46,7 +46,20 @@ const getUsers = async () => {
 const banUser = async (id) => {
     try {
         let res = await axios({
-            url: `/admin//ban/${ id }`,
+            url: `/admin/ban/${ id }`,
+            method: "POST",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+const unbanUser = async (id) => {
+    try {
+        let res = await axios({
+            url: `/admin/unban/${ id }`,
             method: "POST",
         })
         return res.data
