@@ -122,5 +122,10 @@ input {
   justify-content: space-between;
   align-items: center;
   width: 30%;
+}
 
+.title {
+  font-size: 1.5em;
+  margin-left: 2em;
+  font-weight: bold;
 }

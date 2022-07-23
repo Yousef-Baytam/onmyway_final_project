@@ -5,7 +5,7 @@ export default function Header({ title }) {
     const [search, setSearch] = useState('')
     return (
         <div className='haderContainer'>
-            <div>
+            <div className='title'>
                 {title}
             </div>
             <div className='filterContainer'>
