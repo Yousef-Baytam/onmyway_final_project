@@ -6,6 +6,12 @@ import UserCard from './UserCard'
 export default function AllUsers() {
     const [activeUsers, setActiveUsers] = useState([])
     const [bannedUsers, setBannedUsers] = useState([])
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        setData([...activeUsers, ...bannedUsers])
+        console.log(data)
+    }, [activeUsers])
 
     const handleGetUsers = async () => {
         try {
@@ -18,8 +24,7 @@ export default function AllUsers() {
     }
 
     const renderUsers = () => {
-        const arr = [...activeUsers, ...bannedUsers]
-        return arr.map((i) => <div key={i._id}><UserCard data={i} /></div>)
+        return data.map((i) => <div key={i._id}><UserCard data={i} /></div>)
     }
 
     useEffect(() => {
