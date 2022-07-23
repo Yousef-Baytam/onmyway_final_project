@@ -1,8 +1,9 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { useTheme } from '../context/ThemeContext';
 import Time from './Time';
 
 export default function TimePicker({ text, time, setTime, pressed, departure, display }) {
-
+    const { theme } = useTheme()
     const onChange = (e) => {
         setTime(e)
         pressed(true)
@@ -10,10 +11,10 @@ export default function TimePicker({ text, time, setTime, pressed, departure, di
 
     return (
         <View style={styles.container}>
-            <View style={styles.view}>
-                <Text style={styles.text}>{text}</Text>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
+                <Text style={[styles.text, { color: theme.text }]}>{text}</Text>
             </View>
-            <View style={styles.view}>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
                 <Time date={time} setDate={onChange} placeholder={'Select a Time'} AuthInput={false} display={display} />
             </View>
         </View>

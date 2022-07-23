@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View, Text } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import moment from 'moment'
+import { useTheme } from '../context/ThemeContext';
 
 export default function Time({ date, setDate, placeholder, AuthInput, display }) {
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
     const [text, setText] = useState('')
+    const { theme } = useTheme()
 
     useEffect(() => {
         !display && setText(placeholder)
@@ -33,7 +35,7 @@ export default function Time({ date, setDate, placeholder, AuthInput, display })
                 {display ?
                     <Text >{date === 'Invalid date' ? '—' : date}</Text>
                     : <Pressable onPress={() => showMode('time')}>
-                        <Text >{text}</Text>
+                        <Text style={{ color: theme.text }}>{text}</Text>
                     </Pressable>
                 }
             </View>
