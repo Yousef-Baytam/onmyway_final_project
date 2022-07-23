@@ -1,6 +1,9 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { useTheme } from '../context/ThemeContext';
 
 export default function AvailableSeats({ text, availableSeats, setAvailableSeats, keyboard, display }) {
+
+    const { theme } = useTheme()
 
     const onChange = ({ nativeEvent }) => {
         if (parseInt(nativeEvent.text) > 3) setAvailableSeats('3')
@@ -11,16 +14,18 @@ export default function AvailableSeats({ text, availableSeats, setAvailableSeats
 
     return (
         <View style={styles.container}>
-            <View style={styles.view}>
-                <Text style={styles.text}>{text}</Text>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
+                <Text style={[styles.text, { color: theme.text }]}>{text}</Text>
             </View>
-            <View style={styles.view}>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
                 {display ?
                     <Text>{availableSeats}</Text>
                     : <TextInput value={availableSeats}
                         onChangeText={setAvailableSeats}
                         onEndEditing={onChange}
-                        keyboardType={keyboard} />
+                        keyboardType={keyboard}
+                        style={{ color: theme.text }}
+                    />
                 }
             </View>
         </View>
