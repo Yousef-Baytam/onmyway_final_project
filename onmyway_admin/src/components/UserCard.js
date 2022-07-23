@@ -6,7 +6,7 @@ export default function UserCard({ data }) {
     return (
         <div className='cardContainer'>
             <img src={data?.image?.url || blank} className='userImage' />
-            <div>
+            <div className='infoContainer'>
                 <div>
                     <div>{data.username}</div>
                     <div>{data.email}</div>
@@ -15,7 +15,7 @@ export default function UserCard({ data }) {
                     <div>{moment(data.dob).format('DD-MM-YYYY')}</div>
                 </div>
                 <div>
-
+                    qds
                 </div>
             </div>
         </div>
