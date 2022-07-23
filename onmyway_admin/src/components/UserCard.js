@@ -1,6 +1,7 @@
 import React from 'react'
 import blank from '../assets/blank-profile.webp'
 import moment from 'moment'
+import BanIcon from '../assets/icons/BanIcon'
 
 export default function UserCard({ data }) {
     return (
@@ -15,7 +16,7 @@ export default function UserCard({ data }) {
                     <div>{moment(data.dob).format('DD-MM-YYYY')}</div>
                 </div>
                 <div>
-                    qds
+                    <BanIcon />
                 </div>
             </div>
         </div>
