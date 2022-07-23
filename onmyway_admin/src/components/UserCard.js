@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function UserCard() {
+export default function UserCard({ data }) {
     return (
-        <div>UserCard</div>
+        <div key={data._id}>UserCard</div>
     )
 }
