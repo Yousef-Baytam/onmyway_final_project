@@ -2,11 +2,17 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom'
 import Auth from './pages/Auth';
 import Pannel from './pages/Pannel';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
+import { url } from './constants/vars'
 
 function App() {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
+
+  useEffect(() => {
+    axios.defaults.baseURL = `${ url }`
+  }, [])
 
   return (
     <div className="App">
