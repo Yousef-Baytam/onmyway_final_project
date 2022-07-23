@@ -99,3 +99,10 @@ input {
   width: calc(100% - 200px);
   height: 100vh;
 }
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
