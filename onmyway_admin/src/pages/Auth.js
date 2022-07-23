@@ -5,7 +5,7 @@ export default function Auth() {
     console.log(logo)
     return (
         <div className='App'>
-            <img src={logo} />
+            <img src={logo} className='logo' />
         </div>
     )
 }
