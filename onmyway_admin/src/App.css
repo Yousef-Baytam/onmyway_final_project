@@ -12,7 +12,7 @@
 }
 
 .logo {
-  width: 20%;
+  width: 250px;
 }
 
 .authForm {
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   border-radius: 10px;
   margin-top: 50px;
 }
@@ -39,6 +39,11 @@ input {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
+}
+
+.submitContainer {
+  width: 40%;
+  margin-top: 20px;
 }
 
 .App-header {

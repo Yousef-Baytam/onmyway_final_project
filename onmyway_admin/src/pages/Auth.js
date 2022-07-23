@@ -24,6 +24,8 @@ export default function Auth({ username, setUsername, password, setPassword, set
                 <div className='formData'>
                     <Input type={'text'} name={'username'} placeholder={'Username'} value={username} setValue={setUsername} />
                     <Input type={'password'} name={'password'} placeholder={'Password'} value={password} setValue={setPassword} />
+                </div>
+                <div className='submitContainer'>
                     <Submit value={'Login'} run={handleLogin} />
                 </div>
             </form>
