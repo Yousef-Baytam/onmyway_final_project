@@ -44,12 +44,10 @@ function App() {
             setUser={setUser} user={user}
             setToken={setToken} />}
         ></Route>
-        {user &&
-          <Route
-            path="/pannel"
-            element={<Pannel />}
-          ></Route>
-        }
+        <Route
+          path="/pannel"
+          element={<Pannel user={user} />}
+        ></Route>
       </Routes>
     </div>
   );
