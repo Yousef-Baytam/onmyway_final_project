@@ -5,10 +5,10 @@ export default function NavPannel() {
     return (
         <div className='pannelContainer'>
             <div>
-                <div className={`pannelTab ${ focused == 'users' && 'focused' }`}>
+                <div className={`pannelTab ${ focused == 'users' && 'focused' }`} onClick={() => setFocused('users')}>
                     Users
                 </div>
-                <div className={`pannelTab ${ focused == 'reports' && 'focused' }`}>
+                <div className={`pannelTab ${ focused == 'reports' && 'focused' }`} onClick={() => setFocused('reports')}>
                     Reports
                 </div>
             </div>
