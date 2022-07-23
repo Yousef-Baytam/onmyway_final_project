@@ -137,7 +137,13 @@ select {
 }
 
 .userImage {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 5px;
+}
+
+.cardContainer {
+  width: 300px;
+  padding: 10px;
+  display: flex;
 }

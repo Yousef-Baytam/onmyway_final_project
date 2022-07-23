@@ -4,7 +4,7 @@ import moment from 'moment'
 
 export default function UserCard({ data }) {
     return (
-        <div>
+        <div className='cardContainer'>
             <img src={data?.image?.url || blank} className='userImage' />
             <div>
                 <div>
