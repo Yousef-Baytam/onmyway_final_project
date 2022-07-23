@@ -11,6 +11,7 @@ import ReportModal from '../../components/ReportModal';
 import StarRating from '../../components/StarRating';
 import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
+import { useTheme } from '../../context/ThemeContext';
 import { useUser } from '../../context/UserContext';
 import { addChatRoom, getChatRoom } from '../../controllers/firebaseControllers/chatRooms';
 import { addNewReview, getUserReviews, getUsers, updateReview } from '../../controllers/userController'
@@ -18,6 +19,7 @@ import { addNewReview, getUserReviews, getUsers, updateReview } from '../../cont
 export default function Profile({ navigation }) {
 
     const { user: loggedUser } = useUser()
+    const { theme } = useTheme()
 
     const route = useRoute()
     const param = route.params
@@ -102,10 +104,10 @@ export default function Profile({ navigation }) {
     }
 
     return (
-        <Pressable style={styles.container} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
+        <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
                 optionsDisplay &&
-                <View style={styles.userOptions}>
+                <View style={[styles.userOptions, { backgroundColor: theme.light }]}>
                     <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
                         action={handleCreateChatRoom} />
                     <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
