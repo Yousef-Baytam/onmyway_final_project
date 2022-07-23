@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { url } from '../constants/vars'
 
 const login = async (data) => {
     try {
@@ -14,4 +13,5 @@ const login = async (data) => {
         console.log(e);
     }
 }
+
 export { login }
