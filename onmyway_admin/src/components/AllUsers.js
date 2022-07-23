@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getUsers } from '../controllers/userController'
 import Header from './Header'
+import UserCard from './UserCard'
 
 export default function AllUsers() {
     const [activeUsers, setActiveUsers] = useState(null)
@@ -16,6 +17,11 @@ export default function AllUsers() {
         }
     }
 
+    const renderUsers = () => {
+        const arr = [...activeUsers, ...bannedUsers]
+        return arr.map((i) => <UserCard data={i} key={i.id} />)
+    }
+
     useEffect(() => {
         handleGetUsers()
     }, [])
@@ -23,6 +29,7 @@ export default function AllUsers() {
     return (
         <div>
             <Header title={'All Users'} />
+            {renderUsers()}
         </div>
     )
 }
