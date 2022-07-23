@@ -5,6 +5,14 @@ import BanIcon from '../assets/icons/BanIcon'
 import ActivateIcon from '../assets/icons/ActivateIcon'
 
 export default function UserCard({ data }) {
+    const handleActivate = async () => {
+
+    }
+
+    const handleBan = async () => {
+
+    }
+
     return (
         <div className='cardContainer'>
             <img src={data?.image?.url || blank} className='userImage' />
@@ -19,11 +27,11 @@ export default function UserCard({ data }) {
                 <div>
                     {
                         data.status == 'banned' ?
-                            <div>
+                            <div onClick={handleActivate}>
                                 <ActivateIcon />
                             </div>
                             :
-                            <div>
+                            <div onClick={handleBan}>
                                 <BanIcon />
                             </div>
                     }
