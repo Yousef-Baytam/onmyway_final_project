@@ -41,7 +41,7 @@ function App() {
             setUsername={setUsername}
             password={password}
             setPassword={setPassword}
-            setUser={setUser}
+            setUser={setUser} user={user}
             setToken={setToken} />}
         ></Route>
         {user &&

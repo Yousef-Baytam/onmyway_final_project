@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import Input from '../components/Input'
 import Submit from '../components/Submit'
 import { login } from '../controllers/userController'
 
-export default function Auth({ username, setUsername, password, setPassword, setUser, setToken }) {
+export default function Auth({ username, setUsername, password, setPassword, setUser, setToken, user }) {
+    const navigate = useNavigate()
 
     const handleLogin = async () => {
         try {
@@ -12,10 +14,15 @@ export default function Auth({ username, setUsername, password, setPassword, set
             setUser(res.user)
             setToken(res.token.toekn)
             localStorage.setItem('token', res.token.token)
+            navigate('/pannel')
         } catch (e) {
             console.log(e)
         }
     }
+
+    useEffect(() => {
+        user && navigate('/pannel')
+    }, [])
 
     return (
         <div className='App'>
