@@ -31,7 +31,8 @@
   width: 100%;
 }
 
-input {
+input,
+select {
   width: 100%;
   outline: 0;
   border: 0;
@@ -121,11 +122,16 @@ input {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  width: 40%;
 }
 
 .title {
   font-size: 1.5em;
   margin-left: 2em;
   font-weight: bold;
+}
+
+select {
+  margin-right: 40px;
+  width: 100px;
 }
