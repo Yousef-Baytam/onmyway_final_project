@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NavPannel from '../components/NavPannel'
 
 export default function Pannel({ user }) {
+    const [focused, setFocused] = useState('users')
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -11,7 +12,15 @@ export default function Pannel({ user }) {
 
     return (
         <div>
-            <NavPannel />
+            <NavPannel focused={focused} setFocused={setFocused} />
+            {
+                focused == 'users' ?
+                    <AllUsers />
+                    : focused == 'reports' ?
+                        <Reports />
+                        :
+                        null
+            }
         </div>
     )
 }

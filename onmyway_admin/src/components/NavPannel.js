@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
-export default function NavPannel() {
-    const [focused, setFocused] = useState('users')
+export default function NavPannel({ focused, setFocused }) {
     return (
         <div className='pannelContainer'>
             <div>
