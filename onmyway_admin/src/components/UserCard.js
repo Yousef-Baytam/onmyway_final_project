@@ -2,6 +2,7 @@ import React from 'react'
 import blank from '../assets/blank-profile.webp'
 import moment from 'moment'
 import BanIcon from '../assets/icons/BanIcon'
+import ActivateIcon from '../assets/icons/ActivateIcon'
 
 export default function UserCard({ data }) {
     return (
@@ -17,6 +18,7 @@ export default function UserCard({ data }) {
                 </div>
                 <div>
                     <BanIcon />
+                    <ActivateIcon />
                 </div>
             </div>
         </div>
