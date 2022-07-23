@@ -1,15 +1,18 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import RadioButtonList from './RadioButtonList'
+import { useTheme } from '../context/ThemeContext';
 
 export default function PreferredGenderPicker({ text, value, setValue, items, display }) {
+    const { theme } = useTheme()
+
     return (
         <View style={styles.container}>
-            <View style={styles.view}>
-                <Text style={styles.text}>{text}</Text>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
+                <Text style={[styles.text, { color: theme.text }]}>{text}</Text>
             </View>
-            <View style={styles.view}>
+            <View style={[styles.view, { borderColor: theme.outline }]}>
                 {display ?
-                    <Text>{`${ value[0].toUpperCase() }${ value.slice(1) }`}</Text>
+                    <Text style={{ color: theme.text }}>{`${ value[0].toUpperCase() }${ value.slice(1) }`}</Text>
                     : <RadioButtonList items={items} checked={value} setChecked={setValue} AuthInput={false} />
                 }
             </View>
