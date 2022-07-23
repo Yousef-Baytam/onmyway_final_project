@@ -22,6 +22,7 @@ function App() {
       setUser(res.user)
       setToken(storedToken)
       navigate('/pannel')
+      axios.defaults.headers.common['Authorization'] = `bearer ${ token }`
     } catch (e) {
       console.log(e)
     }
