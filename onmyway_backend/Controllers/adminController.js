@@ -4,7 +4,7 @@ const Report = require('../Models/reports')
 module.exports.getUsers = async (req, res, next) => {
     const activeUser = await User.find({ "status": "active" })
     const bennedUser = await User.find({ "status": "banned" })
-    return res.send({ "success": true, "activeUsers": activeUser, "bannedUsers": bennedUser })
+    return res.send({ "success": true, "activeUsers": activeUser.filter((e) => e.userType != 'admin'), "bannedUsers": bennedUser })
 }
 
 module.exports.getReports = async (req, res, next) => {
