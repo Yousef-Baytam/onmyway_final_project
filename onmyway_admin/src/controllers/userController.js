@@ -30,4 +30,17 @@ const me = async (token) => {
     }
 }
 
-export { login, me }
+const getUsers = async () => {
+    try {
+        let res = await axios({
+            url: `/admin/users`,
+            method: "GET",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { login, me, getUsers }
