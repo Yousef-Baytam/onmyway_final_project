@@ -2,10 +2,13 @@ import React from 'react'
 import logo from '../assets/logo.png'
 import Input from '../components/Input'
 import Submit from '../components/Submit'
+import { login } from '../controllers/userController'
 
 export default function Auth({ username, setUsername, password, setPassword }) {
 
     const handleLogin = async () => {
+        const user = await login({ username, password })
+        console.log(user)
     }
 
     return (
