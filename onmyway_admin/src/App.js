@@ -5,6 +5,7 @@ import Pannel from './pages/Pannel';
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import { url } from './constants/vars'
+import { me } from './controllers/userController';
 
 function App() {
   const [username, setUsername] = useState('')
@@ -12,8 +13,21 @@ function App() {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
 
+  const handleLoggedinUser = async () => {
+    const token = localStorage.getItem('token')
+    if (!token) return
+    try {
+      const res = await me(token)
+      setUser(res.user)
+      console.log(res)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
     axios.defaults.baseURL = `${ url }`
+    handleLoggedinUser()
   }, [])
 
   return (
