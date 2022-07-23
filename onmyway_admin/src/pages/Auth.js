@@ -4,11 +4,18 @@ import Input from '../components/Input'
 import Submit from '../components/Submit'
 import { login } from '../controllers/userController'
 
-export default function Auth({ username, setUsername, password, setPassword }) {
+export default function Auth({ username, setUsername, password, setPassword, setUser, setToken }) {
 
     const handleLogin = async () => {
-        const user = await login({ username, password })
-        console.log(user)
+        try {
+            const res = await login({ username, password })
+            console.log(res)
+            setUser(res.user)
+            setToken(res.token.toekn)
+            localStorage.setItem('token', res.token.token)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
