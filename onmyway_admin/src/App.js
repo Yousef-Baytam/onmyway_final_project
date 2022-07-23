@@ -46,7 +46,7 @@ function App() {
         ></Route>
         <Route
           path="/pannel"
-          element={<Pannel user={user} />}
+          element={<Pannel user={user} setUser={setUser} />}
         ></Route>
       </Routes>
     </div>

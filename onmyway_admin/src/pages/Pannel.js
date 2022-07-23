@@ -4,25 +4,33 @@ import AllUsers from '../components/AllUsers'
 import NavPannel from '../components/NavPannel'
 import Reports from '../components/Reports'
 
-export default function Pannel({ user }) {
+export default function Pannel({ user, setUser }) {
     const [focused, setFocused] = useState('users')
     const navigate = useNavigate()
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        navigate('/')
+        setUser(null)
+    }
 
     useEffect(() => {
         !user && navigate('/')
     }, [])
 
     return (
-        <div>
-            <NavPannel focused={focused} setFocused={setFocused} />
-            {
-                focused == 'users' ?
-                    <AllUsers />
-                    : focused == 'reports' ?
-                        <Reports />
-                        :
-                        null
-            }
+        <div className='container'>
+            <NavPannel focused={focused} setFocused={setFocused} handleLogout={handleLogout} />
+            <div className='pannelWindow'>
+                {
+                    focused == 'users' ?
+                        <AllUsers />
+                        : focused == 'reports' ?
+                            <Reports />
+                            :
+                            null
+                }
+            </div>
         </div>
     )
 }
