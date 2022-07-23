@@ -33,7 +33,7 @@ export default function Time({ date, setDate, placeholder, AuthInput, display })
         <View style={[styles.inputContainer, { width: !AuthInput ? '76%' : '85%' }]}>
             <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5 }]}>
                 {display ?
-                    <Text >{date === 'Invalid date' ? '—' : date}</Text>
+                    <Text style={{ color: theme.text }}>{date === 'Invalid date' ? '—' : date}</Text>
                     : <Pressable onPress={() => showMode('time')}>
                         <Text style={{ color: theme.text }}>{text}</Text>
                     </Pressable>

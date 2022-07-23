@@ -11,11 +11,13 @@ import TimePicker from '../../components/TimePicker';
 import { useLayoutEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext'
 import { joinPost, quitPost } from '../../controllers/postsController';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function Post({ navigation }) {
     const { user } = useUser()
     const route = useRoute()
     const [joined, setJoined] = useState('noRequest') //enum=[noRequest, pending, approved, declined]
+    const { theme } = useTheme()
 
     const data = route.params
     let days
@@ -71,7 +73,7 @@ export default function Post({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.bg }]}>
             <View style={styles.view1}>
                 <LocationInput text={'From'} color={'#92D293'} />
                 <LocationInput text={'To'} color={'#D2686E'} />
