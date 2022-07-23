@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import Input from '../components/Input'
 import Submit from '../components/Submit'
+import axios from 'axios'
 import { login } from '../controllers/userController'
 
 export default function Auth({ username, setUsername, password, setPassword, setUser, setToken, user }) {

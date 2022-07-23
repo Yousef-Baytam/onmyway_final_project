@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { getUsers } from '../controllers/userController'
 import Header from './Header'
 
 export default function AllUsers() {
-    const [users, setUsers] = useState(null)
+    const [activeUsers, setActiveUsers] = useState(null)
+    const [bannedUsers, setBannedUsers] = useState(null)
 
     const handleGetUsers = async () => {
-        const res = await getUsers()
-        console.log(res)
+        try {
+            const res = await getUsers()
+            setActiveUsers(res.activeUsers)
+            setBannedUsers(res.bannedUsers)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     useEffect(() => {
@@ -16,7 +23,6 @@ export default function AllUsers() {
     return (
         <div>
             <Header title={'All Users'} />
-
         </div>
     )
 }
