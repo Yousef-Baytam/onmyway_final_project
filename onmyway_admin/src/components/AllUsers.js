@@ -29,7 +29,9 @@ export default function AllUsers() {
     return (
         <div>
             <Header title={'All Users'} />
-            {activeUsers.length && renderUsers()}
+            <div className='cardsContainer'>
+                {activeUsers.length && renderUsers()}
+            </div>
         </div>
     )
 }
