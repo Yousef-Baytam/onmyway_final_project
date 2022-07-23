@@ -1,9 +1,11 @@
 import React from 'react'
+import logo from '../assets/logo.png'
 
 export default function Auth() {
+    console.log(logo)
     return (
         <div className='App'>
-            App
+            <img src={logo} />
         </div>
     )
 }

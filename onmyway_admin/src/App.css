@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.logo {
+  width: 500px;
+  height: 500px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
