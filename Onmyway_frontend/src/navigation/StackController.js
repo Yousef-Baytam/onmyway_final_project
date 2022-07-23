@@ -15,14 +15,16 @@ import { useTheme } from '../context/ThemeContext';
 export default function StackController() {
     const { handleUser } = useUser()
     const { loggedIn, handleLoggedIn } = useLoggedIn()
-    const { theme } = useTheme()
+    const { theme, toggleTheme } = useTheme()
 
     SplashScreen.preventAutoHideAsync()
 
     const handleToken = async () => {
         try {
             const token = await storage.load({ key: 'token' })
+            const storedTheme = await storage.load({ key: 'theme' })
             axios.defaults.headers.common['Authorization'] = `bearer ${ token }`
+            storedTheme == 'LIGHT' ? null : toggleTheme()
             const res = await me(token)
             if (res.user.status != 'banned') {
                 handleUser(res.user)
