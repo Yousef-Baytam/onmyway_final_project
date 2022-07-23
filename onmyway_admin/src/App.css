@@ -24,3 +24,23 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+@keyframes translateLogoUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(25%);
+  }
+}
+
+@keyframes translateAuthUp {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
