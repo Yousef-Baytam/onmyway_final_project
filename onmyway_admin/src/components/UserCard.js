@@ -17,8 +17,16 @@ export default function UserCard({ data }) {
                     <div>{moment(data.dob).format('DD-MM-YYYY')}</div>
                 </div>
                 <div>
-                    <BanIcon />
-                    <ActivateIcon />
+                    {
+                        data.status == 'banned' ?
+                            <div>
+                                <ActivateIcon />
+                            </div>
+                            :
+                            <div>
+                                <BanIcon />
+                            </div>
+                    }
                 </div>
             </div>
         </div>
