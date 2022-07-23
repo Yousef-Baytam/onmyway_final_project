@@ -8,7 +8,7 @@ export default function Header({ title }) {
             <div>
                 {title}
             </div>
-            <div>
+            <div className='filterContainer'>
                 <div>
                     <select>
                         <option />

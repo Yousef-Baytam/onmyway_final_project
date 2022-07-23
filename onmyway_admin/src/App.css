@@ -106,3 +106,21 @@ input {
   flex-direction: row;
   justify-content: flex-end;
 }
+
+.haderContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 10px 20px;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+
+}
