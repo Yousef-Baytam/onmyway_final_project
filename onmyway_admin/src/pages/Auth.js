@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
+import Input from '../components/Input'
 
 export default function Auth() {
     console.log(logo)
