@@ -13,7 +13,6 @@ export default function AllUsers() {
 
     useEffect(() => {
         setData([...activeUsers, ...bannedUsers])
-        console.log(data)
     }, [activeUsers])
 
     useEffect(() => {
