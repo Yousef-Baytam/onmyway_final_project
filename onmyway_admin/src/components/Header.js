@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Input from './Input'
 
-export default function Header({ title, search, setSearch }) {
+export default function Header({ title, search, setSearch, items, setDropdown, dropdown }) {
     return (
         <div className='haderContainer'>
             <div className='title'>
@@ -9,8 +9,8 @@ export default function Header({ title, search, setSearch }) {
             </div>
             <div className='filterContainer'>
                 <div>
-                    <select>
-                        <option />
+                    <select onChange={setDropdown} value={dropdown}>
+                        {items.map((e) => <option key={e} value={e}>{e}</option>)}
                     </select>
                 </div>
                 <div>
