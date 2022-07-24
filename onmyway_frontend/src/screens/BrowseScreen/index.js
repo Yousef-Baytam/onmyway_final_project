@@ -5,6 +5,7 @@ import FilterBar from '../../components/FilterBar';
 import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
 import { useTheme } from '../../context/ThemeContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function Browse({ navigation }) {
     const { theme } = useTheme()
@@ -19,9 +20,11 @@ export default function Browse({ navigation }) {
         } catch (e) { console.log(e) }
     }
 
-    useEffect(() => {
-        handleGetPosts()
-    }, [])
+    useFocusEffect(
+        useCallback(() => {
+            handleGetPosts()
+        }, [])
+    )
 
     const onRefresh = useCallback(async () => {
         setRefreshing(true)
