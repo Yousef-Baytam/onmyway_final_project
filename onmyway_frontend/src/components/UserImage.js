@@ -53,8 +53,8 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                             <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                         </Pressable>
                         <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0 }]}>
-                            <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
-                            <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
+                            <PressableText black={true} text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
+                            <PressableText black={true} text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
                         </View>
                         <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
                     </>

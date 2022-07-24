@@ -12,7 +12,7 @@ export default THEME_OPTIONS = {
         outline: '#ACACAC',
         light: '#7D7D7D',
         postCard: '#fff',
-        postCardInfo: '#646464',
+        postCardInfo: '#353941',
         text: '#fff'
     }
 }
