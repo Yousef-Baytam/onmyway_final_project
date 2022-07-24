@@ -6,7 +6,6 @@ import ActivateIcon from '../assets/icons/ActivateIcon'
 import { setReportsStatus } from '../controllers/reportController'
 
 export default function ReportCard({ data }) {
-    console.log(data)
 
     const handleReviewed = async () => {
         try {
