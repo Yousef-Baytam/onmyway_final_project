@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import logo from '../assets/logo.png'
 
 export default function NavPannel({ focused, setFocused, handleLogout }) {
     return (
         <div className='pannelContainer'>
             <div>
+                <img src={logo} className='logoPannel' />
                 <div className={`pannelTab ${ focused == 'users' && 'focused' }`} onClick={() => setFocused('users')}>
                     Users
                 </div>
