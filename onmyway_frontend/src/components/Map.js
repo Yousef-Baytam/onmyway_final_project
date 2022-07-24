@@ -3,6 +3,7 @@ import { StyleSheet, View, Modal, Text, Dimensions } from 'react-native';
 import MapView, { Callout, Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import CustomButton from './CustomButton';
 
 export default function Map({ showMapModal, setShowMapModal }) {
     const [initialLocation, setInitailLocation] = useState({
@@ -73,8 +74,8 @@ export default function Map({ showMapModal, setShowMapModal }) {
                                 <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
                                     <View>
                                         <View style={styles.marker_tooltip}>
-                                            <Text style={styles.marker_title}>GROCERY ONE</Text>
-                                            <Text>A SHORT DESCRIPTION</Text>
+                                            <Text style={styles.marker_title}>searched location</Text>
+                                            <Text>data from searched location</Text>
                                         </View>
                                         <View style={styles.arrow_border} />
                                         <View style={styles.arrow} />
@@ -84,6 +85,7 @@ export default function Map({ showMapModal, setShowMapModal }) {
                         }
                     </MapView>
                 }
+                <CustomButton custom={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1 }} text={'Select'} action={() => setShowMapModal(false)} />
             </View>
         </Modal>
     );
