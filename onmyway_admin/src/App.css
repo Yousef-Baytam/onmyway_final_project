@@ -165,3 +165,7 @@ select {
   justify-content: center;
   align-items: flex-start;
 }
+
+.reportCard {
+  width: 220px;
+}

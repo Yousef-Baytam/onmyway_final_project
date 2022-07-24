@@ -12,17 +12,19 @@ export default function ReportCard({ data }) {
     }
     return (
         <div className='cardContainer'>
-            <div className=''>
+            <div className='reportCard'>
                 <div>
                     {data.reportType}
                 </div>
+                <hr />
                 <div>
                     {data.report}
                 </div>
             </div>
             <div className='infoContainer'>
                 <div>
-                    <div>{data.reported.username}</div>
+                    <div>Reported:<br />{data.reported.username}</div>
+                    <div>Reporter:<br />{data.sender.username}</div>
                 </div>
                 <div>
                     {
