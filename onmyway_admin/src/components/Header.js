@@ -9,7 +9,7 @@ export default function Header({ title, search, setSearch, items, setDropdown, d
             </div>
             <div className='filterContainer'>
                 <div>
-                    <select onChange={setDropdown} value={dropdown}>
+                    <select onChange={setDropdown} defaultValue={dropdown}>
                         {items.map((e) => <option key={e} value={e}>{e}</option>)}
                     </select>
                 </div>

@@ -8,6 +8,8 @@ export default function AllUsers() {
     const [bannedUsers, setBannedUsers] = useState([])
     const [search, setSearch] = useState('')
     const [data, setData] = useState([])
+    const [items, setItems] = useState(['None', 'Active', 'Banned'])
+    const [filter, setFilter] = useState('None')
 
     useEffect(() => {
         setData([...activeUsers, ...bannedUsers])
@@ -38,7 +40,7 @@ export default function AllUsers() {
 
     return (
         <div>
-            <Header title={'All Users'} search={search} setSearch={setSearch} />
+            <Header title={'All Users'} search={search} setSearch={setSearch} items={items} dropdown={filter} setDropdown={setFilter} />
             <div className='cardsContainer'>
                 {activeUsers.length && renderUsers()}
             </div>
