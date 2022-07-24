@@ -5,9 +5,11 @@ import { db } from '../../../firebase'
 import { useUser } from '../../context/UserContext';
 import { getUsers } from '../../controllers/userController';
 import ChatRoomCard from '../../components/ChatRoomCard';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function AllChats({ navigation }) {
     const { user } = useUser()
+    const { theme } = useTheme()
 
     const [chatThreads, setChatThreads] = useState([])
     const [threadsUsersIds, setThreadsUsersIds] = useState([])
@@ -65,11 +67,11 @@ export default function AllChats({ navigation }) {
 
     return (<>
         {loading ?
-            <View style={styles.loadingContainer}>
+            <View style={[styles.loadingContainer, { backgroundColor: theme.bg }]}>
                 <ActivityIndicator color={'#005A9C'} size={'large'} />
             </View>
             :
-            <View style={styles.container}>
+            <View style={[styles.container, { backgroundColor: theme.bg }]}>
                 <FlatList
                     data={threadsUsers}
                     renderItem={({ item }) => (<ChatRoomCard data={item} action={() => handleUser(item)} />)}

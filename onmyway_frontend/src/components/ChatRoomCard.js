@@ -2,14 +2,17 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import moment from 'moment'
+import { useTheme } from '../context/ThemeContext'
 
 const ChatRoomCard = ({ data, action }) => {
+    const { theme } = useTheme()
+
     return (
-        <Pressable style={styles.container} onPress={action}>
+        <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={action}>
             <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
             <View style={styles.userInfo}>
                 <View style={styles.mesasgeInfoWrapper}>
-                    <Text>{data.user.usename}</Text>
+                    <Text style={{ color: theme.text }}>{data.user.usename}</Text>
                     {
                         data.sender != data.userTag ?
                             !data.readStatus ?
