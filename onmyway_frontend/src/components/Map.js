@@ -12,6 +12,7 @@ export default function Map({ showMapModal, setShowMapModal }) {
         longitudeDelta: 0.0421,
     })
     const [locationLoaded, setLocationLoaded] = useState(false)
+    const [searchedLocation, setSearchedLocation] = useState(null)
 
     useLayoutEffect(() => {
         (async () => {
@@ -42,7 +43,12 @@ export default function Map({ showMapModal, setShowMapModal }) {
                         rankby: 'distance'
                     }}
                     onPress={(data, details = null) => {
-                        console.log(data, details);
+                        setSearchedLocation({
+                            latitude: details.geometry.location.lat,
+                            longitude: details.geometry.location.lng,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        })
                     }}
                     query={{
                         key: 'YOUR API KEY',
@@ -57,22 +63,25 @@ export default function Map({ showMapModal, setShowMapModal }) {
                     locationLoaded &&
                     <MapView style={styles.map}
                         initialRegion={initialLocation}>
-                        <Marker
-                            coordinate={{ latitude: 33.888630, longitude: 35.496 }}
-                            title="Grocery 1"
-                            description="This is the first grocery"
-                        >
-                            <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
-                                <View>
-                                    <View style={styles.marker_tooltip}>
-                                        <Text style={styles.marker_title}>GROCERY ONE</Text>
-                                        <Text>A SHORT DESCRIPTION</Text>
+                        {
+                            searchedLocation &&
+                            <Marker
+                                coordinate={{ latitude: searchedLocation?.lat, longitude: searchedLocation?.lng }}
+                                title="Grocery 1"
+                                description="This is the first grocery"
+                            >
+                                <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
+                                    <View>
+                                        <View style={styles.marker_tooltip}>
+                                            <Text style={styles.marker_title}>GROCERY ONE</Text>
+                                            <Text>A SHORT DESCRIPTION</Text>
+                                        </View>
+                                        <View style={styles.arrow_border} />
+                                        <View style={styles.arrow} />
                                     </View>
-                                    <View style={styles.arrow_border} />
-                                    <View style={styles.arrow} />
-                                </View>
-                            </Callout>
-                        </Marker>
+                                </Callout>
+                            </Marker>
+                        }
                     </MapView>
                 }
             </View>
