@@ -13,6 +13,11 @@ module.exports.getReports = async (req, res, next) => {
     return res.send({ "success": true, "pendingReports": pendingReports, "reviewedReports": reviewedReports })
 }
 
+module.exports.setReportsReviewed = async (req, res, next) => {
+    const pendingReport = await Report.findByIdAndUpdate(req.params.id, { 'status': 'reviewed' })
+    return res.send({ "success": true })
+}
+
 module.exports.banUser = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(req.params.id, { "status": "banned" }, { runValidators: true, new: true })
     return res.send({ "success": true, "results": user })

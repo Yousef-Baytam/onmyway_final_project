@@ -10,6 +10,7 @@ export default function ReportCard({ data }) {
     const handleReviewed = async () => {
 
     }
+
     return (
         <div className='cardContainer'>
             <div className='reportCard'>
