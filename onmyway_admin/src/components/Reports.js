@@ -23,8 +23,16 @@ export default function Reports() {
     }, [search])
 
     useEffect(() => {
-        setReports([...reviewedReports, ...pendingReports])
+        setReports([...pendingReports, ...reviewedReports])
     }, [reviewedReports, pendingReports])
+
+    useEffect(() => {
+        if (filter != 'None')
+            setReports([...pendingReports, ...reviewedReports].filter((i) => i.status === filter.toLowerCase()))
+        else {
+            setReports([...pendingReports, ...reviewedReports])
+        }
+    }, [filter])
 
     const renderReports = () => {
         return reports.map((i) => <div><ReportCard data={i} /></div>)
@@ -36,7 +44,7 @@ export default function Reports() {
 
     return (
         <div>
-            <Header title={'Reports'} items={['None']} search={search} setSearch={setSearch} />
+            <Header title={'Reports'} items={items} search={search} setSearch={setSearch} dropdown={filter} setDropdown={setFilter} />
             <div className='cardsContainer'>
                 {reports.length != 0 && renderReports()}
             </div>
