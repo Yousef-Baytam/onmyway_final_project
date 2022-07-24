@@ -58,7 +58,6 @@ export function MainStack() {
                     }} />
                     <Stack.Screen name="Post" component={Post} />
                     <Stack.Screen name="Profile" component={Profile} options={({ route }) => ({ title: route.params.username })} />
-                    <Stack.Screen name="Map" component={Map} />
                 </Stack.Group>
             </Stack.Navigator>
             <Notification setExpoPushToken={setExpoPushToken} expoPushToken={expoPushToken} />
