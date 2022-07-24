@@ -37,13 +37,21 @@ export default function Map({ showMapModal, setShowMapModal }) {
             <View style={styles.container}>
                 <GooglePlacesAutocomplete
                     placeholder='Search'
+                    fetchDetails={true}
+                    GooglePlacesSearchQuery={{
+                        rankby: 'distance'
+                    }}
                     onPress={(data, details = null) => {
                         console.log(data, details);
                     }}
                     query={{
                         key: 'YOUR API KEY',
                         language: 'en',
+                        components: "country:LB",
+                        types: '...',
+                        location: `${ initialLocation.latitude, initialLocation.longitude }`
                     }}
+                    styles={{ container: styles.searchBar, listView: { backgroundColor: '#fff' } }}
                 />
                 {
                     locationLoaded &&
@@ -112,4 +120,10 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: -32
     },
+    searchBar: {
+        position: 'absolute',
+        top: 20,
+        zIndex: 1,
+        width: '90%'
+    }
 });
