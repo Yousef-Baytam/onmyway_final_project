@@ -22,6 +22,9 @@ export default function AllUsers() {
     useEffect(() => {
         if (filter != 'None')
             setData([...activeUsers, ...bannedUsers].filter((i) => i.status === filter.toLowerCase()))
+        else {
+            setData([...activeUsers, ...bannedUsers])
+        }
     }, [filter])
 
     const handleGetUsers = async () => {
