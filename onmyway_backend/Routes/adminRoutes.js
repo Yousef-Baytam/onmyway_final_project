@@ -7,5 +7,6 @@ router.get('/users', catchAsync(adminController.getUsers))
 router.get('/reports', catchAsync(adminController.getReports))
 router.post('/ban/:id', catchAsync(adminController.banUser))
 router.post('/unban/:id', catchAsync(adminController.unbanUser))
+router.patch('/reports/:id', catchAsync(adminController.setReportsReviewed))
 
 module.exports = router
