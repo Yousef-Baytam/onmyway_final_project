@@ -12,11 +12,13 @@ export default function Auth({ username, setUsername, password, setPassword, set
     const handleLogin = async () => {
         try {
             const res = await login({ username, password })
-            setUser(res.user)
-            setToken(res.token.token)
-            localStorage.setItem('token', res.token.token)
-            axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
-            navigate('/pannel')
+            if (res.user.userType === 'admin') {
+                setUser(res.user)
+                setToken(res.token.token)
+                localStorage.setItem('token', res.token.token)
+                axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
+                navigate('/pannel')
+            }
         } catch (e) {
             console.log(e)
         }
