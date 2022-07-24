@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { getReports } from '../controllers/reportController'
 import ReportCard from './ReportCard'
+import blank from '../assets/blank-profile.webp'
+import moment from 'moment'
+import BanIcon from '../assets/icons/BanIcon'
+import ActivateIcon from '../assets/icons/ActivateIcon'
 
 export default function Reports() {
     const [pendingReports, setPendingReports] = useState([])
@@ -19,7 +23,7 @@ export default function Reports() {
     }, [reviewedReports, pendingReports])
 
     const renderReports = () => {
-        return reports.map((i) => <div><ReportCard /></div>)
+        return reports.map((i) => <div><ReportCard data={i} /></div>)
     }
 
     useEffect(() => {

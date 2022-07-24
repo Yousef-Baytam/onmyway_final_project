@@ -8,8 +8,8 @@ module.exports.getUsers = async (req, res, next) => {
 }
 
 module.exports.getReports = async (req, res, next) => {
-    const pendingReports = await Report.find({ "status": "pending" })
-    const reviewedReports = await Report.find({ "status": "reviewed" })
+    const pendingReports = await Report.find({ "status": "pending" }).populate('sender').populate('reported')
+    const reviewedReports = await Report.find({ "status": "reviewed" }).populate('sender').populate('reported')
     return res.send({ "success": true, "pendingReports": pendingReports, "reviewedReports": reviewedReports })
 }
 
