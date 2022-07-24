@@ -20,6 +20,11 @@ export default function AllUsers() {
         setData([...activeUsers, ...bannedUsers].filter((e) => (e.username.includes(search) || e.email.includes(search))))
     }, [search])
 
+    useEffect(() => {
+        if (filter != 'None')
+            setData([...activeUsers, ...bannedUsers].filter((i) => i.status === filter.toLowerCase()))
+    }, [filter])
+
     const handleGetUsers = async () => {
         try {
             const res = await getUsers()
