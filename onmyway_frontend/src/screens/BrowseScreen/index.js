@@ -6,9 +6,11 @@ import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
 import { useTheme } from '../../context/ThemeContext';
 import { useFocusEffect } from '@react-navigation/native';
+import UserProvider, { useUser } from '../../context/UserContext';
 
 export default function Browse({ navigation }) {
     const { theme } = useTheme()
+    const { user } = useUser()
     const [posts, setPosts] = useState(null)
     const [refreshing, setRefreshing] = useState(false)
     const [filter, setFilter] = useState(null)
@@ -16,7 +18,7 @@ export default function Browse({ navigation }) {
     const handleGetPosts = async () => {
         try {
             const res = await getPost()
-            setPosts(res.results)
+            setPosts(res.results.filter((e) => e.owner._id != user._id))
         } catch (e) { console.log(e) }
     }
 
