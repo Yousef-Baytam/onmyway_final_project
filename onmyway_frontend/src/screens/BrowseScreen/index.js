@@ -6,7 +6,7 @@ import PostCard from '../../components/PostCard';
 import { getPost } from '../../controllers/postsController'
 import { useTheme } from '../../context/ThemeContext';
 import { useFocusEffect } from '@react-navigation/native';
-import UserProvider, { useUser } from '../../context/UserContext';
+import { useUser } from '../../context/UserContext';
 
 export default function Browse({ navigation }) {
     const { theme } = useTheme()
