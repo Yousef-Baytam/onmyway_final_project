@@ -10,7 +10,7 @@ module.exports.getUsers = async (req, res, next) => {
 module.exports.getReports = async (req, res, next) => {
     const pendingReports = await Report.find({ "status": "pending" })
     const reviewedReports = await Report.find({ "status": "reviewed" })
-    return res.send({ "success": true, "Pending Reports": pendingReports, "Reviewed Reports": reviewedReports })
+    return res.send({ "success": true, "pendingReports": pendingReports, "reviewedReports": reviewedReports })
 }
 
 module.exports.banUser = async (req, res, next) => {
