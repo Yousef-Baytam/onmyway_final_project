@@ -14,4 +14,17 @@ const getReports = async (data) => {
     }
 }
 
-export { getReports }
+const setReportsStatus = async (id) => {
+    try {
+        let res = await axios({
+            url: `/admin/reports/${ id }`,
+            method: "PATCH",
+        })
+        return res.data
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export { getReports, setReportsStatus }
