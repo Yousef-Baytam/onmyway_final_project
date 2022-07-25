@@ -26,9 +26,9 @@ export function MainStack() {
             await storeNotificationToken(user._id, expoPushToken)
     }
 
-    // useEffect(() => {
-    //     handleSendNotificationToken()
-    // })
+    useEffect(() => {
+        handleSendNotificationToken()
+    })
 
     return (
         <>

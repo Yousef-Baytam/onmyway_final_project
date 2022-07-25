@@ -101,7 +101,7 @@ const storeNotificationToken = async (id, token) => {
     try {
         let res = await axios({
             url: `/user/${ id }/${ token }`,
-            method: "POST",
+            method: "PATCH",
         })
         return res.data.results
     }

@@ -4,6 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose')
 const { phone } = require('phone')
 const { userJoiSchema } = require('../Utils/joiValidation')
 const ExpressError = require('../Utils/ExpressError')
+const { string } = require('joi')
 
 const UserSchema = new Schema({
     email: {
@@ -69,6 +70,13 @@ const UserSchema = new Schema({
         type: String,
         enum: ['active', 'banned'],
         default: 'active'
+    },
+    notification: {
+        status: {
+            type: String,
+            enum: ['active', 'inactive'],
+        },
+        token: String
     }
 }, { timestamps: true })
 
