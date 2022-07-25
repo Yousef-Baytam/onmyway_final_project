@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Alert } from 'react-native'
 import React from 'react'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { useTheme } from '../context/ThemeContext'
@@ -6,6 +6,23 @@ import CustomButton from './CustomButton'
 
 const BlockedUserCard = ({ data, action }) => {
     const { theme } = useTheme()
+
+    const handleUnblockUser = async () => {
+
+    }
+
+    const editConfirmationAlert = () => {
+        return Alert.alert('Confirm Action', 'Are you sure you want to unblock this user?',
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: handleUnblockUser
+                }
+            ])
+    }
 
     return (
         <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={action}>
@@ -17,7 +34,7 @@ const BlockedUserCard = ({ data, action }) => {
                     </View>
                 </View>
             </View>
-            <CustomButton text={'Unblock'} custom={{ width: '30%' }} />
+            <CustomButton text={'Unblock'} custom={{ width: '30%' }} action={editConfirmationAlert} />
         </Pressable>
     )
 }
