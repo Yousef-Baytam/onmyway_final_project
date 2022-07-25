@@ -13,11 +13,14 @@ import { useUser } from '../context/UserContext';
 import storage from '../storage/asyncStorage';
 import { ParentStack } from './ParentStack';
 import BlockedUsersModal from '../components/BlockedUsersModal';
+import { useState } from 'react';
 
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
     const { user } = useUser()
     const { theme, toggleTheme } = useTheme()
+
+    const [showBlockedUsers, setShowBlockedUsers] = useState(false)
 
     return (
         <View style={{ flex: 1 }}>
@@ -33,7 +36,7 @@ function CustomDrawerContent(props) {
                     <View style={styles.icon}>
                     </View>
                 </Pressable>
-                <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn}>
+                <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn} onPress={() => setShowBlockedUsers(true)}>
                     <Text style={{ color: theme.bg, fontWeight: 'bold' }}>Blocked users</Text>
                     <View style={styles.icon}>
                     </View>
@@ -47,7 +50,7 @@ function CustomDrawerContent(props) {
                     </View>
                 </Pressable>
             </View>
-            <BlockedUsersModal user={user} />
+            <BlockedUsersModal user={user} setShowBlockedUsers={setShowBlockedUsers} showBlockedUsers={showBlockedUsers} />
         </View>
     );
 }
