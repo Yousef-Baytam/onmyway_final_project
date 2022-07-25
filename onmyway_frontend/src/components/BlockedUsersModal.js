@@ -23,7 +23,7 @@ export default function BlockedUsersModal({ showBlockedUsers, setShowBlockedUser
 
     useEffect(() => {
         handleBlcokedUsers()
-    }, [])
+    }, [user])
 
     return (
         <Modal

@@ -19,7 +19,6 @@ function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
     const { user } = useUser()
     const { theme, toggleTheme } = useTheme()
-
     const [showBlockedUsers, setShowBlockedUsers] = useState(false)
 
     return (
