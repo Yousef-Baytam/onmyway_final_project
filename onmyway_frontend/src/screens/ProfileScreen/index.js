@@ -14,7 +14,7 @@ import UserProfileBody from '../../components/UserProfileBody';
 import { useTheme } from '../../context/ThemeContext';
 import { useUser } from '../../context/UserContext';
 import { addChatRoom, getChatRoom } from '../../controllers/firebaseControllers/chatRooms';
-import { addNewReview, getUserReviews, getUsers, updateReview } from '../../controllers/userController'
+import { addNewReview, blockUser, getUserReviews, getUsers, updateReview } from '../../controllers/userController'
 
 export default function Profile({ navigation }) {
 
@@ -81,6 +81,15 @@ export default function Profile({ navigation }) {
             alert('Review posted successfully!')
         } catch (e) {
             alert('Error posting the review, try again')
+        }
+    }
+
+    const handleBlockUser = async () => {
+        try {
+            await blockUser(user._id)
+            navigation.navigate('Browse')
+        } catch (e) {
+            alert('Cant perfom this action right now')
         }
     }
 
