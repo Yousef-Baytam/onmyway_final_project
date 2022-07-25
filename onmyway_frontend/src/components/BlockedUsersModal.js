@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Modal, FlatList } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import { useTheme } from '../context/ThemeContext';
+import { getUsers } from '../controllers/userController';
 import BlockedUserCard from './BlockedUserCard';
 
-export default function BlockedUsersModal({ user, showBlockedUsers, setBlockedUsers }) {
+export default function BlockedUsersModal({ user, showBlockedUsers, setShowBlockedUsers }) {
     const { theme } = useTheme()
+    const [blockedUsers, setBlockedUsers] = useState([])
+
+    const handleBlcokedUsers = async () => {
+        const res = await getUsers(user.blocked)
+        console.log(res)
+    }
+
+    useEffect(() => {
+        handleBlcokedUsers()
+    }, [])
 
     return (
         <Modal
@@ -19,8 +31,8 @@ export default function BlockedUsersModal({ user, showBlockedUsers, setBlockedUs
                 <Pressable onPress={() => setShowBlockedUsers(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
-                {user.blocked ? <FlatList
-                    data={user.blocked}
+                {blockedUsers.length ? <FlatList
+                    data={blockedUsers}
                     renderItem={({ item }) => (<>
                         <BlockedUserCard data={item} />
                     </>)}
