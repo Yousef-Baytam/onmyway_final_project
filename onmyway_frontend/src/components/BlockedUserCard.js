@@ -3,12 +3,15 @@ import React from 'react'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { useTheme } from '../context/ThemeContext'
 import CustomButton from './CustomButton'
+import { unblockUser } from '../controllers/userController'
 
 const BlockedUserCard = ({ data, action }) => {
     const { theme } = useTheme()
 
     const handleUnblockUser = async () => {
-
+        console.log(data._id)
+        const res = await unblockUser(data._id)
+        console.log(res)
     }
 
     const editConfirmationAlert = () => {

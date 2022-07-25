@@ -52,9 +52,13 @@ module.exports.blockUser = async (req, res, next) => {
 
 module.exports.unblockUser = async (req, res, next) => {
     const user = req.user
-    const update = await User.findById(user.id)
-    update.blocked.filter((e) => e != req.params.id)
-    await update.save()
+    const { id } = req.params
+    const update = await User.findByIdAndUpdate(user._id, {
+        $pull: {
+            blocked: [id],
+        },
+    }, { new: true })
+    console.log(update)
     return res.send({ "success": true, "results": update })
 }
 
