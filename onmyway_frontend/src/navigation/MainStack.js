@@ -2,7 +2,6 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import Browse from '../screens/BrowseScreen'
 import UserProfile from '../screens/UserProfileScreen'
 import NewPost from '../screens/NewPostScreen'
-import Map from '../screens/MapScreen'
 import DrawerToggler from '../components/DrawerToggler';
 import { CommonActions, DrawerActions } from '@react-navigation/native';
 import UserProfileHeaderButton from '../components/UserProfileHeaderButton';

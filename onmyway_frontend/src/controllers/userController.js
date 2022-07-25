@@ -123,4 +123,20 @@ const getJoinedPosts = async () => {
     }
 }
 
-export { updateImage, updateUserInfo, getUserReviews, addNewReview, updateReview, getUsers, reportUser, storeNotificationToken, getJoinedPosts }
+const blockUser = async (id) => {
+    try {
+        let res = await axios({
+            url: `/user/block/${ id }`,
+            method: "PATCH",
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+export {
+    updateImage, updateUserInfo, getUserReviews, addNewReview,
+    updateReview, getUsers, reportUser, storeNotificationToken, getJoinedPosts, blockUser
+}
