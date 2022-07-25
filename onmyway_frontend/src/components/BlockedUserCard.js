@@ -48,14 +48,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
-        padding: 15
+        padding: 10
     },
     subContainer: {
         width: '60%',
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
-        padding: 15
     },
     image: {
         width: 45,
