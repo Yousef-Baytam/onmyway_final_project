@@ -10,6 +10,7 @@ import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
 import { getaChatRoom, updateInChatRoomStatus, updateReadStatus } from '../../controllers/firebaseControllers/chatRooms';
 import { useUser } from '../../context/UserContext';
+import { sendPushNotification } from '../../../NotificationRegister';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
@@ -31,6 +32,8 @@ export default function Chat({ navigation, use }) {
                 chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
                 chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
             )
+            chatRoom?.notification?.status == 'active' &&
+                sendPushNotification(chatRoom?.notification?.token, 'New Message', `${ chatRoom.username }: ${ text }`)
         }
         else {
             alert('You cannot text this user')
