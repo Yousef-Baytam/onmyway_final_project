@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Modal, FlatList } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import { useTheme } from '../context/ThemeContext';
+import BlockedUserCard from './BlockedUserCard';
 
 export default function BlockedUsersModal({ user, showBlockedUsers, setBlockedUsers }) {
     const { theme } = useTheme()
