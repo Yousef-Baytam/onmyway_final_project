@@ -9,25 +9,33 @@ import { renderLoading, scrollToBottom, renderSend, renderBubble } from './helpe
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore"
 import { db } from '../../../firebase'
 import { getaChatRoom, updateInChatRoomStatus, updateReadStatus } from '../../controllers/firebaseControllers/chatRooms';
+import { useUser } from '../../context/UserContext';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
     const chatRoom = route.params
+    console.log(chatRoom)
+    const { user } = useUser()
     const [messages, setMessages] = useState([])
     const [chatRoomInfo, setChatRoomInfo] = useState(null)
 
     const hanldeSendMessage = async (text) => {
-        const res = await addChatRoom(chatRoom.chatRoomId, {
-            text: text,
-            createdAt: new Date().getTime(),
-            user: {
-                _id: chatRoom._id,
+        if (!user.blocked.includes(chatRoom._id) && !chatRoom.blocked.includes(user._id)) {
+            const res = await addChatRoom(chatRoom.chatRoomId, {
+                text: text,
+                createdAt: new Date().getTime(),
+                user: {
+                    _id: chatRoom._id,
+                },
             },
-        },
-            chatRoom.userTag,
-            chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
-            chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
-        )
+                chatRoom.userTag,
+                chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
+                chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
+            )
+        }
+        else {
+            alert('You cannot text this user')
+        }
     }
 
     const handleChatRoomStatus = async () => {
