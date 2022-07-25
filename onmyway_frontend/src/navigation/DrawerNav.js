@@ -32,6 +32,11 @@ function CustomDrawerContent(props) {
                     <View style={styles.icon}>
                     </View>
                 </Pressable>
+                <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn}>
+                    <Text style={{ color: theme.bg, fontWeight: 'bold' }}>Blocked users</Text>
+                    <View style={styles.icon}>
+                    </View>
+                </Pressable>
             </DrawerContentScrollView>
             <View style={{ backgroundColor: theme.bg }}>
                 <Pressable onPress={() => { storage.remove({ key: 'token' }); handleLoggedIn(false) }} style={styles.logoutBtn} >
