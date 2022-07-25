@@ -121,7 +121,8 @@ export default function Profile({ navigation }) {
                         action={handleCreateChatRoom} />
                     <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
                         action={() => setShowReportModal(true)} />
-                    <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }} />
+                    <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }}
+                        action={handleBlockUser} />
                 </View>
             }
             {
