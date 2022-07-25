@@ -4,12 +4,19 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { useTheme } from '../context/ThemeContext'
 import CustomButton from './CustomButton'
 import { unblockUser } from '../controllers/userController'
+import { useUser } from '../context/UserContext'
 
 const BlockedUserCard = ({ data, action }) => {
     const { theme } = useTheme()
+    const { user, handleUser } = useUser()
 
     const handleUnblockUser = async () => {
-        const res = await unblockUser(data._id)
+        try {
+            const res = await unblockUser(data._id)
+            handleUser({ ...user, blocked: user.blocked.filter((e) => e != data._id) })
+        } catch (e) {
+            alert('Cannot perform this action at the moment')
+        }
     }
 
     const editConfirmationAlert = () => {

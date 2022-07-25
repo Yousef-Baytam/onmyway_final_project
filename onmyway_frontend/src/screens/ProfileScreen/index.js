@@ -87,7 +87,7 @@ export default function Profile({ navigation }) {
     const handleBlockUser = async () => {
         try {
             await blockUser(user._id)
-            handleUser({ ...loggedUser, blocked: loggedUser.blocked.push(user._id) })
+            handleUser({ ...loggedUser, blocked: [...loggedUser.blocked, user._id] })
             navigation.navigate('Browse')
         } catch (e) {
             alert('Cant perfom this action right now')

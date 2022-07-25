@@ -3,10 +3,12 @@ import { StyleSheet, View, Text, Modal, FlatList } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import CancelIcon from '../assets/icons/CancelIcon';
 import { useTheme } from '../context/ThemeContext';
+import { useUser } from '../context/UserContext';
 import { getUsers } from '../controllers/userController';
 import BlockedUserCard from './BlockedUserCard';
 
-export default function BlockedUsersModal({ user, showBlockedUsers, setShowBlockedUsers }) {
+export default function BlockedUsersModal({ showBlockedUsers, setShowBlockedUsers }) {
+    const { user } = useUser()
     const { theme } = useTheme()
     const [blockedUsers, setBlockedUsers] = useState([])
 
