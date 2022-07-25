@@ -14,12 +14,11 @@ export default function Browse({ navigation }) {
     const [posts, setPosts] = useState(null)
     const [refreshing, setRefreshing] = useState(false)
     const [filter, setFilter] = useState(null)
-    console.log(user)
 
     const handleGetPosts = async () => {
         try {
             const res = await getPost()
-            setPosts(res.results.filter((e) => (e.owner._id != user._id) && !user.blocked.includes(e.owner._id)))
+            setPosts(res.results.filter((e) => (e.owner._id != user._id) && !user.blocked.includes(e.owner._id) && !e.owner.blocked.includes(user._id)))
         } catch (e) { console.log(e) }
     }
 
