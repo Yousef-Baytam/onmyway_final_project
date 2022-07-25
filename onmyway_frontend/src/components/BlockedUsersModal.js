@@ -31,7 +31,7 @@ export default function BlockedUsersModal({ user, showBlockedUsers, setShowBlock
                 setBlockedUsers(!showBlockedUsers);
             }}>
             <View style={[styles.reviewContainer, { backgroundColor: theme.bg }]}>
-                <Text style={[styles.text, { color: theme.text }]}>All Reviews</Text>
+                <Text style={[styles.text, { color: theme.text }]}>Blocked Users</Text>
                 <Pressable onPress={() => setShowBlockedUsers(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>

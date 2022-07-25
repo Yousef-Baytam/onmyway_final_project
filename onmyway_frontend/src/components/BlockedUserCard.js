@@ -8,10 +8,10 @@ const BlockedUserCard = ({ data, action }) => {
 
     return (
         <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={action}>
-            <Image style={styles.image} source={data.user.image ? { uri: data.user.image } : require('../assets/blank-profile.webp')} />
+            <Image style={styles.image} source={data?.image ? data.image?.url ? { uri: data.image.url } : require('../assets/blank-profile.webp') : require('../assets/blank-profile.webp')} />
             <View style={styles.userInfo}>
                 <View style={styles.mesasgeInfoWrapper}>
-                    <Text style={{ color: theme.text }}>{data.user.usename}</Text>
+                    <Text style={{ color: theme.text }}>{data.username}</Text>
                 </View>
             </View>
         </Pressable>
