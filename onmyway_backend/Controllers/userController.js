@@ -70,10 +70,11 @@ module.exports.reportUser = async (req, res, next) => {
 
 module.exports.storeToken = async (req, res, next) => {
     const { token, id } = req.params
-    console.log(token, id)
-    let user = await User.findById(id)
-    user = { ...user._doc, notification: token }
-    const result = await user.save()
-    console.log(result)
-    return res.send({ "success": true, "results": result })
+    let user = await User.findByIdAndUpdate(id, {
+        notification: {
+            status: 'active',
+            token: token
+        }
+    }, { new: true })
+    return res.send({ "success": true, "results": user })
 }

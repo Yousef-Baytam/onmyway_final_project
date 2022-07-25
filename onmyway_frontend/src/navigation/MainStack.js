@@ -15,20 +15,25 @@ import { storeNotificationToken } from '../controllers/userController';
 import { useTheme } from '../context/ThemeContext';
 
 export function MainStack() {
-    const { user } = useUser()
+    const { user, handleUser } = useUser()
     const { theme } = useTheme()
     const Stack = createStackNavigator();
     const [expoPushToken, setExpoPushToken] = useState(null)
 
-
     const handleSendNotificationToken = async () => {
-        if (expoPushToken)
-            await storeNotificationToken(user._id, expoPushToken)
+        try {
+            if (expoPushToken) {
+                const res = await storeNotificationToken(user._id, expoPushToken)
+                handleUser(res)
+            }
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     useEffect(() => {
         handleSendNotificationToken()
-    })
+    }, [])
 
     return (
         <>
