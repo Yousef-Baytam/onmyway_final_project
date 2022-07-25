@@ -12,6 +12,7 @@ import { useLoggedIn } from '../context/LoggedInContext';
 import { useUser } from '../context/UserContext';
 import storage from '../storage/asyncStorage';
 import { ParentStack } from './ParentStack';
+import BlockedUsersModal from '../components/BlockedUsersModal';
 
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
@@ -46,6 +47,7 @@ function CustomDrawerContent(props) {
                     </View>
                 </Pressable>
             </View>
+            <BlockedUsersModal user={user} />
         </View>
     );
 }

@@ -19,7 +19,7 @@ export default function BlockedUsersModal({ user, showBlockedUsers, setBlockedUs
                 <Pressable onPress={() => setShowBlockedUsers(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
-                {user.reviews ? <FlatList
+                {user.blocked ? <FlatList
                     data={user.blocked}
                     renderItem={({ item }) => (<>
                         <BlockedUserCard data={item} />
