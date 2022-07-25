@@ -18,7 +18,7 @@ import { addNewReview, blockUser, getUserReviews, getUsers, updateReview } from 
 
 export default function Profile({ navigation }) {
 
-    const { user: loggedUser } = useUser()
+    const { user: loggedUser, handleUser } = useUser()
     const { theme } = useTheme()
 
     const route = useRoute()
@@ -87,6 +87,7 @@ export default function Profile({ navigation }) {
     const handleBlockUser = async () => {
         try {
             await blockUser(user._id)
+            handleUser({ ...loggedUser, blocked: loggedUser.blocked.push(user._id) })
             navigation.navigate('Browse')
         } catch (e) {
             alert('Cant perfom this action right now')
