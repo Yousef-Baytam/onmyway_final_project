@@ -55,10 +55,9 @@ module.exports.unblockUser = async (req, res, next) => {
     const { id } = req.params
     const update = await User.findByIdAndUpdate(user._id, {
         $pull: {
-            blocked: [id],
+            blocked: id,
         },
     }, { new: true })
-    console.log(update)
     return res.send({ "success": true, "results": update })
 }
 
