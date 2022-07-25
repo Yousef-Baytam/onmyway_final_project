@@ -11,8 +11,12 @@ export default function BlockedUsersModal({ user, showBlockedUsers, setShowBlock
     const [blockedUsers, setBlockedUsers] = useState([])
 
     const handleBlcokedUsers = async () => {
-        const res = await getUsers(user.blocked)
-        console.log(res)
+        try {
+            const res = await getUsers(user.blocked)
+            setBlockedUsers(res)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     useEffect(() => {
