@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { useLayoutEffect, useState } from 'react';
-import { StyleSheet, View, Modal, TextInput } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import AllReviewsModal from '../../components/AllReviewsModal';
 import CustomButton from '../../components/CustomButton';
@@ -94,6 +94,19 @@ export default function Profile({ navigation }) {
         }
     }
 
+    const editConfirmationAlert = () => {
+        return Alert.alert('Confirm Action', 'Are you sure you want to block this user?',
+            [
+                {
+                    text: 'No',
+                },
+                {
+                    text: 'Yes',
+                    onPress: handleBlockUser
+                }
+            ])
+    }
+
     const handleCreateChatRoom = async () => {
         try {
             let room
@@ -123,7 +136,7 @@ export default function Profile({ navigation }) {
                     <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
                         action={() => setShowReportModal(true)} />
                     <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }}
-                        action={handleBlockUser} />
+                        action={editConfirmationAlert} />
                 </View>
             }
             {
