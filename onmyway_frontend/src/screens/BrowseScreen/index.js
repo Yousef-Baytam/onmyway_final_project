@@ -18,14 +18,14 @@ export default function Browse({ navigation }) {
     const handleGetPosts = async () => {
         try {
             const res = await getPost()
-            setPosts(res.results.filter((e) => { return ((e.owner._id != user._id) && !user.blocked.includes(e.owner._id) && !e.owner.blocked.includes(user._id)) }))
+            setPosts(res.results.filter((e) => ((e.owner._id != user._id) && !user.blocked.includes(e.owner._id) && !e.owner.blocked.includes(user._id))))
         } catch (e) { console.log(e) }
     }
 
     useFocusEffect(
-        () => {
+        useCallback(() => {
             handleGetPosts()
-        }
+        }, [user])
     )
 
     const onRefresh = useCallback(async () => {
