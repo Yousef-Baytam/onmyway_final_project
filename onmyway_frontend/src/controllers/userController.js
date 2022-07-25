@@ -136,7 +136,20 @@ const blockUser = async (id) => {
     }
 }
 
+const unblockUser = async (id) => {
+    try {
+        let res = await axios({
+            url: `/user/unblock/${ id }`,
+            method: "PATCH",
+        })
+        return res.data.results
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
 export {
     updateImage, updateUserInfo, getUserReviews, addNewReview,
-    updateReview, getUsers, reportUser, storeNotificationToken, getJoinedPosts, blockUser
+    updateReview, getUsers, reportUser, storeNotificationToken, getJoinedPosts, blockUser, unblockUser
 }
