@@ -14,7 +14,6 @@ import { useUser } from '../../context/UserContext';
 export default function Chat({ navigation, use }) {
     const route = useRoute()
     const chatRoom = route.params
-    console.log(chatRoom)
     const { user } = useUser()
     const [messages, setMessages] = useState([])
     const [chatRoomInfo, setChatRoomInfo] = useState(null)
