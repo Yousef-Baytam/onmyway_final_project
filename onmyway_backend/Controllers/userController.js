@@ -50,6 +50,14 @@ module.exports.blockUser = async (req, res, next) => {
     return res.send({ "success": true, "results": update })
 }
 
+module.exports.unblockUser = async (req, res, next) => {
+    const user = req.user
+    const update = await User.findById(user.id)
+    update.blocked.filter((e) => e != req.params.id)
+    await update.save()
+    return res.send({ "success": true, "results": update })
+}
+
 module.exports.reportUser = async (req, res, next) => {
     const rep = new Report({ 'sender': req.user.id, 'reported': req.params.id, 'reportType': req.body.reportType, 'report': req.body.report })
     await rep.save()
