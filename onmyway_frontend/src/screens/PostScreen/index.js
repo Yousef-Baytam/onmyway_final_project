@@ -12,6 +12,7 @@ import { useLayoutEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext'
 import { joinPost, quitPost } from '../../controllers/postsController';
 import { useTheme } from '../../context/ThemeContext';
+import { sendPushNotification } from '../../../NotificationRegister';
 
 export default function Post({ navigation }) {
     const { user } = useUser()
@@ -38,6 +39,10 @@ export default function Post({ navigation }) {
             if (!data.remainingSeats)
                 return Alert.alert('No Available Seats', 'There are no available seats in this ride at the moment')
             const res = await joinPost(data._id)
+
+            data.owner?.notification?.status ==
+                'active' && sendPushNotification(data.owner?.notification?.token, 'New Join Request', `${ user.username } would like to join your ride!`)
+
             if (res.success)
                 setJoined('pending')
             else

@@ -37,12 +37,12 @@ export default function Notification({ expoPushToken, setExpoPushToken }) {
     return null
 }
 
-async function sendPushNotification(expoPushToken) {
+async function sendPushNotification(expoPushToken, title, body) {
     const message = {
         to: expoPushToken,
         sound: 'default',
-        title: 'Original Title',
-        body: 'And here is the body!',
+        title: title,
+        body: body,
         data: { someData: 'goes here' },
     };
 
