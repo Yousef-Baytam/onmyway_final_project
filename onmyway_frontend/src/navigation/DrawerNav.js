@@ -21,6 +21,11 @@ function CustomDrawerContent(props) {
     const { theme, toggleTheme } = useTheme()
     const [showBlockedUsers, setShowBlockedUsers] = useState(false)
 
+    const handleLogout = async () => {
+        storage.remove({ key: 'token' })
+        handleLoggedIn(false)
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props} style={{ backgroundColor: theme.bg }}>
@@ -42,7 +47,7 @@ function CustomDrawerContent(props) {
                 </Pressable>
             </DrawerContentScrollView>
             <View style={{ backgroundColor: theme.bg }}>
-                <Pressable onPress={() => { storage.remove({ key: 'token' }); handleLoggedIn(false) }} style={styles.logoutBtn} >
+                <Pressable onPress={handleLogout} style={styles.logoutBtn} >
                     <Text style={{ color: '#fff', fontWeight: 'bold' }}>Logout</Text>
                     <View style={styles.icon}>
                         <LogoutIcon />
