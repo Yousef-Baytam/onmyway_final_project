@@ -13,7 +13,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
         longitudeDelta: 0.0421,
     })
     const [locationLoaded, setLocationLoaded] = useState(false)
-    const [searchedLocation, setSearchedLocation] = useState(null)
+    const [pressedLocation, setPressedLocation] = useState(null)
 
     useLayoutEffect(() => {
         (async () => {
@@ -30,7 +30,13 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
     }, []);
 
     const handlePress = (e) => {
-        console.log(e.nativeEvent)
+        console.log(e.nativeEvent.coordinate.latitude, e.nativeEvent.coordinate.longitude)
+        setValue({
+            ...value, geometry: {
+                type: 'Points',
+                coordinates: [e.nativeEvent.coordinate.latitude, e.nativeEvent.coordinate.longitude]
+            }
+        })
     }
 
     return (
@@ -41,7 +47,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                 setShowMapModal(!showMapModal);
             }}>
             <View style={styles.container}>
-                <GooglePlacesAutocomplete
+                {/* <GooglePlacesAutocomplete
                     placeholder='Search'
                     fetchDetails={true}
                     GooglePlacesSearchQuery={{
@@ -63,14 +69,14 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                         location: `${ initialLocation.latitude, initialLocation.longitude }`
                     }}
                     styles={{ container: styles.searchBar, listView: { backgroundColor: '#fff' } }}
-                />
+                /> */}
                 {
                     locationLoaded &&
                     <MapView style={styles.map}
                         initialRegion={initialLocation}
                         onPress={handlePress}>
                         {
-                            searchedLocation &&
+                            pressedLocation &&
                             <Marker
                                 coordinate={{ latitude: searchedLocation?.lat, longitude: searchedLocation?.lng }}
                                 title="Grocery 1"
