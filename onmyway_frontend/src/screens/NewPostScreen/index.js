@@ -30,6 +30,18 @@ export default function NewPost({ navigation }) {
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences || 'Any')
     const [showMapModal, setShowMapModal] = useState(false)
+    const [from, setFrom] = useState({
+        location: null, geometry: {
+            type: 'Point',
+            coordinates: null
+        }
+    })
+    const [to, setTo] = useState({
+        location: null, geometry: {
+            type: 'Point',
+            coordinates: null
+        }
+    })
     const { theme } = useTheme()
 
     const handleAddPost = async () => {
