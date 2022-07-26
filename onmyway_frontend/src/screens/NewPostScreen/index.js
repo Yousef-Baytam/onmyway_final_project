@@ -47,10 +47,11 @@ export default function NewPost({ navigation }) {
             alert('Departure time not selected')
             return
         }
+        console.log(to)
         try {
             await postSchema.validate({
-                // from: ,
-                // to: ,
+                from: from,
+                to: to,
                 date: repeat ? moment().add(1, 'days') : moment(date),
                 departure: departureTime,
                 availableSeats: availableSeats,
@@ -58,12 +59,13 @@ export default function NewPost({ navigation }) {
             })
             let res
             if (repeat)
-                res = await addPost({ repeat, days: JSON.stringify(days), departureTime: departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ from, to, repeat, days: JSON.stringify(days), departureTime: departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             else
-                res = await addPost({ repeat, date: date == new Date() ? null : date, departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ from, to, repeat, date: date == new Date() ? null : date, departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             navigation.navigate('Browse')
         }
         catch (e) {
+            console.log(e)
             alert(e.message || 'Something went Wrong!')
         }
     }
