@@ -87,7 +87,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                             <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
                                 <View>
                                     <View style={styles.marker_tooltip}>
-                                        <Text style={styles.marker_title}>{`${ initialLocation.latitude.toFixed(4) }, ${ initialLocation.longitude.toFixed(4) }`}</Text>
+                                        <Text style={styles.marker_title}>{`${ initialLocation?.latitude?.toFixed(4) }, ${ initialLocation?.longitude?.toFixed(4) }`}</Text>
                                         <Text>Coordinates of the selected location</Text>
                                     </View>
                                     <View style={styles.arrow_border} />

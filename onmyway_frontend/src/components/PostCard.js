@@ -79,6 +79,7 @@ export default function PostCard(data) {
                         <View style={[styles.imageContainer, { backgroundColor: theme.postCardInfo }]}>
                             <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')}
                                 style={styles.image} />
+                            <Text numberOfLines={1} style={{ color: theme.text }}>{data.data.owner.username}</Text>
                         </View>
                         <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>
                             <View style={{ flex: 1 }}>
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center'
     },
     halfInfoContainer: {
