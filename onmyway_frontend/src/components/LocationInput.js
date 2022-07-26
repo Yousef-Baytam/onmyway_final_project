@@ -1,15 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import TargetIcon from '../assets/icons/TargetIcon';
 
-export default function LocationInput({ text, color, action }) {
+export default function LocationInput({ text, color, action, value, setValue, placeholder, display }) {
 
     return (
-        <Pressable style={styles.inputContainer} onPress={action}>
+        <View style={styles.inputContainer}>
             <View style={[styles.indicator, { backgroundColor: color ?? '#000' }]}></View>
-            <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
-            <TargetIcon />
-        </Pressable>
+            {!display ?
+                <TextInput value={value} onChangeText={setValue} style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
+                :
+                <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
+            }
+            <Pressable onPress={action}>
+                <TargetIcon />
+            </Pressable>
+        </View>
     );
 }
 
@@ -35,3 +41,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#EAEAEA',
     }
 });
+
+LocationInput.defaultProps = {
+    display: false
+}
