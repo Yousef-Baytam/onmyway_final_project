@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 jwt_key = process.parsed.JWT_TOKEN_SECRET
 
 const issueJWT = (user) => {
-    const expIn = '1d'
+    const expIn = '365d'
 
     const payload = {
         id: user.id,
