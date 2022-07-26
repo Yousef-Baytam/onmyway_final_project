@@ -33,7 +33,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
         setPressedLocation({ lat: e.nativeEvent.coordinate.latitude, lng: e.nativeEvent.coordinate.longitude })
         setValue({
             ...value, geometry: {
-                type: 'Points',
+                type: 'Point',
                 coordinates: [e.nativeEvent.coordinate.latitude, e.nativeEvent.coordinate.longitude]
             }
         })
