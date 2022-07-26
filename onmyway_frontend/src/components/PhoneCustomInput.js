@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import PhoneInput from 'react-native-phone-input'
+import { useTheme } from '../context/ThemeContext';
 
 
 export default function PhoneCustomInput({ setPhone, phone, custom }) {
+    const { theme } = useTheme()
 
     const phoneInput = useRef()
 
@@ -15,6 +17,7 @@ export default function PhoneCustomInput({ setPhone, phone, custom }) {
                 initialValue={phone || '+961'}
                 onChangePhoneNumber={setPhone}
                 style={[styles.input, custom]}
+                textStyle={{ color: theme.text }}
                 autoFormat={true}
             />
         </View >

@@ -1,20 +1,22 @@
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { useTheme } from '../context/ThemeContext';
 import DatePicker from './DatePicker';
 import PhoneCustomInput from './PhoneCustomInput';
 import RadioButtonList from './RadioButtonList';
 
 export default function BodyElement({ keyWord, value, editMode, editType, keyboard, setValue, editDisplay }) {
+    const { theme } = useTheme()
 
     return (
         <View style={styles.container}>
             <View style={styles.keyStyle}>
-                <Text>{keyWord}</Text>
+                <Text style={{ color: theme.text }}>{keyWord}</Text>
             </View>
             <View style={styles.valueStyle}>
                 {
                     editMode ?
                         editType == 'input' ?
-                            <TextInput style={styles.input}
+                            <TextInput style={[styles.input, { color: theme.text }]}
                                 value={editDisplay}
                                 onChangeText={setValue}
                                 keyboardType={keyboard} />
@@ -26,7 +28,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                     paddingBottom: 0,
                                     marginBottom: 0,
                                     marginTop: 0,
-                                    paddingLeft: 0
+                                    paddingLeft: 0,
                                 }} />
                                 : editType == 'gender' ?
                                     <RadioButtonList checked={editDisplay} setChecked={setValue} custom={{
@@ -37,6 +39,7 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         paddingLeft: 0,
                                         flexDirection: "row",
                                         alignItems: 'center',
+                                        color: theme.text
                                     }} AuthInput={false} />
                                     : <DatePicker date={editDisplay} setDate={setValue} placeholder={value} custom={{
                                         width: '100%',
@@ -44,12 +47,13 @@ export default function BodyElement({ keyWord, value, editMode, editType, keyboa
                                         marginBottom: 0,
                                         marginTop: 0,
                                         paddingLeft: 0,
-                                        paddingBottom: 0
+                                        paddingBottom: 0,
+                                        color: theme.text
                                     }} AuthInput={false} />
-                        : <Text numberOfLines={1}>{value}</Text>
+                        : <Text numberOfLines={1} style={{ color: theme.text }}> {value}</Text>
                 }
             </View>
-        </View>
+        </View >
     );
 }
 
