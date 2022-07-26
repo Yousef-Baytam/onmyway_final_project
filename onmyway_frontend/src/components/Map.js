@@ -29,6 +29,10 @@ export default function Map({ showMapModal, setShowMapModal }) {
         })();
     }, []);
 
+    const handlePress = (e) => {
+        console.log(e.nativeEvent)
+    }
+
     return (
         <Modal
             animationType="slide"
@@ -52,7 +56,7 @@ export default function Map({ showMapModal, setShowMapModal }) {
                         })
                     }}
                     query={{
-                        key: 'YOUR API KEY',
+                        key: 'NO API KEY SAD',
                         language: 'en',
                         components: "country:LB",
                         types: '...',
@@ -63,7 +67,8 @@ export default function Map({ showMapModal, setShowMapModal }) {
                 {
                     locationLoaded &&
                     <MapView style={styles.map}
-                        initialRegion={initialLocation}>
+                        initialRegion={initialLocation}
+                        onPress={handlePress}>
                         {
                             searchedLocation &&
                             <Marker
