@@ -130,7 +130,7 @@ export default function Profile({ navigation }) {
         <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={() => { optionsDisplay && setOptionsDisplay(false) }}>
             {
                 optionsDisplay &&
-                <View style={[styles.userOptions, { backgroundColor: theme.light }]}>
+                <View style={[styles.userOptions, { backgroundColor: theme.postCard }]}>
                     <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
                         action={handleCreateChatRoom} />
                     <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
