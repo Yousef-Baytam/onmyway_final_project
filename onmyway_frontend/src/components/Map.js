@@ -7,8 +7,8 @@ import CustomButton from './CustomButton';
 
 export default function Map({ showMapModal, setShowMapModal, value, setValue, display }) {
     const [initialLocation, setInitailLocation] = useState({
-        latitude: 33.8938,
-        longitude: 35.5018,
+        latitude: display ? value.geometry.coordinates[0] : 33.8938,
+        longitude: display ? value.geometry.coordinates[1] : 35.5018,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     })
@@ -16,17 +16,21 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
     const [pressedLocation, setPressedLocation] = useState(null)
 
     useLayoutEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                alert('Permission to access location was denied')
-                return
-            }
+        if (!display)
+            (async () => {
+                let { status } = await Location.requestForegroundPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Permission to access location was denied')
+                    return
+                }
 
-            let location = await Location.getCurrentPositionAsync({});
-            setInitailLocation({ ...initialLocation, latitude: location.coords.latitude, longitude: location.coords.longitude });
+                let location = await Location.getCurrentPositionAsync({});
+                setInitailLocation({ ...initialLocation, latitude: location.coords.latitude, longitude: location.coords.longitude });
+                setLocationLoaded(true)
+            })();
+        else {
             setLocationLoaded(true)
-        })();
+        }
     }, []);
 
     const handlePress = (e) => {
@@ -70,7 +74,27 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                     }}
                     styles={{ container: styles.searchBar, listView: { backgroundColor: '#fff' } }}
                 /> */}
-                {
+                {display ?
+                    <MapView style={styles.map}
+                        initialRegion={initialLocation}>
+                        <Marker
+                            coordinate={{ latitude: initialLocation.latitude, longitude: initialLocation.longitude }}
+                            title="Grocery 1"
+                            description="This is the first grocery"
+                        >
+                            <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
+                                <View>
+                                    <View style={styles.marker_tooltip}>
+                                        <Text style={styles.marker_title}>{`${ initialLocation.latitude }, ${ initialLocation.longitude }`}</Text>
+                                        <Text>coordinates of the selected location</Text>
+                                    </View>
+                                    <View style={styles.arrow_border} />
+                                    <View style={styles.arrow} />
+                                </View>
+                            </Callout>
+                        </Marker>
+                    </MapView>
+                    :
                     locationLoaded &&
                     <MapView style={styles.map}
                         initialRegion={initialLocation}
