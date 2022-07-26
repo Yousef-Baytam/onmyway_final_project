@@ -23,9 +23,13 @@ function CustomDrawerContent(props) {
     const [showBlockedUsers, setShowBlockedUsers] = useState(false)
 
     const handleLogout = async () => {
-        storage.remove({ key: 'token' })
-        handleLoggedIn(false)
-        await updateNotificationStatus()
+        try {
+            storage.remove({ key: 'token' })
+            handleLoggedIn(false)
+            await updateNotificationStatus()
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
