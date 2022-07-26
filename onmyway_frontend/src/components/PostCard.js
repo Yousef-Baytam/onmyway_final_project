@@ -56,19 +56,19 @@ export default function PostCard(data) {
                     <View style={styles.infoConatiner}>
                         <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>
                             <View>
-                                <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
+                                <View style={[styles.sideBar, { backgroundColor: theme.bg == '#fff' ? '#92D293' : '#2F8130' }]}></View>
                             </View>
                             <View style={{ flex: 1 }}>
                                 <View style={styles.text}>
                                     <Text numberOfLines={1} style={{ color: theme.text }}>{data.data?.from?.location}</Text>
                                     <View style={{ marginHorizontal: 5 }}>
-                                        <PingIcon />
+                                        <PingIcon color={theme.bg == '#fff' ? '#005A9C' : '#A1CCE4'} />
                                     </View>
                                 </View>
                                 <View style={styles.text}>
                                     <Text style={{ color: theme.text }}>{date}</Text>
                                     <View style={{ marginHorizontal: 5 }}>
-                                        <CalendarsTickIcon />
+                                        <CalendarsTickIcon color={theme.bg == '#fff' ? '#005A9C' : '#A1CCE4'} />
                                     </View>
                                 </View>
                                 <View style={styles.text}>
@@ -85,14 +85,14 @@ export default function PostCard(data) {
                             <View style={{ flex: 1 }}>
                                 <View style={styles.text}>
                                     <View style={{ marginHorizontal: 5 }}>
-                                        <PingIcon />
+                                        <PingIcon color={theme.bg == '#fff' ? '#005A9C' : '#A1CCE4'} />
                                     </View>
                                     <Text numberOfLines={1} style={{ color: theme.text }}>{data.data?.to?.location}</Text>
                                 </View>
                                 {data.data.returnTime != 'Invalid date' ?
                                     <View style={styles.text}>
                                         <View style={{ marginHorizontal: 5 }}>
-                                            <CalendarsTickIcon />
+                                            <CalendarsTickIcon color={theme.bg == '#fff' ? '#005A9C' : '#A1CCE4'} />
                                         </View>
                                         <Text style={{ color: theme.text }}>{date}</Text>
                                     </View>
@@ -104,7 +104,7 @@ export default function PostCard(data) {
                                 </View>
                             </View>
                             <View>
-                                <View style={[styles.sideBar, { backgroundColor: '#D2686E' }]}></View>
+                                <View style={[styles.sideBar, { backgroundColor: theme.bg == '#fff' ? '#D2686E' : '#97262C' }]}></View>
                             </View>
                         </View>
                     </View>
