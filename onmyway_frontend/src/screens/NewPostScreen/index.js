@@ -47,7 +47,6 @@ export default function NewPost({ navigation }) {
             alert('Departure time not selected')
             return
         }
-        console.log(to)
         try {
             await postSchema.validate({
                 from: from,
@@ -65,7 +64,6 @@ export default function NewPost({ navigation }) {
             navigation.navigate('Browse')
         }
         catch (e) {
-            console.log(e)
             alert(e.message || 'Something went Wrong!')
         }
     }
