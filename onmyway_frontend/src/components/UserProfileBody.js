@@ -9,7 +9,7 @@ import TickIcon from '../assets/icons/TickIcon';
 import { updateUserInfo } from '../controllers/userController';
 import { useUser } from '../context/UserContext';
 import { updateUserSchema } from '../constants/yupValidations';
-
+import { useTheme } from '../context/ThemeContext';
 export default function UserProfileBody({ user, display }) {
     const [editMode, setEditMode] = useState(false)
     const [username, setUsername] = useState(user.username)
@@ -19,6 +19,7 @@ export default function UserProfileBody({ user, display }) {
     const [date, setDate] = useState(new Date(user.dob))
     const [car, setCar] = useState(user.carDetails)
     const [musicPrefrences, setMusicPrefrences] = useState(user.musicPrefrences)
+    const { theme } = useTheme()
 
     const { handleUser } = useUser()
 
@@ -54,7 +55,7 @@ export default function UserProfileBody({ user, display }) {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme.postCard }]}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <BodyElement keyWord={'Username'} value={user.username} editMode={editMode} editType={'input'} setValue={setUsername} editDisplay={username} />
                 <BodyElement keyWord={'Email'} value={user.email} editMode={editMode} editType={'input'} setValue={setEmail} editDisplay={email} />
