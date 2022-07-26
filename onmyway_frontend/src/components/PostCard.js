@@ -53,9 +53,8 @@ export default function PostCard(data) {
         <View style={styles.container}>
             <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', data.data) }} >
                 <View style={[styles.cardContainer, { backgroundColor: theme.postCard }]}>
-
                     <View style={styles.infoConatiner}>
-                        <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA', backgroundColor: theme.postCardInfo }]}>
+                        <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>
                             <View>
                                 <View style={[styles.sideBar, { backgroundColor: '#92D293' }]}></View>
                             </View>
@@ -77,7 +76,7 @@ export default function PostCard(data) {
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.imageContainer}>
+                        <View style={[styles.imageContainer, { backgroundColor: theme.postCardInfo }]}>
                             <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')}
                                 style={styles.image} />
                         </View>
@@ -141,10 +140,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     image: {
-        borderRadius: 10,
-        marginLeft: 5,
-        width: '100%',
-        height: 110
+        width: 70,
+        borderRadius: 35,
+        height: 70
     },
     imageContainer: {
         flex: 1,
