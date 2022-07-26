@@ -122,7 +122,12 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                         }
                     </MapView>
                 }
-                <CustomButton custom={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1 }} text={'Select'} action={() => setShowMapModal(false)} />
+                {
+                    display ?
+                        <CustomButton custom={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1 }} text={'Close'} action={() => setShowMapModal(false)} />
+                        :
+                        <CustomButton custom={{ position: 'absolute', bottom: 20, right: 20, zIndex: 1 }} text={'Select'} action={() => setShowMapModal(false)} />
+                }
             </View>
         </Modal>
     );
