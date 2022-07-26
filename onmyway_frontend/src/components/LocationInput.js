@@ -18,7 +18,7 @@ export default function LocationInput({ text, color, value, setValue, placeholde
             <Pressable onPress={() => setShowMapModal(true)}>
                 <TargetIcon />
             </Pressable>
-            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} />
+            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} value={value} setValue={setValue} display={false} />
         </View>
     );
 }

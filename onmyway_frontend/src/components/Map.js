@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import CustomButton from './CustomButton';
 
-export default function Map({ showMapModal, setShowMapModal }) {
+export default function Map({ showMapModal, setShowMapModal, value, setValue, display }) {
     const [initialLocation, setInitailLocation] = useState({
         latitude: 33.8938,
         longitude: 35.5018,
@@ -143,3 +143,7 @@ const styles = StyleSheet.create({
         width: '90%'
     }
 });
+
+Map.defaultProps = {
+    display: false
+}
