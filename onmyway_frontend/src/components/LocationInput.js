@@ -8,7 +8,7 @@ export default function LocationInput({ text, color, action, value, setValue, pl
         <View style={styles.inputContainer}>
             <View style={[styles.indicator, { backgroundColor: color ?? '#000' }]}></View>
             {!display ?
-                <TextInput value={value} onChangeText={setValue} style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
+                <TextInput value={value} onChangeText={setValue} style={[styles.textContainerInput, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
                 :
                 <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
             }
@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
     textContainer: {
         width: '100%',
         padding: 5,
+        paddingLeft: 10,
+        borderRadius: 10,
+        backgroundColor: '#EAEAEA',
+    },
+    textContainerInput: {
+        width: '100%',
         paddingLeft: 10,
         borderRadius: 10,
         backgroundColor: '#EAEAEA',
