@@ -51,7 +51,9 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                 setShowMapModal(!showMapModal);
             }}>
             <View style={styles.container}>
-                {/* <GooglePlacesAutocomplete
+                {/* Needs google places api key to work/ plus google geocoding api key to be able to reverse geocode and get
+                the location name baised on the press location of the user */}
+                <GooglePlacesAutocomplete
                     placeholder='Search'
                     fetchDetails={true}
                     GooglePlacesSearchQuery={{
@@ -73,7 +75,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                         location: `${ initialLocation.latitude, initialLocation.longitude }`
                     }}
                     styles={{ container: styles.searchBar, listView: { backgroundColor: '#fff' } }}
-                /> */}
+                />
                 {display ?
                     <MapView style={styles.map}
                         initialRegion={initialLocation}>
