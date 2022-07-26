@@ -14,6 +14,7 @@ import storage from '../storage/asyncStorage';
 import { ParentStack } from './ParentStack';
 import BlockedUsersModal from '../components/BlockedUsersModal';
 import { useState } from 'react';
+import { updateNotificationStatus } from '../controllers/userController';
 
 function CustomDrawerContent(props) {
     const { handleLoggedIn } = useLoggedIn()
@@ -24,6 +25,7 @@ function CustomDrawerContent(props) {
     const handleLogout = async () => {
         storage.remove({ key: 'token' })
         handleLoggedIn(false)
+        await updateNotificationStatus()
     }
 
     return (
