@@ -10,7 +10,6 @@ import ShareExpenses from '../../components/ShareExpenses';
 import TimePicker from '../../components/TimePicker';
 import { useUser } from '../../context/UserContext';
 import { addPost } from '../../controllers/postsController';
-import Map from '../../components/Map'
 import { postSchema } from '../../constants/yupValidations';
 import moment from 'moment';
 import { useTheme } from '../../context/ThemeContext';
@@ -29,7 +28,6 @@ export default function NewPost({ navigation }) {
     const [preferredGender, setPreferredGender] = useState('any')
     const [shareExpenses, setShareExpences] = useState(true)
     const [musicPrefrence, setMusicPrefrence] = useState(user.musicPrefrences || 'Any')
-    const [showMapModal, setShowMapModal] = useState(false)
     const [from, setFrom] = useState({
         location: null, geometry: {
             type: 'Point',
@@ -73,9 +71,9 @@ export default function NewPost({ navigation }) {
     return (
         <View style={[styles.container, { backgroundColor: theme.bg }]}>
             <View style={styles.view1}>
-                <LocationInput text={'From'} color={'#92D293'} action={() => setShowMapModal(true)}
+                <LocationInput text={'From'} color={'#92D293'}
                     value={from} setValue={setFrom} placeholder={'From'} />
-                <LocationInput text={'To'} color={'#D2686E'} action={() => setShowMapModal(true)}
+                <LocationInput text={'To'} color={'#D2686E'}
                     value={to} setValue={setTo} placeholder={'To'} />
             </View>
             <View style={styles.view2}>
@@ -96,7 +94,6 @@ export default function NewPost({ navigation }) {
             <View style={{ marginTop: '10%' }}>
                 <CustomButton text={'Confirm'} action={handleAddPost} />
             </View>
-            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} />
         </View>
     );
 }

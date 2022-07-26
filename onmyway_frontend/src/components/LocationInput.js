@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import TargetIcon from '../assets/icons/TargetIcon';
+import Map from './Map'
 
-export default function LocationInput({ text, color, action, value, setValue, placeholder, display }) {
+export default function LocationInput({ text, color, value, setValue, placeholder, display }) {
+    const [showMapModal, setShowMapModal] = useState(false)
 
     return (
         <View style={styles.inputContainer}>
@@ -12,9 +15,10 @@ export default function LocationInput({ text, color, action, value, setValue, pl
                 :
                 <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
             }
-            <Pressable onPress={action}>
+            <Pressable onPress={() => setShowMapModal(true)}>
                 <TargetIcon />
             </Pressable>
+            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} />
         </View>
     );
 }
