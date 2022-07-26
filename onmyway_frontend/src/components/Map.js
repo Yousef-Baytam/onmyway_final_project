@@ -30,7 +30,7 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
     }, []);
 
     const handlePress = (e) => {
-        console.log(e.nativeEvent.coordinate.latitude, e.nativeEvent.coordinate.longitude)
+        setPressedLocation({ lat: e.nativeEvent.coordinate.latitude, lng: e.nativeEvent.coordinate.longitude })
         setValue({
             ...value, geometry: {
                 type: 'Points',
@@ -78,15 +78,15 @@ export default function Map({ showMapModal, setShowMapModal, value, setValue, di
                         {
                             pressedLocation &&
                             <Marker
-                                coordinate={{ latitude: searchedLocation?.lat, longitude: searchedLocation?.lng }}
+                                coordinate={{ latitude: pressedLocation?.lat, longitude: pressedLocation?.lng }}
                                 title="Grocery 1"
                                 description="This is the first grocery"
                             >
                                 <Callout tooltip onPress={() => navigation.navigate('Grocery')}>
                                     <View>
                                         <View style={styles.marker_tooltip}>
-                                            <Text style={styles.marker_title}>searched location</Text>
-                                            <Text>data from searched location</Text>
+                                            <Text style={styles.marker_title}>{`${ pressedLocation.lat }, ${ pressedLocation.lng }`}</Text>
+                                            <Text>coordinates of the selected location</Text>
                                         </View>
                                         <View style={styles.arrow_border} />
                                         <View style={styles.arrow} />
