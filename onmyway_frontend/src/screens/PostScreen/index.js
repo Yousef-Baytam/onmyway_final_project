@@ -80,8 +80,8 @@ export default function Post({ navigation }) {
     return (
         <View style={[styles.container, { backgroundColor: theme.bg }]}>
             <View style={styles.view1}>
-                <LocationInput text={'From'} color={'#92D293'} />
-                <LocationInput text={'To'} color={'#D2686E'} />
+                <LocationInput value={data.from} color={'#92D293'} display={true} />
+                <LocationInput value={data.to} color={'#D2686E'} display={true} />
             </View>
             <View style={styles.view2}>
                 <View style={{ height: 60, width: '100%', marginTop: 20 }}>
