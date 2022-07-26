@@ -11,7 +11,7 @@ export default function LocationInput({ text, color, value, setValue, placeholde
         <View style={styles.inputContainer}>
             <View style={[styles.indicator, { backgroundColor: color ?? '#000' }]}></View>
             {!display ?
-                <TextInput value={value} onChangeText={setValue} style={[styles.textContainerInput, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
+                <TextInput value={value} onChangeText={(e) => { setValue({ ...value, location: e }) }} style={[styles.textContainerInput, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
                 :
                 <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
             }

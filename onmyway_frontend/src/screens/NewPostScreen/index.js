@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
 import CustomButton from '../../components/CustomButton';
