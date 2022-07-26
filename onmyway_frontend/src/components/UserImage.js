@@ -5,10 +5,13 @@ import { updateImage } from '../controllers/userController';
 import PressableText from './PressableText';
 import { useState } from 'react';
 import CamModal from './CamModal';
+import theme from '../constants/theme';
+import { useTheme } from '../context/ThemeContext';
 
 export default function UserImage({ image, setImage, handleUser, setVisible, visible, display }) {
     const [coordinates, setCoordinates] = useState({})
     const [modalVisible, setModalVisible] = useState(false)
+    const { theme } = useTheme()
 
     const handleImageUpload = async (image) => {
         try {
@@ -52,9 +55,9 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                         <Pressable onPress={toggleImageBox}>
                             <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                         </Pressable>
-                        <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0 }]}>
-                            <PressableText black={true} text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
-                            <PressableText black={true} text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
+                        <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0, backgroundColor: theme.postCardInfo }]}>
+                            <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} />
+                            <PressableText text={'Cemera'} custom={{ width: '100%', height: '40%' }} action={() => setModalVisible(true)} />
                         </View>
                         <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
                     </>
