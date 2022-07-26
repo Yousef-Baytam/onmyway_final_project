@@ -16,7 +16,7 @@ export default function LocationInput({ text, color, value, setValue, placeholde
                 <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{text}</Text>
             }
             <Pressable onPress={() => setShowMapModal(true)}>
-                <TargetIcon />
+                <TargetIcon color={value?.geometry?.coordinates ? '#005A9C' : '#A1CCE4'} />
             </Pressable>
             <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} value={value} setValue={setValue} display={false} />
         </View>
