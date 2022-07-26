@@ -53,9 +53,7 @@ export default function PostCard(data) {
         <View style={styles.container}>
             <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', data.data) }} >
                 <View style={[styles.cardContainer, { backgroundColor: theme.postCard }]}>
-                    <View style={{ width: '33.333%' }}>
-                        <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')} style={styles.image} />
-                    </View>
+
                     <View style={styles.infoConatiner}>
                         <View style={[styles.halfInfoContainer, { borderRightWidth: 1, borderRightColor: '#EAEAEA', backgroundColor: theme.postCardInfo }]}>
                             <View>
@@ -78,6 +76,10 @@ export default function PostCard(data) {
                                     <Text style={{ color: theme.text }}>{data.data.departureTime}</Text>
                                 </View>
                             </View>
+                        </View>
+                        <View style={styles.imageContainer}>
+                            <Image source={data.data.owner.hasOwnProperty('image') && Object.keys(data.data.owner.image).length ? { uri: data.data.owner.image.url } : require('../assets/blank-profile.webp')}
+                                style={styles.image} />
                         </View>
                         <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>
                             <View style={{ flex: 1 }}>
@@ -130,10 +132,9 @@ const styles = StyleSheet.create({
     },
     infoConatiner: {
         height: 110,
-        width: '62.333%',
+        width: '96%',
         backgroundColor: '#fff',
-        marginLeft: 10,
-        marginRight: 5,
+        marginHorizontal: 5,
         borderRadius: 10,
         overflow: 'hidden',
         justifyContent: 'space-between',
@@ -145,8 +146,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 110
     },
+    imageContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     halfInfoContainer: {
-        width: '50%',
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -154,7 +160,7 @@ const styles = StyleSheet.create({
     sideBar: {
         height: '100%',
         backgroundColor: '#000',
-        width: 8,
+        width: 4,
     },
     text: {
         flexDirection: 'row',
