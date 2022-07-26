@@ -63,7 +63,7 @@ export default function PostCard(data) {
                             </View>
                             <View style={{ flex: 1 }}>
                                 <View style={styles.text}>
-                                    <Text numberOfLines={1} style={{ color: theme.text }}>Jbeil</Text>
+                                    <Text numberOfLines={1} style={{ color: theme.text }}>{data.data?.from?.location}</Text>
                                     <View style={{ marginHorizontal: 5 }}>
                                         <PingIcon />
                                     </View>
@@ -85,7 +85,7 @@ export default function PostCard(data) {
                                     <View style={{ marginHorizontal: 5 }}>
                                         <PingIcon />
                                     </View>
-                                    <Text numberOfLines={1} style={{ color: theme.text }}>Beirut</Text>
+                                    <Text numberOfLines={1} style={{ color: theme.text }}>{data.data?.to?.location}</Text>
                                 </View>
                                 {data.data.returnTime != 'Invalid date' ?
                                     <View style={styles.text}>
