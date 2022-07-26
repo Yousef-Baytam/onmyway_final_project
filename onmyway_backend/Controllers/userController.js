@@ -78,3 +78,13 @@ module.exports.storeToken = async (req, res, next) => {
     }, { new: true })
     return res.send({ "success": true, "results": user })
 }
+
+module.exports.updateStatus = async (req, res, next) => {
+    const user = req.user
+    let result = await User.findByIdAndUpdate(user._id, {
+        notification: {
+            status: 'inactive',
+        }
+    }, { new: true })
+    return res.send({ "success": true, "results": user })
+}
