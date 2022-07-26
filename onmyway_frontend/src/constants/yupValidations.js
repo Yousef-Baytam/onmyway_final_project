@@ -21,8 +21,20 @@ let updateUserSchema = yup.object().shape({
 })
 
 let postSchema = yup.object().shape({
-    // from: yup.string().required(),
-    // to: yup.string().required(),
+    from: {
+        Location: yup.string().required(),
+        geometry: {
+            type: yup.string().required(),
+            coordinates: yup.array().min(2).required()
+        }
+    },
+    to: {
+        Location: yup.string().required(),
+        geometry: {
+            type: yup.string().required(),
+            coordinates: yup.array().min(2).required()
+        }
+    },
     date: yup.date().min(
         moment().add(1, 'days'),
         "Ride date should be starting tomorrow or on a schedule"
