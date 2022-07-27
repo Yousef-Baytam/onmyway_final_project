@@ -16,7 +16,7 @@ export default function UserProfileHeaderButton({ action, image }) {
                             :
                             <UserHeaderIcon />
                         :
-                        Object.keys(user.image).length ?
+                        user?.image && Object.keys(user.image).length ?
                             <Image style={styles.image} source={{ uri: user.image.url }} />
                             :
                             <UserHeaderIcon />
