@@ -26,7 +26,7 @@ const ChatRoomCard = ({ data, action }) => {
                 {
                     data.lastMessage.text ?
                         <View style={styles.mesasgeInfoWrapper}>
-                            <Text numberOfLines={1} style={styles.message}>{data.lastMessage.text}</Text>
+                            <Text numberOfLines={1} style={[styles.message, { maxWidth: 200 }]}>{data.lastMessage.text}</Text>
                             <Text numberOfLines={1} style={styles.message}>{
                                 moment(data.lastMessage.createdAt).format('dddd') != moment().format('dddd') ?
                                     moment(data.lastMessage.createdAt).format('MMMM Do')
