@@ -1,9 +1,12 @@
 import { StyleSheet, View, TextInput, Modal } from 'react-native';
+import { useTheme } from '../context/ThemeContext';
 import CustomButton from './CustomButton';
 import StarRating from './StarRating';
 
 
 export default function NewReviewModal({ showReviewModal, setShowReviewModal, handleUpdateReview, handleSubmitReview, review, setReview, newRating, loggedUserReview, setNewRating }) {
+
+    const { theme } = useTheme()
 
     return (
         <Modal
@@ -12,9 +15,9 @@ export default function NewReviewModal({ showReviewModal, setShowReviewModal, ha
             onRequestClose={() => {
                 setShowReviewModal(!showReviewModal);
             }}>
-            <View style={styles.reviewContainer}>
+            <View style={[styles.reviewContainer, { backgroundColor: theme.bg }]}>
                 <StarRating rating={newRating} setRating={setNewRating} />
-                <TextInput style={styles.input}
+                <TextInput style={[styles.input, { backgroundColor: theme.postCard, color: theme.text }]}
                     onChangeText={setReview}
                     value={review}
                     multiline={true}

@@ -26,7 +26,7 @@ export default function StarRating({ rating, display, setRating, review, custom 
                     type='custom'
                     startingValue={rating}
                     ratingColor='#A1CCE4'
-                    tintColor='#fff'
+                    tintColor={theme.bg}
                     ratingBackgroundColor='#EAEAEA'
                     imageSize={25}
                     onFinishRating={onFinishRating}
