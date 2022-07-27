@@ -46,7 +46,7 @@ export default function BlockedUsersModal({ showBlockedUsers, setShowBlockedUser
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => item._id}
                 />
-                    : <Text>No Blocked Users!</Text>
+                    : <Text style={{ color: theme.text }}>No Blocked Users!</Text>
                 }
             </View>
         </Modal >
