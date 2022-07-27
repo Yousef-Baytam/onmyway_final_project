@@ -18,9 +18,15 @@ export default function FilterBar({ setFilter, posts, filter }) {
 
 
     const handleFilter = () => {
-        if (posts && dateFilter != moment()) {
-            setFilter(posts.filter((i) => !i.repeat && moment(i.date).format('DD MM YYYY') == moment(dateFilter).format('DD MM YYYY')))
-        }
+        let arr = posts
+        if (posts && dateFilter != moment())
+            arr = arr.filter((i) => (!i.repeat && moment(i.date).format('DD MM YYYY') == moment(dateFilter).format('DD MM YYYY'))
+                || (i.repeat && JSON.parse(i.days)[`${ moment(dateFilter).format('dddd').toLowerCase() }`]))
+        if (posts && from.location.length)
+            arr = arr.filter((e) => e?.from?.location?.toLowerCase().includes(from?.location.toLowerCase()))
+        if (posts && to.location.length)
+            arr = arr.filter((e) => e?.to?.location?.toLowerCase().includes(to?.location.toLowerCase()))
+        setFilter(arr)
     }
 
     return (
@@ -88,6 +94,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: '100%',
+        marginLeft: 10,
         height: '10%',
         alignItems: 'center',
         justifyContent: 'center'
