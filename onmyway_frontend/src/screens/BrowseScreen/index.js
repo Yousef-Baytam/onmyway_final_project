@@ -7,6 +7,7 @@ import { getPost } from '../../controllers/postsController'
 import { useTheme } from '../../context/ThemeContext';
 import { useFocusEffect } from '@react-navigation/native';
 import { useUser } from '../../context/UserContext';
+import { handleSortPosts } from './helper';
 
 export default function Browse({ navigation }) {
     const { theme } = useTheme()
@@ -18,7 +19,8 @@ export default function Browse({ navigation }) {
     const handleGetPosts = async () => {
         try {
             const res = await getPost()
-            setPosts(res.results.filter((e) => ((e.owner._id != user._id) && !user.blocked.includes(e.owner._id) && !e.owner.blocked.includes(user._id))))
+            let arr = handleSortPosts(res.results)
+            setPosts(arr.filter((e) => ((e.owner._id != user._id) && !user.blocked.includes(e.owner._id) && !e.owner.blocked.includes(user._id))))
         } catch (e) { console.log(e) }
     }
 
