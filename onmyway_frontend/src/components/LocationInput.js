@@ -15,7 +15,7 @@ export default function LocationInput({ text, color, value, setValue, placeholde
             {!display ?
                 <TextInput value={value.location} onChangeText={(e) => { setValue({ ...value, location: e }) }} style={[styles.textContainerInput, { color: value != 'From' && value != 'To' ? theme.text : 'rgba(0,0,0,0.2)', backgroundColor: theme.postCard }]} placeholder={placeholder} />
                 :
-                <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)', backgroundColor: theme.text }]}>{value.location}</Text>
+                <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? theme.text : 'rgba(0,0,0,0.2)', backgroundColor: theme.postCard }]}>{value.location}</Text>
             }
             <Pressable onPress={() => setShowMapModal(true)}>
                 <TargetIcon color={value?.geometry?.coordinates ? '#005A9C' : '#A1CCE4'} />
