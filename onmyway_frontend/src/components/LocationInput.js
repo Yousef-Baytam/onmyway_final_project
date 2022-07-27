@@ -4,7 +4,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import TargetIcon from '../assets/icons/TargetIcon';
 import Map from './Map'
 
-export default function LocationInput({ text, color, value, setValue, placeholder, display }) {
+export default function LocationInput({ text, color, value, setValue, placeholder, display, noMap }) {
     const [showMapModal, setShowMapModal] = useState(false)
 
     return (
@@ -18,7 +18,10 @@ export default function LocationInput({ text, color, value, setValue, placeholde
             <Pressable onPress={() => setShowMapModal(true)}>
                 <TargetIcon color={value?.geometry?.coordinates ? '#005A9C' : '#A1CCE4'} />
             </Pressable>
-            <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} value={value} setValue={setValue} display={display} />
+            {
+                !noMap &&
+                <Map showMapModal={showMapModal} setShowMapModal={setShowMapModal} value={value} setValue={setValue} display={display} />
+            }
         </View>
     );
 }
@@ -53,5 +56,6 @@ const styles = StyleSheet.create({
 });
 
 LocationInput.defaultProps = {
-    display: false
+    display: false,
+    noMap: false
 }

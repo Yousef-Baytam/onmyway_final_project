@@ -12,6 +12,8 @@ import { useTheme } from '../context/ThemeContext';
 export default function FilterBar({ setFilter, posts, filter }) {
     const { theme } = useTheme()
     const [dateFilter, setDateFilter] = useState(new Date())
+    const [from, setFrom] = useState({ location: '' })
+    const [to, setTo] = useState({ location: '' })
     const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
 
 
@@ -39,10 +41,10 @@ export default function FilterBar({ setFilter, posts, filter }) {
                     setShowFIlterDropDown(!showFIlterDropDown)
                 }}>
                     <View style={styles.textConstainer}>
-                        <Text style={{ color: '#92D293', fontWeight: 'bold' }}>From</Text>
+                        <Text style={{ color: '#92D293', fontWeight: 'bold' }}>{from.location.length ? from.location : 'From'}</Text>
                     </View>
                     <View style={styles.textConstainer}>
-                        <Text style={{ color: '#D2686E', fontWeight: 'bold' }}>To</Text>
+                        <Text style={{ color: '#D2686E', fontWeight: 'bold' }}>{to.location.length ? to.location : 'To'}</Text>
                     </View>
                     <View style={styles.icon}>
                         <ArrowHeadIcon up={showFIlterDropDown ? true : false} />
@@ -65,8 +67,8 @@ export default function FilterBar({ setFilter, posts, filter }) {
                 </View>
                 <View style={[styles.view1, { backgroundColor: theme.bg }]}>
                     <View>
-                        <LocationInput text={'From'} color={'#92D293'} />
-                        <LocationInput text={'To'} color={'#D2686E'} />
+                        <LocationInput text={'From'} color={'#92D293'} value={from} setValue={setFrom} noMap={true} />
+                        <LocationInput text={'To'} color={'#D2686E'} value={to} setValue={setTo} noMap={true} />
                     </View>
                     <View>
                         <CustomButton text={'Apply'} custom={{ width: '100%', transform: [{ scale: 2 }] }} action={handleFilter} />
