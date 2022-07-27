@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, LayoutAnimation } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import ArrowHeadIcon from '../assets/icons/ArrowHeadIcon';
@@ -15,7 +15,6 @@ export default function FilterBar({ setFilter, posts, filter }) {
     const [from, setFrom] = useState({ location: '' })
     const [to, setTo] = useState({ location: '' })
     const [showFIlterDropDown, setShowFIlterDropDown] = useState(false)
-
 
     const handleFilter = () => {
         let arr = posts
@@ -40,7 +39,7 @@ export default function FilterBar({ setFilter, posts, filter }) {
                         :
                         <Text style={{ color: theme.text }}>Filters</Text>
                 }
-                <Pressable style={styles.filtersContainer} onPress={() => {
+                <Pressable style={[styles.filtersContainer, { backgroundColor: theme.postCard }]} onPress={() => {
                     LayoutAnimation.configureNext(
                         LayoutAnimation.create(150, 'easeInEaseOut', 'opacity')
                     )
@@ -60,7 +59,7 @@ export default function FilterBar({ setFilter, posts, filter }) {
             <View style={[styles.dropPannel, { maxHeight: showFIlterDropDown ? '100%' : 0, backgroundColor: theme.bg }]}>
                 <View style={[styles.topBarContainer, { backgroundColor: theme.bg }]}>
                     <Text style={{ color: theme.text }}>Date   </Text>
-                    <View style={[styles.filtersContainer, { height: 38, marginBottom: 0, paddingLeft: 0 }]}>
+                    <View style={[styles.filtersContainer, { height: 38, marginBottom: 0, paddingLeft: 0, backgroundColor: theme.postCard }]}>
                         <DatePicker date={dateFilter} setDate={setDateFilter} placeholder={'Ride Date'} custom={{
                             width: '100%',
                             borderColor: 'rgba(0,0,0, 0.7)',

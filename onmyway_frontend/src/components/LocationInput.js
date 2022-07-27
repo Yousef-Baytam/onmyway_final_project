@@ -2,18 +2,20 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import TargetIcon from '../assets/icons/TargetIcon';
+import { useTheme } from '../context/ThemeContext';
 import Map from './Map'
 
 export default function LocationInput({ text, color, value, setValue, placeholder, display, noMap }) {
     const [showMapModal, setShowMapModal] = useState(false)
+    const { theme } = useTheme()
 
     return (
         <View style={styles.inputContainer}>
             <View style={[styles.indicator, { backgroundColor: color ?? '#000' }]}></View>
             {!display ?
-                <TextInput value={value} onChangeText={(e) => { setValue({ ...value, location: e }) }} style={[styles.textContainerInput, { color: value != 'From' && value != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]} placeholder={placeholder} />
+                <TextInput value={value.location} onChangeText={(e) => { setValue({ ...value, location: e }) }} style={[styles.textContainerInput, { color: value != 'From' && value != 'To' ? theme.text : 'rgba(0,0,0,0.2)', backgroundColor: theme.postCard }]} placeholder={placeholder} />
                 :
-                <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)' }]}>{value.location}</Text>
+                <Text style={[styles.textContainer, { color: text != 'From' && text != 'To' ? '#000' : 'rgba(0,0,0,0.2)', backgroundColor: theme.text }]}>{value.location}</Text>
             }
             <Pressable onPress={() => setShowMapModal(true)}>
                 <TargetIcon color={value?.geometry?.coordinates ? '#005A9C' : '#A1CCE4'} />
