@@ -1,6 +1,6 @@
 import Svg, { Path, Circle } from 'react-native-svg';
 
-export default function Camera2Icon() {
+export default function GalleryIcon() {
 
     return (
         <Svg

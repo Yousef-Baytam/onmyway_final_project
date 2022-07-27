@@ -8,6 +8,7 @@ import CamModal from './CamModal';
 import theme from '../constants/theme';
 import { useTheme } from '../context/ThemeContext';
 import Camera2Icon from '../assets/icons/Camera2Icon';
+import GalleryIcon from '../assets/icons/GalleryIcon';
 
 export default function UserImage({ image, setImage, handleUser, setVisible, visible, display }) {
     const [coordinates, setCoordinates] = useState({})
@@ -56,8 +57,10 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                         <Pressable onPress={toggleImageBox}>
                             <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                         </Pressable>
-                        <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0, backgroundColor: theme.postCardInfo }]}>
-                            {/* <PressableText text={'Gallery'} custom={{ width: '100%', height: '40%' }} action={pickImage} /> */}
+                        <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0, backgroundColor: theme.postCardInfo, justifyContent: 'space-evenly' }]}>
+                            <Pressable onPress={pickImage}>
+                                <GalleryIcon />
+                            </Pressable>
                             <Pressable onPress={() => setModalVisible(true)}>
                                 <Camera2Icon />
                             </Pressable>
@@ -83,6 +86,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
+        overflow: 'hidden'
     }
 });
 
