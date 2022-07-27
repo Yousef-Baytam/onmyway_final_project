@@ -37,7 +37,7 @@ export default function Register({ navigation }) {
 
     const handleRegister = async () => {
         try {
-            userSchema.validate({
+            await userSchema.validate({
                 username: username,
                 email: email,
                 dob: date,
@@ -80,7 +80,7 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <GenderIcon />
-                        <RadioButtonList checked={gender} setChecked={setGender} items={items} />
+                        <RadioButtonList checked={gender} setChecked={setGender} items={items} notThemed={true} />
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />

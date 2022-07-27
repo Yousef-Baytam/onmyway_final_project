@@ -4,7 +4,7 @@ import { RadioButton } from 'react-native-paper';
 import { useTheme } from '../context/ThemeContext';
 
 
-export default function RadioButtonList({ items, checked, setChecked, AuthInput, custom }) {
+export default function RadioButtonList({ items, checked, setChecked, AuthInput, custom, notThemed }) {
     const { theme } = useTheme()
 
     const handleButtons = () => {
@@ -13,7 +13,7 @@ export default function RadioButtonList({ items, checked, setChecked, AuthInput,
                 {items.map((i) => {
                     return (
                         <View key={i.label} style={{ flexDirection: 'row', alignItems: 'center', height: 20 }}>
-                            <Text style={{ color: theme.text }}>{i.label}</Text>
+                            <Text style={{ color: notThemed ? '#000' : theme.text }}>{i.label}</Text>
                             <RadioButton
                                 color='#005A9C'
                                 value={i.value}
@@ -59,5 +59,6 @@ RadioButtonList.defaultProps = {
         { label: 'F', value: 'female' },
         { label: 'O', value: 'other' }
     ],
-    custom: {}
+    custom: {},
+    notThemed: false
 }
