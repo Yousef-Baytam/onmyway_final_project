@@ -58,11 +58,13 @@ export default function UserImage({ image, setImage, handleUser, setVisible, vis
                             <Image style={styles.image} source={image ? { uri: image } : require('../assets/blank-profile.webp')} />
                         </Pressable>
                         <View style={[styles.imageViewBox, coordinates, { maxHeight: visible ? '100%' : 0, backgroundColor: theme.postCardInfo, justifyContent: 'space-evenly' }]}>
-                            <Pressable onPress={pickImage}>
+                            <Pressable onPress={pickImage} style={styles.icon}>
                                 <GalleryIcon />
+                                <Text style={{ color: theme.text }}>Gallery</Text>
                             </Pressable>
-                            <Pressable onPress={() => setModalVisible(true)}>
+                            <Pressable onPress={() => setModalVisible(true)} style={styles.icon}>
                                 <Camera2Icon />
+                                <Text style={{ color: theme.text }}>Camera</Text>
                             </Pressable>
                         </View>
                         <CamModal setModalVisible={setModalVisible} modalVisible={modalVisible} handleImageUpload={handleImageUpload} />
@@ -87,6 +89,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10,
         overflow: 'hidden'
+    },
+    icon: {
+        width: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 });
 
