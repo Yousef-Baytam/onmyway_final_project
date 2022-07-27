@@ -4,9 +4,9 @@ export default function Camera2Icon() {
 
     return (
         <Svg
-            width={50}
-            height={50}
-            viewBox="0 0 1000 1000"
+            width={25}
+            height={25}
+            viewBox="0 0 505 505"
             fill='#858585'
         >
             <Path
