@@ -5,10 +5,12 @@ import CancelIcon from '../assets/icons/CancelIcon'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { updateJoinRequestStatus } from '../controllers/postsController'
 import { useNavigation } from '@react-navigation/native'
+import theme from '../constants/theme'
+import { useTheme } from '../context/ThemeContext'
 
 const NotificationList = ({ data, action }) => {
     const navigation = useNavigation()
-    console.log(data)
+    const { theme } = useTheme()
 
     const handleDecline = async () => {
         try {
@@ -32,7 +34,7 @@ const NotificationList = ({ data, action }) => {
         <View style={styles.container}>
             <Pressable style={styles.section} onPress={() => navigation.navigate('Profile', data.data.joined)}>
                 <Image style={styles.image} source={data.data.joined?.image ? { uri: data.data.joined.image.url } : require('../assets/blank-profile.webp')} />
-                <Text numberOfLines={1}>{data.data.joined.username}</Text>
+                <Text numberOfLines={1} style={{ color: theme.text }}>{data.data.joined.username}</Text>
             </Pressable>
             <View style={styles.section}>
                 <Pressable style={styles.iconContainer} onPress={handleDecline}>
