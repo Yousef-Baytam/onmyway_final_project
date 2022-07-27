@@ -33,7 +33,7 @@ export function MainStack() {
 
     useEffect(() => {
         handleSendNotificationToken()
-    }, [])
+    }, [expoPushToken])
 
     return (
         <>
