@@ -120,7 +120,7 @@ export default function TabNav() {
                 } />
 
             </Tab.Navigator>
-            <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0 }]}>
+            <View style={[styles.notificationsContainer, { maxHeight: showNotifications ? '80%' : 0, backgroundColor: theme.light }]}>
                 {
                     userPosts?.length != 0 ?
                         <FlatList

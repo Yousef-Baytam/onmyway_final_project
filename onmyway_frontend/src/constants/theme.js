@@ -10,7 +10,7 @@ export default THEME_OPTIONS = {
     DARK: {
         bg: '#1A1A2E',
         outline: '#ACACAC',
-        light: '#7D7D7D',
+        light: '#2A2A4A',
         postCard: 'rgba(255, 255, 255, 0.2)',
         postCardInfo: 'rgba(26, 26, 46, 0.8)',
         text: '#fff'
