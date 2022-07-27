@@ -40,7 +40,6 @@ function CustomDrawerContent(props) {
                         <Image style={styles.image} source={user?.image && Object.keys(user.image).length > 0 ? { uri: user.image.url } : require('../assets/blank-profile.webp')} />
                     </View>
                 </View>
-                <DrawerItemList {...props} />
                 <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn} onPress={toggleTheme}>
                     <Text style={{ color: theme.bg, fontWeight: 'bold' }}>{theme.bg == '#fff' ? 'Light Mode' : 'Dark Mode'}</Text>
                     <View style={styles.icon}>
