@@ -5,7 +5,7 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import moment from 'moment'
 import { useTheme } from '../context/ThemeContext';
 
-export default function DatePicker({ date, setDate, placeholder, AuthInput, display, custom }) {
+export default function DatePicker({ date, setDate, placeholder, AuthInput, display, custom, notThemed }) {
     const { theme } = useTheme()
     const [mode, setMode] = useState('date')
     const [show, setShow] = useState(false)
@@ -36,7 +36,7 @@ export default function DatePicker({ date, setDate, placeholder, AuthInput, disp
                     display ?
                         <Text >{moment(date).format('MMMM Do YYYY')}</Text>
                         : <Pressable onPress={() => showMode('date')}>
-                            <Text style={{ color: theme.text }}>{text}</Text>
+                            <Text style={{ color: notThemed ? '#000' : theme.text }}>{text}</Text>
                         </Pressable>
                 }
             </View>
@@ -70,5 +70,6 @@ DatePicker.defaultProps = {
     AuthInput: true,
     placeholder: 'Date of Birth',
     display: false,
-    custom: {}
+    custom: {},
+    notThemed: false
 }

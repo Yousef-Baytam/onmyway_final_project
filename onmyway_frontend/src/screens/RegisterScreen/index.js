@@ -36,16 +36,16 @@ export default function Register({ navigation }) {
     const { handleLoggedIn } = useLoggedIn()
 
     const handleRegister = async () => {
-        userSchema.validate({
-            username: username,
-            email: email,
-            dob: date,
-            gender: gender,
-            phone: phone,
-            password: password,
-            passwordConfirmation: rePassword,
-        })
         try {
+            userSchema.validate({
+                username: username,
+                email: email,
+                dob: date,
+                gender: gender,
+                phone: phone,
+                password: password,
+                passwordConfirmation: rePassword,
+            })
             const res = await register({ username, email, phone, dob: date, gender, password })
             axios.defaults.headers.common['Authorization'] = `bearer ${ res.token.token }`
             await storage.save({ key: 'token', data: res.token.token })
@@ -72,11 +72,11 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <PhoneIcon />
-                        <PhoneCustomInput phone={phone} setPhone={setPhone} />
+                        <PhoneCustomInput phone={phone} setPhone={setPhone} notThemed={true} />
                     </View>
                     <View style={styles.inputContainer}>
                         <CalendarIcon />
-                        <DatePicker date={date} setDate={setDate} />
+                        <DatePicker date={date} setDate={setDate} notThemed={true} />
                     </View>
                     <View style={styles.inputContainer}>
                         <GenderIcon />
