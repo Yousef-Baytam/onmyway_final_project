@@ -2,8 +2,11 @@ import { View, TextInput, Modal, StyleSheet } from 'react-native'
 import React from 'react'
 import CustomButton from './CustomButton';
 import { reportUser } from '../controllers/userController';
+import { useTheme } from '../context/ThemeContext';
 
 const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setReportTitle, reportDesc, setReportDesc, id }) => {
+
+    const { theme } = useTheme()
 
     const handleSubmitReport = async () => {
         try {
@@ -21,13 +24,13 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
             onRequestClose={() => {
                 setShowReportModal(!showReportModal)
             }}>
-            <View style={styles.container}>
-                <TextInput style={styles.input}
+            <View style={[styles.container, { backgroundColor: theme.bg }]}>
+                <TextInput style={[styles.input, { backgroundColor: theme.postCard, color: theme.text }]}
                     onChangeText={setReportTitle}
                     value={reportTitle}
                     placeholder="Report Type"
                     keyboardType="default" />
-                <TextInput style={styles.input}
+                <TextInput style={[styles.input, { backgroundColor: theme.postCard, color: theme.text }]}
                     onChangeText={setReportDesc}
                     value={reportDesc}
                     multiline={true}
