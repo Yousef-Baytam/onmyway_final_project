@@ -20,24 +20,19 @@ export default function Chat({ navigation, use }) {
     const [chatRoomInfo, setChatRoomInfo] = useState(null)
 
     const hanldeSendMessage = async (text) => {
-        if (!user.blocked.includes(chatRoom._id) && !chatRoom.blocked.includes(user._id)) {
-            const res = await addChatRoom(chatRoom.chatRoomId, {
-                text: text,
-                createdAt: new Date().getTime(),
-                user: {
-                    _id: chatRoom._id,
-                },
+        const res = await addChatRoom(chatRoom.chatRoomId, {
+            text: text,
+            createdAt: new Date().getTime(),
+            user: {
+                _id: chatRoom._id,
             },
-                chatRoom.userTag,
-                chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
-                chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
-            )
-            chatRoom?.notification?.status == 'active' &&
-                sendPushNotification(chatRoom?.notification?.token, 'New Message', `${ chatRoom.username }: ${ text }`)
-        }
-        else {
-            alert('You cannot text this user')
-        }
+        },
+            chatRoom.userTag,
+            chatRoom.userTag == 'users1' ? chatRoomInfo.user2Online : chatRoomInfo.user1Online,
+            chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
+        )
+        chatRoom?.notification?.status == 'active' &&
+            sendPushNotification(chatRoom?.notification?.token, 'New Message', `${ chatRoom.username }: ${ text }`)
     }
 
     const handleChatRoomStatus = async () => {
@@ -106,8 +101,13 @@ export default function Chat({ navigation, use }) {
     }, [])
 
     const onSend = useCallback((message = []) => {
-        setMessages(previousMessages => GiftedChat.append(previousMessages, message))
-        hanldeSendMessage(message[0].text)
+        if (!user.blocked.includes(chatRoom._id) && !chatRoom.blocked.includes(user._id)) {
+            setMessages(previousMessages => GiftedChat.append(previousMessages, message))
+            hanldeSendMessage(message[0].text)
+        }
+        else {
+            alert('You cannot text this user')
+        }
     }, [chatRoomInfo])
 
     return (
