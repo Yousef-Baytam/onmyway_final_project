@@ -51,7 +51,7 @@ export default function PostCard(data) {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', data.data) }} >
+            <Pressable onPress={() => { data.notPressable ? null : navigation.navigate('Post', JSON.stringify(data.data)) }} >
                 <View style={[styles.cardContainer, { backgroundColor: theme.postCard }]}>
                     <View style={styles.infoConatiner}>
                         <View style={[styles.halfInfoContainer, { backgroundColor: theme.postCardInfo }]}>

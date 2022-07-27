@@ -20,7 +20,7 @@ export default function Post({ navigation }) {
     const [joined, setJoined] = useState('noRequest') //enum=[noRequest, pending, approved, declined]
     const { theme } = useTheme()
 
-    const data = route.params
+    const data = JSON.parse(route.params)
     let days
     if (data.days)
         days = JSON.parse(data.days)

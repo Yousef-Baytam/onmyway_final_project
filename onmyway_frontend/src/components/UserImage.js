@@ -2,10 +2,8 @@ import { StyleSheet, Image, View, Modal, Text, LayoutAnimation } from 'react-nat
 import * as ImagePicker from 'expo-image-picker';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { updateImage } from '../controllers/userController';
-import PressableText from './PressableText';
 import { useState } from 'react';
 import CamModal from './CamModal';
-import theme from '../constants/theme';
 import { useTheme } from '../context/ThemeContext';
 import Camera2Icon from '../assets/icons/Camera2Icon';
 import GalleryIcon from '../assets/icons/GalleryIcon';
