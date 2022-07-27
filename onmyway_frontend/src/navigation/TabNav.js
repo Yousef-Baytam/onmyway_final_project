@@ -15,6 +15,7 @@ import { View, StyleSheet, LayoutAnimation, FlatList, Text } from 'react-native'
 import { getUserPost } from '../controllers/postsController';
 import NotificationList from '../components/NotificationList';
 import { useTheme } from '../context/ThemeContext';
+import CustomButton from '../components/CustomButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -132,7 +133,8 @@ export default function TabNav() {
                         />
                         :
                         <View style={styles.noNotContainer}>
-                            <Text>No New Notifications!</Text>
+                            <Text style={{ color: theme.text, marginBottom: 20 }}>No New Notifications!</Text>
+                            <CustomButton text={'Refresh'} action={() => setRefreshData(!refreshData)} />
                         </View>
                 }
 
