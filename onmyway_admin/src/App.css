@@ -98,6 +98,8 @@ select {
   left: 0;
   top: 0;
   width: 200px;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
 }
 
 .pannelWindow {

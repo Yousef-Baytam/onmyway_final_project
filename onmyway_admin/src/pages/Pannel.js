@@ -6,6 +6,7 @@ import Reports from '../components/Reports'
 
 export default function Pannel({ user, setUser }) {
     const [focused, setFocused] = useState('users')
+    const [pannelExpanded, setPannelExpanded] = useState(false)
     const navigate = useNavigate()
 
     const handleLogout = () => {
