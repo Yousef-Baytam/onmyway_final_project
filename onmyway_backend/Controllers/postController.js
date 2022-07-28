@@ -108,7 +108,7 @@ module.exports.quitPosts = async (req, res) => {
 module.exports.approveDeclinePosts = async (req, res) => {
     const { user_id, post_id, status } = req.params
     const post = await Post.findById(post_id).populate('joinRequests.joined')
-    if (post.remainingSeats == 0)
+    if (post.remainingSeats == 0 && status == 'approved')
         return res.send({ "success": false, "message": "no enough seats" })
     for (let i = 0; i < post.joinRequests.length; i++) {
         if (post.joinRequests[i].joined.id == user_id)
