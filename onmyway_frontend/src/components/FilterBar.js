@@ -33,7 +33,7 @@ export default function FilterBar({ setFilter, posts, filter }) {
             <View style={styles.topBarContainer}>
                 {
                     filter ?
-                        <Pressable onPress={() => setFilter(null)}>
+                        <Pressable onPress={() => { setFilter(null); setFrom({ location: '' }); setTo({ location: '' }) }}>
                             <CancelIcon />
                         </Pressable>
                         :
