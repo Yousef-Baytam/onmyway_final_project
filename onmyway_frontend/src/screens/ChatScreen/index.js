@@ -32,7 +32,7 @@ export default function Chat({ navigation, use }) {
             chatRoomInfo.latestMessage.sender == chatRoom.userTag ? (chatRoomInfo.numberOfMessages + 1) : 1
         )
         chatRoom?.notification?.status == 'active' &&
-            sendPushNotification(chatRoom?.notification?.token, 'New Message', `${ chatRoom.username }: ${ text }`)
+            sendPushNotification(chatRoom?.notification?.token, 'New Message', `${ user.username }: ${ text }`)
     }
 
     const handleChatRoomStatus = async () => {
