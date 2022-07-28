@@ -34,7 +34,7 @@ export default function DatePicker({ date, setDate, placeholder, AuthInput, disp
             <View style={[styles.input, { borderBottomWidth: AuthInput ? 0.2 : 0, paddingBottom: AuthInput ? 10 : 5 }, custom]}>
                 {
                     display ?
-                        <Text >{moment(date).format('MMMM Do YYYY')}</Text>
+                        <Text style={{ color: notThemed ? '#000' : theme.text }}>{moment(date).format('MMMM Do YYYY')}</Text>
                         : <Pressable onPress={() => showMode('date')}>
                             <Text style={{ color: notThemed ? '#000' : theme.text }}>{text}</Text>
                         </Pressable>
