@@ -94,7 +94,7 @@ export default function Register({ navigation }) {
             </View>
             <AuthButton value={"Sign up"} action={handleRegister} />
             <View style={[styles.inputContainer, { justifyContent: 'center' }]}>
-                <Text style={{ color: '#A1CCE4' }}>Already have an account? </Text>
+                <Text style={{ color: '#4AB1EA' }}>Already have an account? </Text>
                 <Pressable onPress={() => navigation.navigate('Login')}><Text style={{ color: '#005A9C', textDecorationLine: 'underline' }}>Sign in</Text></Pressable>
             </View>
         </View>

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { url } from '../constants/vars'
 
 const login = async (data) => {
     try {
