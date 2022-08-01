@@ -131,11 +131,11 @@ export default function Profile({ navigation }) {
             {
                 optionsDisplay &&
                 <View style={[styles.userOptions, { backgroundColor: theme.postCard }]}>
-                    <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }}
+                    <PressableText text={'Contact'} custom={{ width: '100%', height: '30%' }} customText={{ textAlign: 'left', width: '100%', marginLeft: 20 }}
                         action={handleCreateChatRoom} />
-                    <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }}
+                    <PressableText text={'Report'} custom={{ width: '100%', height: '30%' }} customText={{ textAlign: 'left', width: '100%', marginLeft: 20 }}
                         action={() => setShowReportModal(true)} />
-                    <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }}
+                    <PressableText text={'Block'} custom={{ width: '100%', height: '30%' }} customText={{ textAlign: 'left', width: '100%', marginLeft: 20 }}
                         action={editConfirmationAlert} />
                 </View>
             }
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         height: 180,
         elevation: 5,
         borderRadius: 100,
-        marginTop: 20
+        marginTop: 20,
     },
     userContainer: {
         width: '90%',
