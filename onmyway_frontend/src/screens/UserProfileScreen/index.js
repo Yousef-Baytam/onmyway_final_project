@@ -56,13 +56,13 @@ export default function UserProfile({ navigation }) {
             </View>
             <View style={{ justifyContent: 'center', width: '100%' }}>
                 <View style={styles.ridesRn}>
-                    <PressableText text={'Rides Offered'} action={() => setShowMyRidesModal(true)} custom={[styles.ridesMenu, { borderColor: theme.text }]} />
-                    <PressableText text={'Rides Joined'} action={() => setShowJoinedRidesModal(true)} custom={[styles.ridesMenu, { borderColor: theme.text }]} />
+                    <PressableText text={'Rides Offered'} action={() => setShowMyRidesModal(true)} custom={[styles.ridesMenu, { borderColor: "#005A9C" }]} />
+                    <PressableText text={'Rides Joined'} action={() => setShowJoinedRidesModal(true)} custom={[styles.ridesMenu, { borderColor: "#005A9C" }]} />
                 </View>
                 <View style={styles.ridesRn}>
                     <HistoryIcon />
-                    <PressableText text={'History Offered'} action={() => setShowMyRidesHistoryModal(true)} custom={[styles.ridesMenu, { borderColor: theme.text }]} />
-                    <PressableText text={'History Joined'} action={() => setShowMyRidesHistoryModal(true)} custom={[styles.ridesMenu, { borderColor: theme.text }]} />
+                    <PressableText text={'History Offered'} action={() => setShowMyRidesHistoryModal(true)} custom={[styles.ridesMenu, { borderColor: "#005A9C" }]} />
+                    <PressableText text={'History Joined'} action={() => setShowMyRidesHistoryModal(true)} custom={[styles.ridesMenu, { borderColor: "#005A9C" }]} />
                     <HistoryIcon />
                 </View>
             </View>
