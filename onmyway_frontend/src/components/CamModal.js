@@ -113,7 +113,7 @@ export default function CamModal({ modalVisible, setModalVisible, handleImageUpl
                                         }
                                     </View>}
                                 <View style={styles.button}>
-                                    <CustomButton text={'cancel'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
+                                    <CustomButton text={'Cancel'} action={() => setModalVisible(false)} custom={{ width: '100%' }} />
                                 </View>
                             </View>
                         </View>
