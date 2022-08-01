@@ -60,7 +60,7 @@ export default function NewPost({ navigation }) {
             if (repeat)
                 res = await addPost({ from, to, repeat, days: JSON.stringify(days), departureTime: departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             else
-                res = await addPost({ from, to, repeat, date: date == new Date() ? null : date, departureTime: departureTime == new Date() ? null : departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
+                res = await addPost({ from, to, repeat, date: date, departureTime: departureTime, returnTime: resturnSet ? returnTime : 'Not Set', availableSeats, preferredGender, shareExpenses })
             navigation.navigate('Browse')
         }
         catch (e) {

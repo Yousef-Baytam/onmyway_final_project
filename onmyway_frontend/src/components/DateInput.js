@@ -14,7 +14,7 @@ export default function DateInput({ repeat, setRepeat, date, setDate, setDays, d
             }
             {repeat ?
                 <DayPicker setDays={setDays} days={days} display={display} /> :
-                <DatePicker date={date} setDate={setDate} placeholder={'Select a Date'} AuthInput={false} display={display} />}
+                <DatePicker date={date} setDate={setDate} placeholder={'Select a Date'} AuthInput={false} display={display} custom={{ marginBottom: 25 }} />}
         </View>
     );
 }
