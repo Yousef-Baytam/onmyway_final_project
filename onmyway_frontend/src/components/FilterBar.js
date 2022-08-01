@@ -46,10 +46,10 @@ export default function FilterBar({ setFilter, posts, filter }) {
                     setShowFIlterDropDown(!showFIlterDropDown)
                 }}>
                     <View style={styles.textConstainer}>
-                        <Text style={{ color: '#92D293', fontWeight: 'bold' }}>{from.location.length ? from.location : 'From'}</Text>
+                        <Text style={{ color: theme.themeBlue, fontWeight: 'bold' }}>{from.location.length ? from.location : 'From'}</Text>
                     </View>
                     <View style={styles.textConstainer}>
-                        <Text style={{ color: '#D2686E', fontWeight: 'bold' }}>{to.location.length ? to.location : 'To'}</Text>
+                        <Text style={{ color: theme.themeBlue, fontWeight: 'bold' }}>{to.location.length ? to.location : 'To'}</Text>
                     </View>
                     <View style={styles.icon}>
                         <ArrowHeadIcon up={showFIlterDropDown ? true : false} />

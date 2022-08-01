@@ -1,15 +1,12 @@
-import { CommonActions, DrawerActions } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from 'react-navigation-stack';
-import BackArrow from '../components/BackArrow';
 import DrawerToggler from '../components/DrawerToggler';
 import Chat from '../screens/ChatScreen';
 import TabNav from './TabNav';
-import { useTheme } from '../context/ThemeContext';
 
 export function ParentStack() {
     const Stack = createStackNavigator();
-    const { theme } = useTheme()
 
     return (
         <Stack.Navigator screenOptions={({ navigation }) => ({
