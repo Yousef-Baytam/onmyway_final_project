@@ -5,7 +5,8 @@ export default THEME_OPTIONS = {
         light: '#EAEAEA',
         postCard: '#EAEAEA',
         postCardInfo: '#fff',
-        text: '#000'
+        text: '#000',
+        themeBlue: '#005A9C'
     },
     DARK: {
         bg: '#1A1A2E',
@@ -13,7 +14,8 @@ export default THEME_OPTIONS = {
         light: '#2A2A4A',
         postCard: 'rgba(255, 255, 255, 0.2)',
         postCardInfo: 'rgba(26, 26, 46, 0.8)',
-        text: '#fff'
+        text: '#fff',
+        themeBlue: '#A1CCE4'
     }
 }
 
