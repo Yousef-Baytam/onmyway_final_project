@@ -1,4 +1,4 @@
-import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { CommonActions, useFocusEffect, useRoute } from '@react-navigation/native';
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
@@ -11,6 +11,7 @@ import { db } from '../../../firebase'
 import { getaChatRoom, updateInChatRoomStatus, updateReadStatus } from '../../controllers/firebaseControllers/chatRooms';
 import { useUser } from '../../context/UserContext';
 import { sendPushNotification } from '../../../NotificationRegister';
+import BackArrow from '../../components/BackArrow';
 
 export default function Chat({ navigation, use }) {
     const route = useRoute()
@@ -89,13 +90,15 @@ export default function Chat({ navigation, use }) {
             headerTitleContainerStyle: styles.headerStyle,
             headerStyle: { backgroundColor: '#A1CCE4' },
             headerTintColor: '#fff',
-            headerRight: () => (<View style={styles.headerIcon}>
-                <View style={styles.imageHeaderContainer}>
-                    <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }}
-                        image={{ status: true, image: chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url || null }} />
-                </View>
-                <ProfileOptions custom={{ width: 8 }} />
-            </View>)
+            headerLeft: () => (
+                <View style={styles.headerIcon}>
+                    <BackArrow custom={'#fff'} action={() => { navigation.dispatch(CommonActions.goBack()) }} customContainer={{ width: 20 }} />
+                    <View style={styles.imageHeaderContainer}>
+                        <UserProfileHeaderButton action={() => { navigation.navigate('Profile', chatRoom) }}
+                            image={{ status: true, image: chatRoom.hasOwnProperty('image') && Object.keys(chatRoom.image).length && chatRoom.image.url || null }} />
+                    </View>
+                </View>),
+            headerRight: () => (<ProfileOptions custom={{ width: 8 }} />)
         })
 
     }, [])
@@ -149,19 +152,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     headerIcon: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     imageHeaderContainer: {
-        marginRight: 8,
+        marginRight: 0,
         marginLeft: 0
     },
     headerStyle: {
-        textAlign: 'right',
-        width: '100%',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        paddingRight: 60,
-        paddingLeft: 30,
+        alignItems: 'flex-start',
+        paddingLeft: 0,
         marginTop: 20
     },
     input: {

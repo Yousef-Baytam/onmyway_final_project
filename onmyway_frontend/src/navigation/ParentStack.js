@@ -19,10 +19,7 @@ export function ParentStack() {
         })
         }>
             <Stack.Screen name="TabNav" component={TabNav} options={{ headerShown: false }} />
-            <Stack.Screen name="Chat" component={Chat} options={({ navigation }) => ({
-                headerLeft: () => (
-                    <BackArrow custom={'#fff'} action={() => { navigation.dispatch(CommonActions.goBack()) }} />), headerTitleAlign: 'center'
-            })} />
+            <Stack.Screen name="Chat" component={Chat} />
         </Stack.Navigator>
     );
 }
