@@ -95,7 +95,7 @@ export default function Post({ navigation }) {
                 <MusicPrefrence text={'Music Prefrence'} value={data.owner.musicPrefrence || 'Any'} />
             </View>
             <View style={{ marginTop: '10%', flexDirection: 'row' }}>
-                <CustomButton text={'User Profile'} action={() => navigation.navigate('Profile', data.owner)} />
+                <CustomButton text={'User Profile'} action={() => navigation.navigate('Profile', data.owner)} custom={{ marginRight: 30 }} />
                 {
                     !data.remainingSeats && joined == 'noRequest' ?
                         null
