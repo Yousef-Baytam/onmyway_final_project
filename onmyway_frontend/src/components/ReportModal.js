@@ -1,12 +1,17 @@
 import { View, TextInput, Modal, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import CustomButton from './CustomButton';
 import { reportUser } from '../controllers/userController';
 import { useTheme } from '../context/ThemeContext';
+import DropDown from "react-native-paper-dropdown"
 
 const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setReportTitle, reportDesc, setReportDesc, id }) => {
 
     const { theme } = useTheme()
+    const items = [
+        { label: 'Harassment', value: 'Harassment' }
+    ]
+    const [showReportType, setShowReportType] = useState(false)
 
     const handleSubmitReport = async () => {
         try {
@@ -25,6 +30,20 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
                 setShowReportModal(!showReportModal)
             }}>
             <View style={[styles.container, { backgroundColor: theme.bg }]}>
+                <View style={styles.dropdown}>
+                    <DropDown
+                        label={"Report Type"}
+                        mode={"outlined"}
+                        visible={showReportType}
+                        showReportType={() => setShowReportType(true)}
+                        onDismiss={() => setShowReportType(false)}
+                        value={reportTitle}
+                        setValue={setReportTitle}
+                        list={items}
+                        dropDownItemSelectedTextStyle={{ color: '#005A9C' }}
+                        inputProps={{ style: { height: 50, backgroundColor: '#fff', paddingBottom: 5 } }}
+                    />
+                </View>
                 <TextInput style={[styles.input, { backgroundColor: theme.postCard, color: theme.text }]}
                     onChangeText={setReportTitle}
                     value={reportTitle}
