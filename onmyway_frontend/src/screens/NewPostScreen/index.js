@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import AvailableSeats from '../../components/AvailableSeats';
 import CustomButton from '../../components/CustomButton';
 import DateInput from '../../components/DateInput';
@@ -69,7 +69,9 @@ export default function NewPost({ navigation }) {
     }
 
     return (
-        <View style={[styles.container, { backgroundColor: theme.bg }]}>
+        <KeyboardAvoidingView style={[styles.container, { backgroundColor: theme.bg }]}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            enabled={false}>
             <View style={styles.view1}>
                 <LocationInput text={'From'} color={'#92D293'}
                     value={from} setValue={setFrom} placeholder={'From'} />
@@ -94,7 +96,7 @@ export default function NewPost({ navigation }) {
             <View style={{ marginTop: '10%' }}>
                 <CustomButton text={'Confirm'} action={handleAddPost} />
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
