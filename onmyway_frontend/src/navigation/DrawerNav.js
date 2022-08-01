@@ -46,7 +46,7 @@ function CustomDrawerContent(props) {
                     </View>
                 </Pressable>
                 <Pressable style={theme.bg == '#fff' ? styles.themeDarkBtn : styles.themeLightBtn} onPress={() => setShowBlockedUsers(true)}>
-                    <Text style={{ color: theme.bg, fontWeight: 'bold' }}>Blocked users</Text>
+                    <Text style={{ color: theme.bg, fontWeight: 'bold' }}>Blocked Users</Text>
                     <View style={styles.icon}>
                     </View>
                 </Pressable>
