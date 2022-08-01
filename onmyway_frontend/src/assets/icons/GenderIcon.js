@@ -6,7 +6,7 @@ export default function GenderIcon() {
         <Svg
             width={25}
             height={50}
-            viewBox="0 0 500 1000"
+            viewBox="0 0 500 500"
             fill='#858585'
         >
             <Path

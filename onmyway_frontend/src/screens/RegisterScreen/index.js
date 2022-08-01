@@ -18,6 +18,7 @@ import { register } from '../../controllers/authController'
 import axios from 'axios'
 import storage from '../../storage/asyncStorage';
 import { userSchema } from '../../constants/yupValidations';
+import DropDown from "react-native-paper-dropdown"
 
 export default function Register({ navigation }) {
     const [username, setUsername] = useState('')
@@ -32,6 +33,7 @@ export default function Register({ navigation }) {
         { label: 'Female', value: 'female' },
         { label: 'Other', value: 'other' }
     ]);
+    const [showDropdown, setShowDropdown] = useState(false)
     const { handleUser } = useUser()
     const { handleLoggedIn } = useLoggedIn()
 
@@ -80,7 +82,21 @@ export default function Register({ navigation }) {
                     </View>
                     <View style={styles.inputContainer}>
                         <GenderIcon />
-                        <RadioButtonList checked={gender} setChecked={setGender} items={items} notThemed={true} />
+                        <View style={styles.dropdown}>
+                            <DropDown
+                                label={"Gender"}
+                                mode={"flat"}
+                                visible={showDropdown}
+                                showDropDown={() => setShowDropdown(true)}
+                                onDismiss={() => setShowDropdown(false)}
+                                value={gender}
+                                setValue={setGender}
+                                list={items}
+                                dropDownItemSelectedTextStyle={{ color: '#005A9C' }}
+                                inputProps={{ style: { height: 50, backgroundColor: '#fff', paddingBottom: 5 } }}
+
+                            />
+                        </View>
                     </View>
                     <View style={styles.inputContainer}>
                         <PasswordIcon />
@@ -123,5 +139,10 @@ const styles = StyleSheet.create({
     scrollContainer: {
         height: 300,
         justifyContent: 'flex-end'
+    },
+    dropdown: {
+        width: '83%',
+        backgroundColor: '#fff',
+        marginBottom: 20
     }
 });
