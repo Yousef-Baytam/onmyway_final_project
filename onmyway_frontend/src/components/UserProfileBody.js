@@ -69,7 +69,7 @@ export default function UserProfileBody({ user, display }) {
                 display ?
                     null
                     :
-                    <View style={{ position: 'absolute', right: 10, top: 10 }}>
+                    <View style={{ position: 'absolute', right: 10, bottom: 10 }}>
                         {
                             editMode ?
                                 <View style={styles.editButtonsConatainer}>
