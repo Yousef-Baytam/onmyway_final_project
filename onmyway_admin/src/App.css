@@ -65,14 +65,14 @@ select {
   width: 100%;
   text-align: center;
   padding: 10px;
-  background-color: #005A9C;
+  background-color: #1B3854;
   margin: 20px 0;
   color: white;
   border-radius: 5px;
   cursor: pointer;
   transition: all 200ms ease-in-out;
   transform: translateY(-5%);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
 }
 
 .logout {
@@ -81,13 +81,13 @@ select {
 }
 
 .focused {
-  background-color: #00375f;
+  background-color: #1B3854;
   transform: translateY(0);
   box-shadow: 0px 0px 0px 0px;
 }
 
 .pannelContainer {
-  background-color: #00375f;
+  background-color: #1B3854;
   height: 100vh;
   display: flex;
   flex-direction: column;
