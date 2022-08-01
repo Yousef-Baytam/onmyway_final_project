@@ -36,7 +36,8 @@ const ReportModal = ({ showReportModal, setShowReportModal, reportTitle, setRepo
                     multiline={true}
                     numberOfLines={5}
                     placeholder="Description"
-                    keyboardType="default" />
+                    keyboardType="default"
+                    textAlignVertical='top' />
                 <View style={{ justifyContent: 'center', flexDirection: 'row', marginTop: 50 }}>
                     <CustomButton text={'Cancel'} custom={{ width: '40%' }} action={() => setShowReportModal(false)} />
                     <CustomButton text={'Submit'} custom={{ width: '40%' }} action={handleSubmitReport} />
