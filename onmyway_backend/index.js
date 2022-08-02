@@ -1,7 +1,6 @@
 process.env.NODE_ENV !== 'production' && require('dotenv').config()
 
 const express = require('express')
-// const path = require('path')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
@@ -13,8 +12,6 @@ const userRoutes = require('./Routes/userRoutes')
 const postRoutes = require('./Routes/postRoutes')
 const reviewRoutes = require('./Routes/reviewRoutes')
 const adminRoutes = require('./Routes/adminRoutes')
-// const { loggedIn } = require('./middleware/app')
-// const MongoStore = require('connect-mongo');
 const cors = require('cors')
 app.use(cors())
 
@@ -30,10 +27,8 @@ app.use(session({
     name: 'session',
     resave: false,
     saveUninitialized: true,
-    // store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/CarpoolingApp' }),
     cookie: {
         httpOnly: true,
-        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -41,12 +36,8 @@ app.use(session({
 
 app.use(express.json({ limit: '20mb' }))
 app.use(passport.initialize())
-// app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 require('./Utils/passportJWT')(passport)
-
-// passport.serializeUser(User.serializeUser())
-// passport.deserializeUser(User.deserializeUser())
 
 passport.serializeUser(function (user, done) {
     done(null, user);
@@ -68,5 +59,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen('777', '192.168.0.100', () => {
-    console.log('Listening for requests on port 77777777777777777777777777777777')
+    console.log('Listening for requests on port 777')
 })
