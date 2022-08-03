@@ -16,3 +16,5 @@ web-build/
 .env
 
 .expo-shared
+
+google-services.json

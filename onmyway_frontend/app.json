@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "onmyway_frontend",
-    "slug": "onmyway_frontend",
+    "name": "OnMyWay",
+    "slug": "OnMyWay",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,6 +22,7 @@
     },
     "android": {
       "package": "com.SEFactory.onmyway",
+      "googleServicesFile": "./google-services.json",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive.png",
