@@ -114,7 +114,7 @@ Here's a brief high-level overview of the tech stack, tools, and packages the On
 
 <br>
 
-<b>Please Note</b> that due to an issues with the Google billing account (the requirement of a working credit card plus address verification of the holder), Google APIs were not secured which will prevent Google maps from working in the standalone app, prevent the functionality of the search bar (requires Google places API), and force the user to manually enter departure and destination names instead of reverse geocode the name of the location using the coordinates of the dropped pin on the map (requires Google geocoding API) 
+<b>Please Note</b> that due to an issue with the Google billing account (the requirement of a working credit card plus address verification of the holder), Google APIs were not secured which will prevent Google maps from working in the standalone app, prevent the functionality of the search bar (requires Google places API), and force the user to manually enter departure and destination names instead of reverse geocode the name of the location using the coordinates of the dropped pin on the map (requires Google geocoding API) 
 
 <br>
 
