@@ -12,14 +12,15 @@ import UserImage from '../../components/UserImage';
 import UserProfileBody from '../../components/UserProfileBody';
 import { useUser } from '../../context/UserContext';
 import { getUserPost } from '../../controllers/postsController';
-import { getJoinedPosts } from '../../controllers/userController';
+import { getJoinedPosts, getUserReviews } from '../../controllers/userController';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function UserProfile({ navigation }) {
     const [visible, setVisible] = useState(false)
     const { user, handleUser } = useUser()
+    const [myReviews, setMyReviews] = useState(null)
     const [image, setImage] = useState(user?.image && Object.keys(user.image).length ? user.image.url : null);
-    const [rating, setRating] = useState(user.reviews.length ? Math.round((user.reviews.reduce((a, b) => a + b.rating, 0) / user.reviews.length) * 2) / 2 : 0)
+    const [rating, setRating] = useState(null)
     const [showAllReviews, setShowAllReviews] = useState(false)
     const [myRides, setMyRides] = useState([])
     const [ridesJoined, setRidesJoined] = useState([])
@@ -33,10 +34,17 @@ export default function UserProfile({ navigation }) {
         (async () => {
             const res = await getJoinedPosts()
             setRidesJoined(res)
+            const reviews = await getUserReviews(user._id)
+            console.log(reviews)
+            setMyReviews(reviews)
             const resu = await getUserPost()
             setMyRides(resu.results)
         })()
     }, [])
+
+    useEffect(() => {
+        setRating(myReviews?.length ? Math.round((myReviews?.reduce((a, b) => a + b.rating, 0) / myReviews?.length) * 2) / 2 : 0)
+    }, [myReviews])
 
     return (
         <Pressable style={[styles.container, { backgroundColor: theme.bg }]} onPress={() => {
@@ -71,7 +79,7 @@ export default function UserProfile({ navigation }) {
                     <CustomButton text={'My Reviews'} action={() => setShowAllReviews(true)} />
                 </View>
             </View>
-            <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
+            <AllReviewsModal reviews={myReviews} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
             <PostsModal text={'Joined'} show={showJoinedRidesModal} setShow={setShowJoinedRidesModal} data={ridesJoined.filter((i) => (moment(i.date) >= moment() || i.repeat))} />
             <PostsModal text={'Joined History'} show={showJoinedRidesHistoryModal} setShow={setShowJoinedRidesHistoryModal} data={ridesJoined.filter((i) => (moment(i.date) < moment()))} />
             <PostsModal text={'My Rides'} show={showMyRidesModal} setShow={setShowMyRidesModal} data={myRides.filter((i) => (moment(i.date) >= moment() || i.repeat))} />

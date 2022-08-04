@@ -160,7 +160,7 @@ export default function Profile({ navigation }) {
                         review={review} setReview={setReview}
                         setNewRating={setNewRating} newRating={newRating}
                         loggedUserReview={loggedUserReview} />
-                    <AllReviewsModal user={user} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
+                    <AllReviewsModal reviews={user.reviews} showAllReviews={showAllReviews} setShowAllReviews={setShowAllReviews} />
                     <ReportModal showReportModal={showReportModal}
                         setShowReportModal={setShowReportModal}
                         setReportTitle={setReportTitle} reportTitle={reportTitle}

@@ -4,7 +4,7 @@ import CancelIcon from '../assets/icons/CancelIcon';
 import ReviewCard from './ReviewCard';
 import { useTheme } from '../context/ThemeContext';
 
-export default function AllReviewsModal({ user, showAllReviews, setShowAllReviews }) {
+export default function AllReviewsModal({ reviews, showAllReviews, setShowAllReviews }) {
     const { theme } = useTheme()
 
     return (
@@ -19,8 +19,8 @@ export default function AllReviewsModal({ user, showAllReviews, setShowAllReview
                 <Pressable onPress={() => setShowAllReviews(false)} style={styles.cancel}>
                     <CancelIcon />
                 </Pressable>
-                {user.reviews ? <FlatList
-                    data={user.reviews}
+                {reviews ? <FlatList
+                    data={reviews}
                     renderItem={({ item }) => (<>
                         <ReviewCard body={item.body} author={item.author} rating={item.rating} />
                     </>)}
