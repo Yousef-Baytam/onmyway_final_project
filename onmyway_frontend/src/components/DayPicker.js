@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 
 export default function DayPicker({ setDays, days, display }) {
     const [monday, setMonday] = useState(days.monday)
-    const [tuesday, setTuesday] = useState(days.tuesdayy)
+    const [tuesday, setTuesday] = useState(days.tuesday)
     const [wednesday, setWednesday] = useState(days.wednesday)
     const [thursday, setThursday] = useState(days.thursday)
     const [friday, setFriday] = useState(days.friday)
