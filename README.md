@@ -4,7 +4,7 @@
 
 > Hello world! OnMyWay is a carpooling app that connects people with similar commute routes based on their personal preferences   
 
-**[PROJECT PHILOSOPHY](https://github.com/Yousef-Baytam/onmyway_final_project#project-philosophy) • [WIREFRAMES](https://Yousef-Baytam/onmyway_final_project#wireframes) • [TECH STACK](https://Yousef-Baytam/onmyway_final_project#tech-stack) • [IMPLEMENTATION](https://Yousef-Baytam/onmyway_final_project#impplementation) • [HOW TO RUN?](https://Yousef-Baytam/onmyway_final_project#how-to-run)**
+**[PROJECT PHILOSOPHY](https://github.com/Yousef-Baytam/onmyway_final_project#project-philosophy) • [WIREFRAMES](https://github.com/Yousef-Baytam/onmyway_final_project#wireframes) • [TECH STACK](https://github.com/Yousef-Baytam/onmyway_final_project#tech-stack) • [IMPLEMENTATION](https://github.com/Yousef-Baytam/onmyway_final_project#impplementation) • [HOW TO RUN?](https://github.com/Yousef-Baytam/onmyway_final_project#how-to-run)**
 
 </div>
 
