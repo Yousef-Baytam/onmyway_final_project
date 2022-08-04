@@ -11,6 +11,7 @@ export default function Reports() {
     const [items, setItems] = useState(['None', 'Pending', 'Reviewed'])
     const [filter, setFilter] = useState('None')
     const [search, setSearch] = useState('')
+    const [userEditTrigger, setUserEditTrigger] = useState(false)
 
     const handleGetReports = async () => {
         const res = await getReports()
@@ -35,12 +36,12 @@ export default function Reports() {
     }, [filter])
 
     const renderReports = () => {
-        return reports.map((i) => <div><ReportCard data={i} /></div>)
+        return reports.map((i) => <div><ReportCard data={i} setTrigger={setUserEditTrigger} trigger={userEditTrigger} /></div>)
     }
 
     useEffect(() => {
         handleGetReports()
-    }, [])
+    }, [userEditTrigger])
 
     return (
         <div>

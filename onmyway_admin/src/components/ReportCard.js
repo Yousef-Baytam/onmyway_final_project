@@ -5,11 +5,12 @@ import BanIcon from '../assets/icons/BanIcon'
 import ActivateIcon from '../assets/icons/ActivateIcon'
 import { setReportsStatus } from '../controllers/reportController'
 
-export default function ReportCard({ data }) {
+export default function ReportCard({ data, trigger, setTrigger }) {
 
     const handleReviewed = async () => {
         try {
             await setReportsStatus(data._id)
+            setTrigger(!trigger)
         } catch (e) {
             console.log(e)
         }
