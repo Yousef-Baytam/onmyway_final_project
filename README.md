@@ -114,6 +114,10 @@ Here's a brief high-level overview of the tech stack, tools, and packages the On
 
 <br>
 
+<b>Please Note</b> that due to an issues with the Google billing account (the requirement of a working credit card plus address verification of the holder), Google APIs were not secured which will prevent Google maps from working in the standalone app, prevent the functionality of the search bar (requires Google places API), and force the user to manually enter departure and destination names instead of reverse geocode the name of the location using the coordinates of the dropped pin on the map (requires Google geocoding API) 
+
+<br>
+
 | Admin Pannel Users |
 | -----------------|
 | <img src="https://github.com/Yousef-Baytam/OnMyWayGifs/blob/main/20220804_222655.gif" alt="drawing" style="width:800px"/> |
@@ -125,7 +129,7 @@ Here's a brief high-level overview of the tech stack, tools, and packages the On
 <br><br>
 <img src="./readme/title6.svg" id="how-to-run"/>
 
-To get a local copy on OnMyWay up and running follow these simple steps.
+To get a local copy of OnMyWay up and running follow these simple steps.
 
 ### Prerequisites
 
@@ -151,11 +155,11 @@ To get a local copy on OnMyWay up and running follow these simple steps.
    ```sh
    git clone https://github.com/Yousef-Baytam/onmyway_final_project.git
    ```
-2. Install NPM packages for onmyway_backend, onmyway_frontend, and onmyway_admin
+2. Install NPM packages of onmyway_backend, onmyway_frontend, and onmyway_admin
    ```sh
    npm install
    ```
-3. Add your Firestore config to the environment variables in onmyway_frontend
+3. Add your Firestore config to the environment variables of onmyway_frontend
    ```js
    firebaseApiKey="firebaseApiKey"
    authDomain="authDomain"
@@ -165,13 +169,13 @@ To get a local copy on OnMyWay up and running follow these simple steps.
    appId="appId"
    measurementId="measurementId"
    ```
-4. Add your Cloudinary config to the environment variables in onmyway_backend
+4. Add your Cloudinary config to the environment variables of onmyway_backend
    ```js
    CName="CLOUDINARY_CLOUD_NAME"
    CKey="CLOUDINARY_KEY"
    CSecret= "CLOUDINARY_SECRET"
    ```
-5. Add a JWT secret to the environment variables in onmyway_backend
+5. Add a JWT secret to the environment variables of onmyway_backend
    ```js
    JWT_TOKEN_SECRET="this is your secret"
    ```
