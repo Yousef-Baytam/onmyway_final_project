@@ -10,6 +10,7 @@ export default function AllUsers() {
     const [data, setData] = useState([])
     const [items, setItems] = useState(['None', 'Active', 'Banned'])
     const [filter, setFilter] = useState('None')
+    const [userEditTrigger, setUserEditTrigger] = useState(false)
 
     useEffect(() => {
         setData([...activeUsers, ...bannedUsers])
@@ -38,12 +39,13 @@ export default function AllUsers() {
     }
 
     const renderUsers = () => {
-        return data.map((i) => <div key={i._id}><UserCard data={i} /></div>)
+        return data.map((i) => <div key={i._id}><UserCard data={i} setTrigger={setUserEditTrigger} trigger={userEditTrigger} /></div>)
     }
 
     useEffect(() => {
         handleGetUsers()
-    }, [])
+        console.log('hello')
+    }, [userEditTrigger])
 
     return (
         <div>

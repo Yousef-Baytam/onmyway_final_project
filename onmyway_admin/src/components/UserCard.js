@@ -5,13 +5,14 @@ import BanIcon from '../assets/icons/BanIcon'
 import ActivateIcon from '../assets/icons/ActivateIcon'
 import { banUser, unbanUser } from '../controllers/userController'
 
-export default function UserCard({ data }) {
+export default function UserCard({ data, trigger, setTrigger }) {
     const [banned, setBanned] = useState(data.status == 'banned' ? true : false)
 
     const handleActivate = async () => {
         try {
             await unbanUser(data._id)
             setBanned(false)
+            setTrigger(!trigger)
         } catch (e) {
             console.log(e)
             data.status = 'banned'
@@ -22,6 +23,7 @@ export default function UserCard({ data }) {
         try {
             await banUser(data._id)
             setBanned(true)
+            setTrigger(!trigger)
         } catch (e) {
             console.log(e)
         }
