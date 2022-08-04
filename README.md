@@ -179,7 +179,7 @@ To get a local copy on OnMyWay up and running follow these simple steps.
    ```sh
    expo login
    ```
-6. b. Setup FCM for push notifications (a requirment for the standalone app push notifications) 
+   b. Setup FCM for push notifications (a requirment for the standalone app push notifications) 
    ```sh
    https://docs.expo.dev/push-notifications/using-fcm/
    ```
