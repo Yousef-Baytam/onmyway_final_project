@@ -16,7 +16,7 @@ export default function AllUsers() {
     }, [activeUsers])
 
     useEffect(() => {
-        setData([...activeUsers, ...bannedUsers].filter((e) => (e.username.includes(search) || e.email.includes(search))))
+        setData([...activeUsers, ...bannedUsers].filter((e) => (e.username.toLowerCase().includes(search) || e.email.toLowerCase().includes(search))))
     }, [search])
 
     useEffect(() => {

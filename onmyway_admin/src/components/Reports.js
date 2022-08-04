@@ -19,7 +19,7 @@ export default function Reports() {
     }
 
     useEffect(() => {
-        setReports([...reviewedReports, ...pendingReports].filter((e) => (e.reported.username.includes(search) || e.sender.username.includes(search) || e.reportType.includes(search))))
+        setReports([...reviewedReports, ...pendingReports].filter((e) => (e.reported.username.toLowerCase().includes(search) || e.sender.username.toLowerCase().includes(search) || e.reportType.toLowerCase().includes(search))))
     }, [search])
 
     useEffect(() => {
