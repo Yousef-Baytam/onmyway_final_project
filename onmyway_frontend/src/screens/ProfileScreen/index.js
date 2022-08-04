@@ -77,7 +77,6 @@ export default function Profile({ navigation }) {
         try {
             const res = await updateReview({ rating: newRating, body: review }, loggedUserReview._id)
             setShowReviewModal(false)
-            alert('Review posted successfully!')
         } catch (e) {
             alert('Error posting the review, try again')
         }

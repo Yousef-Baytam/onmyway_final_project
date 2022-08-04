@@ -81,20 +81,11 @@ const postSchema = new Schema({
 }, { timestamps: true });
 
 postSchema.pre('save', function (next) {
-    if (this.departureTime)
+    if (moment(this.departureTime).format("HH:mm") !== 'Invalid date')
         this.departureTime = moment(this.departureTime).format("HH:mm")
-    if (this.returnTime)
+    if (moment(this.returnTime).format("HH:mm") !== 'Invalid date')
         this.returnTime = moment(this.returnTime).format("HH:mm")
     next()
 })
-
-postSchema.pre('findOneAndUpdate', function (next) {
-    if (this._update.departureTime)
-        this._update.departureTime = moment(this._update.departureTime).format("HH:mm")
-    if (this._update.returnTime)
-        this._update.returnTime = moment(this._update.returnTime).format("HH:mm")
-    next()
-})
-
 
 module.exports = mongoose.model("Post", postSchema);
