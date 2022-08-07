@@ -60,6 +60,7 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || '777'
-app.listen(port, '192.168.0.100', () => {
+const ip = process.env.IP || '192.168.0.100'
+app.listen(port, ip, () => {
     console.log(`Listening for requests on port ${ port }`)
 })
