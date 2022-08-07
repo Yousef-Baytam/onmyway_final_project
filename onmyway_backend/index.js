@@ -15,7 +15,8 @@ const adminRoutes = require('./Routes/adminRoutes')
 const cors = require('cors')
 app.use(cors())
 
-mongoose.connect('mongodb://127.0.0.1:27017/CarpoolingApp')
+const dbURL = process.env.DBURL || 'mongodb://127.0.0.1:27017/CarpoolingApp'
+mongoose.connect(dbURL)
     .then(() => {
         console.log("Database Connected")
     }).catch(err => {
@@ -58,6 +59,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).send(err.message)
 })
 
-app.listen('777', '192.168.0.100', () => {
-    console.log('Listening for requests on port 777')
+const port = process.env.PORT || '777'
+app.listen(port, '192.168.0.100', () => {
+    console.log(`Listening for requests on port ${ port }`)
 })
